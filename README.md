@@ -1,4 +1,4 @@
-JavaZoen 2012 Androidito 
+JavaZone 2012 Androidito 
 ========================
 
 Androidito is the JavaZone conference client, and for JZ12 we are basing the app on a fork of the 
