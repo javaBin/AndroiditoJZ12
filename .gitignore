@@ -23,6 +23,8 @@ local.properties
 *.idea
 *.iws
 .idea
+*.ipr
+*.iml
 
 # Sandbox stuff
 _sandbox
