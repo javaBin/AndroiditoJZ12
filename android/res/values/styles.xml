@@ -44,7 +44,7 @@
     </style>
 
     <!-- Base themes for the app -->
-    <style name="Theme.Iosched" parent="Theme.Base">
+    <style name="Theme.Androidito" parent="Theme.Base">
         <item name="android:windowBackground">@android:color/white</item>
         <item name="android:windowContentOverlay">@drawable/actionbar_shadow</item>
         <item name="windowContentOverlay">@drawable/actionbar_shadow</item>
@@ -58,12 +58,12 @@
         <item name="actionBarTabTextStyle">@style/ActionBar.TabText</item>
     </style>
 
-    <style name="Theme.Iosched.GreyBackground" parent="Theme.Iosched">
+    <style name="Theme.Androidito.GreyBackground" parent="Theme.Androidito">
         <item name="android:windowBackground">@drawable/grey_background_pattern</item>
     </style>
 
     <!-- Home -->
-    <style name="Theme.Iosched.Home" parent="Theme.Iosched">
+    <style name="Theme.Androidito.Home" parent="Theme.Androidito">
         <item name="android:windowBackground">@drawable/grey_background_pattern</item>
         <item name="android:actionBarStyle">@style/ActionBar.Home</item>
         <item name="actionBarStyle">@style/ActionBar.Home</item>
@@ -75,7 +75,7 @@
     </style>
 
     <!-- Account chooser -->
-    <style name="Theme.Iosched.Accounts" parent="Theme.Iosched">
+    <style name="Theme.Androidito.Accounts" parent="Theme.Androidito">
         <item name="android:actionBarStyle">@style/ActionBar.Accounts</item>
         <item name="actionBarStyle">@style/ActionBar.Accounts</item>
     </style>
@@ -114,13 +114,13 @@
     </style>
 
     <!-- Live stream -->
-    <style name="Theme.Iosched.Livestream" parent="Theme.Iosched.GreyBackground">
+    <style name="Theme.Androidito.Livestream" parent="Theme.Androidito.GreyBackground">
         <item name="android:actionBarTabBarStyle">@style/FrameworkRoot.ActionBar.TabBar</item>
         <item name="android:actionBarTabTextStyle">@style/FrameworkRoot.ActionBar.TabText</item>
     </style>
 
     <!-- Google TV -->
-    <style name="Theme.Iosched.GoogleTV" parent="Theme.Iosched.GreyBackground">
+    <style name="Theme.Androidito.GoogleTV" parent="Theme.Androidito.GreyBackground">
         <item name="android:windowContentOverlay">@null</item>
         <item name="windowContentOverlay">@null</item>
     </style>
