@@ -14,14 +14,14 @@
   limitations under the License.
   -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:iosched="http://schemas.android.com/apk/res/com.google.android.apps.iosched"
+    xmlns:androidito="http://schemas.android.com/apk/res/no.java.android.apps.androidito"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/element_spacing_normal"
     android:layout_marginBottom="@dimen/element_spacing_normal">
 
-    <com.google.android.apps.iosched.ui.widget.BezelImageView android:id="@+id/speaker_image"
+    <no.java.android.apps.androidito.ui.widget.BezelImageView android:id="@+id/speaker_image"
         android:scaleType="centerCrop"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -30,8 +30,9 @@
         android:layout_marginRight="@dimen/speaker_image_padding"
         android:clickable="true"
         android:focusable="true"
-        iosched:borderDrawable="@drawable/bezel_border"
+        androidito:borderDrawable="@drawable/bezel_border"
         android:src="@drawable/person_image_empty" />
+
 
     <TextView android:id="@+id/speaker_header"
         android:layout_toRightOf="@id/speaker_image"

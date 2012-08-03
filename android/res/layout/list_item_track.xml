@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="left|center_vertical" />
 
-    <com.google.android.apps.iosched.ui.widget.BezelImageView android:id="@android:id/icon1"
+    <no.java.android.apps.androidito.ui.widget.BezelImageView android:id="@android:id/icon1"
         android:layout_margin="@dimen/track_icon_padding"
         android:layout_width="@dimen/track_icon_width"
         android:layout_height="match_parent"

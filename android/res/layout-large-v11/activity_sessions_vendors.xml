@@ -14,7 +14,7 @@
   limitations under the License.
   -->
 
-<com.google.android.apps.iosched.ui.widget.ShowHideMasterLayout
+<no.java.android.apps.androidito.ui.widget.ShowHideMasterLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/show_hide_master_layout"
     android:layout_width="match_parent"
@@ -28,7 +28,7 @@
         android:layout_marginBottom="@dimen/multipane_padding"
         android:background="@drawable/grey_frame">
 
-        <fragment android:name="com.google.android.apps.iosched.ui.tablet.TracksDropdownFragment"
+        <fragment android:name="no.java.android.apps.androidito.ui.tablet.TracksDropdownFragment"
             android:id="@+id/fragment_tracks_dropdown"
             android:layout_width="match_parent"
             android:layout_height="@dimen/thickbar_height" />
@@ -45,4 +45,4 @@
         android:layout_height="match_parent"
         android:layout_margin="@dimen/multipane_padding"
         android:background="@drawable/grey_frame_on_white" />
-</com.google.android.apps.iosched.ui.widget.ShowHideMasterLayout>
+</no.java.android.apps.androidito.ui.widget.ShowHideMasterLayout>
