@@ -77,7 +77,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </FrameLayout>
-
+        <!-- TODO: Comment back in to enable social stream
         <TextView style="@style/HomePaneHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -95,7 +95,7 @@
                 android:id="@+id/fragment_stream"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
-        </FrameLayout>
+        </FrameLayout> -->
     </LinearLayout>
 
 </LinearLayout>

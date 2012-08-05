@@ -178,12 +178,13 @@ public class TrackDetailActivity extends BaseActivity implements
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            /* TODO: Comment back in to enable social stream
             case R.id.menu_social_stream:
                 Intent intent = new Intent(this, SocialStreamActivity.class);
                 intent.putExtra(SocialStreamFragment.EXTRA_QUERY,
                         UIUtils.getSessionHashtagsString(mTrackId));
                 startActivity(intent);
-                break;
+                break; */
         }
         return super.onOptionsItemSelected(item);
     }
@@ -191,7 +192,6 @@ public class TrackDetailActivity extends BaseActivity implements
     @Override
     public void onTrackInfoAvailable(String trackId, String trackName, int trackColor) {
         setTitle(trackName);
-        setActionBarColor(trackColor);
         
         EasyTracker.getTracker().trackView(getString(R.string.title_sessions) + ": " + getTitle());
         LOGD("Tracker", getString(R.string.title_sessions) + ": " + getTitle());

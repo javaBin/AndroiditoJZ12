@@ -75,10 +75,6 @@ public class GCMIntentService extends GCMBaseIntentService {
 
     @Override
     protected void onMessage(Context context, Intent intent) {
-        if (UIUtils.isGoogleTV(context)) {
-            // Google TV uses SyncHelper directly.
-            return;
-        }
         String announcement = intent.getStringExtra("announcement");
         if (announcement != null) {
             displayNotification(context, announcement);

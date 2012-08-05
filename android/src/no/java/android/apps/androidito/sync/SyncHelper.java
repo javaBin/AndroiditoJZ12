@@ -168,8 +168,7 @@ public class SyncHelper {
 
         if ((flags & FLAG_SYNC_REMOTE) != 0 && isOnline()) {
             try {
-                boolean auth = !UIUtils.isGoogleTV(mContext) &&
-                        AccountUtils.isAuthenticated(mContext);
+                boolean auth = AccountUtils.isAuthenticated(mContext);
                 final long startRemote = System.currentTimeMillis();
                 LOGI(TAG, "Remote syncing speakers");
                 batch.addAll(executeGet(Config.GET_ALL_SPEAKERS_URL,

@@ -328,142 +328,144 @@ public class SessionsFragment extends SherlockListFragment implements
                         cursor.getString(SessionsQuery.URL));
                 return true;
             }
-            case R.id.menu_social_stream:
-                StringBuilder hashtags = new StringBuilder();
-                for (int position : mSelectedSessionPositions) {
-                    Cursor cursor = (Cursor) mAdapter.getItem(position);
-                    String term = cursor.getString(SessionsQuery.HASHTAGS);
-                    if (!term.startsWith("#")) {
-                        term = "#" + term;
-                    }
-                    if (hashtags.length() > 0) {
-                        hashtags.append(" OR ");
-                    }
-                    hashtags.append(term);
-                    
-                    String title = cursor.getString(SessionsQuery.TITLE);
-                    EasyTracker.getTracker().trackEvent(
-                            "Session", "Mapped", title, 0L);
-                    LOGV(TAG, "Starred: " + title);
-                }
 
-                helper.startSocialStream(hashtags.toString());
-                return true;
+            /* TODO: Comment back in to enable social stream
+                   case R.id.menu_social_stream:
+                       StringBuilder hashtags = new StringBuilder();
+                       for (int position : mSelectedSessionPositions) {
+                           Cursor cursor = (Cursor) mAdapter.getItem(position);
+                           String term = cursor.getString(SessionsQuery.HASHTAGS);
+                           if (!term.startsWith("#")) {
+                               term = "#" + term;
+                           }
+                           if (hashtags.length() > 0) {
+                               hashtags.append(" OR ");
+                           }
+                           hashtags.append(term);
 
-            default:
-                LOGW(TAG, "CAB unknown selection=" + item.getItemId());
-                return false;
-        }
-    }
+                           String title = cursor.getString(SessionsQuery.TITLE);
+                           EasyTracker.getTracker().trackEvent(
+                                   "Session", "Mapped", title, 0L);
+                           LOGV(TAG, "Starred: " + title);
+                       }
 
-    @Override
-    public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-        MenuInflater inflater = mode.getMenuInflater();
-        inflater.inflate(R.menu.sessions_context, menu);
-        mStarredMenuItem = menu.findItem(R.id.menu_star);
-        mMapMenuItem = menu.findItem(R.id.menu_map);
-        mShareMenuItem = menu.findItem(R.id.menu_share);
-        mSocialStreamMenuItem = menu.findItem(R.id.menu_social_stream);
-        mSelectedSessionPositions.clear();
-        return true;
-    }
+                       helper.startSocialStream(hashtags.toString());
+                       return true;
+                */
+                   default:
+                       LOGW(TAG, "CAB unknown selection=" + item.getItemId());
+                       return false;
+               }
+           }
 
-    @Override
-    public void onDestroyActionMode(ActionMode mode) {}
+           @Override
+           public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+               MenuInflater inflater = mode.getMenuInflater();
+               inflater.inflate(R.menu.sessions_context, menu);
+               mStarredMenuItem = menu.findItem(R.id.menu_star);
+               mMapMenuItem = menu.findItem(R.id.menu_map);
+               mShareMenuItem = menu.findItem(R.id.menu_share);
+               mSocialStreamMenuItem = menu.findItem(R.id.menu_social_stream);
+               mSelectedSessionPositions.clear();
+               return true;
+           }
 
-    @Override
-    public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-        return false;
-    }
+           @Override
+           public void onDestroyActionMode(ActionMode mode) {}
 
-    @Override
-    public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
-        if (checked) {
-            mSelectedSessionPositions.add(position);
-        } else {
-            mSelectedSessionPositions.remove(position);
-        }
+           @Override
+           public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+               return false;
+           }
 
-        int numSelectedSessions = mSelectedSessionPositions.size();
-        mode.setTitle(getResources().getQuantityString(
-                R.plurals.title_selected_sessions,
-                numSelectedSessions, numSelectedSessions));
+           @Override
+           public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
+               if (checked) {
+                   mSelectedSessionPositions.add(position);
+               } else {
+                   mSelectedSessionPositions.remove(position);
+               }
 
-        if (numSelectedSessions == 1) {
-            // activate all the menu item
-            mMapMenuItem.setVisible(true);
-            mShareMenuItem.setVisible(true);
-            mSocialStreamMenuItem.setVisible(true);
-            mStarredMenuItem.setVisible(true);
-            position = mSelectedSessionPositions.iterator().next();
-            Cursor cursor = (Cursor) mAdapter.getItem(position);
-            boolean starred = cursor.getInt(SessionsQuery.STARRED) != 0;
-            setSelectedSessionStarred(starred);
-        } else {
-            mMapMenuItem.setVisible(false);
-            mShareMenuItem.setVisible(false);
-            mSocialStreamMenuItem.setVisible(false);
-            boolean allStarred = true;
-            boolean allUnstarred = true;
-            for (int pos : mSelectedSessionPositions) {
-                Cursor cursor = (Cursor) mAdapter.getItem(pos);
-                boolean starred = cursor.getInt(SessionsQuery.STARRED) != 0;
-                allStarred = allStarred && starred;
-                allUnstarred = allUnstarred && !starred;
-            }
-            if (allStarred) {
-                setSelectedSessionStarred(true);
-                mStarredMenuItem.setVisible(true);
-            } else if (allUnstarred) {
-                setSelectedSessionStarred(false);
-                mStarredMenuItem.setVisible(true);
-            } else {
-                mStarredMenuItem.setVisible(false);
-            }
-        }
-    }
+               int numSelectedSessions = mSelectedSessionPositions.size();
+               mode.setTitle(getResources().getQuantityString(
+                       R.plurals.title_selected_sessions,
+                       numSelectedSessions, numSelectedSessions));
 
-    private void setSelectedSessionStarred(boolean starred) {
-        mStarredMenuItem.setTitle(starred
-                ? R.string.description_remove_schedule
-                : R.string.description_add_schedule);
-        mStarredMenuItem.setIcon(starred
-                ? R.drawable.ic_action_remove_schedule
-                : R.drawable.ic_action_add_schedule);
-    }
+               if (numSelectedSessions == 1) {
+                   // activate all the menu item
+                   mMapMenuItem.setVisible(true);
+                   mShareMenuItem.setVisible(true);
+                   mSocialStreamMenuItem.setVisible(true);
+                   mStarredMenuItem.setVisible(true);
+                   position = mSelectedSessionPositions.iterator().next();
+                   Cursor cursor = (Cursor) mAdapter.getItem(position);
+                   boolean starred = cursor.getInt(SessionsQuery.STARRED) != 0;
+                   setSelectedSessionStarred(starred);
+               } else {
+                   mMapMenuItem.setVisible(false);
+                   mShareMenuItem.setVisible(false);
+                   mSocialStreamMenuItem.setVisible(false);
+                   boolean allStarred = true;
+                   boolean allUnstarred = true;
+                   for (int pos : mSelectedSessionPositions) {
+                       Cursor cursor = (Cursor) mAdapter.getItem(pos);
+                       boolean starred = cursor.getInt(SessionsQuery.STARRED) != 0;
+                       allStarred = allStarred && starred;
+                       allUnstarred = allUnstarred && !starred;
+                   }
+                   if (allStarred) {
+                       setSelectedSessionStarred(true);
+                       mStarredMenuItem.setVisible(true);
+                   } else if (allUnstarred) {
+                       setSelectedSessionStarred(false);
+                       mStarredMenuItem.setVisible(true);
+                   } else {
+                       mStarredMenuItem.setVisible(false);
+                   }
+               }
+           }
 
-    private final Runnable mRefreshSessionsRunnable = new Runnable() {
-        public void run() {
-            if (mAdapter != null) {
-                // This is used to refresh session title colors.
-                mAdapter.notifyDataSetChanged();
-            }
+           private void setSelectedSessionStarred(boolean starred) {
+               mStarredMenuItem.setTitle(starred
+                       ? R.string.description_remove_schedule
+                       : R.string.description_add_schedule);
+               mStarredMenuItem.setIcon(starred
+                       ? R.drawable.ic_action_remove_schedule
+                       : R.drawable.ic_action_add_schedule);
+           }
 
-            // Check again on the next quarter hour, with some padding to
-            // account for network
-            // time differences.
-            long nextQuarterHour = (SystemClock.uptimeMillis() / 900000 + 1) * 900000 + 5000;
-            mHandler.postAtTime(mRefreshSessionsRunnable, nextQuarterHour);
-        }
-    };
+           private final Runnable mRefreshSessionsRunnable = new Runnable() {
+               public void run() {
+                   if (mAdapter != null) {
+                       // This is used to refresh session title colors.
+                       mAdapter.notifyDataSetChanged();
+                   }
 
-    private final ContentObserver mObserver = new ContentObserver(new Handler()) {
-        @Override
-        public void onChange(boolean selfChange) {
-            if (getActivity() == null) {
-                return;
-            }
+                   // Check again on the next quarter hour, with some padding to
+                   // account for network
+                   // time differences.
+                   long nextQuarterHour = (SystemClock.uptimeMillis() / 900000 + 1) * 900000 + 5000;
+                   mHandler.postAtTime(mRefreshSessionsRunnable, nextQuarterHour);
+               }
+           };
 
-            Loader<Cursor> loader = getLoaderManager().getLoader(mSessionQueryToken);
-            if (loader != null) {
-                loader.forceLoad();
-            }
-        }
-    };
+           private final ContentObserver mObserver = new ContentObserver(new Handler()) {
+               @Override
+               public void onChange(boolean selfChange) {
+                   if (getActivity() == null) {
+                       return;
+                   }
 
-    /**
-     * {@link CursorAdapter} that renders a {@link SessionsQuery}.
-     */
+                   Loader<Cursor> loader = getLoaderManager().getLoader(mSessionQueryToken);
+                   if (loader != null) {
+                       loader.forceLoad();
+                   }
+               }
+           };
+
+           /**
+            * {@link CursorAdapter} that renders a {@link SessionsQuery}.
+            */
     private class SessionsAdapter extends CursorAdapter {
 
         public SessionsAdapter(Context context) {

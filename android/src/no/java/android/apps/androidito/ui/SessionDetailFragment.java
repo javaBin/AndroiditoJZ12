@@ -532,14 +532,14 @@ public class SessionDetailFragment extends SherlockFragment implements
                 helper.shareSession(getActivity(), R.string.share_template, mTitleString,
                         mHashtags, mUrl);
                 return true;
-
+            /* TODO: Comment back in to enable social stream
             case R.id.menu_social_stream:
                 EasyTracker.getTracker().trackEvent(
                         "Session", "Stream", mTitleString, 0L);
                 LOGD("Tracker", "Stream: " + mTitleString);
 
                 helper.startSocialStream(UIUtils.getSessionHashtagsString(mHashtags));
-                return true;
+                return true; */
         }
         return super.onOptionsItemSelected(item);
     }

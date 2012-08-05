@@ -102,7 +102,10 @@
     </style>
 
     <style name="ActionBar.TabBar" parent="FrameworkRoot.ActionBar.TabBar">
-        <item name="android:background">@color/accent_1</item>
+        <item name="android:showDividers">middle</item>
+        <item name="android:divider">#7a9338</item>
+        <item name="android:dividerPadding">12dp</item>
+        <item name="android:background">@drawable/tab_bar_background</item>
     </style>
 
     <style name="ActionBar.TabText" parent="FrameworkRoot.ActionBar.TabText">
@@ -117,12 +120,6 @@
     <style name="Theme.Androidito.Livestream" parent="Theme.Androidito.GreyBackground">
         <item name="android:actionBarTabBarStyle">@style/FrameworkRoot.ActionBar.TabBar</item>
         <item name="android:actionBarTabTextStyle">@style/FrameworkRoot.ActionBar.TabText</item>
-    </style>
-
-    <!-- Google TV -->
-    <style name="Theme.Androidito.GoogleTV" parent="Theme.Androidito.GreyBackground">
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="windowContentOverlay">@null</item>
     </style>
 
     <!-- List views and list items -->

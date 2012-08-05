@@ -14,71 +14,71 @@
   limitations under the License.
   -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">Google I/O 2012</string>
+    <string name="app_name">JavaZone 2012</string>
 
-    <string name="description_search">Search</string>
-    <string name="description_map">Map</string>
-    <string name="description_refresh">Refresh</string>
-    <string name="description_share">Share</string>
-    <string name="description_add_schedule">Add to agenda</string>
-    <string name="description_remove_schedule">Remove from agenda</string>
-    <string name="description_social_stream">View Google+ stream</string>
-    <string name="description_compose">New post</string>
-    <string name="description_add_account">Add account</string>
-    <string name="description_about">About</string>
-    <string name="description_sign_out">Sign out</string>
-    <string name="description_captions">Captions</string>
+    <string name="description_search">Søk</string>
+    <string name="description_map">Kart</string>
+    <string name="description_refresh">Oppdater</string>
+    <string name="description_share">Del</string>
+    <string name="description_add_schedule">Legg til i agenda</string>
+    <string name="description_remove_schedule">Fjern fra agenda</string>
+    <string name="description_social_stream">Vis Google+-strøm</string>
+    <string name="description_compose">Ny post</string>
+    <string name="description_add_account">Legg til konto</string>
+    <string name="description_about">Om</string>
+    <string name="description_sign_out">Logg ut</string>
+    <string name="description_captions">Undertekster</string>
 
-    <string name="title_sessions">Sessions</string>
-    <string name="title_session_detail">Session Information</string>
+    <string name="title_sessions">Sesjoner</string>
+    <string name="title_session_detail">Sesjonsinformasjon</string>
     <string name="title_tracks">Tracks</string>
     <string name="title_vendors">Sandbox</string>
-    <string name="title_vendor_detail">Company Information</string>
-    <string name="title_map">Map</string>
-    <string name="title_tagstream">Google+ Posts</string>
-    <string name="title_about">About</string>
+    <string name="title_vendor_detail">Firmainformasjon</string>
+    <string name="title_map">Kart</string>
+    <string name="title_tagstream">Google+-poster</string>
+    <string name="title_about">Om</string>
 
-    <string name="title_share">Share using</string>
+    <string name="title_share">Del via</string>
 
-    <string name="title_search">Search</string>
-    <string name="title_search_query">Search for \"&lt;b&gt;<xliff:g id="query">%1$s</xliff:g>&lt;b&gt;\"</string>
+    <string name="title_search">Søk</string>
+    <string name="title_search_query">Søk etter \"&lt;b&gt;<xliff:g id="query">%1$s</xliff:g>&lt;b&gt;\"</string>
 
-    <string name="title_my_schedule">My Agenda</string>
-    <string name="title_explore">Explore</string>
-    <string name="title_stream">Stream</string>
+    <string name="title_my_schedule">Min agenda</string>
+    <string name="title_explore">Utforsk</string>
+    <string name="title_stream">Strøm</string>
 
     <plurals name="title_selected_sessions">
-        <item quantity="one">1 session selected</item>
-        <item quantity="other"><xliff:g id="num_sessions">%1$d</xliff:g> sessions selected</item>
+        <item quantity="one">1 sesjon valgt</item>
+        <item quantity="other"><xliff:g id="num_sessions">%1$d</xliff:g> sesjoner valgt</item>
     </plurals>
 
-    <string name="session_subtitle"><xliff:g id="time">%1$s</xliff:g> in <xliff:g id="room">%2$s</xliff:g></string>
+    <string name="session_subtitle"><xliff:g id="time">%1$s</xliff:g> i <xliff:g id="room">%2$s</xliff:g></string>
 
-    <string name="all_tracks">All tracks</string>
-    <string name="all_tracks_sessions">All sessions</string>
-    <string name="all_tracks_vendors">All companies</string>
-    <string name="all_tracks_subtitle_sessions">All sessions at Google I/O 2012.</string>
-    <string name="all_tracks_subtitle_vendors">All developer sandbox companies at Google I/O 2012.</string>
+    <string name="all_tracks">Alle tracks</string>
+    <string name="all_tracks_sessions">Alle sesjoner</string>
+    <string name="all_tracks_vendors">Alle firma</string>
+    <string name="all_tracks_subtitle_sessions">Alle sesjoner på JavaZone 2012.</string>
+    <string name="all_tracks_subtitle_vendors">Alle sandbox-firma på JavaZone 2012.</string>
 
-    <string name="empty_sessions">No sessions found.</string>
-    <string name="empty_session_detail">No session details found.</string>
+    <string name="empty_sessions">Ingen sesjoner funnet.</string>
+    <string name="empty_session_detail">Ingen detaljer om sesjon funnet.</string>
     <string name="empty_vendors">No developer sandbox companies found.</string>
-    <string name="empty_social_stream">No posts found.</string>
-    <string name="empty_waiting_for_sync">Waiting for sync&#8230;</string>
+    <string name="empty_social_stream">Ingen poster funnet.</string>
+    <string name="empty_waiting_for_sync">Venter på synkronisering&#8230;</string>
     <string name="empty_captions">No captions found for this session.</string>
 
-    <string name="unknown_room">(Unspecified Room)</string>
+    <string name="unknown_room">(Uspesifisert rom)</string>
     <string name="codelab_room">Code Labs (Level 2)</string>
     <string name="keynote_room">Level 3</string>
 
-    <string name="session_links">Links</string>
-    <string name="session_requirements">Requirements</string>
+    <string name="session_links">Lenker</string>
+    <string name="session_requirements">Nivå</string>
     <string name="session_speakers">Speakers</string>
 
-    <string name="session_link_main">Web link</string>
-    <string name="session_link_youtube">YouTube video</string>
+    <string name="session_link_main">Weblenke</string>
+    <string name="session_link_youtube">YouTube-video</string>
     <string name="session_link_pdf">Slides (PDF)</string>
-    <string name="session_link_notes">Official notes</string>
+    <string name="session_link_notes">Offisielle notater</string>
     <string name="session_link_livestream">Watch on I/O Live</string>
 
     <string name="session_livestream_title">I/O Live</string>
@@ -93,31 +93,31 @@
 
     <string name="vendor_exhibitors_prefix">Exhibitors: </string>
 
-    <string name="search_label">Google I/O Sessions</string>
-    <string name="search_hint">Search sessions</string>
+    <string name="search_label">JavaZone-sesjoner</string>
+    <string name="search_hint">Søk etter sesjoner</string>
 
-    <string name="share_template">Checking out \'<xliff:g id="title">%1$s</xliff:g>\' at <xliff:g id="hashtags">%2$s</xliff:g> <xliff:g id="url">%3$s</xliff:g></string>
+    <string name="share_template">Hører på \'<xliff:g id="title">%1$s</xliff:g>\' på <xliff:g id="hashtags">%2$s</xliff:g> <xliff:g id="url">%3$s</xliff:g></string>
     <string name="share_livestream_template">Watching I/O Live: \'<xliff:g id="title">%1$s</xliff:g>\' at <xliff:g id="hashtags">%2$s</xliff:g> <xliff:g id="url">%3$s</xliff:g></string>
 
     <!-- Announcements -->
-    <string name="whats_on_countdown_title_0"><xliff:g id="remaining_time">%1$s</xliff:g>\nuntil Google I/O</string>
+    <string name="whats_on_countdown_title_0"><xliff:g id="remaining_time">%1$s</xliff:g>\ntil JavaZone</string>
     <plurals name="whats_on_countdown_title">
-        <item quantity="one"><xliff:g id="number_of_days">%1$s</xliff:g> day, <xliff:g id="remaining_time">%2$s</xliff:g>\nuntil Google I/O</item>
-        <item quantity="other"><xliff:g id="number_of_days">%1$s</xliff:g> days, <xliff:g id="remaining_time">%2$s</xliff:g>\nuntil Google I/O</item>
+        <item quantity="one"><xliff:g id="number_of_days">%1$s</xliff:g> dag, <xliff:g id="remaining_time">%2$s</xliff:g>\ntil JavaZone 2012 starter.</item>
+        <item quantity="other"><xliff:g id="number_of_days">%1$s</xliff:g> dager, <xliff:g id="remaining_time">%2$s</xliff:g>\ntil JavaZone 2012 starter.</item>
     </plurals>
-    <string name="whats_on_thank_you_title">See you next year!</string>
-    <string name="news_will_appear_here">News will appear here</string>
-    <string name="welcome_to_google_i_o">Welcome to Google I/O!</string>
+    <string name="whats_on_thank_you_title">Sees igjen neste år!</string>
+    <string name="news_will_appear_here">Nyheter vil vises her</string>
+    <string name="welcome_to_google_i_o">Velkommen til JavaZone!</string>
 
-    <string name="permission_write">Modify Google I/O schedule data</string>
+    <string name="permission_write">Endre JavaZone programdata</string>
 
     <plurals name="toast_added_to_schedule">
-        <item quantity="one">Session added to your agenda</item>
-        <item quantity="other"><xliff:g id="number_of_sessions">%1$s</xliff:g> sessions added to your agenda</item>
+        <item quantity="one">Sesjonen ble lagt til i din agenda</item>
+        <item quantity="other"><xliff:g id="number_of_sessions">%1$s</xliff:g> lagt til i din agenda</item>
     </plurals>
     <plurals name="toast_removed_from_schedule">
-        <item quantity="one">Session removed from your agenda</item>
-        <item quantity="other"><xliff:g id="number_of_sessions">%1$s</xliff:g> sessions removed from your agenda</item>
+        <item quantity="one">Sesjon fjernet fra din agenda</item>
+        <item quantity="other"><xliff:g id="number_of_sessions">%1$s</xliff:g> sesjoner fjernet fra din agenda</item>
     </plurals>
 
     <!-- Schedule -->

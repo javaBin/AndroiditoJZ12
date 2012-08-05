@@ -239,10 +239,11 @@ public class MyScheduleFragment extends SherlockListFragment implements
                 helper.shareSession(getActivity(), R.string.share_template, title, hashtags, url);
                 handled = true;
                 break;
+            /* TODO: Comment back in to enable social stream
             case R.id.menu_social_stream:
                 helper.startSocialStream(hashtags);
                 handled = true;
-                break;
+                break; */
             default:
                 LOGW(TAG, "Unknown action taken");
         }

@@ -395,7 +395,7 @@ public class SessionLivestreamActivity extends BaseActivity implements
     @Override
     public boolean onNavigationItemSelected(int itemPosition, long itemId) {
         final Cursor cursor = (Cursor) mLivestreamAdapter.getItem(itemPosition);
-        setActionBarColor(cursor.getInt(SessionsQuery.TRACK_COLOR));
+        //setActionBarColor(cursor.getInt(SessionsQuery.TRACK_COLOR));
         final String sessionId = cursor.getString(SessionsQuery.SESSION_ID);
         if (sessionId != null) {
             reloadFromUri(Sessions.buildSessionUri(sessionId));

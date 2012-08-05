@@ -73,7 +73,6 @@ public class VendorDetailActivity extends SimpleSinglePaneActivity implements
     public void onTrackInfoAvailable(String trackId, String trackName, int trackColor) {
         mTrackId = trackId;
         setTitle(trackName);
-        setActionBarColor(trackColor);
     }
 
     @Override
