@@ -17,7 +17,7 @@
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.google.android.apps.iosched"
+    package="no.java.android.apps.androidito"
     android:versionCode="19"
     android:versionName="0.19"
     android:installLocation="auto">
@@ -27,7 +27,7 @@
         android:targetSdkVersion="16" />
 
     <permission
-        android:name="com.google.android.apps.iosched.permission.WRITE_SCHEDULE"
+        android:name="no.java.android.apps.androidito.permission.WRITE_SCHEDULE"
         android:protectionLevel="normal"
         android:label="@string/permission_write"
         android:description="@string/permission_write" />
@@ -54,20 +54,17 @@
     <uses-permission
             android:name="com.google.android.c2dm.permission.RECEIVE" />
     <permission
-            android:name="com.google.android.apps.iosched.permission.C2D_MESSAGE"
+            android:name="no.java.android.apps.androidito.permission.C2D_MESSAGE"
             android:protectionLevel="signature" />
     <uses-permission
-            android:name="com.google.android.apps.iosched.permission.C2D_MESSAGE" />
-    
-    <!-- required for Google TV - to support proper filtering in Google Play -->
-    <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
+            android:name="no.java.android.apps.androidito.permission.C2D_MESSAGE" />
 
 
     <application
         android:label="@string/app_name"
         android:icon="@drawable/ic_launcher"
         android:logo="@drawable/actionbar_logo"
-        android:theme="@style/Theme.Iosched"
+        android:theme="@style/Theme.Androidito"
         android:hardwareAccelerated="true">
 
         <!-- Activities for both phones and tablets -->
@@ -75,13 +72,13 @@
         <activity
             android:name=".ui.AccountActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Iosched.Accounts"
+            android:theme="@style/Theme.Androidito.Accounts"
             android:configChanges="orientation|keyboardHidden" />
 
         <activity
             android:name=".ui.HomeActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Iosched.Home">
+            android:theme="@style/Theme.Androidito.Home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -99,7 +96,7 @@
             android:name=".ui.SearchActivity"
             android:label="@string/title_search"
             android:launchMode="singleTop"
-            android:theme="@style/Theme.Iosched.GreyBackground">
+            android:theme="@style/Theme.Androidito.GreyBackground">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -112,7 +109,7 @@
         <activity android:name=".ui.SessionLivestreamActivity"
             android:label="@string/session_livestream_title"
             android:configChanges="orientation|screenSize"
-            android:theme="@style/Theme.Iosched.Livestream">
+            android:theme="@style/Theme.Androidito.Livestream">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -124,12 +121,12 @@
         <activity
             android:name=".ui.BeamActivity"
             android:label="@string/title_beam"
-            android:theme="@style/Theme.Iosched.GreyBackground">
+            android:theme="@style/Theme.Androidito.GreyBackground">
             <!-- Default Beam handling activity -->
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="application/vnd.google.iosched.default" />
+                <data android:mimeType="application/vnd.java.androidito.default" />
             </intent-filter>
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.HomeActivity" />
@@ -143,7 +140,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.dir/vnd.iosched.session" />
+                <data android:mimeType="vnd.android.cursor.dir/vnd.androidito.session" />
             </intent-filter>
             <!-- HomeActivity is the parent (as opposed to TrackDetailActivity) because
                  SessionsActivity is not used to show sessions for a given track. -->
@@ -154,11 +151,11 @@
         <activity
             android:name=".ui.phone.TrackDetailActivity"
             android:label="@string/title_tracks"
-            android:theme="@style/Theme.Iosched.GreyBackground">
+            android:theme="@style/Theme.Androidito.GreyBackground">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.item/vnd.iosched.track" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.androidito.track" />
             </intent-filter>
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.HomeActivity" />
@@ -170,13 +167,13 @@
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.item/vnd.iosched.session" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.androidito.session" />
             </intent-filter>
             <!-- Android Beam for session details -->
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.item/vnd.iosched.session" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.androidito.session" />
             </intent-filter>
             <!-- PARENT_ACTIVITY alone is insufficient for Up navigation for this activity -->
             <meta-data android:name="android.support.PARENT_ACTIVITY"
@@ -188,7 +185,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.item/vnd.iosched.vendor" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.androidito.vendor" />
             </intent-filter>
             <!-- PARENT_ACTIVITY alone is insufficient for Up navigation for this activity -->
             <meta-data android:name="android.support.PARENT_ACTIVITY"
@@ -208,40 +205,40 @@
         <activity
             android:name=".ui.tablet.SessionsVendorsMultiPaneActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Iosched.GreyBackground">
+            android:theme="@style/Theme.Androidito.GreyBackground">
             <!-- can show track details -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.item/vnd.iosched.track" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.androidito.track" />
             </intent-filter>
             <!-- can show session and vendor lists -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.dir/vnd.iosched.session" />
+                <data android:mimeType="vnd.android.cursor.dir/vnd.androidito.session" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.dir/vnd.iosched.vendor" />
+                <data android:mimeType="vnd.android.cursor.dir/vnd.androidito.vendor" />
             </intent-filter>
             <!-- can show session and vendor details -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.item/vnd.iosched.session" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.androidito.session" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.item/vnd.iosched.vendor" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.androidito.vendor" />
             </intent-filter>
             <!-- Android Beam for session details -->
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.item/vnd.iosched.session" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.androidito.session" />
             </intent-filter>
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.HomeActivity" />
@@ -255,23 +252,11 @@
                 android:value=".ui.HomeActivity" />
         </activity>
 
-        <!-- GTV Activities -->
-
-        <activity
-            android:name=".ui.gtv.GoogleTVSessionLivestreamActivity"
-            android:theme="@style/Theme.Iosched.GoogleTV"
-            android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
         <!-- Session alarm/calendar integrating components. -->
         <receiver android:name=".calendar.SessionAlarmReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="com.google.android.apps.iosched.action.UPDATE_CALENDAR_COMPLETED" />
+                <action android:name="no.java.android.apps.androidito.action.UPDATE_CALENDAR_COMPLETED" />
             </intent-filter>
         </receiver>
 
@@ -297,16 +282,16 @@
           The com.google.android.c2dm.permission.SEND permission is necessary
           so only GCM services can send data messages for the app.
         -->
-        <receiver android:name=".gcm.GCMRedirectedBroadcastReceiver"
+        <!--<receiver android:name=".gcm.GCMRedirectedBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
-                <!-- Receives the actual messages. -->
+                <!- Receives the actual messages.->
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-                <!-- Receives the registration id. -->
+                <!- Receives the registration id.->
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-                <category android:name="com.google.android.apps.iosched" />
+                <category android:name="no.java.android.apps.androidito" />
             </intent-filter>
-        </receiver>
+        </receiver>-->
 
         <!--
           Application-specific subclass of GCMBaseIntentService that will
@@ -314,15 +299,15 @@
 
           By default, it must be named .GCMIntentService, unless the
           application uses a custom BroadcastReceiver that redefines its name.
-        -->
-        <service android:name=".gcm.GCMIntentService" />
 
+        <service android:name=".gcm.GCMIntentService" />
+-->
         <!-- Data, sync and schedule editing components -->
 
         <provider
             android:name=".provider.ScheduleProvider"
-            android:authorities="com.google.android.apps.iosched"
-            android:writePermission="com.google.android.apps.iosched.permission.WRITE_SCHEDULE"
+            android:authorities="no.java.android.apps.androidito"
+            android:writePermission="no.java.android.apps.androidito.permission.WRITE_SCHEDULE"
             android:syncable="true"
             android:label="@string/app_name" />
 

@@ -35,7 +35,7 @@
 
         <fragment
             android:id="@+id/livestream_player"
-            android:name="com.google.android.youtube.api.YouTubePlayerSupportFragment"
+            android:name="com.google.android.api.youtube.YouTubePlayerSupportFragment"
             android:layout_gravity="center"
             android:layout_width="0dp"
             android:layout_height="200dp"

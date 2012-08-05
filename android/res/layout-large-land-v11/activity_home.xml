@@ -41,13 +41,13 @@
             android:layout_weight="1"
             android:layout_margin="@dimen/multipane_half_padding"
             android:background="@drawable/grey_frame">
-            <fragment android:name="com.google.android.apps.iosched.ui.MyScheduleFragment"
+            <fragment android:name="no.java.android.apps.androidito.ui.MyScheduleFragment"
                 android:id="@+id/fragment_my_schedule"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </FrameLayout>
 
-        <fragment android:name="com.google.android.apps.iosched.ui.WhatsOnFragment"
+        <fragment android:name="no.java.android.apps.androidito.ui.WhatsOnFragment"
             android:id="@+id/fragment_whats_on"
             android:layout_width="match_parent"
             android:layout_height="@dimen/whats_on_height"
@@ -72,7 +72,7 @@
             android:layout_weight="1"
             android:layout_margin="@dimen/multipane_half_padding"
             android:background="@drawable/grey_frame">
-            <fragment android:name="com.google.android.apps.iosched.ui.ExploreFragment"
+            <fragment android:name="no.java.android.apps.androidito.ui.ExploreFragment"
                 android:id="@+id/fragment_tracks"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
@@ -84,24 +84,25 @@
         android:layout_height="match_parent"
         android:layout_weight="1">
 
-        <TextView style="@style/HomePaneHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/multipane_half_padding"
-            android:layout_marginTop="@dimen/multipane_half_padding"
-            android:layout_marginRight="@dimen/multipane_half_padding"
-            android:text="@string/title_stream" />
+        <!-- TODO: Comment back in to enable social stream
+                <TextView style="@style/HomePaneHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/multipane_half_padding"
+                    android:layout_marginTop="@dimen/multipane_half_padding"
+                    android:layout_marginRight="@dimen/multipane_half_padding"
+                    android:text="@string/title_stream" />
 
-        <FrameLayout android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_margin="@dimen/multipane_half_padding"
-            android:background="@drawable/grey_frame">
-            <fragment android:name="com.google.android.apps.iosched.ui.SocialStreamFragment"
-                android:id="@+id/fragment_stream"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </FrameLayout>
-
-    </LinearLayout>
-</LinearLayout>
+                <FrameLayout android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/multipane_half_padding"
+                    android:background="@drawable/grey_frame">
+                    <fragment android:name="no.java.android.apps.androidito.ui.SocialStreamFragment"
+                        android:id="@+id/fragment_stream"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </FrameLayout>
+            -->
+            </LinearLayout>
+        </LinearLayout>

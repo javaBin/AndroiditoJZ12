@@ -27,7 +27,7 @@
         android:paddingTop="@dimen/content_padding_normal"
         android:paddingBottom="@dimen/content_padding_normal">
 
-        <com.google.api.android.plus.PlusOneButton
+        <com.google.android.api.plus.PlusOneButton
             android:id="@+id/plus_one_button"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
