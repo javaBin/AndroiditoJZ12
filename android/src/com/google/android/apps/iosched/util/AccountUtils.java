@@ -16,13 +16,6 @@
 
 package com.google.android.apps.iosched.util;
 
-import com.google.android.apps.iosched.R;
-import com.google.android.apps.iosched.calendar.SessionCalendarService;
-import com.google.android.apps.iosched.provider.ScheduleContract;
-import com.google.android.apps.iosched.ui.AccountActivity;
-import com.google.android.gcm.GCMRegistrar;
-import com.google.api.client.googleapis.extensions.android2.auth.GoogleAccountManager;
-
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.accounts.AccountManagerCallback;
@@ -35,6 +28,12 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.widget.Toast;
+import com.google.android.apps.iosched.calendar.SessionCalendarService;
+import com.google.android.apps.iosched.provider.ScheduleContract;
+import com.google.android.apps.iosched.ui.AccountActivity;
+import com.google.android.gcm.GCMRegistrar;
+import com.google.api.client.googleapis.extensions.android2.auth.GoogleAccountManager;
+import com.lokling.androidito.iosched.R;
 
 import static com.google.android.apps.iosched.util.LogUtils.LOGE;
 import static com.google.android.apps.iosched.util.LogUtils.LOGI;

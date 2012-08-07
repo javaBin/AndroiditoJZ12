@@ -16,9 +16,9 @@
 
 package com.google.android.apps.iosched.gcm;
 
-import com.google.android.apps.iosched.BuildConfig;
+import com.lokling.androidito.iosched.BuildConfig;
 import com.google.android.apps.iosched.Config;
-import com.google.android.apps.iosched.R;
+import com.lokling.androidito.iosched.R;
 import com.google.android.apps.iosched.sync.TriggerSyncReceiver;
 import com.google.android.apps.iosched.ui.HomeActivity;
 import com.google.android.apps.iosched.util.UIUtils;

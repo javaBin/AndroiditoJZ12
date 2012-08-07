@@ -16,9 +16,8 @@
 
 package com.google.android.apps.iosched.util;
 
-import com.google.android.apps.iosched.BuildConfig;
-
 import android.util.Log;
+import com.lokling.androidito.iosched.BuildConfig;
 
 /**
  * Helper methods that make logging more consistent throughout the app.

@@ -18,7 +18,7 @@ package com.google.android.apps.iosched.ui;
 
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.android.apps.iosched.Config;
-import com.google.android.apps.iosched.R;
+import com.lokling.androidito.iosched.R;
 import com.google.android.apps.iosched.calendar.SessionAlarmService;
 import com.google.android.apps.iosched.calendar.SessionCalendarService;
 import com.google.android.apps.iosched.provider.ScheduleContract;

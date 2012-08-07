@@ -16,7 +16,7 @@
 
 package com.google.android.apps.iosched.ui;
 
-import com.google.android.apps.iosched.R;
+import com.lokling.androidito.iosched.R;
 import com.google.android.apps.iosched.provider.ScheduleContract;
 import com.google.android.apps.iosched.util.AccountUtils;
 import com.google.api.client.googleapis.extensions.android2.auth.GoogleAccountManager;

@@ -17,7 +17,7 @@
 package com.google.android.apps.iosched.ui;
 
 import com.google.analytics.tracking.android.EasyTracker;
-import com.google.android.apps.iosched.R;
+import com.lokling.androidito.iosched.R;
 import com.google.android.apps.iosched.util.AccountUtils;
 import com.google.android.apps.iosched.util.BeamUtils;
 import com.google.android.apps.iosched.util.UIUtils;

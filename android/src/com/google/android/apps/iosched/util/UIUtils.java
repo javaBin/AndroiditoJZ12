@@ -16,8 +16,8 @@
 
 package com.google.android.apps.iosched.util;
 
-import com.google.android.apps.iosched.BuildConfig;
-import com.google.android.apps.iosched.R;
+import com.lokling.androidito.iosched.BuildConfig;
+import com.lokling.androidito.iosched.R;
 import com.google.android.apps.iosched.provider.ScheduleContract.Blocks;
 import com.google.android.apps.iosched.provider.ScheduleContract.Rooms;
 import com.google.android.apps.iosched.ui.phone.MapActivity;

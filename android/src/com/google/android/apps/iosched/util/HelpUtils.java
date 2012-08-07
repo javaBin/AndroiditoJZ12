@@ -16,7 +16,7 @@
 
 package com.google.android.apps.iosched.util;
 
-import com.google.android.apps.iosched.R;
+import com.lokling.androidito.iosched.R;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
