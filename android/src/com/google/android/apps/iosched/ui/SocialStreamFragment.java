@@ -361,6 +361,13 @@ public class SocialStreamFragment extends SherlockListFragment implements
         public List<Activity> loadInBackground() {
             mIsLoading = true;
 
+          // Fail if API key is not set
+            if (Config.API_KEY.equals("API_KEY")){
+              mHasError=true;
+              mNextPageToken=null;
+              return null;
+            }
+
             // Set up the HTTP transport and JSON factory
             HttpTransport httpTransport = new NetHttpTransport();
             JsonFactory jsonFactory = new JacksonFactory();
