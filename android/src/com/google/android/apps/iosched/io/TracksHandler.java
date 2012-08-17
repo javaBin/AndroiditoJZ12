@@ -70,7 +70,7 @@ public class TracksHandler extends JSONHandler {
                 ScheduleContract.addCallerIsSyncAdapterParameter(
                         ScheduleContract.Tracks.CONTENT_URI));
         builder.withValue(ScheduleContract.Tracks.TRACK_ID,
-                ScheduleContract.Tracks.generateTrackId(track.displayName));
+                ScheduleContract.Tracks.generateTrackId(track.id));
         builder.withValue(ScheduleContract.Tracks.TRACK_NAME, track.displayName);
         builder.withValue(ScheduleContract.Tracks.TRACK_COLOR, Color.RED);//TODO - fetch icon and derive color...?
         builder.withValue(ScheduleContract.Tracks.TRACK_ABSTRACT, "");//TODO
