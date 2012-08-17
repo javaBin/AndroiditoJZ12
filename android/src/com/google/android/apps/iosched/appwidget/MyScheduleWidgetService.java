@@ -270,7 +270,7 @@ public class MyScheduleWidgetService extends RemoteViewsService {
                 }
 
                 rv.setTextViewText(R.id.block_time, DateUtils.formatDateTime(mContext, blockStart,
-                        DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_12HOUR));
+                        DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_24HOUR));
             }
 
             return rv;

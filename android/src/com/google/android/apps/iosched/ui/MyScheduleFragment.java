@@ -475,7 +475,7 @@ public class MyScheduleFragment extends SherlockListFragment implements
             }
 
             timeView.setText(DateUtils.formatDateTime(context, blockStart,
-                    DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_12HOUR));
+                    DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_24HOUR));
 
             // Show past/present/future and livestream status for this block.
             UIUtils.updateTimeAndLivestreamBlockUI(context,
