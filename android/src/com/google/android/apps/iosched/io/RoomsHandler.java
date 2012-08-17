@@ -16,17 +16,19 @@
 
 package com.google.android.apps.iosched.io;
 
-import com.google.android.apps.iosched.io.model.Room;
-import com.google.android.apps.iosched.io.model.Rooms;
-import com.google.android.apps.iosched.provider.ScheduleContract;
-import com.google.android.apps.iosched.util.Lists;
-import com.google.gson.Gson;
-
 import android.content.ContentProviderOperation;
 import android.content.Context;
+import com.google.android.apps.iosched.provider.ScheduleContract;
+import com.google.android.apps.iosched.util.Lists;
+import com.google.android.apps.iosched.util.ParserUtils;
+import com.google.gson.Gson;
+import com.lokling.androidito.iosched.io.model.JZSessionsResponse;
+import com.lokling.androidito.iosched.io.model.JZSessionsResult;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import static com.google.android.apps.iosched.util.LogUtils.makeLogTag;
 
@@ -42,22 +44,32 @@ public class RoomsHandler extends JSONHandler {
     }
 
     public ArrayList<ContentProviderOperation> parse(String json) throws IOException {
-        final ArrayList<ContentProviderOperation> batch = Lists.newArrayList();
-        Rooms roomsJson = new Gson().fromJson(json, Rooms.class);
-        int noOfRooms = roomsJson.rooms.length;
+
+      JZSessionsResponse response = new Gson().fromJson(json, JZSessionsResponse.class);
+
+      Set<String> rooms = new HashSet<String>();
+
+      for (JZSessionsResult session : response.sessions) {
+        rooms.add(session.room);
+      }
+
+
+      final ArrayList<ContentProviderOperation> batch = Lists.newArrayList();
+      Object[] roomArray = rooms.toArray();
+        int noOfRooms = rooms.size();
         for (int i = 0; i < noOfRooms; i++) {
-            parseRoom(roomsJson.rooms[i], batch);
+            parseRoom(String.valueOf(roomArray), batch);
         }
         return batch;
     }
 
-    private static void parseRoom(Room room, ArrayList<ContentProviderOperation> batch) {
+    private static void parseRoom(String room, ArrayList<ContentProviderOperation> batch) {
         ContentProviderOperation.Builder builder = ContentProviderOperation
                 .newInsert(ScheduleContract.addCallerIsSyncAdapterParameter(
                         ScheduleContract.Rooms.CONTENT_URI));
-        builder.withValue(ScheduleContract.Rooms.ROOM_ID, room.id);
-        builder.withValue(ScheduleContract.Rooms.ROOM_NAME, room.name);
-        builder.withValue(ScheduleContract.Rooms.ROOM_FLOOR, room.floor);
+        builder.withValue(ScheduleContract.Rooms.ROOM_ID, ParserUtils.sanitizeId(room));
+        builder.withValue(ScheduleContract.Rooms.ROOM_NAME, room);
+        builder.withValue(ScheduleContract.Rooms.ROOM_FLOOR, "");
         batch.add(builder.build());
     }
 }

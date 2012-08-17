@@ -67,14 +67,14 @@ public class UIUtils {
      * Time zone to use when formatting all session times. To always use the
      * phone local time, use {@link TimeZone#getDefault()}.
      */
-    public static final TimeZone CONFERENCE_TIME_ZONE = TimeZone.getTimeZone("America/Los_Angeles");
+    public static final TimeZone CONFERENCE_TIME_ZONE = TimeZone.getTimeZone("Europe/Oslo");
 
     public static final long CONFERENCE_START_MILLIS = ParserUtils.parseTime(
-            "2012-06-27T09:30:00.000-07:00");
+            "2012-09-12T08:00:00.000+01:00");
     public static final long CONFERENCE_END_MILLIS = ParserUtils.parseTime(
-            "2012-06-29T18:00:00.000-07:00");
+            "2012-09-12T17:00:00.000+01:00");
 
-    public static final String CONFERENCE_HASHTAG = "#io12";
+    public static final String CONFERENCE_HASHTAG = "#jz12";
 
     private static final int SECOND_MILLIS = 1000;
     private static final int MINUTE_MILLIS = 60 * SECOND_MILLIS;

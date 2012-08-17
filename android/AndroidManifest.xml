@@ -19,7 +19,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.lokling.androidito.iosched"
     android:versionCode="19"
-    android:versionName="0.19"
+    android:versionName="2012.1"
     android:installLocation="auto">
 
     <uses-sdk
@@ -143,7 +143,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.dir/vnd.iosched.session" />
+                <data android:mimeType="vnd.android.cursor.dir/vnd.androidito-iosched.session" />
             </intent-filter>
             <!-- HomeActivity is the parent (as opposed to TrackDetailActivity) because
                  SessionsActivity is not used to show sessions for a given track. -->
@@ -158,7 +158,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.item/vnd.iosched.track" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.androidito-iosched.track" />
             </intent-filter>
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.HomeActivity" />
@@ -170,13 +170,13 @@
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.item/vnd.iosched.session" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.androidito-iosched.session" />
             </intent-filter>
             <!-- Android Beam for session details -->
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.item/vnd.iosched.session" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.androidito-iosched.session" />
             </intent-filter>
             <!-- PARENT_ACTIVITY alone is insufficient for Up navigation for this activity -->
             <meta-data android:name="android.support.PARENT_ACTIVITY"
@@ -188,7 +188,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.item/vnd.iosched.vendor" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.androidito-iosched.vendor" />
             </intent-filter>
             <!-- PARENT_ACTIVITY alone is insufficient for Up navigation for this activity -->
             <meta-data android:name="android.support.PARENT_ACTIVITY"
@@ -213,35 +213,35 @@
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.item/vnd.iosched.track" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.androidito-iosched.track" />
             </intent-filter>
             <!-- can show session and vendor lists -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.dir/vnd.iosched.session" />
+                <data android:mimeType="vnd.android.cursor.dir/vnd.androidito-iosched.session" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.dir/vnd.iosched.vendor" />
+                <data android:mimeType="vnd.android.cursor.dir/vnd.androidito-iosched.vendor" />
             </intent-filter>
             <!-- can show session and vendor details -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.item/vnd.iosched.session" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.androidito-iosched.session" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.item/vnd.iosched.vendor" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.androidito-iosched.vendor" />
             </intent-filter>
             <!-- Android Beam for session details -->
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.item/vnd.iosched.session" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.androidito-iosched.session" />
             </intent-filter>
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.HomeActivity" />
@@ -326,9 +326,9 @@
             android:syncable="true"
             android:label="@string/app_name" />
 
-        <service android:name="com.google.android.apps.iosched.sync.ScheduleUpdaterService" />
+        <service android:name="com.lokling.androidito.iosched.sync.ScheduleUpdaterService" />
 
-        <service android:name="com.google.android.apps.iosched.sync.SyncService"
+        <service android:name="com.lokling.androidito.iosched.sync.SyncService"
             android:exported="true"
             tools:ignore="ExportedService">
             <intent-filter>

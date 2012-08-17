@@ -174,7 +174,7 @@ public class ScheduleContract {
         String ANNOUNCEMENT_DATE = "announcement_date";
     }
 
-    public static final String CONTENT_AUTHORITY = "com.google.android.apps.iosched";
+    public static final String CONTENT_AUTHORITY = "com.lokling.androidito.iosched";
 
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
 
@@ -201,9 +201,9 @@ public class ScheduleContract {
                 BASE_CONTENT_URI.buildUpon().appendPath(PATH_BLOCKS).build();
 
         public static final String CONTENT_TYPE =
-                "vnd.android.cursor.dir/vnd.iosched.block";
+                "vnd.android.cursor.dir/vnd.androidito-iosched.block";
         public static final String CONTENT_ITEM_TYPE =
-                "vnd.android.cursor.item/vnd.iosched.block";
+                "vnd.android.cursor.item/vnd.androidito-iosched.block";
 
         /** Count of {@link Sessions} inside given block. */
         public static final String SESSIONS_COUNT = "sessions_count";
@@ -321,9 +321,9 @@ public class ScheduleContract {
                 BASE_CONTENT_URI.buildUpon().appendPath(PATH_TRACKS).build();
 
         public static final String CONTENT_TYPE =
-                "vnd.android.cursor.dir/vnd.iosched.track";
+                "vnd.android.cursor.dir/vnd.androidito-iosched.track";
         public static final String CONTENT_ITEM_TYPE =
-                "vnd.android.cursor.item/vnd.iosched.track";
+                "vnd.android.cursor.item/vnd.androidito-iosched.track";
 
         /** "All tracks" ID. */
         public static final String ALL_TRACK_ID = "all";
@@ -381,9 +381,9 @@ public class ScheduleContract {
                 BASE_CONTENT_URI.buildUpon().appendPath(PATH_ROOMS).build();
 
         public static final String CONTENT_TYPE =
-                "vnd.android.cursor.dir/vnd.iosched.room";
+                "vnd.android.cursor.dir/vnd.androidito-iosched.room";
         public static final String CONTENT_ITEM_TYPE =
-                "vnd.android.cursor.item/vnd.iosched.room";
+                "vnd.android.cursor.item/vnd.androidito-iosched.room";
 
         /** Default "ORDER BY" clause. */
         public static final String DEFAULT_SORT = RoomsColumns.ROOM_FLOOR + " ASC, "
@@ -420,9 +420,9 @@ public class ScheduleContract {
                 CONTENT_URI.buildUpon().appendPath(PATH_STARRED).build();
 
         public static final String CONTENT_TYPE =
-                "vnd.android.cursor.dir/vnd.iosched.session";
+                "vnd.android.cursor.dir/vnd.androidito-iosched.session";
         public static final String CONTENT_ITEM_TYPE =
-                "vnd.android.cursor.item/vnd.iosched.session";
+                "vnd.android.cursor.item/vnd.androidito-iosched.session";
 
         public static final String BLOCK_ID = "block_id";
         public static final String ROOM_ID = "room_id";
@@ -526,9 +526,9 @@ public class ScheduleContract {
                 BASE_CONTENT_URI.buildUpon().appendPath(PATH_SPEAKERS).build();
 
         public static final String CONTENT_TYPE =
-                "vnd.android.cursor.dir/vnd.iosched.speaker";
+                "vnd.android.cursor.dir/vnd.androidito-iosched.speaker";
         public static final String CONTENT_ITEM_TYPE =
-                "vnd.android.cursor.item/vnd.iosched.speaker";
+                "vnd.android.cursor.item/vnd.androidito-iosched.speaker";
 
         /** Default "ORDER BY" clause. */
         public static final String DEFAULT_SORT = SpeakersColumns.SPEAKER_NAME
@@ -562,9 +562,9 @@ public class ScheduleContract {
                 BASE_CONTENT_URI.buildUpon().appendPath(PATH_VENDORS).build();
 
         public static final String CONTENT_TYPE =
-                "vnd.android.cursor.dir/vnd.iosched.vendor";
+                "vnd.android.cursor.dir/vnd.androidito-iosched.vendor";
         public static final String CONTENT_ITEM_TYPE =
-                "vnd.android.cursor.item/vnd.iosched.vendor";
+                "vnd.android.cursor.item/vnd.androidito-iosched.vendor";
 
         /** {@link Tracks#TRACK_ID} that this vendor belongs to. */
         public static final String TRACK_ID = "track_id";
@@ -615,9 +615,9 @@ public class ScheduleContract {
                 BASE_CONTENT_URI.buildUpon().appendPath(PATH_ANNOUNCEMENTS).build();
 
         public static final String CONTENT_TYPE =
-                "vnd.android.cursor.dir/vnd.iosched.announcement";
+                "vnd.android.cursor.dir/vnd.androidito-iosched.announcement";
         public static final String CONTENT_ITEM_TYPE =
-                "vnd.android.cursor.item/vnd.iosched.announcement";
+                "vnd.android.cursor.item/vnd.androidito-iosched.announcement";
 
         /** Default "ORDER BY" clause. */
         public static final String DEFAULT_SORT = AnnouncementsColumns.ANNOUNCEMENT_DATE

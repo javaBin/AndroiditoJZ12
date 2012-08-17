@@ -16,21 +16,19 @@
 
 package com.google.android.apps.iosched.io;
 
-import com.google.android.apps.iosched.io.model.Track;
-import com.google.android.apps.iosched.io.model.Tracks;
-import com.google.android.apps.iosched.provider.ScheduleContract;
-import com.google.android.apps.iosched.util.Lists;
-import com.google.gson.Gson;
-
 import android.content.ContentProviderOperation;
 import android.content.Context;
 import android.graphics.Color;
+import com.google.android.apps.iosched.provider.ScheduleContract;
+import com.google.android.apps.iosched.util.Lists;
+import com.google.gson.Gson;
+import com.lokling.androidito.iosched.io.model.JZConference;
+import com.lokling.androidito.iosched.io.model.JZLabel;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 import static com.google.android.apps.iosched.util.LogUtils.makeLogTag;
-import static com.google.android.apps.iosched.util.ParserUtils.sanitizeId;
 
 /**
  * Handler that parses track JSON data into a list of content provider operations.
@@ -46,27 +44,36 @@ public class TracksHandler extends JSONHandler {
     @Override
     public ArrayList<ContentProviderOperation> parse(String json)
             throws IOException {
+
+      JZConference response = new Gson().fromJson(json, JZConference.class);
+
+
+
+
+
+
+
         final ArrayList<ContentProviderOperation> batch = Lists.newArrayList();
         batch.add(ContentProviderOperation.newDelete(
                 ScheduleContract.addCallerIsSyncAdapterParameter(
                         ScheduleContract.Tracks.CONTENT_URI)).build());
-        Tracks tracksJson = new Gson().fromJson(json, Tracks.class);
-        int noOfTracks = tracksJson.getTrack().length;
+
+        int noOfTracks = response.labels.length;
         for (int i = 0; i < noOfTracks; i++) {
-            parseTrack(tracksJson.getTrack()[i], batch);
+            parseTrack(response.labels[i], batch);
         }
         return batch;
     }
 
-    private static void parseTrack(Track track, ArrayList<ContentProviderOperation> batch) {
+    private static void parseTrack(JZLabel track, ArrayList<ContentProviderOperation> batch) {
         ContentProviderOperation.Builder builder = ContentProviderOperation.newInsert(
                 ScheduleContract.addCallerIsSyncAdapterParameter(
                         ScheduleContract.Tracks.CONTENT_URI));
         builder.withValue(ScheduleContract.Tracks.TRACK_ID,
-                ScheduleContract.Tracks.generateTrackId(track.name));
-        builder.withValue(ScheduleContract.Tracks.TRACK_NAME, track.name);
-        builder.withValue(ScheduleContract.Tracks.TRACK_COLOR, Color.parseColor(track.color));
-        builder.withValue(ScheduleContract.Tracks.TRACK_ABSTRACT, track._abstract);
+                ScheduleContract.Tracks.generateTrackId(track.displayName));
+        builder.withValue(ScheduleContract.Tracks.TRACK_NAME, track.displayName);
+        builder.withValue(ScheduleContract.Tracks.TRACK_COLOR, Color.RED);//TODO - fetch icon and derive color...?
+        builder.withValue(ScheduleContract.Tracks.TRACK_ABSTRACT, "");//TODO
         batch.add(builder.build());
     }
 }

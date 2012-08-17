@@ -124,23 +124,24 @@ public class SyncHelper {
 
         if ((flags & FLAG_SYNC_LOCAL) != 0) {
             final long startLocal = System.currentTimeMillis();
-            final boolean localParse = localVersion < LOCAL_VERSION_CURRENT;
+            final boolean localParse = true;//localVersion < LOCAL_VERSION_CURRENT;
             LOGD(TAG, "found localVersion=" + localVersion + " and LOCAL_VERSION_CURRENT="
                     + LOCAL_VERSION_CURRENT);
             // Only run local sync if there's a newer version of data available
             // than what was last locally-sync'd.
+
             if (localParse) {
                 // Load static local data
                 batch.addAll(new RoomsHandler(mContext).parse(
-                        JSONHandler.loadResourceJson(mContext, R.raw.rooms)));
+                        JSONHandler.loadResourceJson(mContext, R.raw.jzsessions)));
                 batch.addAll(new BlocksHandler(mContext).parse(
-                        JSONHandler.loadResourceJson(mContext, R.raw.common_slots)));
+                        JSONHandler.loadResourceJson(mContext, R.raw.jzcommon_slots)));
                 batch.addAll(new TracksHandler(mContext).parse(
-                        JSONHandler.loadResourceJson(mContext, R.raw.tracks)));
+                        JSONHandler.loadResourceJson(mContext, R.raw.javazone)));
                 batch.addAll(new SpeakersHandler(mContext, true).parse(
-                        JSONHandler.loadResourceJson(mContext, R.raw.speakers)));
+                        JSONHandler.loadResourceJson(mContext, R.raw.jzsessions)));
                 batch.addAll(new SessionsHandler(mContext, true, false).parse(
-                        JSONHandler.loadResourceJson(mContext, R.raw.sessions)));
+                        JSONHandler.loadResourceJson(mContext, R.raw.jzsessions)));
                 batch.addAll(new SandboxHandler(mContext, true).parse(
                         JSONHandler.loadResourceJson(mContext, R.raw.sandbox)));
                 batch.addAll(new SearchSuggestHandler(mContext).parse(
@@ -166,7 +167,7 @@ public class SyncHelper {
             batch = new ArrayList<ContentProviderOperation>();
         }
 
-        if ((flags & FLAG_SYNC_REMOTE) != 0 && isOnline()) {
+        if (false && (flags & FLAG_SYNC_REMOTE) != 0 && isOnline()) {
             try {
                 boolean auth = !UIUtils.isGoogleTV(mContext) &&
                         AccountUtils.isAuthenticated(mContext);

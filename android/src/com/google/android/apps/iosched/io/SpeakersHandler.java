@@ -16,18 +16,20 @@
 
 package com.google.android.apps.iosched.io;
 
-import com.google.android.apps.iosched.io.model.Speaker;
-import com.google.android.apps.iosched.io.model.SpeakersResponse;
+import android.content.ContentProviderOperation;
+import android.content.Context;
 import com.google.android.apps.iosched.provider.ScheduleContract;
 import com.google.android.apps.iosched.provider.ScheduleContract.SyncColumns;
 import com.google.android.apps.iosched.util.Lists;
 import com.google.gson.Gson;
-
-import android.content.ContentProviderOperation;
-import android.content.Context;
+import com.lokling.androidito.iosched.io.model.JZSessionsResponse;
+import com.lokling.androidito.iosched.io.model.JZSessionsResult;
+import com.lokling.androidito.iosched.io.model.JZSpeaker;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import static com.google.android.apps.iosched.provider.ScheduleContract.Speakers;
 import static com.google.android.apps.iosched.util.LogUtils.LOGI;
@@ -48,10 +50,18 @@ public class SpeakersHandler extends JSONHandler {
             throws IOException {
         final ArrayList<ContentProviderOperation> batch = Lists.newArrayList();
 
-        SpeakersResponse response = new Gson().fromJson(json, SpeakersResponse.class);
+        JZSessionsResponse response = new Gson().fromJson(json, JZSessionsResponse.class);
+
+        List<JZSpeaker> speakers = new ArrayList<JZSpeaker>();
+        JZSessionsResult[] sessions = response.sessions;
+
+        for (JZSessionsResult session : sessions) {
+          Collections.addAll(speakers, session.speakers);
+        }
+
         int numEvents = 0;
-        if (response.speakers != null) {
-            numEvents = response.speakers.length;
+        if (speakers != null) {
+            numEvents = speakers.size();
         }
 
         if (numEvents > 0) {
@@ -63,8 +73,9 @@ public class SpeakersHandler extends JSONHandler {
                             Speakers.CONTENT_URI))
                     .build());
 
-            for (Speaker speaker : response.speakers) {
-                String speakerId = speaker.user_id;
+
+          for (JZSpeaker speaker : speakers) {
+                String speakerId = speaker.name;
 
                 // Insert speaker info
                 batch.add(ContentProviderOperation
@@ -72,10 +83,10 @@ public class SpeakersHandler extends JSONHandler {
                                 .addCallerIsSyncAdapterParameter(Speakers.CONTENT_URI))
                         .withValue(SyncColumns.UPDATED, System.currentTimeMillis())
                         .withValue(Speakers.SPEAKER_ID, speakerId)
-                        .withValue(Speakers.SPEAKER_NAME, speaker.display_name)
-                        .withValue(Speakers.SPEAKER_ABSTRACT, speaker.bio)
-                        .withValue(Speakers.SPEAKER_IMAGE_URL, speaker.thumbnail_url)
-                        .withValue(Speakers.SPEAKER_URL, speaker.plusone_url)
+                        .withValue(Speakers.SPEAKER_NAME, speaker.name)
+                        .withValue(Speakers.SPEAKER_ABSTRACT, speaker.bioHtml)
+                        .withValue(Speakers.SPEAKER_IMAGE_URL, speaker.photoUrl.toString())
+                        .withValue(Speakers.SPEAKER_URL, "")//TODO
                         .build());
             }
         }

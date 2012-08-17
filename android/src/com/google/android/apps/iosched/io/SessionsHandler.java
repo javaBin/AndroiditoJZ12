@@ -16,28 +16,28 @@
 
 package com.google.android.apps.iosched.io;
 
-import com.lokling.androidito.iosched.R;
-import com.google.android.apps.iosched.io.model.Event;
-import com.google.android.apps.iosched.io.model.SessionsResponse;
-import com.google.android.apps.iosched.io.model.SessionsResult;
-import com.google.android.apps.iosched.provider.ScheduleContract;
-import com.google.android.apps.iosched.provider.ScheduleContract.Sessions;
-import com.google.android.apps.iosched.provider.ScheduleContract.SyncColumns;
-import com.google.android.apps.iosched.util.Lists;
-import com.google.android.apps.iosched.util.ParserUtils;
-import com.google.gson.Gson;
-
 import android.content.ContentProviderOperation;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.text.format.Time;
+import com.google.android.apps.iosched.provider.ScheduleContract;
+import com.google.android.apps.iosched.provider.ScheduleContract.Sessions;
+import com.google.android.apps.iosched.provider.ScheduleContract.SyncColumns;
+import com.google.android.apps.iosched.util.Lists;
+import com.google.android.apps.iosched.util.ParserUtils;
+import com.google.gson.Gson;
+import com.lokling.androidito.iosched.R;
+import com.lokling.androidito.iosched.io.model.JZLabel;
+import com.lokling.androidito.iosched.io.model.JZSessionsResponse;
+import com.lokling.androidito.iosched.io.model.JZSessionsResult;
+import com.lokling.androidito.iosched.io.model.JZSpeaker;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -72,7 +72,8 @@ public class SessionsHandler extends JSONHandler {
     private boolean mLocal;
     private boolean mThrowIfNoAuthToken;
 
-    public SessionsHandler(Context context, boolean local, boolean throwIfNoAuthToken) {
+
+  public SessionsHandler(Context context, boolean local, boolean throwIfNoAuthToken) {
         super(context);
         mLocal = local;
         mThrowIfNoAuthToken = throwIfNoAuthToken;
@@ -82,13 +83,9 @@ public class SessionsHandler extends JSONHandler {
             throws IOException {
         final ArrayList<ContentProviderOperation> batch = Lists.newArrayList();
 
-        SessionsResponse response = new Gson().fromJson(json, SessionsResponse.class);
-        int numEvents = 0;
-        if (response.result != null) {
-            numEvents = response.result[0].events.length;
-        }
+        JZSessionsResponse response = new Gson().fromJson(json, JZSessionsResponse.class);
 
-        if (numEvents > 0) {
+
             LOGI(TAG, "Updating sessions data");
 
             // by default retain locally starred if local sync
@@ -133,8 +130,8 @@ public class SessionsHandler extends JSONHandler {
             // Maintain a list of created block IDs
             Set<String> blockIds = new HashSet<String>();
 
-            for (SessionsResult result : response.result) {
-                for (Event event : result.events) {
+            for (JZSessionsResult event : response.sessions) {
+
                     int flags = 0;
                     if (retainLocallyStarredSessions) {
                         flags = (starredSessionIds.contains(event.id)
@@ -148,12 +145,13 @@ public class SessionsHandler extends JSONHandler {
                         continue;
                     }
 
-                    // Session title
+
+                    // Session title  - fix special titles
                     String sessionTitle = event.title;
-                    if (EVENT_TYPE_CODELAB.equals(result.event_type)) {
-                        sessionTitle = mContext.getString(
-                                R.string.codelab_title_template, sessionTitle);
-                    }
+                    //if (EVENT_TYPE_CODELAB.equals(event.event_type)) {
+                    //    sessionTitle = mContext.getString(
+                    //            R.string.codelab_title_template, sessionTitle);
+                    //}
 
                     // Whether or not it's in the schedule
                     boolean inSchedule = "Y".equals(event.attending);
@@ -162,54 +160,52 @@ public class SessionsHandler extends JSONHandler {
                         inSchedule = (flags & PARSE_FLAG_FORCE_SCHEDULE_ADD) != 0;
                     }
 
-                    if (EVENT_TYPE_KEYNOTE.equals(result.event_type)) {
-                        // Keynotes are always in your schedule.
-                        inSchedule = true;
-                    }
 
+                    // Special handing of sessiosn that should always be in schedule
+                    //if (EVENT_TYPE_KEYNOTE.equals(event.event_type)) {
+                    //    // Keynotes are always in your schedule.
+                    //    inSchedule = true;
+                    //}
+
+
+
+                    // Special sorting of sessions based on tracks etc
                     // Re-order session tracks so that Code Lab is last
-                    if (event.track != null) {
-                        Arrays.sort(event.track, sTracksComparator);
-                    }
+                    //if (event.labels != null) {
+                    //    Arrays.sort(event.track, sTracksComparator);
+                    //}
 
                     // Hashtags
                     String hashtags = "";
-                    if (event.track != null) {
-                        StringBuilder hashtagsBuilder = new StringBuilder();
-                        for (String trackName : event.track) {
-                            if (trackName.trim().startsWith("Code Lab")) {
-                                trackName = "Code Labs";
-                            }
-
-                            if (trackName.contains("Keynote")) {
-                                continue;
-                            }
-
-                            hashtagsBuilder.append(" #");
-                            hashtagsBuilder.append(
-                                    ScheduleContract.Tracks.generateTrackId(trackName));
-                        }
-                        hashtags = hashtagsBuilder.toString().trim();
-                    }
+                    //if (event.labels != null) {
+                    //    StringBuilder hashtagsBuilder = new StringBuilder();
+                    //    for (JZLabel trackName : event.labels) {
+                    //
+                    //        hashtagsBuilder.append(" #");
+                    //        hashtagsBuilder.append(
+                    //                ScheduleContract.Tracks.generateTrackId(trackName));
+                    //    }
+                    //    hashtags = hashtagsBuilder.toString().trim();
+                    //}
 
                     // Pre-reqs
                     String prereqs = "";
-                    if (event.prereq != null && event.prereq.length > 0) {
-                        StringBuilder sb = new StringBuilder();
-                        for (String prereq : event.prereq) {
-                            sb.append(prereq);
-                            sb.append(" ");
-                        }
-                        prereqs = sb.toString();
-                        if (prereqs.startsWith("<br>")) {
-                            prereqs = prereqs.substring(4);
-                        }
-                    }
+                    //if (event.prereq != null && event.prereq.length > 0) {
+                    //    StringBuilder sb = new StringBuilder();
+                    //    for (String prereq : event.prereq) {
+                    //        sb.append(prereq);
+                    //        sb.append(" ");
+                    //    }
+                    //    prereqs = sb.toString();
+                    //    if (prereqs.startsWith("<br>")) {
+                    //        prereqs = prereqs.substring(4);
+                    //    }
+                    //}
 
                     String youtubeUrl = null;
-                    if (event.youtube_url != null && event.youtube_url.length > 0) {
-                        youtubeUrl = event.youtube_url[0];
-                    }
+                    //if (event.youtube_url != null && event.youtube_url.length > 0) {
+                    //    youtubeUrl = event.youtube_url[0];
+                    //}
 
                     // Insert session info
                     final ContentProviderOperation.Builder builder = ContentProviderOperation
@@ -217,13 +213,13 @@ public class SessionsHandler extends JSONHandler {
                                     .addCallerIsSyncAdapterParameter(Sessions.CONTENT_URI))
                             .withValue(SyncColumns.UPDATED, System.currentTimeMillis())
                             .withValue(Sessions.SESSION_ID, sessionId)
-                            .withValue(Sessions.SESSION_TYPE, result.event_type)
-                            .withValue(Sessions.SESSION_LEVEL, event.level)
+                            .withValue(Sessions.SESSION_TYPE, event.format)
+                            .withValue(Sessions.SESSION_LEVEL, event.level.displayName)//TODO
                             .withValue(Sessions.SESSION_TITLE, sessionTitle)
-                            .withValue(Sessions.SESSION_ABSTRACT, event._abstract)
-                            .withValue(Sessions.SESSION_TAGS, event.tags)
-                            .withValue(Sessions.SESSION_URL, makeSessionUrl(sessionId))
-                            .withValue(Sessions.SESSION_LIVESTREAM_URL, event.livestream_url)
+                            .withValue(Sessions.SESSION_ABSTRACT, event.bodyHtml)
+                            .withValue(Sessions.SESSION_TAGS, event.labelstrings())
+                            .withValue(Sessions.SESSION_URL,event.sessionHtmlUrl.toString())
+                            .withValue(Sessions.SESSION_LIVESTREAM_URL, "")
                             .withValue(Sessions.SESSION_REQUIREMENTS, prereqs)
                             .withValue(Sessions.SESSION_STARRED, inSchedule)
                             .withValue(Sessions.SESSION_HASHTAGS, hashtags)
@@ -232,17 +228,31 @@ public class SessionsHandler extends JSONHandler {
                             .withValue(Sessions.SESSION_NOTES_URL, "")
                             .withValue(Sessions.ROOM_ID, sanitizeId(event.room));
 
-                    long sessionStartTime = parseTime(event.start_date, event.start_time);
-                    long sessionEndTime = parseTime(event.end_date, event.end_time);
+
+                    long sessionStartTime=0;
+                    long sessionEndTime=0;      //TODO handle sessions without timeslot
+
+                    if (event.start!=null && event.end!=null){
+                      sessionStartTime = event.start.millis();//parseTime(event.start_date, event.start_time);
+                      sessionEndTime = event.end.millis();//event.end_date, event.end_time);
+                    }
+
+                    if  ("Quickie".equals(event.format)){
+                      sessionStartTime=snapStartTime(sessionStartTime);
+                      sessionEndTime=snapEndTime(sessionEndTime);
+                    }
+
+
+
                     String blockId = ScheduleContract.Blocks.generateBlockId(
                             sessionStartTime, sessionEndTime);
                     if (!blockIds.contains(blockId)) {
                         String blockType;
                         String blockTitle;
-                        if (EVENT_TYPE_KEYNOTE.equals(result.event_type)) {
+                        if (EVENT_TYPE_KEYNOTE.equals(event.format)) {
                             blockType = ParserUtils.BLOCK_TYPE_KEYNOTE;
                             blockTitle = mContext.getString(R.string.schedule_block_title_keynote);
-                        } else if (EVENT_TYPE_CODELAB.equals(result.event_type)) {
+                        } else if (EVENT_TYPE_CODELAB.equals(event.format)) {
                             blockType = ParserUtils.BLOCK_TYPE_CODE_LAB;
                             blockTitle = mContext
                                     .getString(R.string.schedule_block_title_code_labs);
@@ -271,13 +281,12 @@ public class SessionsHandler extends JSONHandler {
                             .newDelete(ScheduleContract
                                     .addCallerIsSyncAdapterParameter(sessionSpeakersUri))
                             .build());
-                    if (event.speaker_id != null) {
-                        for (String speakerId : event.speaker_id) {
-                            speakerId = sRemoveSpeakerIdPrefixPattern.matcher(speakerId).replaceAll(
-                                    "");
+                    if (event.speakers != null) {
+                        for (JZSpeaker speaker : event.speakers) {
+                            //speaker = sRemoveSpeakerIdPrefixPattern.matcher(speaker).replaceAll("");
                             batch.add(ContentProviderOperation.newInsert(sessionSpeakersUri)
                                     .withValue(SessionsSpeakers.SESSION_ID, sessionId)
-                                    .withValue(SessionsSpeakers.SPEAKER_ID, speakerId).build());
+                                    .withValue(SessionsSpeakers.SPEAKER_ID, speaker.name).build());//TODO ID for speakers
                         }
                     }
 
@@ -285,26 +294,52 @@ public class SessionsHandler extends JSONHandler {
                     final Uri sessionTracksUri = ScheduleContract.addCallerIsSyncAdapterParameter(
                             Sessions.buildTracksDirUri(sessionId));
                     batch.add(ContentProviderOperation.newDelete(sessionTracksUri).build());
-                    if (event.track != null) {
-                        for (String trackName : event.track) {
-                            if (trackName.contains("Code Lab")) {
-                                trackName = "Code Labs";
-                            }
+                    if (event.labels != null) {
+                        for (JZLabel trackName : event.labels) {
+                            //if (trackName.contains("Code Lab")) {
+                            //    trackName = "Code Labs";
+                            //}
 
-                            String trackId = ScheduleContract.Tracks.generateTrackId(trackName);
+                            String trackId = ScheduleContract.Tracks.generateTrackId(trackName.id);
                             batch.add(ContentProviderOperation.newInsert(sessionTracksUri)
                                     .withValue(SessionsTracks.SESSION_ID, sessionId)
                                     .withValue(SessionsTracks.TRACK_ID, trackId).build());
                         }
                     }
-                }
+
             }
-        }
+
 
         return batch;
     }
 
-    private Comparator<String> sTracksComparator = new Comparator<String>() {
+  private static long snapStartTime(final long pSessionStartTime) {
+
+      Date date = new Date(pSessionStartTime);
+      int minutes = (date.getHours()-9)*60+(date.getMinutes()-0);
+
+      int offset = minutes % (60+20);
+      date.setMinutes(date.getMinutes()-offset);
+      return date.getTime();
+
+
+    }
+
+    private static long snapEndTime(final long pSessionEndTime) {
+
+        Date date = new Date(pSessionEndTime);
+        int minutes = (date.getHours()-9)*60+(date.getMinutes()+0);
+
+        int offset = minutes % (60+20);
+        date.setMinutes(date.getMinutes()+60-offset);
+        return date.getTime();
+
+
+      }
+
+
+
+  private Comparator<String> sTracksComparator = new Comparator<String>() {
         @Override
         public int compare(String s1, String s2) {
             // TODO: improve performance of this comparator
