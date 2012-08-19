@@ -279,5 +279,5 @@
         <item name="android:textColor">@color/body_text_2_inverse</item>
         <item name="android:singleLine">true</item>
     </style>
-    
+
 </resources>
