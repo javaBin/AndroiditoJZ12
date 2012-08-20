@@ -14,7 +14,7 @@
   limitations under the License.
   -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">JavaZone 2012</string>
+    <string name="app_name">Google I/O 2012</string>
 
     <string name="description_search">Search</string>
     <string name="description_map">Map</string>
