@@ -174,7 +174,7 @@ public class ScheduleContract {
         String ANNOUNCEMENT_DATE = "announcement_date";
     }
 
-    public static final String CONTENT_AUTHORITY = "com.lokling.androidito.iosched";
+    public static final String CONTENT_AUTHORITY = "no.java.schedule";
 
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
 

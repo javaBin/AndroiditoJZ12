@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.lokling.androidito.iosched.io.model;
+package no.java.schedule.io.model;
 
 import java.util.GregorianCalendar;
 

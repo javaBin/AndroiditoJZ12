@@ -14,22 +14,9 @@
  * limitations under the License.
  */
 
-package com.lokling.androidito.iosched.io.model;
+package no.java.schedule.io.model;
 
-public class JZConference {
-
-
-  public String blurb;
-  public String calendarHtmlUrl;
-  public String htmlUrl;
-  public String id;
-  public JZLabel labels[];
-  public JZLevel levels[];
-  public String name;
-  public String selfUrl;
-  public String sessionHtmlUrl;
-
-
+public class JZLevel extends JZLabel {
 
 
 }

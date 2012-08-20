@@ -14,9 +14,13 @@
  * limitations under the License.
  */
 
-package com.lokling.androidito.iosched.io.model;
+package no.java.schedule.io.model;
 
-public class JZLevel extends JZLabel {
+import java.net.URL;
 
+public class JZSpeaker {
 
+  public String bioHtml;
+  public String name;
+  public URL photoUrl;
 }

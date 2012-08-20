@@ -18,7 +18,7 @@ package com.google.android.apps.iosched.sync;
 
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.android.apps.iosched.Config;
-import com.lokling.androidito.iosched.R;
+import no.java.schedule.R;
 import com.google.android.apps.iosched.io.AnnouncementsHandler;
 import com.google.android.apps.iosched.io.BlocksHandler;
 import com.google.android.apps.iosched.io.HandlerException;

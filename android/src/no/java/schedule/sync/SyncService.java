@@ -14,16 +14,7 @@
  * limitations under the License.
  */
 
-package com.lokling.androidito.iosched.io.model;
+package no.java.schedule.sync;
 
-import java.net.URL;
-
-public class JZLabel {
-
-  public String displayName;
-  public URL iconUrl;
-  public String id;
-
-
-
+public class SyncService extends com.google.android.apps.iosched.sync.SyncService {
 }

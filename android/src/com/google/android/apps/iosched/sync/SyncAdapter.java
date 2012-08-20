@@ -16,7 +16,7 @@
 
 package com.google.android.apps.iosched.sync;
 
-import com.lokling.androidito.iosched.BuildConfig;
+import no.java.schedule.BuildConfig;
 import com.google.android.apps.iosched.util.AccountUtils;
 
 import android.accounts.Account;

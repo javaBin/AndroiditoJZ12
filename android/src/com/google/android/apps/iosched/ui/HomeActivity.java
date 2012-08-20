@@ -17,9 +17,9 @@
 package com.google.android.apps.iosched.ui;
 
 import com.google.analytics.tracking.android.EasyTracker;
-import com.lokling.androidito.iosched.BuildConfig;
+import no.java.schedule.BuildConfig;
 import com.google.android.apps.iosched.Config;
-import com.lokling.androidito.iosched.R;
+import no.java.schedule.R;
 import com.google.android.apps.iosched.gcm.ServerUtilities;
 import com.google.android.apps.iosched.provider.ScheduleContract;
 import com.google.android.apps.iosched.ui.gtv.GoogleTVSessionLivestreamActivity;

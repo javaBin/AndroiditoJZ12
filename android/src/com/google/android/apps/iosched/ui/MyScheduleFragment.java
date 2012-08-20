@@ -16,7 +16,7 @@
 
 package com.google.android.apps.iosched.ui;
 
-import com.lokling.androidito.iosched.R;
+import no.java.schedule.R;
 import com.google.android.apps.iosched.provider.ScheduleContract;
 import com.google.android.apps.iosched.ui.tablet.SessionsVendorsMultiPaneActivity;
 import com.google.android.apps.iosched.ui.widget.SimpleSectionedListAdapter;

@@ -14,13 +14,12 @@
  * limitations under the License.
  */
 
-package com.lokling.androidito.iosched.appwidget;
-
+package no.java.schedule.provider;
 
 /**
  * Stub to "rename" the google iosched provider for use in our Androidito app.
  *
  */
-public class MyScheduleWidgetProvider extends com.google.android.apps.iosched.appwidget.MyScheduleWidgetProvider {
+public class ScheduleProvider extends com.google.android.apps.iosched.provider.ScheduleProvider {
 
 }

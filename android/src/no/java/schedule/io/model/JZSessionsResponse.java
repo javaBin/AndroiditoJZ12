@@ -14,7 +14,10 @@
  * limitations under the License.
  */
 
-package com.lokling.androidito.iosched.sync;
+package no.java.schedule.io.model;
 
-public class SyncService extends com.google.android.apps.iosched.sync.SyncService {
+import com.google.android.apps.iosched.io.model.GenericResponse;
+
+public class JZSessionsResponse extends GenericResponse {
+  public JZSessionsResult[] sessions;
 }

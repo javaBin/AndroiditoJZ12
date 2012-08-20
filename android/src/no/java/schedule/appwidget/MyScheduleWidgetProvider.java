@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package com.lokling.androidito.iosched.io.model;
+package no.java.schedule.appwidget;
 
-import java.net.URL;
 
-public class JZSpeaker {
+/**
+ * Stub to "rename" the google iosched provider for use in our Androidito app.
+ *
+ */
+public class MyScheduleWidgetProvider extends com.google.android.apps.iosched.appwidget.MyScheduleWidgetProvider {
 
-  public String bioHtml;
-  public String name;
-  public URL photoUrl;
 }

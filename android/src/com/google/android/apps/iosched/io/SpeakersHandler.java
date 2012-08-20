@@ -22,9 +22,9 @@ import com.google.android.apps.iosched.provider.ScheduleContract;
 import com.google.android.apps.iosched.provider.ScheduleContract.SyncColumns;
 import com.google.android.apps.iosched.util.Lists;
 import com.google.gson.Gson;
-import com.lokling.androidito.iosched.io.model.JZSessionsResponse;
-import com.lokling.androidito.iosched.io.model.JZSessionsResult;
-import com.lokling.androidito.iosched.io.model.JZSpeaker;
+import no.java.schedule.io.model.JZSessionsResponse;
+import no.java.schedule.io.model.JZSessionsResult;
+import no.java.schedule.io.model.JZSpeaker;
 
 import java.io.IOException;
 import java.util.ArrayList;

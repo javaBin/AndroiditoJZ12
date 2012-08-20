@@ -16,7 +16,7 @@
 
 package com.google.android.apps.iosched.ui;
 
-import com.lokling.androidito.iosched.R;
+import no.java.schedule.R;
 import com.google.android.apps.iosched.provider.ScheduleContract.Announcements;
 import com.google.android.apps.iosched.util.UIUtils;
 

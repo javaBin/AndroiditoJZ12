@@ -22,8 +22,8 @@ import android.graphics.Color;
 import com.google.android.apps.iosched.provider.ScheduleContract;
 import com.google.android.apps.iosched.util.Lists;
 import com.google.gson.Gson;
-import com.lokling.androidito.iosched.io.model.JZConference;
-import com.lokling.androidito.iosched.io.model.JZLabel;
+import no.java.schedule.io.model.JZConference;
+import no.java.schedule.io.model.JZLabel;
 
 import java.io.IOException;
 import java.util.ArrayList;

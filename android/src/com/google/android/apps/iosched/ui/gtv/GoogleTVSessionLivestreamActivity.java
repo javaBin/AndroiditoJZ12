@@ -18,7 +18,7 @@ package com.google.android.apps.iosched.ui.gtv;
 
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.android.apps.iosched.Config;
-import com.lokling.androidito.iosched.R;
+import no.java.schedule.R;
 import com.google.android.apps.iosched.provider.ScheduleContract;
 import com.google.android.apps.iosched.provider.ScheduleContract.Sessions;
 import com.google.android.apps.iosched.sync.SyncHelper;

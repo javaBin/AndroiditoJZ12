@@ -16,7 +16,7 @@
 
 package com.google.android.apps.iosched.util;
 
-import com.lokling.androidito.iosched.BuildConfig;
+import no.java.schedule.BuildConfig;
 
 import android.annotation.TargetApi;
 import android.content.Context;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.lokling.androidito.iosched.test;
+package no.java.schedule.test;
 
 public class GsonParseTest {
 

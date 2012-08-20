@@ -14,7 +14,7 @@
   limitations under the License.
   -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:iosched="http://schemas.android.com/apk/res/com.lokling.androidito.iosched"
+    xmlns:iosched="http://schemas.android.com/apk/res/no.java.schedule"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

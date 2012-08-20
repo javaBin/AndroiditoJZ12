@@ -17,8 +17,8 @@
 package com.google.android.apps.iosched.ui;
 
 import com.google.analytics.tracking.android.EasyTracker;
-import com.lokling.androidito.iosched.BuildConfig;
-import com.lokling.androidito.iosched.R;
+import no.java.schedule.BuildConfig;
+import no.java.schedule.R;
 import com.google.android.apps.iosched.util.UIUtils;
 
 import com.actionbarsherlock.app.SherlockFragment;

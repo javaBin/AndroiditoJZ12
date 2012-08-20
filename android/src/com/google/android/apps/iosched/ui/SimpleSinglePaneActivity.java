@@ -16,7 +16,7 @@
 
 package com.google.android.apps.iosched.ui;
 
-import com.lokling.androidito.iosched.R;
+import no.java.schedule.R;
 
 import android.content.Intent;
 import android.os.Bundle;

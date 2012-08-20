@@ -14,8 +14,40 @@
  * limitations under the License.
  */
 
-package com.lokling.androidito.iosched.sync;
+package no.java.schedule.io.model;
 
-public class ScheduleUpdaterService extends com.google.android.apps.iosched.sync.ScheduleUpdaterService {
+import java.net.URI;
 
+public class JZSessionsResult {
+
+  public String bodyHtml;
+  public JZDate start;
+  public JZDate end;
+
+  public String format;
+  public String id;
+  public JZLabel [] labels;
+
+  public JZLevel level;
+  public String room;
+
+  public URI selfUri;
+  public URI sessionHtmlUrl;
+
+  public JZSpeaker speakers[];
+
+  public String title;
+
+  public String attending;
+
+  public String labelstrings() {
+
+    String result="";
+    for (int i = 0; i < labels.length; i++) {
+      result+=labels[i].displayName+",";
+
+    }
+
+    return result;
+  }
 }

@@ -14,10 +14,16 @@
  * limitations under the License.
  */
 
-package com.lokling.androidito.iosched.io.model;
+package no.java.schedule.io.model;
 
-import com.google.android.apps.iosched.io.model.GenericResponse;
+import java.net.URL;
 
-public class JZSessionsResponse extends GenericResponse {
-  public JZSessionsResult[] sessions;
+public class JZLabel {
+
+  public String displayName;
+  public URL iconUrl;
+  public String id;
+
+
+
 }

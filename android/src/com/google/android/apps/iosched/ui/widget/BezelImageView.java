@@ -16,7 +16,7 @@
 
 package com.google.android.apps.iosched.ui.widget;
 
-import com.lokling.androidito.iosched.R;
+import no.java.schedule.R;
 
 import android.content.Context;
 import android.content.res.TypedArray;

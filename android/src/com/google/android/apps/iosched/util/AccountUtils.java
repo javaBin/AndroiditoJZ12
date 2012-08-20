@@ -33,7 +33,7 @@ import com.google.android.apps.iosched.provider.ScheduleContract;
 import com.google.android.apps.iosched.ui.AccountActivity;
 import com.google.android.gcm.GCMRegistrar;
 import com.google.api.client.googleapis.extensions.android2.auth.GoogleAccountManager;
-import com.lokling.androidito.iosched.R;
+import no.java.schedule.R;
 
 import static com.google.android.apps.iosched.util.LogUtils.LOGE;
 import static com.google.android.apps.iosched.util.LogUtils.LOGI;

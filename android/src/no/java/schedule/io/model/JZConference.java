@@ -14,40 +14,22 @@
  * limitations under the License.
  */
 
-package com.lokling.androidito.iosched.io.model;
+package no.java.schedule.io.model;
 
-import java.net.URI;
+public class JZConference {
 
-public class JZSessionsResult {
 
-  public String bodyHtml;
-  public JZDate start;
-  public JZDate end;
-
-  public String format;
+  public String blurb;
+  public String calendarHtmlUrl;
+  public String htmlUrl;
   public String id;
-  public JZLabel [] labels;
+  public JZLabel labels[];
+  public JZLevel levels[];
+  public String name;
+  public String selfUrl;
+  public String sessionHtmlUrl;
 
-  public JZLevel level;
-  public String room;
 
-  public URI selfUri;
-  public URI sessionHtmlUrl;
 
-  public JZSpeaker speakers[];
 
-  public String title;
-
-  public String attending;
-
-  public String labelstrings() {
-
-    String result="";
-    for (int i = 0; i < labels.length; i++) {
-      result+=labels[i].displayName+",";
-
-    }
-
-    return result;
-  }
 }
