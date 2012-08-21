@@ -16,7 +16,6 @@
 
 package com.google.android.apps.iosched.calendar;
 
-import com.lokling.androidito.iosched.R;
 import com.google.android.apps.iosched.provider.ScheduleContract;
 import com.google.android.apps.iosched.util.UIUtils;
 
@@ -34,6 +33,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
+import no.java.schedule.R;
 
 import java.util.ArrayList;
 

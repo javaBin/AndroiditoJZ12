@@ -14,7 +14,7 @@
   limitations under the License.
   -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">Google I/O 2012</string>
+    <string name="app_name">JavaZone 2012</string>
 
     <string name="description_search">Search</string>
     <string name="description_map">Map</string>
@@ -57,8 +57,8 @@
     <string name="all_tracks">All tracks</string>
     <string name="all_tracks_sessions">All sessions</string>
     <string name="all_tracks_vendors">All companies</string>
-    <string name="all_tracks_subtitle_sessions">All sessions at Google I/O 2012.</string>
-    <string name="all_tracks_subtitle_vendors">All developer sandbox companies at Google I/O 2012.</string>
+    <string name="all_tracks_subtitle_sessions">All sessions at JavaZone 2012.</string>
+    <string name="all_tracks_subtitle_vendors">All developer sandbox companies at JavaZone 2012.</string>
 
     <string name="empty_sessions">No sessions found.</string>
     <string name="empty_session_detail">No session details found.</string>
@@ -93,23 +93,23 @@
 
     <string name="vendor_exhibitors_prefix">Exhibitors: </string>
 
-    <string name="search_label">Google I/O Sessions</string>
+    <string name="search_label">JavaZone Sessions</string>
     <string name="search_hint">Search sessions</string>
 
     <string name="share_template">Checking out \'<xliff:g id="title">%1$s</xliff:g>\' at <xliff:g id="hashtags">%2$s</xliff:g> <xliff:g id="url">%3$s</xliff:g></string>
     <string name="share_livestream_template">Watching I/O Live: \'<xliff:g id="title">%1$s</xliff:g>\' at <xliff:g id="hashtags">%2$s</xliff:g> <xliff:g id="url">%3$s</xliff:g></string>
 
     <!-- Announcements -->
-    <string name="whats_on_countdown_title_0"><xliff:g id="remaining_time">%1$s</xliff:g>\nuntil Google I/O</string>
+    <string name="whats_on_countdown_title_0"><xliff:g id="remaining_time">%1$s</xliff:g>\nuntil JavaZone</string>
     <plurals name="whats_on_countdown_title">
         <item quantity="one"><xliff:g id="number_of_days">%1$s</xliff:g> day, <xliff:g id="remaining_time">%2$s</xliff:g>\nuntil Google I/O</item>
         <item quantity="other"><xliff:g id="number_of_days">%1$s</xliff:g> days, <xliff:g id="remaining_time">%2$s</xliff:g>\nuntil Google I/O</item>
     </plurals>
     <string name="whats_on_thank_you_title">See you next year!</string>
     <string name="news_will_appear_here">News will appear here</string>
-    <string name="welcome_to_google_i_o">Welcome to Google I/O!</string>
+    <string name="welcome_to_google_i_o">Welcome to JavaZone!</string>
 
-    <string name="permission_write">Modify Google I/O schedule data</string>
+    <string name="permission_write">Modify JavaZone schedule data</string>
 
     <plurals name="toast_added_to_schedule">
         <item quantity="one">Session added to your agenda</item>
@@ -131,8 +131,8 @@
 
     <!-- EULA, login, and about -->
     <string name="description_choose_account"><![CDATA[
-        Welcome to the Google I/O 2012 app, your official companion to the Google I/O conference
-        taking place in San Francisco from June 27th to June 29th, 2012.<br>
+        Welcome to the JavaZone 2012 app, your official companion to the JavaZone conference
+        taking place in Oslo from September 12th to September 13th, 2012.<br>
         <br>
         <font color="#4683ec"><b>Sign in with the Google account you registered with to
         get started</b></font>.
@@ -141,11 +141,11 @@
     <string name="empty_accounts">No Google accounts are available. Add an account to continue.</string>
     <string name="no_connection_cant_login">Can\'t sign in. Check your network connection.</string>
     <string name="taking_a_while">This is taking a while&#8230;</string>
-    <string name="eula_title">Google I/O 2012 Android App End User License Agreement</string>
+    <string name="eula_title">JavaZone 2012 Android App End User License Agreement</string>
     <string name="about_eula">End User License Agreement</string>
     <string name="about_licenses">Open Source Licenses</string>
     <string name="about_body"><![CDATA[
-        <b>Google I/O 2012</b><br>
+        <b>JavaZone 2012</b><br>
         Version %s<br><br>
         <a href="http://m.google.com/utos">Terms of Service</a><br><br>
         <a href="http://www.google.com/policies/privacy/">Privacy Policy</a>
@@ -188,8 +188,8 @@
     </plurals>
     <string name="snooze_x_min">Snooze <xliff:g id="remaining_time">%1$d</xliff:g> min.</string>
 
-    <string name="session_calendar_suffix">- added by Google I/O 2012 Android app</string>
-    <string name="toast_deleting_sessions_from_calendar">Removing your Google I/O 2012 sessions from Google Calendar&#8230;</string>
+    <string name="session_calendar_suffix">- added by JavaZone 2012 Android app</string>
+    <string name="toast_deleting_sessions_from_calendar">Removing your JavaZone 2012 sessions from Google Calendar&#8230;</string>
 
     <!-- Contextual help text -->
     <string name="help_add_to_schedule"><![CDATA[
@@ -209,7 +209,7 @@
     <string name="stream_error">Couldn\'t load the Google+ stream.</string>
     <string name="stream_originally_shared"><xliff:g id="name">%s</xliff:g> originally shared this post</string>
     <string name="empty_widget_text">No more upcoming sessions.\nSee you next year!</string>
-    <string name="empty_widget_text_signed_out">Touch the Google I/O 2012 logo above to sign in and begin using the app.</string>
+    <string name="empty_widget_text_signed_out">Touch the JavaZone 2012 logo above to sign in and begin using the app.</string>
 
     <string name="now_playing_badge"><![CDATA[<font color="#4683ec"><small><b>NOW</b></small></font>]]></string>
     <string name="live_available_badge"><![CDATA[<font color="#999999"><small><b>LIVE</b></small></font>]]></string>
@@ -245,5 +245,5 @@
     <string name="title_beam">Beam Easter Egg Unlocked!</string>
     <string name="beam_unlocked_default">Awesome, you just used Android Beam!\n\nTry using Android Beam when viewing session details, to share sessions with others at the conference.\n\nTo learn more about using Android Beam in your own application, touch <i>Learn more</i> below or visit the NFC and Android Beam session on Thursday at 4pm in Room 9.\n\nA <i>Show Android Beam easter egg</i> item has also been added to the action bar at the top of the app\'s home screen. <b>Show this screen to us at end of the session to receive an Android Beam pin collectible!</b></string>
     <string name="beam_unlocked_session">Awesome, you just used Android Beam to share a session!\n\nTo learn more about using Android Beam in your own application, touch <i>Learn more</i> below or visit the NFC and Android Beam session on Thursday at 4pm in Room 9.\n\nA <i>Show Android Beam easter egg</i> item has also been added to the action bar at the top of the app\'s home screen. <b>Show this screen to us at end of the session to receive an Android Beam pin collectible!</b></string>
-    <string name="beam_unlocked_help">This shows you have used Android Beam with the Google I/O 2012 app.\n\nTo learn more about using Android Beam in your own application, touch <i>Learn more</i> below or visit the NFC and Android Beam session on Thursday at 4pm in Room 9.\n\nA <i>Show Android Beam easter egg</i> item has also been added to the action bar at the top of the app\'s home screen. <b>Show this screen to us at end of the session to receive an Android Beam pin collectible!</b></string>
+    <string name="beam_unlocked_help">This shows you have used Android Beam with the JavaZone 2012 app.\n\nTo learn more about using Android Beam in your own application, touch <i>Learn more</i> below or visit the NFC and Android Beam session on Thursday at 4pm in Room 9.\n\nA <i>Show Android Beam easter egg</i> item has also been added to the action bar at the top of the app\'s home screen. <b>Show this screen to us at end of the session to receive an Android Beam pin collectible!</b></string>
 </resources>
