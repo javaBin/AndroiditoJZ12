@@ -1,4 +1,4 @@
-<!--
+ <!--
   Copyright 2012 Google Inc.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,5 +15,5 @@
   -->
 
 <bitmap xmlns:android="http://schemas.android.com/apk/res/android"
-    android:src="@drawable/actionbar_bg"
+    android:src="@drawable/tabbar_bg"
     android:tileMode="repeat" />
