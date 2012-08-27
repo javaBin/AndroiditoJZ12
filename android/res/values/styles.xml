@@ -102,7 +102,10 @@
     </style>
 
     <style name="ActionBar.TabBar" parent="FrameworkRoot.ActionBar.TabBar">
-        <item name="android:background">@color/accent_1</item>
+        <item name="android:background">@drawable/tabbar_background</item>
+        <item name="android:showDividers">middle</item>
+        <item name="android:divider">@color/tabbar_divider</item>
+        <item name="android:dividerPadding">10dp</item>
     </style>
 
     <style name="ActionBar.TabText" parent="FrameworkRoot.ActionBar.TabText">

@@ -16,7 +16,6 @@
 
 package com.google.android.apps.iosched.calendar;
 
-import com.lokling.androidito.iosched.R;
 import com.google.android.apps.iosched.provider.ScheduleContract;
 import com.google.android.apps.iosched.util.AccountUtils;
 import com.google.android.apps.iosched.util.UIUtils;
@@ -35,6 +34,7 @@ import android.os.Bundle;
 import android.os.RemoteException;
 import android.provider.CalendarContract;
 import android.text.TextUtils;
+import no.java.schedule.R;
 
 import java.util.ArrayList;
 

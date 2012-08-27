@@ -31,6 +31,8 @@
 
     <color name="past_background_color">#11000000</color>
 
+    <color name="tabbar_divider">#3f4c1b</color>
+
     <!-- Google+ -->
     <color name="stream_name_color">#333</color>
     <color name="stream_link_color">#ff6f8fc7</color>
