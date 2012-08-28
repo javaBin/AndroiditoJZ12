@@ -16,6 +16,12 @@
 
 package no.java.schedule.ui;
 
+import android.os.Bundle;
+
 public class HomeActivity extends com.google.android.apps.iosched.ui.HomeActivity {
 
+  @Override
+  protected void onCreate(final Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+  }
 }

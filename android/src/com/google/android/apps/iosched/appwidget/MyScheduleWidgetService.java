@@ -162,11 +162,7 @@ public class MyScheduleWidgetService extends RemoteViewsService {
                         String starredSessionRoomName =
                                 mCursor.getString(BlocksQuery.STARRED_SESSION_ROOM_NAME);
                         if (starredSessionRoomName == null) {
-                            // TODO: remove this WAR for API not returning rooms for code labs
-                            starredSessionRoomName = mContext.getString(
-                                    starredSessionTitle.contains("Code Lab")
-                                            ? R.string.codelab_room
-                                            : R.string.unknown_room);
+                            starredSessionRoomName = mContext.getString(R.string.unknown_room);
                         }
                         rv.setTextViewText(R.id.block_title, starredSessionTitle);
                         rv.setTextColor(R.id.block_title, res.getColor(R.color.body_text_1));

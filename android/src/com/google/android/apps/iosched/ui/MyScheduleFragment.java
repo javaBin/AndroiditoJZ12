@@ -350,11 +350,7 @@ public class MyScheduleFragment extends SherlockListFragment implements
                     titleView.setTextColor(res.getColorStateList(R.color.body_text_1));
                     subtitle = cursor.getString(BlocksQuery.STARRED_SESSION_ROOM_NAME);
                     if (subtitle == null) {
-                        // TODO: remove this WAR for API not returning rooms for code labs
-                        subtitle = getString(
-                                starredSessionTitle.contains("Code Lab")
-                                        ? R.string.codelab_room
-                                        : R.string.unknown_room);
+                        subtitle = getString( R.string.unknown_room);
                     }
                     isLiveStreamed = !TextUtils.isEmpty(
                             cursor.getString(BlocksQuery.STARRED_SESSION_LIVESTREAM_URL));

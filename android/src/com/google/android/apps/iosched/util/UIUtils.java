@@ -109,9 +109,10 @@ public class UIUtils {
             long blockStart, long blockEnd, String roomName, Context context) {
         if (sEmptyRoomText == null || sCodeLabRoomText == null) {
             sEmptyRoomText = context.getText(R.string.unknown_room);
-            sCodeLabRoomText = context.getText(R.string.codelab_room);
+            //sCodeLabRoomText = context.getText(R.string.codelab_room);
         }
 
+      //TODO JavaZone room name handling
         if (roomName == null) {
             // TODO: remove the WAR for API not returning rooms for code labs
             return context.getString(R.string.session_subtitle,

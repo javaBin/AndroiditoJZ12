@@ -68,8 +68,7 @@
     <string name="empty_captions">No captions found for this session.</string>
 
     <string name="unknown_room">(Unspecified Room)</string>
-    <string name="codelab_room">Code Labs (Level 2)</string>
-    <string name="keynote_room">Level 3</string>
+    <string name="keynote_room">Main floor</string>
 
     <string name="session_links">Links</string>
     <string name="session_requirements">Requirements</string>
@@ -81,15 +80,12 @@
     <string name="session_link_notes">Official notes</string>
     <string name="session_link_livestream">Watch on I/O Live</string>
 
-    <string name="session_livestream_title">I/O Live</string>
+    <string name="session_livestream_title">JavaZone Live</string>
     <string name="session_livestream_track_title">%s Track</string>
     <string name="session_livestream_info">Info</string>
     <string name="session_livestream_captions">Captions</string>
     <string name="session_livestream_error">Sorry, there was an error loading the live stream, please try again later</string>
-    <string name="session_livestream_keynote_title">Google I/O - %s</string>
-    <string name="session_livestream_keynote_desc">Google I/O\'s much-anticipated daily kickoff events will make you among the first developers to see what we\'ve been working on here at Google. Grab some popcorn, kick back and enjoy the show directly from your Android powered device.</string>
 
-    <string name="codelab_title_template">Code Lab: <xliff:g id="title">%1$s</xliff:g></string>
 
     <string name="vendor_exhibitors_prefix">Exhibitors: </string>
 
@@ -97,7 +93,7 @@
     <string name="search_hint">Search sessions</string>
 
     <string name="share_template">Checking out \'<xliff:g id="title">%1$s</xliff:g>\' at <xliff:g id="hashtags">%2$s</xliff:g> <xliff:g id="url">%3$s</xliff:g></string>
-    <string name="share_livestream_template">Watching I/O Live: \'<xliff:g id="title">%1$s</xliff:g>\' at <xliff:g id="hashtags">%2$s</xliff:g> <xliff:g id="url">%3$s</xliff:g></string>
+    <string name="share_livestream_template">Watching JavaZone Live: \'<xliff:g id="title">%1$s</xliff:g>\' at <xliff:g id="hashtags">%2$s</xliff:g> <xliff:g id="url">%3$s</xliff:g></string>
 
     <!-- Announcements -->
     <string name="whats_on_countdown_title_0"><xliff:g id="remaining_time">%1$s</xliff:g>\nuntil JavaZone</string>
@@ -134,7 +130,7 @@
         Welcome to the JavaZone 2012 app, your official companion to the JavaZone conference
         taking place in Oslo from September 12th to September 13th, 2012.<br>
         <br>
-        <font color="#4683ec"><b>Sign in with the Google account you registered with to
+        <font color="#4683ec"><b>Sign in with a Google account to
         get started</b></font>.
     ]]></string>
     <string name="title_accounts_list">Select a Google account</string>
@@ -238,12 +234,12 @@
     <string name="announcement_next">Next announcement</string>
 
     <!-- Beam easter egg -->
-    <string name="description_view_beam">Show Android Beam easter egg</string>
+    <string name="description_view_beam">Android Beam</string>
     <string name="description_beam_help">Help</string>
-    <string name="just_beamed">You just used Android Beam!</string>
+    <string name="just_beamed">Beamed!</string>
     <string name="view_beam_session">Learn more</string>
-    <string name="title_beam">Beam Easter Egg Unlocked!</string>
-    <string name="beam_unlocked_default">Awesome, you just used Android Beam!\n\nTry using Android Beam when viewing session details, to share sessions with others at the conference.\n\nTo learn more about using Android Beam in your own application, touch <i>Learn more</i> below or visit the NFC and Android Beam session on Thursday at 4pm in Room 9.\n\nA <i>Show Android Beam easter egg</i> item has also been added to the action bar at the top of the app\'s home screen. <b>Show this screen to us at end of the session to receive an Android Beam pin collectible!</b></string>
-    <string name="beam_unlocked_session">Awesome, you just used Android Beam to share a session!\n\nTo learn more about using Android Beam in your own application, touch <i>Learn more</i> below or visit the NFC and Android Beam session on Thursday at 4pm in Room 9.\n\nA <i>Show Android Beam easter egg</i> item has also been added to the action bar at the top of the app\'s home screen. <b>Show this screen to us at end of the session to receive an Android Beam pin collectible!</b></string>
-    <string name="beam_unlocked_help">This shows you have used Android Beam with the JavaZone 2012 app.\n\nTo learn more about using Android Beam in your own application, touch <i>Learn more</i> below or visit the NFC and Android Beam session on Thursday at 4pm in Room 9.\n\nA <i>Show Android Beam easter egg</i> item has also been added to the action bar at the top of the app\'s home screen. <b>Show this screen to us at end of the session to receive an Android Beam pin collectible!</b></string>
+    <string name="title_beam">Android Beam</string>
+    <string name="beam_unlocked_default">Try using Android Beam when viewing session details.</string>
+    <string name="beam_unlocked_session"></string>
+    <string name="beam_unlocked_help"></string>
 </resources>

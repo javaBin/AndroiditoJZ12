@@ -16,23 +16,6 @@
 
 package com.google.android.apps.iosched.ui;
 
-import com.google.analytics.tracking.android.EasyTracker;
-import com.google.android.apps.iosched.Config;
-import no.java.schedule.R;
-import com.google.android.apps.iosched.provider.ScheduleContract;
-import com.google.android.apps.iosched.provider.ScheduleContract.Sessions;
-import com.google.android.apps.iosched.provider.ScheduleContract.Tracks;
-import com.google.android.apps.iosched.util.SessionsHelper;
-import com.google.android.apps.iosched.util.UIUtils;
-import com.google.android.youtube.api.YouTube;
-import com.google.android.youtube.api.YouTubePlayer;
-import com.google.android.youtube.api.YouTubePlayerSupportFragment;
-
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
-import com.actionbarsherlock.view.Window;
-
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
@@ -62,18 +45,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
+import android.widget.*;
 import android.widget.LinearLayout.LayoutParams;
-import android.widget.TabHost;
-import android.widget.TabWidget;
-import android.widget.TextView;
-import android.widget.Toast;
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+import com.actionbarsherlock.view.Window;
+import com.google.analytics.tracking.android.EasyTracker;
+import com.google.android.apps.iosched.Config;
+import com.google.android.apps.iosched.provider.ScheduleContract;
+import com.google.android.apps.iosched.provider.ScheduleContract.Sessions;
+import com.google.android.apps.iosched.provider.ScheduleContract.Tracks;
+import com.google.android.apps.iosched.util.SessionsHelper;
+import com.google.android.apps.iosched.util.UIUtils;
+import com.google.android.youtube.api.YouTube;
+import com.google.android.youtube.api.YouTubePlayer;
+import com.google.android.youtube.api.YouTubePlayerSupportFragment;
+import no.java.schedule.R;
 
 import java.util.ArrayList;
 
 import static com.google.android.apps.iosched.util.LogUtils.LOGD;
-import static com.google.android.apps.iosched.util.LogUtils.LOGE;
 import static com.google.android.apps.iosched.util.LogUtils.makeLogTag;
 
 /**
@@ -601,6 +593,7 @@ public class SessionLivestreamActivity extends BaseActivity implements
     }
 
     private void updateSessionSummaryFragment(String title, String sessionAbstract) {
+        /** Not used in JavaZone
         SessionSummaryFragment sessionSummaryFragment;
         if (mIsTablet) {
             sessionSummaryFragment = (SessionSummaryFragment)
@@ -616,6 +609,7 @@ public class SessionLivestreamActivity extends BaseActivity implements
                             getString(R.string.session_livestream_keynote_desc)
                             : sessionAbstract);
         }
+        **/
     }
 
     Runnable mStreamRefreshRunnable = new Runnable() {
