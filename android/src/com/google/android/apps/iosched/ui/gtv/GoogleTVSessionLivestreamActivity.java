@@ -567,7 +567,7 @@ public class GoogleTVSessionLivestreamActivity extends BaseActivity implements
             try {
                 mGTVSyncHelper.performSync(null, SyncHelper.FLAG_SYNC_LOCAL | SyncHelper.FLAG_SYNC_REMOTE);
             } catch (IOException e) {
-                LOGE(TAG, "Error loading data for Google I/O 2012.", e);
+                LOGE(TAG, "Error loading data for JavaZone 2012.", e);
             }
             return null;
         }

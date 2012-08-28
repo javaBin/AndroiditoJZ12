@@ -98,8 +98,8 @@
     <!-- Announcements -->
     <string name="whats_on_countdown_title_0"><xliff:g id="remaining_time">%1$s</xliff:g>\nuntil JavaZone</string>
     <plurals name="whats_on_countdown_title">
-        <item quantity="one"><xliff:g id="number_of_days">%1$s</xliff:g> day, <xliff:g id="remaining_time">%2$s</xliff:g>\nuntil Google I/O</item>
-        <item quantity="other"><xliff:g id="number_of_days">%1$s</xliff:g> days, <xliff:g id="remaining_time">%2$s</xliff:g>\nuntil Google I/O</item>
+        <item quantity="one"><xliff:g id="number_of_days">%1$s</xliff:g> day, <xliff:g id="remaining_time">%2$s</xliff:g>\nuntil JavaZone</item>
+        <item quantity="other"><xliff:g id="number_of_days">%1$s</xliff:g> days, <xliff:g id="remaining_time">%2$s</xliff:g>\nuntil JavaZone</item>
     </plurals>
     <string name="whats_on_thank_you_title">See you next year!</string>
     <string name="news_will_appear_here">News will appear here</string>
@@ -212,8 +212,8 @@
     <string name="live_now_badge"><![CDATA[<font color="#ff4444"><small><b>LIVE</b></small></font>]]></string>
 
     <!-- Google TV  -->
-    <string name="missed_io_title">No Google I/O sessions are currently playing.</string>
-    <string name="missed_io_subtitle">Check out https://developers.google.com/io for the latest on Google I/O.</string>
+    <string name="missed_io_title">No JavaZone sessions are currently playing.</string>
+    <string name="missed_io_subtitle">Check out http://javazone.no for the latest on JavaZone.</string>
     <string name="error_tv_no_url">No I/O Live stream was available for the selected session.</string>
     <string name="next_live_stream_session_template">Next Live Session: <xliff:g id="title">%1$s</xliff:g></string>
     <string name="starts_in_template_0_days">Starts in <xliff:g id="remaining_time">%1$s</xliff:g>.</string>
