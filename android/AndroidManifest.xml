@@ -79,7 +79,7 @@
             android:configChanges="orientation|keyboardHidden" />
 
         <activity
-            android:name="com.google.android.apps.iosched.ui.HomeActivity"
+            android:name="no.java.schedule.ui.HomeActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.Iosched.Home">
             <intent-filter>
@@ -266,8 +266,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+      <activity android:name=".ui.HomeActivity"/>
 
-        <!-- Session alarm/calendar integrating components. -->
+      <!-- Session alarm/calendar integrating components. -->
         <receiver android:name="com.google.android.apps.iosched.calendar.SessionAlarmReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
