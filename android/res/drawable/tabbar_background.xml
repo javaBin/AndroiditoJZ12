@@ -15,5 +15,6 @@
   -->
 
 <bitmap xmlns:android="http://schemas.android.com/apk/res/android"
-    android:src="@drawable/tabbar_background"
-    android:tileMode="repeat" />
+    android:src="@drawable/actionbar_background_pattern_tile"
+    android:tileMode="repeat"
+     />
