@@ -175,6 +175,7 @@ public class HelpUtils {
             aboutBody.append("\n\n");
             aboutBody.append(licensesLink);
 
+          /**
             SpannableString eulaLink = new SpannableString(getString(R.string.about_eula));
             eulaLink.setSpan(new ClickableSpan() {
                 @Override
@@ -184,7 +185,7 @@ public class HelpUtils {
             }, 0, eulaLink.length(), 0);
             aboutBody.append("\n\n");
             aboutBody.append(eulaLink);
-
+            **/
             LayoutInflater layoutInflater = (LayoutInflater) getActivity().getSystemService(
                     Context.LAYOUT_INFLATER_SERVICE);
             TextView aboutBodyView = (TextView) layoutInflater.inflate(R.layout.dialog_about, null);
