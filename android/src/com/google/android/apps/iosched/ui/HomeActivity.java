@@ -125,9 +125,9 @@ public class HomeActivity extends BaseActivity implements
             actionBar.addTab(actionBar.newTab()
                     .setText(R.string.title_explore)
                     .setTabListener(this));
-            actionBar.addTab(actionBar.newTab()
-                    .setText(R.string.title_stream)
-                    .setTabListener(this));
+            //actionBar.addTab(actionBar.newTab()
+            //        .setText(R.string.title_stream)
+            //        .setTabListener(this));
 
             homeScreenLabel = getString(R.string.title_my_schedule);
 
@@ -135,7 +135,7 @@ public class HomeActivity extends BaseActivity implements
             mExploreFragment = (ExploreFragment) fm.findFragmentById(R.id.fragment_tracks);
             mMyScheduleFragment = (MyScheduleFragment) fm.findFragmentById(
                     R.id.fragment_my_schedule);
-            mSocialStreamFragment = (SocialStreamFragment) fm.findFragmentById(R.id.fragment_stream);
+            //mSocialStreamFragment = (SocialStreamFragment) fm.findFragmentById(R.id.fragment_stream);
 
             homeScreenLabel = "Home";
         }
@@ -298,15 +298,15 @@ public class HomeActivity extends BaseActivity implements
                 case 1:
                     return (mExploreFragment = new ExploreFragment());
 
-                case 2:
-                    return (mSocialStreamFragment = new SocialStreamFragment());
+                //case 2:
+                //    return (mSocialStreamFragment = new SocialStreamFragment());
             }
             return null;
         }
 
         @Override
         public int getCount() {
-            return 3;
+            return 2;
         }
     }
 
