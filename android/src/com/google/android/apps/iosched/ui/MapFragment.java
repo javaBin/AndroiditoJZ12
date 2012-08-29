@@ -58,7 +58,7 @@ public class MapFragment extends SherlockFragment {
             = "android.hardware.touchscreen.multitouch";
 
     private static final String MAP_JSI_NAME = "MAP_CONTAINER";
-    private static final String MAP_URL = "http://ioschedmap.appspot.com/embed.html";
+    private static final String MAP_URL = "http://goo.gl/maps/3dZAx";
 
     private static boolean CLEAR_CACHE_ON_LOAD = BuildConfig.DEBUG;
 
