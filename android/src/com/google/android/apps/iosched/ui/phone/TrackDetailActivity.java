@@ -73,8 +73,7 @@ public class TrackDetailActivity extends BaseActivity implements
         mViewPager.setPageMarginDrawable(R.drawable.grey_border_inset_lr);
         mViewPager.setPageMargin(getResources().getDimensionPixelSize(R.dimen.page_margin_width));
 
-        mShowVendors = !ScheduleContract.Tracks.CODELABS_TRACK_ID.equals(mTrackId)
-                && !ScheduleContract.Tracks.TECH_TALK_TRACK_ID.equals(mTrackId);
+        mShowVendors = false;//!ScheduleContract.Tracks.CODELABS_TRACK_ID.equals(mTrackId) && !ScheduleContract.Tracks.TECH_TALK_TRACK_ID.equals(mTrackId);
 
         if (mShowVendors) {
             final ActionBar actionBar = getSupportActionBar();
