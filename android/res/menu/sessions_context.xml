@@ -23,7 +23,8 @@
         android:icon="@drawable/ic_action_map"
         android:title="@string/description_map"
         android:orderInCategory="2"
-        android:showAsAction="ifRoom" />
+        android:showAsAction="ifRoom"
+        android:visible="false"/>
     <item android:id="@+id/menu_share"
         android:icon="@drawable/ic_action_share"
         android:title="@string/description_share"
@@ -33,5 +34,6 @@
         android:icon="@drawable/ic_action_social_stream"
         android:title="@string/description_social_stream"
         android:orderInCategory="3"
-        android:showAsAction="ifRoom" />
+        android:showAsAction="ifRoom"
+        android:visible="false"/>
 </menu>
