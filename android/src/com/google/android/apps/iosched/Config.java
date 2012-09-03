@@ -25,16 +25,13 @@ public class Config {
     // Conference API-specific config
     // NOTE: the backend used for the Google I/O 2012 Android app is not currently open source, so
     // you should modify these fields to reflect your own backend.
-    private static final String CONFERENCE_API_KEY = "API_KEY";
-    private static final String ROOT_EVENT_ID = "googleio2012";
-    private static final String BASE_URL = "https://google-developers.appspot.com/_ah/api/resources/v0.1";
-    public static final String GET_ALL_SESSIONS_URL      = BASE_URL + "/sessions?parent_event=" + ROOT_EVENT_ID + "&api_key=" + CONFERENCE_API_KEY;
-    public static final String GET_ALL_SPEAKERS_URL      = BASE_URL + "/speakers?event_id=" + ROOT_EVENT_ID + "&api_key=" + CONFERENCE_API_KEY;
-    public static final String GET_ALL_ANNOUNCEMENTS_URL = BASE_URL + "/announcements?parent_event=" + ROOT_EVENT_ID + "&api_key=" + CONFERENCE_API_KEY;
-    public static final String EDIT_MY_SCHEDULE_URL      = BASE_URL + "/editmyschedule/o/";
+
+    private static final String BASE_URL = "http://javazone.no/incogito10/rest/events/JavaZone%202012";
+    public static final String GET_ALL_SESSIONS_URL      = BASE_URL + "/sessions";
+    // TODO public static final String EDIT_MY_SCHEDULE_URL      = BASE_URL + "/editmyschedule/o/";
 
     // Static file host for the sandbox data
-    public static final String GET_SANDBOX_URL = "https://developers.google.com/events/io/sandbox-data";
+    public static final String GET_SANDBOX_URL = "https://javazone.no";
 
     // YouTube API config
     public static final String YOUTUBE_API_KEY = "API_KEY";
@@ -47,7 +44,7 @@ public class Config {
     public static final String PRIMARY_LIVESTREAM_TRACK = "android";
     public static final String SECONDARY_LIVESTREAM_TRACK = "chrome";
 
-    // GCM config
+    // GCM config TODO
     public static final String GCM_SERVER_URL = "https://yourapp-gcm.appspot.com";
     public static final String GCM_SENDER_ID = "0000000000000"; // project ID from the APIs console
 }

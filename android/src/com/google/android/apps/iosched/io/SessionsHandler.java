@@ -89,7 +89,7 @@ public class SessionsHandler extends JSONHandler {
             LOGI(TAG, "Updating sessions data");
 
             // by default retain locally starred if local sync
-            boolean retainLocallyStarredSessions = mLocal;
+            boolean retainLocallyStarredSessions = true; //mLocal;
 
             if (response.error != null && response.error.isJsonPrimitive()) {
                 String errorMessageLower = response.error.getAsString().toLowerCase();

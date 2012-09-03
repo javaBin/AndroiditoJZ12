@@ -16,59 +16,36 @@
 
 package com.google.android.apps.iosched.sync;
 
-import com.google.analytics.tracking.android.EasyTracker;
-import com.google.android.apps.iosched.Config;
-import no.java.schedule.R;
-import com.google.android.apps.iosched.io.AnnouncementsHandler;
-import com.google.android.apps.iosched.io.BlocksHandler;
-import com.google.android.apps.iosched.io.HandlerException;
-import com.google.android.apps.iosched.io.JSONHandler;
-import com.google.android.apps.iosched.io.RoomsHandler;
-import com.google.android.apps.iosched.io.SandboxHandler;
-import com.google.android.apps.iosched.io.SearchSuggestHandler;
-import com.google.android.apps.iosched.io.SessionsHandler;
-import com.google.android.apps.iosched.io.SpeakersHandler;
-import com.google.android.apps.iosched.io.TracksHandler;
-import com.google.android.apps.iosched.io.model.EditMyScheduleResponse;
-import com.google.android.apps.iosched.io.model.ErrorResponse;
-import com.google.android.apps.iosched.provider.ScheduleContract;
-import com.google.android.apps.iosched.calendar.SessionCalendarService;
-import com.google.android.apps.iosched.util.AccountUtils;
-import com.google.android.apps.iosched.util.UIUtils;
-import com.google.api.client.googleapis.extensions.android2.auth.GoogleAccountManager;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
-
 import android.accounts.Account;
-import android.content.ContentProviderOperation;
-import android.content.ContentResolver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.OperationApplicationException;
-import android.content.SharedPreferences;
-import android.content.SyncResult;
+import android.content.*;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.os.RemoteException;
 import android.preference.PreferenceManager;
+import com.google.analytics.tracking.android.EasyTracker;
+import com.google.android.apps.iosched.Config;
+import com.google.android.apps.iosched.calendar.SessionCalendarService;
+import com.google.android.apps.iosched.io.*;
+import com.google.android.apps.iosched.io.model.ErrorResponse;
+import com.google.android.apps.iosched.provider.ScheduleContract;
+import com.google.android.apps.iosched.util.AccountUtils;
+import com.google.android.apps.iosched.util.UIUtils;
+import com.google.api.client.googleapis.extensions.android2.auth.GoogleAccountManager;
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+import no.java.schedule.R;
 
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-import static com.google.android.apps.iosched.util.LogUtils.LOGD;
-import static com.google.android.apps.iosched.util.LogUtils.LOGI;
-import static com.google.android.apps.iosched.util.LogUtils.LOGV;
-import static com.google.android.apps.iosched.util.LogUtils.makeLogTag;
+import static com.google.android.apps.iosched.util.LogUtils.*;
 
 /**
  * A helper class for dealing with sync and other remote persistence operations.
@@ -124,7 +101,7 @@ public class SyncHelper {
 
         if ((flags & FLAG_SYNC_LOCAL) != 0) {
             final long startLocal = System.currentTimeMillis();
-            final boolean localParse = true;//localVersion < LOCAL_VERSION_CURRENT;
+            final boolean localParse = localVersion < LOCAL_VERSION_CURRENT;
             LOGD(TAG, "found localVersion=" + localVersion + " and LOCAL_VERSION_CURRENT="
                     + LOCAL_VERSION_CURRENT);
             // Only run local sync if there's a newer version of data available
@@ -167,23 +144,24 @@ public class SyncHelper {
             batch = new ArrayList<ContentProviderOperation>();
         }
 
-        if (false && (flags & FLAG_SYNC_REMOTE) != 0 && isOnline()) {
+        if ((flags & FLAG_SYNC_REMOTE) != 0 && isOnline()) {
             try {
                 boolean auth = !UIUtils.isGoogleTV(mContext) &&
                         AccountUtils.isAuthenticated(mContext);
                 final long startRemote = System.currentTimeMillis();
-                LOGI(TAG, "Remote syncing speakers");
-                batch.addAll(executeGet(Config.GET_ALL_SPEAKERS_URL,
-                        new SpeakersHandler(mContext, false), auth));
+                //LOGI(TAG, "Remote syncing speakers");
+                //batch.addAll(executeGet(Config.GET_ALL_SPEAKERS_URL,
+                //        new SpeakersHandler(mContext, false), auth));
                 LOGI(TAG, "Remote syncing sessions");
                 batch.addAll(executeGet(Config.GET_ALL_SESSIONS_URL,
                         new SessionsHandler(mContext, false, mAuthToken != null), auth));
-                LOGI(TAG, "Remote syncing sandbox");
-                batch.addAll(executeGet(Config.GET_SANDBOX_URL,
-                        new SandboxHandler(mContext, false), auth));
-                LOGI(TAG, "Remote syncing announcements");
-                batch.addAll(executeGet(Config.GET_ALL_ANNOUNCEMENTS_URL,
-                        new AnnouncementsHandler(mContext, false), auth));
+                //LOGI(TAG, "Remote syncing sandbox");
+                //batch.addAll(executeGet(Config.GET_SANDBOX_URL,
+                //        new SandboxHandler(mContext, false), auth));
+                //TODO Enable announcements for JavaZone
+                //LOGI(TAG, "Remote syncing announcements");
+                //batch.addAll(executeGet(Config.GET_ALL_ANNOUNCEMENTS_URL,
+                //        new AnnouncementsHandler(mContext, false), auth));
                 // GET_ALL_SESSIONS covers the functionality GET_MY_SCHEDULE provides here.
                 LOGD(TAG, "Remote sync took " + (System.currentTimeMillis() - startRemote) + "ms");
                 if (syncResult != null) {
@@ -266,6 +244,7 @@ public class SyncHelper {
 
     public void addOrRemoveSessionFromSchedule(Context context, String sessionId,
             boolean inSchedule) throws IOException {
+      /**
         mAuthToken = AccountUtils.getAuthToken(mContext);
         JsonObject starredSession = new JsonObject();
         starredSession.addProperty("sessionid", sessionId);
@@ -299,6 +278,7 @@ public class SyncHelper {
                 throw new HandlerException.NoDevsiteProfileException();
             }
         }
+       **/
     }
 
     private ArrayList<ContentProviderOperation> executeGet(String urlString, JSONHandler handler,
@@ -310,6 +290,8 @@ public class SyncHelper {
         if (authenticated && mAuthToken != null) {
             urlConnection.setRequestProperty("Authorization", "Bearer " + mAuthToken);
         }
+
+        urlConnection.setRequestProperty("Accept","application/json");
 
         urlConnection.connect();
         throwErrors(urlConnection);
