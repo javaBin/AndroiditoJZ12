@@ -108,8 +108,9 @@ public class SessionDetailFragment extends SherlockFragment implements
 
     private ImageFetcher mImageFetcher;
     private List<Runnable> mDeferredUiOperations = new ArrayList<Runnable>();
+  private static final String S3_CACHE_PREFIX = "http://s3-eu-west-1.amazonaws.com/jz12/";
 
-    @Override
+  @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -447,7 +448,7 @@ public class SessionDetailFragment extends SherlockFragment implements
                     .findViewById(R.id.speaker_abstract);
 
             if (!TextUtils.isEmpty(speakerImageUrl)) {
-                mImageFetcher.loadThumbnailImage(speakerImageUrl, speakerImageView,
+                mImageFetcher.loadThumbnailImage(speakerImageUrl.replaceFirst("http://",S3_CACHE_PREFIX)+"-100x100", speakerImageView,
                         R.drawable.person_image_empty);
             }
 
