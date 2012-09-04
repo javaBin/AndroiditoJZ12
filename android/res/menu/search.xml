@@ -19,5 +19,6 @@
         android:title="@string/description_search"
         android:orderInCategory="0"
         android:actionViewClass="android.widget.SearchView"
-        android:showAsAction="ifRoom|collapseActionView" />
+        android:showAsAction="ifRoom|collapseActionView"
+        android:visible="false"/>
 </menu>

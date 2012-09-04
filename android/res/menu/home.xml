@@ -20,8 +20,8 @@
         android:title="@string/description_search"
         android:orderInCategory="0"
         android:actionViewClass="android.widget.SearchView"
-        android:showAsAction="ifRoom|collapseActionView" />
-        android:visible="false"/>
+        android:showAsAction="never"
+        android:visible="false"/>  <!-- ifRoom|collapseActionView -->
 
     <item android:id="@+id/menu_refresh"
         android:icon="@drawable/ic_action_refresh"
