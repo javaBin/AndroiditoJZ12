@@ -124,9 +124,9 @@ public abstract class BaseActivity extends SherlockFragmentActivity {
      * Sets the icon color using some fancy blending mode trickery.
      */
     protected void setActionBarColor(int color) {
-        if (color == 0) {
-            color = 0xffffffff;
-        }
+        //if (color == 0) {
+        //    color = 0xffffffff;
+        //}
 
         final Resources res = getResources();
         Drawable maskDrawable = res.getDrawable(R.drawable.actionbar_icon_mask);
