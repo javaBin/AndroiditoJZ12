@@ -58,7 +58,7 @@ public class RoomsHandler extends JSONHandler {
       Object[] roomArray = rooms.toArray();
         int noOfRooms = rooms.size();
         for (int i = 0; i < noOfRooms; i++) {
-            parseRoom(String.valueOf(roomArray), batch);
+            parseRoom(String.valueOf(roomArray[i]), batch);
         }
         return batch;
     }
