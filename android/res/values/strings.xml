@@ -54,7 +54,7 @@
 
     <string name="session_subtitle"><xliff:g id="time">%1$s</xliff:g> in <xliff:g id="room">%2$s</xliff:g></string>
 
-    <string name="all_tracks">All tracks</string>
+    <string name="all_tracks">All labels</string>
     <string name="all_tracks_sessions">All sessions</string>
     <string name="all_tracks_vendors">All companies</string>
     <string name="all_tracks_subtitle_sessions">All sessions at JavaZone 2012.</string>
