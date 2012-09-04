@@ -30,7 +30,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/actionbar_logo_tv"
+            android:src="@drawable/actionbar_logo"
             android:padding="@dimen/multipane_half_padding"
             android:background="@drawable/accent_bottom_border"
             android:contentDescription="@string/app_name" />

@@ -222,7 +222,7 @@ public class SessionAlarmService extends IntentService {
                             SessionAlarmService.NOTIFICATION_ARGB_COLOR,
                             SessionAlarmService.NOTIFICATION_LED_ON_MS,
                             SessionAlarmService.NOTIFICATION_LED_OFF_MS)
-                    .setSmallIcon(R.drawable.ic_stat_notification)
+                    .setSmallIcon(R.drawable.ic_launcher)
                     .setContentIntent(pi)
                     .setPriority(Notification.PRIORITY_MAX)
                     .setAutoCancel(true);
@@ -257,7 +257,7 @@ public class SessionAlarmService extends IntentService {
                             SessionAlarmService.NOTIFICATION_ARGB_COLOR,
                             SessionAlarmService.NOTIFICATION_LED_ON_MS,
                             SessionAlarmService.NOTIFICATION_LED_OFF_MS)
-                    .setSmallIcon(R.drawable.ic_stat_notification)
+                    .setSmallIcon(R.drawable.ic_launcher)
                     .setContentIntent(pi)
                     .getNotification();
         }
