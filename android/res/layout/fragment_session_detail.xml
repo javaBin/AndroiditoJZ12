@@ -34,7 +34,8 @@
             android:layout_marginLeft="@dimen/content_padding_normal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/plus_one_description_standard" />
+            android:contentDescription="@string/plus_one_description_standard"
+            android:visibility="gone"/>
 
         <TextView android:id="@+id/session_title"
             android:layout_toLeftOf="@id/plus_one_button"
