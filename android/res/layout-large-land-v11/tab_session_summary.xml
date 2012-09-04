@@ -34,6 +34,17 @@
                 android:layout_height="wrap_content"
                 style="@style/TextBody" />
 
+          <LinearLayout android:id="@+id/session_labels_block"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/element_spacing_normal">
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:text="@string/session_labels"
+                      style="@style/TextHeader2" />
+          </LinearLayout>
+
             <LinearLayout android:id="@+id/session_speakers_block"
                 android:orientation="vertical"
                 android:layout_width="match_parent"

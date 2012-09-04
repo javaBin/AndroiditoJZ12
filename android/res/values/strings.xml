@@ -73,6 +73,7 @@
     <string name="session_links">Links</string>
     <string name="session_requirements">Requirements</string>
     <string name="session_speakers">Speakers</string>
+    <string name="session_labels">Labels</string>
 
     <string name="session_link_main">Web link</string>
     <string name="session_link_youtube">YouTube video</string>

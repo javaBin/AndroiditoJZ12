@@ -16,25 +16,6 @@
 
 package com.google.android.apps.iosched.ui;
 
-import com.google.analytics.tracking.android.EasyTracker;
-import com.google.android.apps.iosched.Config;
-import no.java.schedule.R;
-import com.google.android.apps.iosched.calendar.SessionAlarmService;
-import com.google.android.apps.iosched.calendar.SessionCalendarService;
-import com.google.android.apps.iosched.provider.ScheduleContract;
-import com.google.android.apps.iosched.util.FractionalTouchDelegate;
-import com.google.android.apps.iosched.util.HelpUtils;
-import com.google.android.apps.iosched.util.ImageFetcher;
-import com.google.android.apps.iosched.util.SessionsHelper;
-import com.google.android.apps.iosched.util.UIUtils;
-import com.google.api.android.plus.GooglePlus;
-import com.google.api.android.plus.PlusOneButton;
-
-import com.actionbarsherlock.app.SherlockFragment;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
-
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -52,6 +33,23 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.actionbarsherlock.app.SherlockFragment;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
+import com.google.analytics.tracking.android.EasyTracker;
+import com.google.android.apps.iosched.Config;
+import com.google.android.apps.iosched.calendar.SessionAlarmService;
+import com.google.android.apps.iosched.calendar.SessionCalendarService;
+import com.google.android.apps.iosched.provider.ScheduleContract;
+import com.google.android.apps.iosched.util.FractionalTouchDelegate;
+import com.google.android.apps.iosched.util.HelpUtils;
+import com.google.android.apps.iosched.util.ImageFetcher;
+import com.google.android.apps.iosched.util.SessionsHelper;
+import com.google.android.apps.iosched.util.UIUtils;
+import com.google.api.android.plus.GooglePlus;
+import com.google.api.android.plus.PlusOneButton;
+import no.java.schedule.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -109,6 +107,7 @@ public class SessionDetailFragment extends SherlockFragment implements
     private ImageFetcher mImageFetcher;
     private List<Runnable> mDeferredUiOperations = new ArrayList<Runnable>();
   private static final String S3_CACHE_PREFIX = "http://s3-eu-west-1.amazonaws.com/jz12/";
+  private ViewGroup mLabelContainer;
 
   @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -164,6 +163,7 @@ public class SessionDetailFragment extends SherlockFragment implements
             headerView.setLayoutParams(layoutParams);
         }
 
+        mLabelContainer = (ViewGroup) mRootView.findViewById(R.id.session_labels_block);
         return mRootView;
     }
 
@@ -357,6 +357,21 @@ public class SessionDetailFragment extends SherlockFragment implements
                 null, null, mSubtitle, subtitle);
         mRootView.findViewById(R.id.session_links_block)
                 .setVisibility(hasLinks ? View.VISIBLE : View.GONE);
+
+
+        // Display labels
+      View labelView = inflater.inflate(R.layout.label_detail, mLabelContainer, false);
+      String labels  = cursor.getString(SessionsQuery.TAGS);
+
+      if (labels.endsWith(",")){
+        labels=labels.substring(0,labels.length()-1);
+      }
+      TextView labelHeader = (TextView) labelView.findViewById(R.id.label_header);
+      labelHeader.setText(labels);
+
+      mLabelContainer.addView(labelView);
+
+
         
         EasyTracker.getTracker().trackView("Session: " + mTitleString);
         LOGD("Tracker", "Session: " + mTitleString);
@@ -612,6 +627,7 @@ public class SessionDetailFragment extends SherlockFragment implements
                 ScheduleContract.Sessions.SESSION_LIVESTREAM_URL,
                 ScheduleContract.Sessions.ROOM_ID,
                 ScheduleContract.Rooms.ROOM_NAME,
+                ScheduleContract.Sessions.SESSION_TAGS,
         };
 
         int BLOCK_START = 0;
@@ -629,6 +645,7 @@ public class SessionDetailFragment extends SherlockFragment implements
         int LIVESTREAM_URL = 12;
         int ROOM_ID = 13;
         int ROOM_NAME = 14;
+        int TAGS = 15;
 
         int[] LINKS_INDICES = {
                 URL,
