@@ -109,7 +109,7 @@ public class MyScheduleWidgetProvider extends AppWidgetProvider {
                     // Update widget
                     final AppWidgetManager mgr = AppWidgetManager.getInstance(context);
                     final ComponentName cn = new ComponentName(context,
-                            MyScheduleWidgetProvider.class);
+                            no.java.schedule.appwidget.MyScheduleWidgetProvider.class);
                     mgr.notifyAppWidgetViewDataChanged(mgr.getAppWidgetIds(cn),
                             R.id.widget_schedule_list);
                 }
@@ -201,7 +201,7 @@ public class MyScheduleWidgetProvider extends AppWidgetProvider {
                     ? R.string.empty_widget_text
                     : R.string.empty_widget_text_signed_out));
 
-            final Intent onClickIntent = new Intent(context, MyScheduleWidgetProvider.class);
+            final Intent onClickIntent = new Intent(context, no.java.schedule.appwidget.MyScheduleWidgetProvider.class);
             onClickIntent.setAction(MyScheduleWidgetProvider.CLICK_ACTION);
             onClickIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
             onClickIntent.setData(Uri.parse(onClickIntent.toUri(Intent.URI_INTENT_SCHEME)));
@@ -209,14 +209,14 @@ public class MyScheduleWidgetProvider extends AppWidgetProvider {
                     onClickIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             rv.setPendingIntentTemplate(R.id.widget_schedule_list, onClickPendingIntent);
 
-            final Intent refreshIntent = new Intent(context, MyScheduleWidgetProvider.class);
+            final Intent refreshIntent = new Intent(context, no.java.schedule.appwidget.MyScheduleWidgetProvider.class);
             refreshIntent.setAction(MyScheduleWidgetProvider.REFRESH_ACTION);
             refreshIntent.putExtra(MyScheduleWidgetProvider.EXTRA_PERFORM_SYNC, true);
             final PendingIntent refreshPendingIntent = PendingIntent.getBroadcast(context, 0,
                     refreshIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             rv.setOnClickPendingIntent(R.id.widget_refresh_button, refreshPendingIntent);
 
-            final Intent openAppIntent = new Intent(context, HomeActivity.class);
+            final Intent openAppIntent = new Intent(context, no.java.schedule.ui.HomeActivity.class);
             final PendingIntent openAppPendingIntent = PendingIntent.getActivity(context, 0,
                     openAppIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             rv.setOnClickPendingIntent(R.id.widget_logo, openAppPendingIntent);
