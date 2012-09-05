@@ -39,8 +39,5 @@
         android:orderInCategory="99"
         android:showAsAction="never" />
 
-    <item android:id="@+id/menu_sign_out"
-        android:title="@string/description_sign_out"
-        android:orderInCategory="100"
-        android:showAsAction="never" />
+
 </menu>

@@ -20,7 +20,6 @@ import no.java.schedule.R;
 import com.google.android.apps.iosched.provider.ScheduleContract;
 import com.google.android.apps.iosched.ui.widget.SimpleSectionedListAdapter;
 import com.google.android.apps.iosched.ui.widget.SimpleSectionedListAdapter.Section;
-import com.google.android.apps.iosched.util.AccountUtils;
 import com.google.android.apps.iosched.util.ParserUtils;
 import com.google.android.apps.iosched.util.UIUtils;
 
@@ -86,7 +85,7 @@ public class MyScheduleWidgetService extends RemoteViewsService {
         }
 
         public int getCount() {
-            if (mCursor == null || !AccountUtils.isAuthenticated(mContext)) {
+            if (mCursor == null ) {
                 return 0;
             }
 

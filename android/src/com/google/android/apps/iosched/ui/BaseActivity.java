@@ -16,25 +16,12 @@
 
 package com.google.android.apps.iosched.ui;
 
-import com.google.analytics.tracking.android.EasyTracker;
-import no.java.schedule.R;
-import com.google.android.apps.iosched.util.AccountUtils;
-import com.google.android.apps.iosched.util.BeamUtils;
-import com.google.android.apps.iosched.util.UIUtils;
-
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.MenuItem;
-
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
+import android.graphics.*;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -43,6 +30,12 @@ import android.nfc.NfcEvent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.MenuItem;
+import com.google.analytics.tracking.android.EasyTracker;
+import com.google.android.apps.iosched.util.BeamUtils;
+import com.google.android.apps.iosched.util.UIUtils;
+import no.java.schedule.R;
 
 /**
  * A base activity that handles common functionality in the app.
@@ -52,15 +45,6 @@ public abstract class BaseActivity extends SherlockFragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EasyTracker.getTracker().setContext(this);
-
-        // If we're not on Google TV and we're not authenticated, finish this activity
-        // and show the authentication screen.
-        if (!UIUtils.isGoogleTV(this)) {
-            if (!AccountUtils.isAuthenticated(this)) {
-                AccountUtils.startAuthenticationFlow(this, getIntent());
-                finish();
-            }
-        }
 
         // If Android Beam APIs are available, set up the Beam easter egg as the default Beam
         // content. This can be overridden by subclasses.

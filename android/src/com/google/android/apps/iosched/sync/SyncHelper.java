@@ -16,7 +16,6 @@
 
 package com.google.android.apps.iosched.sync;
 
-import android.accounts.Account;
 import android.content.*;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -30,9 +29,7 @@ import com.google.android.apps.iosched.calendar.SessionCalendarService;
 import com.google.android.apps.iosched.io.*;
 import com.google.android.apps.iosched.io.model.ErrorResponse;
 import com.google.android.apps.iosched.provider.ScheduleContract;
-import com.google.android.apps.iosched.util.AccountUtils;
 import com.google.android.apps.iosched.util.UIUtils;
-import com.google.api.client.googleapis.extensions.android2.auth.GoogleAccountManager;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import no.java.schedule.R;
@@ -70,7 +67,6 @@ public class SyncHelper {
     private static final int LOCAL_VERSION_CURRENT = 19;
 
     private Context mContext;
-    private String mAuthToken;
     private String mUserAgent;
 
     public SyncHelper(Context context) {
@@ -87,7 +83,6 @@ public class SyncHelper {
      * @throws IOException
      */
     public void performSync(SyncResult syncResult, int flags) throws IOException {
-        mAuthToken = AccountUtils.getAuthToken(mContext);
 
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
         final int localVersion = prefs.getInt("local_data_version", 0);
@@ -146,15 +141,13 @@ public class SyncHelper {
 
         if ((flags & FLAG_SYNC_REMOTE) != 0 && isOnline()) {
             try {
-                boolean auth = !UIUtils.isGoogleTV(mContext) &&
-                        AccountUtils.isAuthenticated(mContext);
                 final long startRemote = System.currentTimeMillis();
                 //LOGI(TAG, "Remote syncing speakers");
                 //batch.addAll(executeGet(Config.GET_ALL_SPEAKERS_URL,
                 //        new SpeakersHandler(mContext, false), auth));
                 LOGI(TAG, "Remote syncing sessions");
                 batch.addAll(executeGet(Config.GET_ALL_SESSIONS_URL,
-                        new SessionsHandler(mContext, false, mAuthToken != null), auth));
+                        new SessionsHandler(mContext, false, false)));
                 //LOGI(TAG, "Remote syncing sandbox");
                 //batch.addAll(executeGet(Config.GET_SANDBOX_URL,
                 //        new SandboxHandler(mContext, false), auth));
@@ -176,10 +169,7 @@ public class SyncHelper {
                 if (syncResult != null) {
                     ++syncResult.stats.numAuthExceptions;
                 }
-                AccountUtils.invalidateAuthToken(mContext);
-                AccountUtils.tryAuthenticateWithErrorNotification(mContext, null,
-                        new Account(AccountUtils.getChosenAccountName(mContext),
-                                GoogleAccountManager.ACCOUNT_TYPE));
+
             }
             // all other IOExceptions are thrown
         }
@@ -281,15 +271,12 @@ public class SyncHelper {
        **/
     }
 
-    private ArrayList<ContentProviderOperation> executeGet(String urlString, JSONHandler handler,
-            boolean authenticated) throws IOException {
+    private ArrayList<ContentProviderOperation> executeGet(String urlString, JSONHandler handler) throws IOException {
         LOGD(TAG, "Requesting URL: " + urlString);
         URL url = new URL(urlString);
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
         urlConnection.setRequestProperty("User-Agent", mUserAgent);
-        if (authenticated && mAuthToken != null) {
-            urlConnection.setRequestProperty("Authorization", "Bearer " + mAuthToken);
-        }
+
 
         urlConnection.setRequestProperty("Accept","application/json");
 

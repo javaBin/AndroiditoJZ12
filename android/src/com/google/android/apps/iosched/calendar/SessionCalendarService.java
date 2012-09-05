@@ -16,31 +16,22 @@
 
 package com.google.android.apps.iosched.calendar;
 
-import com.google.android.apps.iosched.provider.ScheduleContract;
-import com.google.android.apps.iosched.util.AccountUtils;
-import com.google.android.apps.iosched.util.UIUtils;
-
 import android.annotation.TargetApi;
 import android.app.IntentService;
-import android.content.ContentProviderOperation;
-import android.content.ContentResolver;
-import android.content.ContentValues;
-import android.content.Intent;
-import android.content.OperationApplicationException;
+import android.content.*;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.provider.CalendarContract;
-import android.text.TextUtils;
+import com.google.android.apps.iosched.provider.ScheduleContract;
+import com.google.android.apps.iosched.util.UIUtils;
 import no.java.schedule.R;
 
 import java.util.ArrayList;
 
-import static com.google.android.apps.iosched.util.LogUtils.LOGE;
-import static com.google.android.apps.iosched.util.LogUtils.LOGW;
-import static com.google.android.apps.iosched.util.LogUtils.makeLogTag;
+import static com.google.android.apps.iosched.util.LogUtils.*;
 
 /**
  * Background {@link android.app.Service} that adds or removes session Calendar events through
@@ -146,33 +137,8 @@ public class SessionCalendarService extends IntentService {
      * specified in the given intent's {@link #EXTRA_ACCOUNT_NAME}.
      */
     private long getCalendarId(Intent intent) {
-        final String accountName;
-        if (intent != null && intent.hasExtra(EXTRA_ACCOUNT_NAME)) {
-            accountName = intent.getStringExtra(EXTRA_ACCOUNT_NAME);
-        } else {
-            accountName = AccountUtils.getChosenAccountName(this);
-        }
-
-        if (TextUtils.isEmpty(accountName)) {
             return INVALID_CALENDAR_ID;
-        }
 
-        // TODO: The calendar ID should be stored in shared preferences upon choosing an account.
-        Cursor calendarsCursor = getContentResolver().query(
-                CalendarContract.Calendars.CONTENT_URI,
-                new String[]{"_id"},
-                // TODO: Handle case where the calendar is not displayed or not sync'd
-                "account_name = ownerAccount and account_name = ?",
-                new String[]{accountName},
-                null);
-
-        long calendarId = INVALID_CALENDAR_ID;
-        if (calendarsCursor != null && calendarsCursor.moveToFirst()) {
-            calendarId = calendarsCursor.getLong(0);
-            calendarsCursor.close();
-        }
-
-        return calendarId;
     }
 
     private String makeCalendarEventTitle(String sessionTitle) {

@@ -17,17 +17,13 @@
 
 package com.google.android.apps.iosched.sync;
 
-import com.google.android.apps.iosched.provider.ScheduleContract;
-import com.google.android.apps.iosched.util.AccountUtils;
-import com.google.api.client.googleapis.extensions.android2.auth.GoogleAccountManager;
-
 import android.accounts.Account;
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
+import com.google.android.apps.iosched.provider.ScheduleContract;
 
 /**
  * A simple {@link BroadcastReceiver} that triggers a sync. This is used by the GCM code to trigger
@@ -36,13 +32,9 @@ import android.text.TextUtils;
 public class TriggerSyncReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        String accountName = AccountUtils.getChosenAccountName(context);
-        if (TextUtils.isEmpty(accountName)) {
-            return;
-        }
 
         ContentResolver.requestSync(
-                new Account(accountName, GoogleAccountManager.ACCOUNT_TYPE),
+                new Account("JavaZone Schedule", "no.java.schedule"),
                 ScheduleContract.CONTENT_AUTHORITY, new Bundle());
     }
 }

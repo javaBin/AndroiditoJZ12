@@ -16,24 +16,6 @@
 
 package com.google.android.apps.iosched.ui;
 
-import com.google.analytics.tracking.android.EasyTracker;
-import no.java.schedule.BuildConfig;
-import com.google.android.apps.iosched.Config;
-import no.java.schedule.R;
-import com.google.android.apps.iosched.gcm.ServerUtilities;
-import com.google.android.apps.iosched.provider.ScheduleContract;
-import com.google.android.apps.iosched.ui.gtv.GoogleTVSessionLivestreamActivity;
-import com.google.android.apps.iosched.util.AccountUtils;
-import com.google.android.apps.iosched.util.BeamUtils;
-import com.google.android.apps.iosched.util.HelpUtils;
-import com.google.android.apps.iosched.util.UIUtils;
-import com.google.android.gcm.GCMRegistrar;
-import com.google.api.client.googleapis.extensions.android2.auth.GoogleAccountManager;
-
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
-
 import android.accounts.Account;
 import android.annotation.TargetApi;
 import android.app.SearchManager;
@@ -50,11 +32,22 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.widget.SearchView;
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+import com.google.analytics.tracking.android.EasyTracker;
+import com.google.android.apps.iosched.Config;
+import com.google.android.apps.iosched.gcm.ServerUtilities;
+import com.google.android.apps.iosched.provider.ScheduleContract;
+import com.google.android.apps.iosched.ui.gtv.GoogleTVSessionLivestreamActivity;
+import com.google.android.apps.iosched.util.BeamUtils;
+import com.google.android.apps.iosched.util.HelpUtils;
+import com.google.android.apps.iosched.util.UIUtils;
+import com.google.android.gcm.GCMRegistrar;
+import no.java.schedule.BuildConfig;
+import no.java.schedule.R;
 
-import static com.google.android.apps.iosched.util.LogUtils.LOGD;
-import static com.google.android.apps.iosched.util.LogUtils.LOGI;
-import static com.google.android.apps.iosched.util.LogUtils.LOGW;
-import static com.google.android.apps.iosched.util.LogUtils.makeLogTag;
+import static com.google.android.apps.iosched.util.LogUtils.*;
 
 /**
  * The landing screen for the app, once the user has logged in.
@@ -357,11 +350,6 @@ public class HomeActivity extends BaseActivity implements
                 HelpUtils.showAbout(this);
                 return true;
 
-            case R.id.menu_sign_out:
-                AccountUtils.signOut(this);
-                finish();
-                return true;
-
             case R.id.menu_beam:
                 Intent beamIntent = new Intent(this, BeamActivity.class);
                 startActivity(beamIntent);
@@ -375,10 +363,10 @@ public class HomeActivity extends BaseActivity implements
         Bundle extras = new Bundle();
         extras.putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true);
         if (!UIUtils.isGoogleTV(this)) {
-	        ContentResolver.requestSync(
-	                new Account(AccountUtils.getChosenAccountName(this),
-	                        GoogleAccountManager.ACCOUNT_TYPE),
-	                ScheduleContract.CONTENT_AUTHORITY, extras);
+
+            ContentResolver.requestSync(
+                    new Account("JavaZone Schedule","no.java.schedule"),
+                    ScheduleContract.CONTENT_AUTHORITY, extras);
         }
 
         if (mSocialStreamFragment != null) {
@@ -427,13 +415,8 @@ public class HomeActivity extends BaseActivity implements
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    String accountName = AccountUtils.getChosenAccountName(HomeActivity.this);
-                    if (TextUtils.isEmpty(accountName)) {
-                        setRefreshActionButtonState(false);
-                        return;
-                    }
 
-                    Account account = new Account(accountName, GoogleAccountManager.ACCOUNT_TYPE);
+                    Account account = new Account("JavaZone Schedule", "no.java.schedule");
                     boolean syncActive = ContentResolver.isSyncActive(
                             account, ScheduleContract.CONTENT_AUTHORITY);
                     boolean syncPending = ContentResolver.isSyncPending(

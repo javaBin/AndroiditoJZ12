@@ -17,7 +17,6 @@
 package com.google.android.apps.iosched.sync;
 
 import no.java.schedule.BuildConfig;
-import com.google.android.apps.iosched.util.AccountUtils;
 
 import android.accounts.Account;
 import android.content.AbstractThreadedSyncAdapter;
@@ -26,9 +25,6 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.SyncResult;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.regex.Pattern;
@@ -86,14 +82,8 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                 " initialize=" + initialize);
 
         if (initialize) {
-            String chosenAccountName = AccountUtils.getChosenAccountName(mContext);
-            boolean isChosenAccount =
-                    chosenAccountName != null && chosenAccountName.equals(account.name);
+            boolean isChosenAccount = "JavaZone Schedule".equals(account.name) && "no.java.schedule".equals(account.type);
             ContentResolver.setIsSyncable(account, authority, isChosenAccount ? 1 : 0);
-            if (!isChosenAccount) {
-                ++syncResult.stats.numAuthExceptions;
-                return;
-            }
         }
 
         // Perform a sync using SyncHelper

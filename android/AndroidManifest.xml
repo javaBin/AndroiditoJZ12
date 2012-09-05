@@ -36,6 +36,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
@@ -68,15 +70,9 @@
         android:icon="@drawable/ic_launcher"
         android:logo="@drawable/actionbar_logo"
         android:theme="@style/Theme.Iosched"
-        android:hardwareAccelerated="true">
+        android:hardwareAccelerated="true" android:name=".JZScheduleApplication">
 
         <!-- Activities for both phones and tablets -->
-
-        <activity
-            android:name="com.google.android.apps.iosched.ui.AccountActivity"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.Iosched.Accounts"
-            android:configChanges="orientation|keyboardHidden" />
 
         <activity
             android:name="no.java.schedule.ui.HomeActivity"
@@ -364,6 +360,14 @@
             android:permission="android.permission.BIND_REMOTEVIEWS"
             android:exported="false"
             android:enabled="@bool/has_honeycomb" />
+
+        <service android:name=".service.AccountAuthenticatorService" >
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator" />
+            </intent-filter>
+            <meta-data android:name="android.accounts.AccountAuthenticator"
+                       android:resource="@xml/authenticator" />
+        </service>
 
     </application>
 </manifest>

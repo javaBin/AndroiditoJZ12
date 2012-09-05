@@ -16,15 +16,6 @@
 
 package com.google.android.apps.iosched.appwidget;
 
-import no.java.schedule.R;
-import com.google.android.apps.iosched.provider.ScheduleContract;
-import com.google.android.apps.iosched.ui.HomeActivity;
-import com.google.android.apps.iosched.ui.SessionLivestreamActivity;
-import com.google.android.apps.iosched.util.AccountUtils;
-import com.google.android.apps.iosched.util.ParserUtils;
-import com.google.android.apps.iosched.util.UIUtils;
-import com.google.api.client.googleapis.extensions.android2.auth.GoogleAccountManager;
-
 import android.accounts.Account;
 import android.annotation.TargetApi;
 import android.app.PendingIntent;
@@ -41,6 +32,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.widget.RemoteViews;
+import com.google.android.apps.iosched.provider.ScheduleContract;
+import com.google.android.apps.iosched.ui.HomeActivity;
+import com.google.android.apps.iosched.ui.SessionLivestreamActivity;
+import com.google.android.apps.iosched.util.ParserUtils;
+import com.google.android.apps.iosched.util.UIUtils;
+import no.java.schedule.R;
 
 import static com.google.android.apps.iosched.util.LogUtils.LOGV;
 import static com.google.android.apps.iosched.util.LogUtils.makeLogTag;
@@ -101,12 +98,11 @@ public class MyScheduleWidgetProvider extends AppWidgetProvider {
                 @Override
                 public void run() {
                     // Trigger sync
-                    String chosenAccountName = AccountUtils.getChosenAccountName(context);
-                    if (shouldSync && chosenAccountName != null) {
+                    if (shouldSync) {
                         Bundle extras = new Bundle();
                         extras.putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true);
                         ContentResolver.requestSync(
-                                new Account(chosenAccountName, GoogleAccountManager.ACCOUNT_TYPE),
+                                new Account("JavaZone Schedule", "no.java.schedule"),
                                 ScheduleContract.CONTENT_AUTHORITY, extras);
                     }
 
@@ -186,7 +182,7 @@ public class MyScheduleWidgetProvider extends AppWidgetProvider {
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        final boolean isAuthenticated = AccountUtils.isAuthenticated(context);
+        final boolean isAuthenticated = true;
         for (int appWidgetId : appWidgetIds) {
             // Specify the service to provide data for the collection widget.  Note that we need to
             // embed the appWidgetId via the data otherwise it will be ignored.
