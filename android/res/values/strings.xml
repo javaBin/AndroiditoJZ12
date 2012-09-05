@@ -52,7 +52,7 @@
         <item quantity="other"><xliff:g id="num_sessions">%1$d</xliff:g> sessions selected</item>
     </plurals>
 
-    <string name="session_subtitle"><xliff:g id="time">%1$s</xliff:g> in <xliff:g id="room">%2$s</xliff:g></string>
+    <string name="session_subtitle"><xliff:g id="time">%1$s</xliff:g> in <xliff:g id="room">%2$s</xliff:g> <xliff:g id="type">%3$s</xliff:g></string>
 
     <string name="all_tracks">All labels</string>
     <string name="all_tracks_sessions">All sessions</string>

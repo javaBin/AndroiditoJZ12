@@ -207,6 +207,28 @@ public class SessionsHandler extends JSONHandler {
                     //    youtubeUrl = event.youtube_url[0];
                     //}
 
+                long sessionStartTime=0;
+                long sessionEndTime=0;      //TODO handle sessions without timeslot
+
+                long originalSessionEndTime=1;
+                long originalSessionStartTime=1;
+
+
+                if (event.start!=null && event.end!=null){
+                    originalSessionStartTime = event.start.millis();
+                    originalSessionEndTime = event.end.millis();
+
+                    sessionStartTime = event.start.millis();//parseTime(event.start_date, event.start_time);
+                    sessionEndTime = event.end.millis();//event.end_date, event.end_time);
+                }
+
+                if  ("Quickie".equals(event.format)){
+                    sessionStartTime=snapStartTime(sessionStartTime);
+                    sessionEndTime=snapEndTime(sessionEndTime);
+
+
+                }
+
                     // Insert session info
                     final ContentProviderOperation.Builder builder = ContentProviderOperation
                             .newInsert(ScheduleContract
@@ -226,21 +248,11 @@ public class SessionsHandler extends JSONHandler {
                             .withValue(Sessions.SESSION_YOUTUBE_URL, youtubeUrl)
                             .withValue(Sessions.SESSION_PDF_URL, "")
                             .withValue(Sessions.SESSION_NOTES_URL, "")
-                            .withValue(Sessions.ROOM_ID, sanitizeId(event.room));
+                            .withValue(Sessions.ROOM_ID, sanitizeId(event.room))
+                            .withValue(Sessions.START, originalSessionStartTime)
+                            .withValue(Sessions.END, originalSessionEndTime);
 
 
-                    long sessionStartTime=0;
-                    long sessionEndTime=0;      //TODO handle sessions without timeslot
-
-                    if (event.start!=null && event.end!=null){
-                      sessionStartTime = event.start.millis();//parseTime(event.start_date, event.start_time);
-                      sessionEndTime = event.end.millis();//event.end_date, event.end_time);
-                    }
-
-                    if  ("Quickie".equals(event.format)){
-                      sessionStartTime=snapStartTime(sessionStartTime);
-                      sessionEndTime=snapEndTime(sessionEndTime);
-                    }
 
 
 

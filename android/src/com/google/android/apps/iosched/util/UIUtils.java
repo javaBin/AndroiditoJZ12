@@ -82,8 +82,8 @@ public class UIUtils {
     private static final int DAY_MILLIS = 24 * HOUR_MILLIS;
 
     /** Flags used with {@link DateUtils#formatDateRange}. */
-    private static final int TIME_FLAGS = DateUtils.FORMAT_SHOW_TIME
-            | DateUtils.FORMAT_SHOW_WEEKDAY | DateUtils.FORMAT_ABBREV_WEEKDAY | DateUtils.FORMAT_24HOUR;
+    private static final int TIME_FLAGS = DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_WEEKDAY | DateUtils.FORMAT_ABBREV_WEEKDAY | DateUtils.FORMAT_24HOUR;
+    private static final int LIGHTNING_TALK_TIME_FLAGS = DateUtils.FORMAT_SHOW_TIME |  DateUtils.FORMAT_24HOUR;
 
     /** {@link StringBuilder} used for formatting time block. */
     private static StringBuilder sBuilder = new StringBuilder(50);
@@ -106,24 +106,36 @@ public class UIUtils {
      * {@link #CONFERENCE_TIME_ZONE}.
      */
     public static String formatSessionSubtitle(String sessionTitle,
-            long blockStart, long blockEnd, String roomName, Context context) {
+            long blockStart, long blockEnd,long sessionStart,long sessionEnd, String roomName, String type,Context context) {
         if (sEmptyRoomText == null || sCodeLabRoomText == null) {
             sEmptyRoomText = context.getText(R.string.unknown_room);
-            //sCodeLabRoomText = context.getText(R.string.codelab_room);
+
         }
 
       //TODO JavaZone room name handling
         if (roomName == null) {
-            // TODO: remove the WAR for API not returning rooms for code labs
             return context.getString(R.string.session_subtitle,
-                    formatBlockTimeString(blockStart, blockEnd, context),
-                    sessionTitle.contains("Code Lab")
-                            ? sCodeLabRoomText
-                            : sEmptyRoomText);
+                    formatBlockTimeString(blockStart, blockEnd, context), sEmptyRoomText);
         }
 
-        return context.getString(R.string.session_subtitle,
-                formatBlockTimeString(blockStart, blockEnd, context), roomName);
+
+        if ("Quickie".equals(type)){
+            type = "(Lightning talk starts "+ formatLightningTalkTimeString(sessionStart, context)+")";
+        } else {
+            type = "";
+        }
+
+        return context.getString(
+                R.string.session_subtitle,
+                formatBlockTimeString(blockStart, blockEnd, context),
+                roomName,type
+                );
+    }
+
+    private static String formatLightningTalkTimeString(long sessionStart, Context context) {
+        TimeZone.setDefault(CONFERENCE_TIME_ZONE);
+
+        return DateUtils.formatDateTime(context, sessionStart, LIGHTNING_TALK_TIME_FLAGS);
     }
 
     /**

@@ -499,9 +499,12 @@ public class SessionsFragment extends SherlockListFragment implements
             // Format time block this session occupies
             final long blockStart = cursor.getLong(SessionsQuery.BLOCK_START);
             final long blockEnd = cursor.getLong(SessionsQuery.BLOCK_END);
+            final long sessionStart = cursor.getLong(SessionsQuery.START);
+            final long sessionEnd = cursor.getLong(SessionsQuery.END);
             final String roomName = cursor.getString(SessionsQuery.ROOM_NAME);
+            final String type = cursor.getString(SessionsQuery.TYPE);
             final String subtitle = formatSessionSubtitle(
-                    sessionTitle, blockStart, blockEnd, roomName, context);
+                    sessionTitle, blockStart,blockEnd,sessionStart, sessionEnd, roomName, type,context);
 
             final boolean starred = cursor.getInt(SessionsQuery.STARRED) != 0;
             view.findViewById(R.id.indicator_in_schedule).setVisibility(
@@ -571,6 +574,10 @@ public class SessionsFragment extends SherlockListFragment implements
                 ScheduleContract.Sessions.SESSION_HASHTAGS,
                 ScheduleContract.Sessions.SESSION_URL,
                 ScheduleContract.Sessions.SESSION_LIVESTREAM_URL,
+                ScheduleContract.Sessions.SESSION_TYPE,
+                ScheduleContract.Sessions.SESSION_START,
+                ScheduleContract.Sessions.SESSION_END,
+
         };
 
         int _ID = 0;
@@ -584,6 +591,9 @@ public class SessionsFragment extends SherlockListFragment implements
         int HASHTAGS = 8;
         int URL = 9;
         int LIVESTREAM_URL = 10;
+        int TYPE = 11;
+        int START = 12;
+        int END = 13;
     }
 
     /**

@@ -123,6 +123,8 @@ public class ScheduleContract {
         String SESSION_CAL_EVENT_ID = "session_cal_event_id";
         /** The YouTube live stream URL. */
         String SESSION_LIVESTREAM_URL = "session_livestream_url";
+        String SESSION_START = "session_start";
+        String SESSION_END = "session_end";
     }
 
     interface SpeakersColumns {
@@ -426,6 +428,9 @@ public class ScheduleContract {
 
         public static final String BLOCK_ID = "block_id";
         public static final String ROOM_ID = "room_id";
+        public static final String START = "session_start";
+        public static final String END = "session_end";
+
 
         public static final String SEARCH_SNIPPET = "search_snippet";
 

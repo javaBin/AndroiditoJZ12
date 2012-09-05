@@ -79,11 +79,15 @@ public class SessionDetailFragment extends SherlockFragment implements
 
     private long mSessionBlockStart;
     private long mSessionBlockEnd;
+    private long mSessionStart;
+    private long mSessionEnd;
+
     private String mTitleString;
     private String mHashtags;
     private String mUrl;
     private String mRoomId;
     private String mRoomName;
+    private String mType;
 
     private boolean mStarred;
     private boolean mInitStarred;
@@ -109,7 +113,7 @@ public class SessionDetailFragment extends SherlockFragment implements
   private static final String S3_CACHE_PREFIX = "http://s3-eu-west-1.amazonaws.com/jz12/";
   private ViewGroup mLabelContainer;
 
-  @Override
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -235,9 +239,12 @@ public class SessionDetailFragment extends SherlockFragment implements
         // Format time block this session occupies
         mSessionBlockStart = cursor.getLong(SessionsQuery.BLOCK_START);
         mSessionBlockEnd = cursor.getLong(SessionsQuery.BLOCK_END);
+        mSessionStart = cursor.getLong(SessionsQuery.START);
+        mSessionEnd = cursor.getLong(SessionsQuery.END);
         mRoomName = cursor.getString(SessionsQuery.ROOM_NAME);
+        mType = cursor.getString(SessionsQuery.TYPE);
         final String subtitle = UIUtils.formatSessionSubtitle(
-                mTitleString, mSessionBlockStart, mSessionBlockEnd, mRoomName, getActivity());
+                mTitleString, mSessionBlockStart, mSessionBlockEnd,mSessionStart,mSessionEnd, mRoomName, mType, getActivity());
 
         mTitle.setText(mTitleString);
 
@@ -628,6 +635,10 @@ public class SessionDetailFragment extends SherlockFragment implements
                 ScheduleContract.Sessions.ROOM_ID,
                 ScheduleContract.Rooms.ROOM_NAME,
                 ScheduleContract.Sessions.SESSION_TAGS,
+                ScheduleContract.Sessions.SESSION_TYPE,
+                ScheduleContract.Sessions.SESSION_START,
+                ScheduleContract.Sessions.SESSION_END,
+
         };
 
         int BLOCK_START = 0;
@@ -646,6 +657,9 @@ public class SessionDetailFragment extends SherlockFragment implements
         int ROOM_ID = 13;
         int ROOM_NAME = 14;
         int TAGS = 15;
+        int TYPE = 16;
+        int START = 17;
+        int END = 18;
 
         int[] LINKS_INDICES = {
                 URL,

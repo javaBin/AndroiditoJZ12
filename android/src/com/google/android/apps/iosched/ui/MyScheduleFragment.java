@@ -406,6 +406,8 @@ public class MyScheduleFragment extends SherlockListFragment implements
                     titleView.setText(getString(R.string.schedule_conflict_title,
                             numStarredSessions));
                     titleView.setTextColor(res.getColorStateList(R.color.body_text_1));
+
+
                     subtitle = getString(R.string.schedule_conflict_subtitle);
                     extraButton.setVisibility(View.VISIBLE);
                     extraButton.setOnClickListener(allSessionsListener);
