@@ -121,7 +121,8 @@
     <string name="schedule_empty_slot_title_template">Browse<xliff:g id="block_type">%1$s</xliff:g>&#8230;</string>
     <string name="schedule_empty_slot_subtitle">Empty slot</string>
     <string name="schedule_conflict_title"><xliff:g id="num_sessions">%1$s</xliff:g> chosen sessions</string>
-    <string name="schedule_conflict_subtitle">Conflict in slot</string>
+    <string name="schedule_conflict_subtitle"></string>
+
     <string name="schedule_block_title_sessions">Sessions</string>
     <string name="schedule_block_title_code_labs">Code Labs</string>
     <string name="schedule_block_title_keynote">Keynote</string>
