@@ -25,6 +25,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.provider.CalendarContract;
+import android.text.TextUtils;
 import com.google.android.apps.iosched.provider.ScheduleContract;
 import com.google.android.apps.iosched.util.UIUtils;
 import no.java.schedule.R;
@@ -137,7 +138,35 @@ public class SessionCalendarService extends IntentService {
      * specified in the given intent's {@link #EXTRA_ACCOUNT_NAME}.
      */
     private long getCalendarId(Intent intent) {
+
+
+        final String accountName ;
+        if (intent != null && intent.hasExtra(EXTRA_ACCOUNT_NAME)) {
+            accountName = intent.getStringExtra(EXTRA_ACCOUNT_NAME);
+        } else {
             return INVALID_CALENDAR_ID;
+        }
+
+        if (TextUtils.isEmpty(accountName)) {
+            return INVALID_CALENDAR_ID;
+        }
+
+        // TODO: The calendar ID should be stored in shared preferences upon choosing an account.
+        Cursor calendarsCursor = getContentResolver().query(
+                CalendarContract.Calendars.CONTENT_URI,
+                new String[]{"_id"},
+                // TODO: Handle case where the calendar is not displayed or not sync'd
+                "account_name = ownerAccount and account_name = ?",
+                new String[]{accountName},
+                null);
+
+        long calendarId = INVALID_CALENDAR_ID;
+        if (calendarsCursor != null && calendarsCursor.moveToFirst()) {
+            calendarId = calendarsCursor.getLong(0);
+            calendarsCursor.close();
+        }
+
+        return calendarId;
 
     }
 

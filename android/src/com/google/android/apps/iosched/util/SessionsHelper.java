@@ -16,17 +16,6 @@
 
 package com.google.android.apps.iosched.util;
 
-import com.google.analytics.tracking.android.EasyTracker;
-import no.java.schedule.R;
-import com.google.android.apps.iosched.appwidget.MyScheduleWidgetProvider;
-import com.google.android.apps.iosched.provider.ScheduleContract;
-import com.google.android.apps.iosched.sync.ScheduleUpdaterService;
-import com.google.android.apps.iosched.ui.MapFragment;
-import com.google.android.apps.iosched.ui.SocialStreamActivity;
-import com.google.android.apps.iosched.ui.SocialStreamFragment;
-
-import com.actionbarsherlock.view.MenuItem;
-
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.AsyncQueryHandler;
@@ -36,6 +25,14 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.ShareCompat;
+import com.actionbarsherlock.view.MenuItem;
+import com.google.analytics.tracking.android.EasyTracker;
+import com.google.android.apps.iosched.appwidget.MyScheduleWidgetProvider;
+import com.google.android.apps.iosched.provider.ScheduleContract;
+import com.google.android.apps.iosched.ui.MapFragment;
+import com.google.android.apps.iosched.ui.SocialStreamActivity;
+import com.google.android.apps.iosched.ui.SocialStreamFragment;
+import no.java.schedule.R;
 
 import static com.google.android.apps.iosched.util.LogUtils.LOGD;
 import static com.google.android.apps.iosched.util.LogUtils.makeLogTag;
@@ -125,11 +122,11 @@ public final class SessionsHelper {
         mActivity.sendBroadcast(refreshIntent);
 
         // Sync to the cloud.
-        final Intent updateServerIntent = new Intent(mActivity, ScheduleUpdaterService.class);
-        updateServerIntent.putExtra(ScheduleUpdaterService.EXTRA_SESSION_ID,
-                ScheduleContract.Sessions.getSessionId(sessionUri));
-        updateServerIntent.putExtra(ScheduleUpdaterService.EXTRA_IN_SCHEDULE, starred);
-        mActivity.startService(updateServerIntent);
+        //final Intent updateServerIntent = new Intent(mActivity, ScheduleUpdaterService.class);
+        //updateServerIntent.putExtra(ScheduleUpdaterService.EXTRA_SESSION_ID,
+        //        ScheduleContract.Sessions.getSessionId(sessionUri));
+        //updateServerIntent.putExtra(ScheduleUpdaterService.EXTRA_IN_SCHEDULE, starred);
+        //mActivity.startService(updateServerIntent);
     }
 
     public void startSocialStream(String hashtags) {

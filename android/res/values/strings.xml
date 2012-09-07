@@ -132,8 +132,7 @@
         Welcome to the JavaZone 2012 app, your official companion to the JavaZone conference
         taking place in Oslo from September 12th to September 13th, 2012.<br>
         <br>
-        <font color="#4683ec"><b>Sign in with a Google account to
-        get started</b></font>.
+
     ]]></string>
     <string name="title_accounts_list">Select a Google account</string>
     <string name="empty_accounts">No Google accounts are available. Add an account to continue.</string>
