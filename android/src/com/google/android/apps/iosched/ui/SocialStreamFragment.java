@@ -1,5 +1,7 @@
 package com.google.android.apps.iosched.ui;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -77,7 +79,9 @@ public class SocialStreamFragment extends SherlockListFragment implements AbsLis
     public void onResume(){
         super.onResume();
         getListView().setOnScrollListener(this);
-        new TwitterSearchAsyncTask().execute();
+        if (isOnline()){
+            new TwitterSearchAsyncTask().execute();
+        }
     }
 
     @Override
@@ -127,19 +131,21 @@ public class SocialStreamFragment extends SherlockListFragment implements AbsLis
             }
         }
         if (!loading && (totalItemCount - visibleItemCount) <= (firstVisibleItem + visibleThreshold)) {
-            new TwitterSearchAsyncTask().execute(nextResult);
-            loading = true;
+            if (isOnline()){
+                new TwitterSearchAsyncTask().execute(nextResult);
+                loading = true;
+            }
         }
     }
 
     public void refresh(){
-        getSherlockActivity().setProgressBarIndeterminateVisibility(true);
         tweetArrayList.clear();
         adapter.notifyDataSetInvalidated();
-        getListView().setOnScrollListener(this);
         resetOnScrollListener();
-        getActivity().setProgressBarIndeterminateVisibility(true);
-        new TwitterSearchAsyncTask().execute();
+
+        if (isOnline()){
+            new TwitterSearchAsyncTask().execute();
+        }
     }
 
     private void resetOnScrollListener() {
@@ -207,8 +213,6 @@ public class SocialStreamFragment extends SherlockListFragment implements AbsLis
 
             Collections.sort(tweetArrayList);
             adapter.notifyDataSetChanged();
-            getSherlockActivity().setProgressBarIndeterminateVisibility(false);
-
         }
     }
 
@@ -219,5 +223,13 @@ public class SocialStreamFragment extends SherlockListFragment implements AbsLis
             }
         }
         return false;
+    }
+
+    private boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(
+                Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null &&
+                cm.getActiveNetworkInfo().isConnectedOrConnecting();
     }
 }
