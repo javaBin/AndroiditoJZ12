@@ -103,7 +103,7 @@
         <item quantity="other"><xliff:g id="number_of_days">%1$s</xliff:g> days, <xliff:g id="remaining_time">%2$s</xliff:g>\nuntil JavaZone</item>
     </plurals>
     <string name="whats_on_thank_you_title">See you next year!</string>
-    <string name="news_will_appear_here">News will appear here</string>
+    <string name="news_will_appear_here"></string>
     <string name="welcome_to_google_i_o">Welcome to JavaZone!</string>
 
     <string name="permission_write">Modify JavaZone schedule data</string>
