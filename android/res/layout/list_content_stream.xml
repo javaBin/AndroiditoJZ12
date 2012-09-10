@@ -32,5 +32,4 @@
               android:visibility="gone"
               android:gravity="center"
               android:text="@string/empty_social_stream"/>
-
 </LinearLayout>

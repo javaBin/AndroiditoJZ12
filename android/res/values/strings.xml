@@ -45,7 +45,7 @@
 
     <string name="title_my_schedule">My Agenda</string>
     <string name="title_explore">Explore</string>
-    <string name="title_stream">Stream</string>
+    <string name="title_stream">Twitter</string>
 
     <plurals name="title_selected_sessions">
         <item quantity="one">1 session selected</item>
@@ -63,7 +63,7 @@
     <string name="empty_sessions">No sessions found.</string>
     <string name="empty_session_detail">No session details found.</string>
     <string name="empty_vendors">No developer sandbox companies found.</string>
-    <string name="empty_social_stream">No posts found.</string>
+    <string name="empty_social_stream">No tweets found.</string>
     <string name="empty_waiting_for_sync">Waiting for sync&#8230;</string>
     <string name="empty_captions">No captions found for this session.</string>
 
@@ -188,7 +188,7 @@
     <string name="close">Close</string>
     <string name="loading">Loading&#8230;</string>
     <string name="retry">Retry</string>
-    <string name="stream_error">Couldn\'t load the Google+ stream.</string>
+    <string name="stream_error">Couldn\'t load the Twitter stream.</string>
     <string name="stream_originally_shared"><xliff:g id="name">%s</xliff:g> originally shared this post</string>
     <string name="empty_widget_text">No more upcoming sessions.\nSee you next year!</string>
     <string name="empty_widget_text_signed_out">Touch the JavaZone 2012 logo above to sign in and begin using the app.</string>

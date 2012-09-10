@@ -44,6 +44,10 @@ public class Config {
     public static final String PRIMARY_LIVESTREAM_TRACK = "android";
     public static final String SECONDARY_LIVESTREAM_TRACK = "chrome";
 
+    // Social network integration
+    public static final String HASHTAG = "?q=javazone";
+    public static final String TWITTER_SEARCH_URL = "http://search.twitter.com/search.json";
+
     // GCM config TODO
     public static final String GCM_SERVER_URL = "https://yourapp-gcm.appspot.com";
     public static final String GCM_SENDER_ID = "0000000000000"; // project ID from the APIs console

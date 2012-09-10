@@ -387,7 +387,7 @@ public class SessionLivestreamActivity extends BaseActivity implements
     @Override
     public boolean onNavigationItemSelected(int itemPosition, long itemId) {
         final Cursor cursor = (Cursor) mLivestreamAdapter.getItem(itemPosition);
-        setActionBarColor(cursor.getInt(SessionsQuery.TRACK_COLOR));
+        // setActionBarColor(cursor.getInt(SessionsQuery.TRACK_COLOR));
         final String sessionId = cursor.getString(SessionsQuery.SESSION_ID);
         if (sessionId != null) {
             reloadFromUri(Sessions.buildSessionUri(sessionId));
@@ -619,7 +619,7 @@ public class SessionLivestreamActivity extends BaseActivity implements
                 final SocialStreamFragment socialStreamFragment =
                         (SocialStreamFragment) mTabsAdapter.mFragments.get(TABNUM_SOCIAL_STREAM);
                 if (socialStreamFragment != null) {
-                    socialStreamFragment.refresh();
+                    //socialStreamFragment.refresh();
                 }
             }
             mHandler.postDelayed(mStreamRefreshRunnable, STREAM_REFRESH_TIME);
@@ -635,7 +635,7 @@ public class SessionLivestreamActivity extends BaseActivity implements
         final SocialStreamFragment socialStreamFragment =
                 (SocialStreamFragment) mTabsAdapter.mFragments.get(TABNUM_SOCIAL_STREAM);
         if (socialStreamFragment != null) {
-            socialStreamFragment.refresh(hashTags);
+            //socialStreamFragment.refresh();
         }
     }
 

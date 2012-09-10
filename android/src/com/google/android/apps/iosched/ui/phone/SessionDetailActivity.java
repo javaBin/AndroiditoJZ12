@@ -96,7 +96,7 @@ public class SessionDetailActivity extends SimpleSinglePaneActivity implements
     public void onTrackInfoAvailable(String trackId, String trackName, int trackColor) {
         mTrackId = trackId;
         setTitle(trackName);
-        setActionBarColor(trackColor);
+        // setActionBarColor(trackColor);
     }
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)

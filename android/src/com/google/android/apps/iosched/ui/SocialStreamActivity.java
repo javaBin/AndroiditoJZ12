@@ -16,6 +16,7 @@
 
 package com.google.android.apps.iosched.ui;
 
+import com.google.android.apps.iosched.Config;
 import no.java.schedule.R;
 
 import com.actionbarsherlock.view.Menu;
@@ -23,6 +24,8 @@ import com.actionbarsherlock.view.MenuItem;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+
+import static com.google.android.apps.iosched.Config.*;
 
 /**
  * A single-pane activity that shows a {@link SocialStreamFragment}.
@@ -36,7 +39,7 @@ public class SocialStreamActivity extends SimpleSinglePaneActivity {
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        setTitle(getIntent().getStringExtra(SocialStreamFragment.EXTRA_QUERY));
+        setTitle(HASHTAG);
     }
 
     @Override
@@ -53,6 +56,7 @@ public class SocialStreamActivity extends SimpleSinglePaneActivity {
                 ((SocialStreamFragment) getFragment()).refresh();
                 return true;
         }
-        return super.onOptionsItemSelected(item);
+
+        return false;
     }
 }

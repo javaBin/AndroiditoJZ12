@@ -134,7 +134,6 @@ public final class SessionsHelper {
 
     public void startSocialStream(String hashtags) {
         Intent intent = new Intent(mActivity, SocialStreamActivity.class);
-        intent.putExtra(SocialStreamFragment.EXTRA_QUERY, hashtags);
         mActivity.startActivity(intent);
     }
 }

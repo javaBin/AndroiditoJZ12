@@ -179,8 +179,6 @@ public class TrackDetailActivity extends BaseActivity implements
         switch (item.getItemId()) {
             case R.id.menu_social_stream:
                 Intent intent = new Intent(this, SocialStreamActivity.class);
-                intent.putExtra(SocialStreamFragment.EXTRA_QUERY,
-                        UIUtils.getSessionHashtagsString(mTrackId));
                 startActivity(intent);
                 break;
         }
@@ -190,7 +188,7 @@ public class TrackDetailActivity extends BaseActivity implements
     @Override
     public void onTrackInfoAvailable(String trackId, String trackName, int trackColor) {
         setTitle(trackName);
-        setActionBarColor(trackColor);
+        // setActionBarColor(trackColor);
         
         EasyTracker.getTracker().trackView(getString(R.string.title_sessions) + ": " + getTitle());
         LOGD("Tracker", getString(R.string.title_sessions) + ": " + getTitle());
