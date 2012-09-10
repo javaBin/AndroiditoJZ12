@@ -18,8 +18,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="no.java.schedule"
-    android:versionCode="21"
-    android:versionName="2012.2"
+    android:versionCode="23"
+    android:versionName="2012.3"
     android:installLocation="auto">
 
     <uses-sdk
