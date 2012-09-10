@@ -139,12 +139,14 @@ public class SocialStreamFragment extends SherlockListFragment implements AbsLis
     }
 
     public void refresh(){
-        tweetArrayList.clear();
-        adapter.notifyDataSetInvalidated();
-        resetOnScrollListener();
+        if (tweetArrayList != null && adapter != null){
+            tweetArrayList.clear();
+            adapter.notifyDataSetInvalidated();
+            resetOnScrollListener();
 
-        if (isOnline()){
-            new TwitterSearchAsyncTask().execute();
+            if (isOnline()){
+                new TwitterSearchAsyncTask().execute();
+            }
         }
     }
 
