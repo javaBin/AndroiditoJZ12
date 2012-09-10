@@ -46,7 +46,6 @@
             android:layout_below="@id/stream_user_name"
             android:maxLines="1"
             android:textColor="@color/stream_name_color"
-            android:visibility="gone"
             android:textSize="@dimen/stream_name_text_size" />
     <TextView
             android:id="@+id/stream_text"
