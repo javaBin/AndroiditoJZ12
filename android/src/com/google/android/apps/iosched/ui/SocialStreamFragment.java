@@ -27,6 +27,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -137,6 +138,7 @@ public class SocialStreamFragment extends SherlockListFragment implements AbsLis
         adapter.notifyDataSetInvalidated();
         getListView().setOnScrollListener(this);
         resetOnScrollListener();
+        getActivity().setProgressBarIndeterminateVisibility(true);
         new TwitterSearchAsyncTask().execute();
     }
 
@@ -195,12 +197,14 @@ public class SocialStreamFragment extends SherlockListFragment implements AbsLis
                     tweet.setText(object.getString("text"));
 
                     if (!containsId(tweetArrayList, tweet.getId())){
-                        tweetArrayList.add(tweet);
+                        tweetArrayList.add(0, tweet);
                     }
                 }
             } catch (Exception e) {
-               // Do nothing
+                // Do nothing
             }
+
+            Collections.sort(tweetArrayList);
             adapter.notifyDataSetChanged();
             getSherlockActivity().setProgressBarIndeterminateVisibility(false);
 

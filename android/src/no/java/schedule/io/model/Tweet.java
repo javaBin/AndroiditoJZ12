@@ -4,7 +4,7 @@ import android.net.Uri;
 
 import java.util.Date;
 
-public class Tweet {
+public class Tweet implements Comparable<Tweet>  {
 
     private long id;
     private Date createdAt;
@@ -70,5 +70,10 @@ public class Tweet {
 
     public void setProfileImageUri(Uri profileImageUri) {
         this.profileImageUri = profileImageUri;
+    }
+
+    @Override
+    public int compareTo(Tweet otherTweet) {
+        return otherTweet.getCreatedAt().compareTo(getCreatedAt());
     }
 }
