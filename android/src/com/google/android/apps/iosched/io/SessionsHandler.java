@@ -236,7 +236,7 @@ public class SessionsHandler extends JSONHandler {
                             .withValue(SyncColumns.UPDATED, System.currentTimeMillis())
                             .withValue(Sessions.SESSION_ID, sessionId)
                             .withValue(Sessions.SESSION_TYPE, event.format)
-                            .withValue(Sessions.SESSION_LEVEL, event.level.displayName)//TODO
+                            .withValue(Sessions.SESSION_LEVEL, event.level!=null ? event.level.displayName : "")//TODO
                             .withValue(Sessions.SESSION_TITLE, sessionTitle)
                             .withValue(Sessions.SESSION_ABSTRACT, event.bodyHtml)
                             .withValue(Sessions.SESSION_TAGS, event.labelstrings())
