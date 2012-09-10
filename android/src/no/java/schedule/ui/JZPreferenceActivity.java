@@ -16,15 +16,18 @@
 
 package no.java.schedule.ui;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
 import com.actionbarsherlock.ActionBarSherlock;
+import com.google.android.apps.iosched.calendar.SessionAlarmService;
 import no.java.schedule.R;
 
 
-public class JZPreferenceActivity extends PreferenceActivity {
+public class JZPreferenceActivity extends PreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
     private ActionBarSherlock sherlock;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,7 @@ public class JZPreferenceActivity extends PreferenceActivity {
         addPreferencesFromResource(R.xml.preferences);
         sherlock = ActionBarSherlock.wrap(this);//,ActionBarSherlock.FLAG_DELEGATE);
         sherlock.getActionBar().setHomeButtonEnabled(true);
+        PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(this);
     }
 
     @Override
@@ -44,5 +48,25 @@ public class JZPreferenceActivity extends PreferenceActivity {
            }
            return super.onOptionsItemSelected(item);
        }
+
+
+    @Override
+        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String preferenceKey) {
+
+
+            if (preferenceKey.startsWith("pref_notifications")){
+                if (preferenceKey.equals("pref_notifications")){
+                    if (sharedPreferences.getBoolean("pref_notifications",true)){
+                        SessionAlarmService.scheduleAllStarredBlocks(this);
+                    } else {
+                        SessionAlarmService.removeAllScheduledAlarms(this);
+                    }
+                } else if(preferenceKey.equals("pref_notifications_lead_time") && sharedPreferences.getBoolean("pref_notifications",true) ){
+                    SessionAlarmService.removeAllScheduledAlarms(this);
+                    SessionAlarmService.scheduleAllStarredBlocks(this);
+                }
+            }
+
+        }
 
 }
