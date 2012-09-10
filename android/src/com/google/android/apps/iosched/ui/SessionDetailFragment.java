@@ -40,13 +40,8 @@ import com.actionbarsherlock.view.MenuItem;
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.android.apps.iosched.Config;
 import com.google.android.apps.iosched.calendar.SessionAlarmService;
-import com.google.android.apps.iosched.calendar.SessionCalendarService;
 import com.google.android.apps.iosched.provider.ScheduleContract;
-import com.google.android.apps.iosched.util.FractionalTouchDelegate;
-import com.google.android.apps.iosched.util.HelpUtils;
-import com.google.android.apps.iosched.util.ImageFetcher;
-import com.google.android.apps.iosched.util.SessionsHelper;
-import com.google.android.apps.iosched.util.UIUtils;
+import com.google.android.apps.iosched.util.*;
 import com.google.api.android.plus.GooglePlus;
 import com.google.api.android.plus.PlusOneButton;
 import no.java.schedule.R;
@@ -181,6 +176,8 @@ public class SessionDetailFragment extends SherlockFragment implements
 
         if (mInitStarred != mStarred) {
             // Update Calendar event through the Calendar API on Android 4.0 or new versions.
+            /**
+
             if (UIUtils.hasICS()) {
                 Intent intent;
                 if (mStarred) {
@@ -206,7 +203,7 @@ public class SessionDetailFragment extends SherlockFragment implements
                 }
                 intent.setClass(getActivity(), SessionCalendarService.class);
                 getActivity().startService(intent);
-            }
+            } */
 
             if (mStarred && System.currentTimeMillis() < mSessionBlockStart) {
                 setupNotification();

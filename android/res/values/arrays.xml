@@ -13,9 +13,27 @@
   See the License for the specific language governing permissions and
   limitations under the License.
   -->
-
 <resources>
-    <integer name="text_header_max_lines">3</integer>
-    <integer name="track_abstract_max_lines">2</integer>
-    <integer name="pref_notification_time_default">5</integer>
+
+
+
+    <string-array name="pref_notification_time_entries">
+        <item>10</item>
+        <item>5</item>
+        <item>3</item>
+        <item>1</item>
+
+    </string-array>
+
+
+
+    <string-array name="pref_notification_time_values">
+        <item>10</item>
+        <item>5</item>
+        <item>3</item>
+        <item>1</item>
+
+    </string-array>
+
+
 </resources>

@@ -16,8 +16,6 @@
 
 package com.google.android.apps.iosched.provider;
 
-import com.google.android.apps.iosched.util.ParserUtils;
-
 import android.app.SearchManager;
 import android.graphics.Color;
 import android.net.Uri;
@@ -25,6 +23,7 @@ import android.provider.BaseColumns;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
+import com.google.android.apps.iosched.util.ParserUtils;
 
 import java.util.List;
 
@@ -438,6 +437,10 @@ public class ScheduleContract {
         /** Default "ORDER BY" clause. */
         public static final String DEFAULT_SORT = BlocksColumns.BLOCK_START + " ASC,"
                 + SessionsColumns.SESSION_TITLE + " COLLATE NOCASE ASC";
+
+        public static final String BLOCK_SESSION_SORT =
+                              ROOM_NAME + " ASC,"+
+                              SessionsColumns.SESSION_START + " ASC";
 
         public static final String LIVESTREAM_SELECTION =
                 SESSION_LIVESTREAM_URL + " is not null AND " + SESSION_LIVESTREAM_URL + "!=''";

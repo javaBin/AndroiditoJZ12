@@ -16,34 +16,31 @@
 
 package com.google.android.apps.iosched.calendar;
 
-import com.google.android.apps.iosched.provider.ScheduleContract;
-import com.google.android.apps.iosched.util.UIUtils;
-
 import android.annotation.TargetApi;
-import android.app.AlarmManager;
-import android.app.IntentService;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
+import android.app.*;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
+import com.google.android.apps.iosched.provider.ScheduleContract;
+import com.google.android.apps.iosched.util.UIUtils;
 import no.java.schedule.R;
 
 import java.util.ArrayList;
 
-import static com.google.android.apps.iosched.util.LogUtils.makeLogTag;
+import static android.preference.PreferenceManager.getDefaultSharedPreferences;
+import static com.google.android.apps.iosched.util.LogUtils.*;
 
 /**
  * Background service to handle scheduling of starred session notification via
  * {@link android.app.AlarmManager}.
  */
-public class SessionAlarmService extends IntentService {
+public class SessionAlarmService extends IntentService  {
     private static final String TAG = makeLogTag(SessionAlarmService.class);
 
     public static final String ACTION_NOTIFY_SESSION =
@@ -70,10 +67,12 @@ public class SessionAlarmService extends IntentService {
     private static final long TEN_MINUTES_MILLIS = 10 * ONE_MINUTE_MILLIS;
 
     private static final long UNDEFINED_ALARM_OFFSET = -1;
+    private enum ALARM_TASK {SCHEDULE,CANCEL}
 
     public SessionAlarmService() {
         super(TAG);
     }
+
 
     @Override
     protected void onHandleIntent(Intent intent) {
@@ -97,56 +96,94 @@ public class SessionAlarmService extends IntentService {
                 intent.getLongExtra(SessionAlarmService.EXTRA_SESSION_ALARM_OFFSET,
                         UNDEFINED_ALARM_OFFSET);
 
-        if (ACTION_NOTIFY_SESSION.equals(action)) {
+        if (ACTION_NOTIFY_SESSION.equals(action) && notificationsAreEnabled(this)) {
             notifySession(sessionStart, sessionEnd, sessionAlarmOffset);
         } else if (ACTION_SCHEDULE_STARRED_BLOCK.equals(action)) {
-            scheduleAlarm(sessionStart, sessionEnd, sessionAlarmOffset);
+            scheduleAlarm(this,sessionStart, sessionEnd, sessionAlarmOffset);
         }
     }
 
-    private void scheduleAlarm(final long sessionStart,
-            final long sessionEnd, final long alarmOffset) {
+    private static void scheduleAlarm(Context context,final long sessionStart,
+                                      final long sessionEnd, final long alarmOffset) {
 
-        NotificationManager nm =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        nm.cancel(NOTIFICATION_ID);
-        final long currentTime = System.currentTimeMillis();
+        if (notificationsAreEnabled(context)) {
 
-        // If the session is already started, do not schedule system notification.
-        if (currentTime > sessionStart) {
+            NotificationManager nm =
+                    (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+            nm.cancel(NOTIFICATION_ID);
+            final long currentTime = System.currentTimeMillis();
+
+            // If the session is already started, do not schedule system notification.
+            if (currentTime > sessionStart) {
+                return;
+            }
+
+            // By default, sets alarm to go off at the preffed number of minutes before session start time.  If alarm
+            // offset is provided, alarm is set to go off by that much time from now.
+            long alarmTime;
+            if (alarmOffset == UNDEFINED_ALARM_OFFSET) {
+                alarmTime = sessionStart - getPrefferedAlarmOffset(context);
+            } else {
+                alarmTime = currentTime + alarmOffset;
+            }
+            final Intent alarmIntent = createBaseAlarmIntent(context,sessionStart);
+
+
+            // Setting data to ensure intent's uniqueness for different session start times.
+            final AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            alarmIntent.putExtra(SessionAlarmService.EXTRA_SESSION_START, sessionStart);
+            alarmIntent.putExtra(SessionAlarmService.EXTRA_SESSION_END, sessionEnd);
+            alarmIntent.putExtra(SessionAlarmService.EXTRA_SESSION_ALARM_OFFSET, alarmOffset);
+
+            // Schedule an alarm to be fired to notify user of added sessions are about to begin.
+            PendingIntent pendingIntent = PendingIntent.getService(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+            am.set(AlarmManager.RTC_WAKEUP, alarmTime, pendingIntent);
+        } else {
+            LOGD(TAG,"Not scheduling alarm - notifications set off in user preferences");
             return;
         }
+    }
 
-        // By default, sets alarm to go off at 10 minutes before session start time.  If alarm
-        // offset is provided, alarm is set to go off by that much time from now.
-        long alarmTime;
-        if (alarmOffset == UNDEFINED_ALARM_OFFSET) {
-            alarmTime = sessionStart - TEN_MINUTES_MILLIS;
-        } else {
-            alarmTime = currentTime + alarmOffset;
-        }
-
+    private static Intent createBaseAlarmIntent(Context context,long sessionStart) {
         final Intent alarmIntent = new Intent(
                 ACTION_NOTIFY_SESSION,
                 null,
-                this,
+                context,
                 SessionAlarmService.class);
-
-        // Setting data to ensure intent's uniqueness for different session start times.
-        alarmIntent.setData(
-                new Uri.Builder()
-                        .authority(ScheduleContract.CONTENT_AUTHORITY)
-                        .path(String.valueOf(sessionStart))
-                        .build());
-        alarmIntent.putExtra(SessionAlarmService.EXTRA_SESSION_START, sessionStart);
-        alarmIntent.putExtra(SessionAlarmService.EXTRA_SESSION_END, sessionEnd);
-        alarmIntent.putExtra(SessionAlarmService.EXTRA_SESSION_ALARM_OFFSET, alarmOffset);
-        final AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-
-        // Schedule an alarm to be fired to notify user of added sessions are about to begin.
-        am.set(AlarmManager.RTC_WAKEUP, alarmTime,
-                PendingIntent.getService(this, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT));
+        alarmIntent.setData(createAlarmData(sessionStart));
+        return alarmIntent;
     }
+
+    private static void cancelAlarm(Context context,long sessionStart) {
+        final AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+
+        PendingIntent pendingIntent = PendingIntent.getService(context, 0, createBaseAlarmIntent(context,sessionStart),PendingIntent.FLAG_CANCEL_CURRENT);
+        am.cancel(pendingIntent);
+    }
+
+    private static Uri createAlarmData(long sessionStart) {
+        return new Uri.Builder()
+                .authority(ScheduleContract.CONTENT_AUTHORITY)
+                .path(String.valueOf(sessionStart))
+                .build();
+    }
+
+    private static long getPrefferedAlarmOffset(Context context) {
+        SharedPreferences sharedPref = getDefaultSharedPreferences(context);
+        String leadTimePreference = sharedPref.getString("pref_notifications_lead_time", "5");
+        try {
+            int minutes = Integer.parseInt(leadTimePreference);
+            return minutes*ONE_MINUTE_MILLIS;
+        } catch (NumberFormatException e){
+            LOGW(TAG,"Failed to parse preffered notifaction lead time. Using default.",e);
+            return ONE_MINUTE_MILLIS*5;
+        }
+
+    }
+
+
+
 
     /**
      * Constructs and triggers system notification for when starred sessions are about to begin.
@@ -280,7 +317,22 @@ public class SessionAlarmService extends IntentService {
     }
 
     private void scheduleAllStarredBlocks() {
-        final Cursor cursor = getContentResolver().query(
+        scheduleAllStarredBlocks(this);
+    }
+    public static void scheduleAllStarredBlocks(Context context) {
+        updateScheduledAlarms(ALARM_TASK.SCHEDULE,context);
+    }
+
+    private void removeAllScheduledAlarms() {
+        removeAllScheduledAlarms(this);
+    }
+
+    public static void removeAllScheduledAlarms(Context context) {
+        updateScheduledAlarms(ALARM_TASK.CANCEL, context);
+    }
+
+    private static void updateScheduledAlarms(ALARM_TASK action, Context context){
+        final Cursor cursor = context.getContentResolver().query(
                 ScheduleContract.Sessions.CONTENT_STARRED_URI,
                 new String[] {
                         "distinct " + ScheduleContract.Sessions.BLOCK_START,
@@ -294,7 +346,21 @@ public class SessionAlarmService extends IntentService {
         while (cursor.moveToNext()) {
             final long sessionStart = cursor.getLong(0);
             final long sessionEnd = cursor.getLong(1);
-            scheduleAlarm(sessionStart, sessionEnd, UNDEFINED_ALARM_OFFSET);
+            switch(action){
+                case SCHEDULE:
+                    scheduleAlarm(context,sessionStart, sessionEnd, UNDEFINED_ALARM_OFFSET);
+                    break;
+                case CANCEL:
+                    cancelAlarm(context,sessionStart);
+                    break;
+            }
         }
+    }
+
+
+
+
+    private static boolean notificationsAreEnabled(Context context) {
+        return getDefaultSharedPreferences(context).getBoolean("pref_notifications", true);
     }
 }

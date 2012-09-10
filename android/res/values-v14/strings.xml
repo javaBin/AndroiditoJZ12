@@ -17,14 +17,10 @@
     <!-- Contextual help text -->
     <string name="help_add_to_schedule"><![CDATA[
         To add this session to your schedule, touch the &nbsp;<img src="add_to_schedule" alt="Add to agenda">&nbsp; icon.<br>
-        <br>
-        Sessions in your schedule are automatically added to your Google Calendar.
     ]]></string>
     
     <!-- Alternate for accessibility (alt does not get used when HTML is put into dialog) -->
     <string name="help_add_to_schedule_alt"><![CDATA[
-        To add this session to your schedule, touch the add to agenda icon.<br>
-        <br>
-        Sessions in your schedule are automatically added to your Google Calendar.
+        To add this session to your schedule, touch the add to agenda icon.
     ]]></string>
 </resources>

@@ -25,7 +25,6 @@ import android.os.RemoteException;
 import android.preference.PreferenceManager;
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.android.apps.iosched.Config;
-import com.google.android.apps.iosched.calendar.SessionCalendarService;
 import com.google.android.apps.iosched.io.*;
 import com.google.android.apps.iosched.io.model.ErrorResponse;
 import com.google.android.apps.iosched.provider.ScheduleContract;
@@ -208,9 +207,9 @@ public class SyncHelper {
     }
 
     private void syncCalendar() {
-        Intent intent = new Intent(SessionCalendarService.ACTION_UPDATE_ALL_SESSIONS_CALENDAR);
-        intent.setClass(mContext, SessionCalendarService.class);
-        mContext.startService(intent);
+        //Intent intent = new Intent(SessionCalendarService.ACTION_UPDATE_ALL_SESSIONS_CALENDAR);
+        //intent.setClass(mContext, SessionCalendarService.class);
+        //mContext.startService(intent);
     }
 
     /**

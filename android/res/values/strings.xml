@@ -103,7 +103,7 @@
         <item quantity="other"><xliff:g id="number_of_days">%1$s</xliff:g> days, <xliff:g id="remaining_time">%2$s</xliff:g>\nuntil JavaZone</item>
     </plurals>
     <string name="whats_on_thank_you_title">See you next year!</string>
-    <string name="news_will_appear_here">News will appear here</string>
+    <string name="news_will_appear_here"></string>
     <string name="welcome_to_google_i_o">Welcome to JavaZone!</string>
 
     <string name="permission_write">Modify JavaZone schedule data</string>
@@ -132,8 +132,7 @@
         Welcome to the JavaZone 2012 app, your official companion to the JavaZone conference
         taking place in Oslo from September 12th to September 13th, 2012.<br>
         <br>
-        <font color="#4683ec"><b>Sign in with a Google account to
-        get started</b></font>.
+
     ]]></string>
     <string name="title_accounts_list">Select a Google account</string>
     <string name="empty_accounts">No Google accounts are available. Add an account to continue.</string>
@@ -228,4 +227,13 @@
     <string name="beam_unlocked_default">Try using Android Beam when viewing session details.</string>
     <string name="beam_unlocked_session"></string>
     <string name="beam_unlocked_help"></string>
+
+    <!-- Preferences -->
+    <string name="preferences">Settings</string>
+    <string name="pref_notifications_title">Notifications</string>
+    <string name="pref_notifications_summary">before sessions in agenda start.</string>
+
+    <string name="pref_notifications_lead_time_title">Lead time</string>
+    <string name="pref_notifications_lead_time_dialog">Lead time</string>
+
 </resources>

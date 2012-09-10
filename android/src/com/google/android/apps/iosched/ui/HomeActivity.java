@@ -46,6 +46,7 @@ import com.google.android.apps.iosched.util.UIUtils;
 import com.google.android.gcm.GCMRegistrar;
 import no.java.schedule.BuildConfig;
 import no.java.schedule.R;
+import no.java.schedule.ui.JZPreferenceActivity;
 
 import static com.google.android.apps.iosched.util.LogUtils.*;
 
@@ -353,6 +354,10 @@ public class HomeActivity extends BaseActivity implements
             case R.id.menu_beam:
                 Intent beamIntent = new Intent(this, BeamActivity.class);
                 startActivity(beamIntent);
+                return true;
+            case R.id.menu_settings:
+                Intent settingsIntent = new Intent(this, JZPreferenceActivity.class);
+                startActivity(settingsIntent);
                 return true;
 
         }

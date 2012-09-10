@@ -18,8 +18,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="no.java.schedule"
-    android:versionCode="21"
-    android:versionName="2012.2"
+    android:versionCode="23"
+    android:versionName="2012.3"
     android:installLocation="auto">
 
     <uses-sdk
@@ -47,8 +47,10 @@
     <!-- required for YouTube -->
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <!-- required for Calendar API in Android 4.0 or above -->
+    <!--
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    -->
     <!-- required for setIsSyncable -->
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
     <!-- required for GCM -->
@@ -82,6 +84,13 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+                android:name="no.java.schedule.ui.JZPreferenceActivity"
+                android:label="@string/preferences">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                       android:value="no.java.schedule.ui.HomeActivity" />
         </activity>
 
         <activity
@@ -263,7 +272,7 @@
             </intent-filter>
         </activity>
 
-      <!-- Session alarm/calendar integrating components. -->
+        <!-- Session alarm/calendar integrating components. -->
         <receiver android:name="com.google.android.apps.iosched.calendar.SessionAlarmReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -273,9 +282,10 @@
 
         <service android:name="com.google.android.apps.iosched.calendar.SessionAlarmService" />
 
+        <!--
         <service android:name="com.google.android.apps.iosched.calendar.SessionCalendarService"
             android:enabled="@bool/has_ics" />
-
+        -->
         <!-- Used for install referrer tracking -->
         <!--
         <receiver android:name="com.google.analytics.tracking.android.AnalyticsReceiver"
