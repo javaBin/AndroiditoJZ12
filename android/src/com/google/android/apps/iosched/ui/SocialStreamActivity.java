@@ -56,7 +56,6 @@ public class SocialStreamActivity extends SimpleSinglePaneActivity {
                 ((SocialStreamFragment) getFragment()).refresh();
                 return true;
         }
-
-        return false;
+        return super.onOptionsItemSelected(item);
     }
 }

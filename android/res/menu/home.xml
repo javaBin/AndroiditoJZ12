@@ -44,6 +44,4 @@
            android:title="@string/preferences"
            android:orderInCategory="98"
            android:showAsAction="never" />
-
-
 </menu>

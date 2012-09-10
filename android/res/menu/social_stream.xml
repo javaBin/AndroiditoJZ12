@@ -14,9 +14,9 @@
   limitations under the License.
   -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/menu_compose"
-        android:icon="@drawable/ic_action_compose"
-        android:title="@string/description_compose"
+    <item android:id="@+id/menu_social_refresh"
+        android:icon="@drawable/ic_action_refresh"
+        android:title="@string/description_refresh"
         android:orderInCategory="0"
         android:showAsAction="ifRoom" />
 </menu>

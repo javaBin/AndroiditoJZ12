@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.AbsListView;
 import com.actionbarsherlock.app.SherlockListFragment;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.google.android.apps.iosched.util.ImageCache;
 import com.google.android.apps.iosched.util.ImageFetcher;
@@ -67,18 +69,27 @@ public class SocialStreamFragment extends SherlockListFragment implements AbsLis
         }
 
         setListAdapter(adapter);
-        getListView().setOnScrollListener(this);
+        setHasOptionsMenu(true);
     }
 
     @Override
     public void onResume(){
         super.onResume();
+        getListView().setOnScrollListener(this);
         new TwitterSearchAsyncTask().execute();
     }
 
     @Override
+    public void onStop() {
+        super.onStop();
+        if (imageFetcher != null) {
+            imageFetcher.closeCache();
+        }
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.menu_refresh) {
+        if (item.getItemId() == R.id.menu_social_refresh) {
             refresh();
             return true;
         }
@@ -87,8 +98,21 @@ public class SocialStreamFragment extends SherlockListFragment implements AbsLis
     }
 
     @Override
-    public void onScrollStateChanged(AbsListView absListView, int i) {
-        // Do nothing
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.removeItem(R.id.menu_refresh);
+        inflater.inflate(R.menu.social_stream, menu);
+    }
+
+    @Override
+    public void onScrollStateChanged(AbsListView listView, int scrollState) {
+        // Pause disk cache access to ensure smoother scrolling
+        if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_FLING ||
+                scrollState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
+            imageFetcher.setPauseDiskCache(true);
+        } else {
+            imageFetcher.setPauseDiskCache(false);
+
+        }
     }
 
     @Override
@@ -108,9 +132,18 @@ public class SocialStreamFragment extends SherlockListFragment implements AbsLis
     }
 
     public void refresh(){
+        getSherlockActivity().setProgressBarIndeterminateVisibility(true);
         tweetArrayList.clear();
         adapter.notifyDataSetInvalidated();
+        getListView().setOnScrollListener(this);
+        resetOnScrollListener();
         new TwitterSearchAsyncTask().execute();
+    }
+
+    private void resetOnScrollListener() {
+        currentPage = 0;
+        previousTotal = 0;
+        loading = true;
     }
 
     public class TwitterSearchAsyncTask extends AsyncTask<String, Void, String> {
@@ -161,10 +194,12 @@ public class SocialStreamFragment extends SherlockListFragment implements AbsLis
                     tweet.setProfileImageUri(Uri.parse(object.getString("profile_image_url")));
                     tweet.setText(object.getString("text"));
 
-                    tweetArrayList.add(tweet);
+                    if (!containsId(tweetArrayList, tweet.getId())){
+                        tweetArrayList.add(tweet);
+                    }
                 }
             } catch (Exception e) {
-                throw new IllegalArgumentException(e);
+               // Do nothing
             }
             adapter.notifyDataSetChanged();
             getSherlockActivity().setProgressBarIndeterminateVisibility(false);
