@@ -228,7 +228,7 @@ public class SessionsFragment extends SherlockListFragment implements
         Loader<Cursor> loader = null;
         if (id == SessionsQuery._TOKEN) {
             loader = new CursorLoader(getActivity(), sessionsUri, SessionsQuery.PROJECTION,
-                    null, null, ScheduleContract.Sessions.DEFAULT_SORT);
+                    null, null, sessionsUri.toString().startsWith("content://no.java.schedule/blocks/") ? ScheduleContract.Sessions.BLOCK_SESSION_SORT :    ScheduleContract.Sessions.DEFAULT_SORT);  // TODO Clean up code and let user choose sorting
         } else if (id == SearchQuery._TOKEN) {
             loader = new CursorLoader(getActivity(), sessionsUri, SearchQuery.PROJECTION, null,
                     null, ScheduleContract.Sessions.DEFAULT_SORT);
