@@ -46,5 +46,5 @@ public class Config {
 
     // GCM config TODO
     public static final String GCM_SERVER_URL = "https://yourapp-gcm.appspot.com";
-    public static final String GCM_SENDER_ID = "0000000000000"; // project ID from the APIs console
+    public static final String GCM_SENDER_ID = "244909344957.apps.googleusercontent.com"; // project ID from the APIs console
 }
