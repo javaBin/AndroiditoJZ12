@@ -20,7 +20,7 @@
     package="no.java.schedule"
     android:versionCode="24"
     android:versionName="2012.4"
-    android:installLocation="auto">
+    android:installLocation="auto"><!-- v 2012.4.1 -->
 
     <uses-sdk
         android:minSdkVersion="8"
