@@ -87,6 +87,13 @@
         </activity>
 
         <activity
+                android:name="no.java.schedule.ui.JZPreferenceActivity"
+                android:label="@string/preferences">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                       android:value="no.java.schedule.ui.HomeActivity" />
+        </activity>
+
+        <activity
             android:name="com.google.android.apps.iosched.ui.SocialStreamActivity"
             android:label="@string/title_tagstream">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
@@ -265,7 +272,7 @@
             </intent-filter>
         </activity>
 
-      <!-- Session alarm/calendar integrating components. -->
+        <!-- Session alarm/calendar integrating components. -->
         <receiver android:name="com.google.android.apps.iosched.calendar.SessionAlarmReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

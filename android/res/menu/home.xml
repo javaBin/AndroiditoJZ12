@@ -31,13 +31,19 @@
 
     <item android:id="@+id/menu_beam"
         android:title="@string/description_view_beam"
-        android:orderInCategory="98"
+        android:orderInCategory="97"
         android:showAsAction="never" />
 
     <item android:id="@+id/menu_about"
         android:title="@string/description_about"
         android:orderInCategory="99"
         android:showAsAction="never" />
+
+    <item android:id="@+id/menu_settings"
+           android:icon="@android:drawable/ic_menu_preferences"
+           android:title="@string/preferences"
+           android:orderInCategory="98"
+           android:showAsAction="never" />
 
 
 </menu>
