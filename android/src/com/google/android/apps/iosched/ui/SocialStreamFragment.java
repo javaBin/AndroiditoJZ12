@@ -3,7 +3,6 @@ package com.google.android.apps.iosched.ui;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.AbsListView;
 import com.actionbarsherlock.app.SherlockListFragment;
 import com.actionbarsherlock.view.Menu;
@@ -30,7 +29,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static com.google.android.apps.iosched.Config.*;
+import static com.google.android.apps.iosched.Config.HASHTAG;
+import static com.google.android.apps.iosched.Config.TWITTER_SEARCH_URL;
 
 public class SocialStreamFragment extends SherlockListFragment implements AbsListView.OnScrollListener {
     private ImageFetcher imageFetcher;
@@ -149,6 +149,7 @@ public class SocialStreamFragment extends SherlockListFragment implements AbsLis
     public class TwitterSearchAsyncTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... strings) {
+            Thread.currentThread().setName("TwitterSearchAsyncTask-"+Thread.currentThread().getName());
             StringBuilder builder = new StringBuilder();
             HttpClient client = new DefaultHttpClient();
             HttpGet httpGet = null;
