@@ -72,7 +72,7 @@ public class UIUtils {
     public static final long CONFERENCE_START_MILLIS = ParserUtils.parseTime(
             "2012-09-12T08:00:00.000+01:00");
     public static final long CONFERENCE_END_MILLIS = ParserUtils.parseTime(
-            "2012-09-12T17:00:00.000+01:00");
+            "2012-09-13T18:00:00.000+01:00");
 
     public static final String CONFERENCE_HASHTAG = "#jz12";
 
