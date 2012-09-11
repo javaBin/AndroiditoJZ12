@@ -227,7 +227,7 @@ public class SessionDetailFragment extends SherlockFragment implements
      */
     private void onSessionQueryComplete(Cursor cursor) {
         mSessionCursor = true;
-        if (!cursor.moveToFirst()) {
+        if (cursor==null || !cursor.moveToFirst()) {
             return;
         }
 

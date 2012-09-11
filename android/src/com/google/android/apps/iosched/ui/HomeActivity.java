@@ -31,6 +31,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.SearchView;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.Menu;
@@ -146,7 +147,15 @@ public class HomeActivity extends BaseActivity implements
     }
 
     private void registerGCMClient() {
-        GCMRegistrar.checkDevice(this);
+
+        try {
+            GCMRegistrar.checkDevice(this);
+        } catch (UnsupportedOperationException e){
+            Log.e(TAG,"GCM not supported on this device",e);
+            return;
+        }
+
+
         if (BuildConfig.DEBUG) {
             GCMRegistrar.checkManifest(this);
         }
