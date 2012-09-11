@@ -18,9 +18,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="no.java.schedule"
-    android:versionCode="25"
-    android:versionName="2012.5"
-    android:installLocation="auto"><!-- v 2012.4.1 -->
+    android:versionCode="26"
+    android:versionName="2012.6"
+    android:installLocation="auto">
 
     <uses-sdk
         android:minSdkVersion="7"
