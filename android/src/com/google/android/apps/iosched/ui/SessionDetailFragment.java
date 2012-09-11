@@ -83,6 +83,7 @@ public class SessionDetailFragment extends SherlockFragment implements
     private String mRoomId;
     private String mRoomName;
     private String mType;
+    private String mLevelString;
 
     private boolean mStarred;
     private boolean mInitStarred;
@@ -93,6 +94,7 @@ public class SessionDetailFragment extends SherlockFragment implements
     private ViewGroup mRootView;
     private TextView mTitle;
     private TextView mSubtitle;
+    private TextView mLevel;
     private PlusOneButton mPlusOneButton;
 
     private TextView mAbstract;
@@ -145,6 +147,7 @@ public class SessionDetailFragment extends SherlockFragment implements
 
         mTitle = (TextView) mRootView.findViewById(R.id.session_title);
         mSubtitle = (TextView) mRootView.findViewById(R.id.session_subtitle);
+        mLevel = (TextView) mRootView.findViewById(R.id.session_level);
 
         // Larger target triggers plus one button
         mPlusOneButton = (PlusOneButton) mRootView.findViewById(R.id.plus_one_button);
@@ -240,10 +243,12 @@ public class SessionDetailFragment extends SherlockFragment implements
         mSessionEnd = cursor.getLong(SessionsQuery.END);
         mRoomName = cursor.getString(SessionsQuery.ROOM_NAME);
         mType = cursor.getString(SessionsQuery.TYPE);
+        mLevelString = cursor.getString(SessionsQuery.LEVEL);
         final String subtitle = UIUtils.formatSessionSubtitle(
                 mTitleString, mSessionBlockStart, mSessionBlockEnd,mSessionStart,mSessionEnd, mRoomName, mType, getActivity());
 
         mTitle.setText(mTitleString);
+        mLevel.setText(mLevelString);
 
         mUrl = cursor.getString(SessionsQuery.URL);
         if (TextUtils.isEmpty(mUrl)) {

@@ -27,7 +27,7 @@
         android:layout_alignParentRight="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/TextHeader3"
+        style="@style/TextHeaderLabel"
         android:text="Label header.."/>
 
 

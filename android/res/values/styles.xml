@@ -282,5 +282,11 @@
         <item name="android:textColor">@color/body_text_2_inverse</item>
         <item name="android:singleLine">true</item>
     </style>
+    <style name="TextHeaderLabel">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/body_text_2</item>
+        <item name="android:textIsSelectable">true</item>
+    </style>
 
 </resources>

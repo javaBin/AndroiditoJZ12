@@ -34,6 +34,25 @@
                 android:layout_height="wrap_content"
                 style="@style/TextBody" />
 
+            <LinearLayout android:id="@+id/session_level_block"
+                                  android:orientation="vertical"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:layout_marginTop="@dimen/element_spacing_normal">
+                                  <TextView
+                                          android:layout_width="match_parent"
+                                      android:layout_height="wrap_content"
+                                      android:text="@string/session_level"
+                                      style="@style/TextHeader2" />
+                                 <TextView
+                                     android:id="@+id/session_level"
+                                     android:layout_width="match_parent"
+                                 android:layout_height="wrap_content"
+                                 android:text="@string/session_level"
+                                 style="@style/TextHeaderLabel"
+                                         />
+                              </LinearLayout>
+
           <LinearLayout android:id="@+id/session_labels_block"
                         android:orientation="vertical"
                         android:layout_width="match_parent"
