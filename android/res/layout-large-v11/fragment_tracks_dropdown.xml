@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#fff"
-            android:maxLines="1"
+            android:maxLines="2"
             android:ellipsize="end"
             android:textStyle="normal"
             android:paddingLeft="@dimen/content_padding_normal"
@@ -47,7 +47,7 @@
             android:paddingRight="@dimen/content_padding_normal"
             android:paddingBottom="@dimen/content_padding_normal"
             android:textIsSelectable="false"
-            android:maxLines="?trackAbstractMaxLines" />
+            android:maxLines="2" />
     </LinearLayout>
 
     <View android:id="@+id/track_dropdown_arrow"

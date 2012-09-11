@@ -335,9 +335,9 @@ public class UIUtils {
      * @see {@literal http://en.wikipedia.org/wiki/HSV_color_space%23Lightness}
      */
     public static boolean isColorDark(int color) {
-        return ((30 * Color.red(color) +
+        return Color.alpha(color)!=0 && (((30 * Color.red(color) +
                 59 * Color.green(color) +
-                11 * Color.blue(color)) / 100) <= BRIGHTNESS_THRESHOLD;
+                11 * Color.blue(color)) / 100) <= BRIGHTNESS_THRESHOLD);
     }
 
     // Shows whether a notification was fired for a particular session time block. In the

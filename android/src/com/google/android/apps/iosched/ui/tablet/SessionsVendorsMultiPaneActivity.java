@@ -220,10 +220,10 @@ public class SessionsVendorsMultiPaneActivity extends BaseActivity implements
                     .setText(R.string.title_sessions)
                     .setTag(TracksDropdownFragment.VIEW_TYPE_SESSIONS)
                     .setTabListener(this));
-            actionBar.addTab(actionBar.newTab()
-                    .setText(R.string.title_vendors)
-                    .setTag(TracksDropdownFragment.VIEW_TYPE_VENDORS)
-                    .setTabListener(this));
+            //actionBar.addTab(actionBar.newTab()
+            //        .setText(R.string.title_vendors)
+            //        .setTag(TracksDropdownFragment.VIEW_TYPE_VENDORS)
+            //        .setTabListener(this));
 
             fm.beginTransaction()
                     .show(fm.findFragmentById(R.id.fragment_tracks_dropdown))
