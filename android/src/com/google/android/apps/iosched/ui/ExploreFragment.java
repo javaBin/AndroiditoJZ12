@@ -160,7 +160,7 @@ public class ExploreFragment extends SherlockListFragment implements
             return;
         }
 
-        mAdapter.setHasMapItem(false);
+        mAdapter.setHasMapItem(true);
         mAdapter.setHasAllItem(true);
         mAdapter.changeCursor(cursor);
     }
