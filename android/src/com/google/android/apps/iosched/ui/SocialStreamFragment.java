@@ -5,6 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.AbsListView;
 import com.actionbarsherlock.app.SherlockListFragment;
 import com.actionbarsherlock.view.Menu;
@@ -22,6 +23,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -36,6 +38,8 @@ import static com.google.android.apps.iosched.Config.HASHTAG;
 import static com.google.android.apps.iosched.Config.TWITTER_SEARCH_URL;
 
 public class SocialStreamFragment extends SherlockListFragment implements AbsListView.OnScrollListener {
+    private static final String TAG = "SocialStreamFragment";
+
     private ImageFetcher imageFetcher;
     private TwitterStreamAdapter adapter;
     private ArrayList<Tweet> tweetArrayList;
@@ -157,12 +161,15 @@ public class SocialStreamFragment extends SherlockListFragment implements AbsLis
     }
 
     public class TwitterSearchAsyncTask extends AsyncTask<String, Void, String> {
+        private Exception exception;
+
         @Override
         protected String doInBackground(String... strings) {
-            Thread.currentThread().setName("TwitterSearchAsyncTask-"+Thread.currentThread().getName());
+            Thread.currentThread().setName("TwitterSearchAsyncTask-"+Thread.currentThread().getId());
             StringBuilder builder = new StringBuilder();
             HttpClient client = new DefaultHttpClient();
             HttpGet httpGet = null;
+
             if (strings.length == 0){
                 httpGet = new HttpGet(TWITTER_SEARCH_URL + HASHTAG);
             } else {
@@ -179,9 +186,9 @@ public class SocialStreamFragment extends SherlockListFragment implements AbsLis
                     }
                 }
             } catch (ClientProtocolException e) {
-                throw new IllegalArgumentException(e);
+                exception = e;
             } catch (IOException e) {
-                throw new IllegalArgumentException(e);
+                exception = e;
             }
 
             return builder.toString();
@@ -189,6 +196,12 @@ public class SocialStreamFragment extends SherlockListFragment implements AbsLis
 
         @Override
         protected void onPostExecute(String result) {
+
+            if (exception!=null){
+                Log.e(TAG,"Background task failed with ",exception);
+                return;
+            }
+
             try {
                 JSONObject jsonObject = new JSONObject(result);
                 JSONArray jsonArray = jsonObject.getJSONArray("results");
@@ -209,8 +222,8 @@ public class SocialStreamFragment extends SherlockListFragment implements AbsLis
                         tweetArrayList.add(0, tweet);
                     }
                 }
-            } catch (Exception e) {
-                // Do nothing
+            } catch (JSONException e) {
+                Log.e(TAG,"JSON error parsing twitter feed.",e);
             }
 
             Collections.sort(tweetArrayList);
