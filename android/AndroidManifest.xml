@@ -23,7 +23,7 @@
     android:installLocation="auto"><!-- v 2012.4.1 -->
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="7"
         android:targetSdkVersion="16" />
 
     <permission
