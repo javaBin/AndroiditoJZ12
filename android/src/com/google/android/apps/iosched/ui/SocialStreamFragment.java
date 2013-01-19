@@ -149,6 +149,7 @@ public class SocialStreamFragment extends SherlockListFragment implements AbsLis
             resetOnScrollListener();
 
             if (isOnline()){
+                //TODO - use executor, causes deadlocks
                 new TwitterSearchAsyncTask().execute();
             }
         }
