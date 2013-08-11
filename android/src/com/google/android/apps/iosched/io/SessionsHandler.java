@@ -324,7 +324,7 @@ public class SessionsHandler extends JSONHandler {
         return batch;
     }
 
-  private List<JZSessionsResult> toJZSessionResultList(final EMSItems[] pItems) {
+  static List<JZSessionsResult> toJZSessionResultList(final EMSItems[] pItems) {
 
     List<JZSessionsResult> result = new ArrayList<JZSessionsResult>(pItems.length);
 

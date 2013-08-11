@@ -33,6 +33,18 @@ public class EMSItems {
     return null;
   }
 
+  public String[] getArray(String key){
+
+     // Todo add lookup map
+     for (EMSData emsData : data) {
+       if (key.equalsIgnoreCase(emsData.name)){
+         return emsData.array;
+       }
+     }
+
+     return null;
+   }
+
   public URI href;
 
   public EMSData[] data;

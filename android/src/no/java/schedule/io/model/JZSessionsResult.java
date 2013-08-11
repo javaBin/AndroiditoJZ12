@@ -17,6 +17,7 @@
 package no.java.schedule.io.model;
 
 import java.net.URI;
+import java.util.ArrayList;
 
 public class JZSessionsResult {
 
@@ -65,7 +66,7 @@ public class JZSessionsResult {
     //session.end =
     session.format = pItem.getValue("format");
     session.id = pItem.href.toString();
-    //session.labels = pItem.getValue("keywords"); // TODO
+    session.labels = toJZLabels(pItem.getArray("keywords")); // TODO
     session.level = new JZLevel(pItem.getValue("level"));
     session.room = pItem.getLinkHref("session room");
     session.selfUri = pItem.href;
@@ -77,4 +78,16 @@ public class JZSessionsResult {
     return session;
 
   }
+
+  private static JZLabel[] toJZLabels(final String[] pStrings) {
+
+    ArrayList<JZLabel> result = new ArrayList<JZLabel>(pStrings.length);
+
+    for (String string : pStrings) {
+      result.add(new JZLabel(string));
+
+    }
+    return  result.toArray(new JZLabel[result.size()]);
+  }
+
 }

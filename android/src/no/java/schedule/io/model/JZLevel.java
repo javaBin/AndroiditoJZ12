@@ -19,8 +19,7 @@ package no.java.schedule.io.model;
 public class JZLevel extends JZLabel {
 
   public JZLevel(final String pLevel) {
-    this.displayName=pLevel;
-    this.id=pLevel;
+    super(pLevel);
 
   }
 }

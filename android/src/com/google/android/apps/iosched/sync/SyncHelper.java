@@ -108,7 +108,7 @@ public class SyncHelper {
                 batch.addAll(new BlocksHandler(mContext).parse(
                         JSONHandler.loadResourceJson(mContext, R.raw.jzcommon_slots)));
                 batch.addAll(new TracksHandler(mContext).parse(
-                        JSONHandler.loadResourceJson(mContext, R.raw.javazone)));
+                        JSONHandler.loadResourceJson(mContext, R.raw.jzsessions)));
                 batch.addAll(new SpeakersHandler(mContext, true).parse(
                         JSONHandler.loadResourceJson(mContext, R.raw.jzsessions)));
                 batch.addAll(new SessionsHandler(mContext, true, false).parse(
@@ -147,6 +147,9 @@ public class SyncHelper {
                 LOGI(TAG, "Remote syncing sessions");
                 batch.addAll(executeGet(Config.GET_ALL_SESSIONS_URL,
                         new SessionsHandler(mContext, false, false)));
+               LOGI(TAG, "Remote syncing tracks");
+                batch.addAll(executeGet(Config.GET_ALL_SESSIONS_URL,
+                                      new TracksHandler(mContext)));
                 //LOGI(TAG, "Remote syncing sandbox");
                 //batch.addAll(executeGet(Config.GET_SANDBOX_URL,
                 //        new SandboxHandler(mContext, false), auth));

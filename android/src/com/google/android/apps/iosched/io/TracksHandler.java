@@ -22,11 +22,15 @@ import android.graphics.Color;
 import com.google.android.apps.iosched.provider.ScheduleContract;
 import com.google.android.apps.iosched.util.Lists;
 import com.google.gson.Gson;
-import no.java.schedule.io.model.JZConference;
 import no.java.schedule.io.model.JZLabel;
+import no.java.schedule.io.model.JZSessionsResponse;
+import no.java.schedule.io.model.JZSessionsResult;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
 
 import static com.google.android.apps.iosched.util.LogUtils.makeLogTag;
 
@@ -45,12 +49,7 @@ public class TracksHandler extends JSONHandler {
     public ArrayList<ContentProviderOperation> parse(String json)
             throws IOException {
 
-      JZConference response = new Gson().fromJson(json, JZConference.class);
-
-
-
-
-
+      JZSessionsResponse response = new Gson().fromJson(json, JZSessionsResponse.class);
 
 
         final ArrayList<ContentProviderOperation> batch = Lists.newArrayList();
@@ -58,10 +57,18 @@ public class TracksHandler extends JSONHandler {
                 ScheduleContract.addCallerIsSyncAdapterParameter(
                         ScheduleContract.Tracks.CONTENT_URI)).build());
 
-        int noOfTracks = response.labels.length;
-        for (int i = 0; i < noOfTracks; i++) {
-            parseTrack(response.labels[i], batch);
-        }
+      List<JZSessionsResult> sessions = SessionsHandler.toJZSessionResultList(response.collection.items);
+
+      HashSet<JZLabel> labels = new HashSet<JZLabel>();
+
+      for (JZSessionsResult session : sessions) {
+        Collections.addAll(labels, session.labels);
+      }
+
+      for (JZLabel label : labels) {
+        parseTrack(label, batch);
+      }
+
         return batch;
     }
 
