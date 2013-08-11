@@ -33,8 +33,6 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.widget.RemoteViews;
 import com.google.android.apps.iosched.provider.ScheduleContract;
-import com.google.android.apps.iosched.ui.HomeActivity;
-import com.google.android.apps.iosched.ui.SessionLivestreamActivity;
 import com.google.android.apps.iosched.util.ParserUtils;
 import com.google.android.apps.iosched.util.UIUtils;
 import no.java.schedule.R;
@@ -168,13 +166,6 @@ public class MyScheduleWidgetProvider extends AppWidgetProvider {
                         context.startActivity(intent);
                     }
                 }
-            } else if (ParserUtils.BLOCK_TYPE_KEYNOTE.equals(blockType)) {
-                Uri sessionUri = ScheduleContract.Sessions.buildSessionUri(starredSessionId);
-                LOGV(TAG, "sessionUri:" + sessionUri);
-                Intent intent = new Intent(Intent.ACTION_VIEW, sessionUri);
-                intent.setClass(context, SessionLivestreamActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
             }
         }
         super.onReceive(context, widgetIntent);

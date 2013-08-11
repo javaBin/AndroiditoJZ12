@@ -1,3 +1,1771 @@
-{
-
-}
+{"collection": {
+    "version": "1.0",
+    "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots",
+    "items": [
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/169f28b8-26be-49b3-b141-6f248cb8ad64",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-09T07:00:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-09T11:00:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/b6e12faa-50cf-4a87-eff2-aea5a379b3bc",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-09T11:30:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-09T15:30:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/254c012b-0e9b-4cf3-beb5-54d9ae2da6d6",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-09T07:00:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-09T15:30:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/226122ad-4d5a-4cbc-adc7-369645346294",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T07:00:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T09:20:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/ff39ca8e-723e-440e-acc5-d68ed5ceef70",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T09:40:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T12:00:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/2a0d3d2a-d386-4686-8b64-d8ee8de6291a",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T12:20:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T14:00:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/09e033e3-e39a-4146-de72-36f1627fdefa",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T07:00:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T08:00:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/249f4448-0bcf-44ee-abba-55ea0a4e7d35",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T08:20:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T09:20:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/bcf3e941-3521-4e6b-bbb5-9a5ca04bf1d8",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T09:40:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T10:40:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/b38ece40-6159-410e-c26b-1269425231fe",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T11:00:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T12:00:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/8cf72bf2-5f4c-40ad-df0d-64102956329b",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T12:20:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T13:20:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/9cbe32b6-1fce-4617-b3d1-72b2cefdb725",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T13:40:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T14:40:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/da429835-db69-4956-e6ff-4a9c0ed2fe11",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T15:00:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T16:00:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/00600e51-9013-4506-f420-358b50a1c720",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T16:20:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T17:20:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/2531d43a-8506-4de6-c516-4e72c3503b64",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T07:00:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T07:10:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/720f1775-1575-44c8-e825-68d09c9863d8",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T07:10:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T07:20:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/5d6288f8-0f1b-42dd-fa00-777c34460938",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T07:20:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T07:30:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/831c1096-a7c3-442b-ce01-707c041ec1fa",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T07:30:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T07:40:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/94b5151c-285c-43f7-ac0e-844b62dcee05",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T07:40:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T07:50:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/c1dd9984-3372-4b38-e0ce-7332634be487",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T07:50:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T08:00:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/4d3c82c5-0969-45ee-c009-5cc83b017a7a",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T08:20:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T08:30:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/60c4589b-7842-452a-ab02-7e8442e5cdf5",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T08:30:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T08:40:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/ff3363fa-a898-4c64-8c98-fddf962e2be6",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T08:40:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T08:50:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/5626c69e-9e9e-430b-e783-ac41c770b15e",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T08:50:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T09:00:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/61f497f5-1457-433e-bf73-09019d27fbc0",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T09:00:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T09:10:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/119d2413-60af-4efe-e940-63fb5b95b5a7",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T09:10:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T09:20:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/4e6d05a4-3a84-47f5-90a0-7d01307514c3",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T09:40:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T09:50:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/fc4fdde8-20e1-4cfe-abf6-91cda800f495",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T09:50:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T10:00:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/8d79f09c-b7f3-402f-a40e-c3b0a7237b2f",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T10:00:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T10:10:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/eb81ce1c-5352-453e-f608-0dc6a1e12181",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T10:10:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T10:20:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/5e4af24d-d2c0-415c-fa43-2518643e4a85",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T10:20:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T10:30:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/1f7a7c1c-4af2-4d7c-df8c-1b913abf0f25",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T10:30:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T10:40:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/271545ac-4473-461b-df17-aabd07179cca",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T11:00:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T11:10:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/04190120-e70b-4a23-b905-8034ad780754",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T11:10:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T11:20:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/be43445e-6ec5-437d-8cec-75857e799e29",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T11:20:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T11:30:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/1b93ad9c-7f77-4855-d2d3-9388c884cf18",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T11:30:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T11:40:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/2a4f7e25-6f74-4903-d626-df324e21c91f",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T11:40:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T11:50:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/fabe9b58-c71c-4fe0-f54e-6463f33b1e0b",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T11:50:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T12:00:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/82a2071b-42ce-46f5-e450-f91d843037e6",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T12:20:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T12:30:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/4e0db89d-44e6-4a47-bb95-1c390d99d4f0",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T12:30:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T12:40:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/8b00b349-e0c6-41e4-f3c9-b2044af4c730",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T12:40:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T12:50:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/8b998ddd-9be4-4e63-8311-69cbe1b17d9a",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T12:50:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T13:00:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/921c9c9f-afb3-4402-bfc4-f6a26e4c829b",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T13:00:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T13:10:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/a4316b10-925c-4ff9-efbc-b6a62af08fca",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T13:10:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T13:20:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/7b58e883-6bcc-4f0e-ccdb-d6d9996414ca",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T13:40:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T13:50:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/a145cd8b-9c86-4f13-eaad-ea950c949e9e",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T13:50:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T14:00:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/a76dc5ff-a7d8-4cdc-ee9f-4fdcee28753e",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T14:00:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T14:10:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/212b81a2-9fec-4a79-d64f-6c99540fe5b5",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T14:10:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T14:20:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/f5e08a9c-e914-4afd-9c91-61f021a5bc1d",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T14:20:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T14:30:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/9372abbd-4052-4a59-ec2f-d3852aa21e07",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T14:30:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T14:40:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/8702c840-cd24-4ede-9422-9910915f8fc3",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T15:00:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T15:10:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/81736654-7d41-4df3-e6e9-8396b60e9a0b",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T15:10:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T15:20:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/3286ad31-86da-43c6-ab43-0dc91bc92dce",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T15:20:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T15:30:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/1f0e9db8-8727-439c-aaf2-b8dfef95ad12",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T15:30:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T15:40:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/b52c022b-ac8b-4853-d4c1-940f32d2d5bc",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T15:40:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T15:50:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/2f576ab4-83e4-42d0-8731-44a3a3f22fe1",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T15:50:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T16:00:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/794c75a9-47bb-42e2-cd26-88597f21edc5",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T16:20:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T16:30:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/c3f39a31-9fd4-4c2e-acff-661421858a0b",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T16:30:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T16:40:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/bae8e74f-decd-4868-c0f8-98a0f31ed8e1",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T16:40:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T16:50:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/c117079f-0da4-49e9-be34-6fd5303c6ebc",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T16:50:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T17:00:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/42c9bf16-a5c4-4a13-f24a-b79eb7321bde",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T17:00:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T17:10:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/329a48c0-8209-4273-b5a3-47cf7ba619b2",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T17:10:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T17:20:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/385c6f5c-1a96-49a0-c5ec-90e266cd733a",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T07:00:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T09:20:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/399610c2-f076-4178-d248-4d7f4fcfbd12",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T09:40:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T12:00:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/35e33ae6-1113-4191-ffe2-7a7e87ed4c96",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T12:20:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T14:00:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/448604bb-ef4b-49d1-8e59-326695402d1d",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T07:00:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T08:00:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/ec2369a2-d2de-420f-8a17-5bfc8fcf6226",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T08:20:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T09:20:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/b2ed97b6-f1e0-43e3-9ca2-7d4956b489fd",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T09:40:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T10:40:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/173226a5-0285-49c2-eb71-4d545536b6d1",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T11:00:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T12:00:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/8ea77086-ec1c-490a-ae82-ca8a5dafd556",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T12:20:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T13:20:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/a82aff86-c06d-46cb-e59b-97ac177d397a",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T13:40:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T14:40:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/29060ed3-2070-4032-b94d-7329822776a1",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T15:00:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T16:00:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/b734896f-5306-4a2b-e610-b3d7de2c4824",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T07:00:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T07:10:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/b12e340b-5869-4bec-9507-d6215bf16997",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T07:10:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T07:20:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/e3ae42fe-6b30-4a63-97c1-bfca8a4c08c7",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T07:20:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T07:30:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/bb5e801e-7b55-4320-955b-0dd6fbe8e66f",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T07:30:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T07:40:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/91b15018-d1fc-4596-cc55-648694aff7b6",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T07:40:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T07:50:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/de2dac8c-f0f3-4151-c8e0-f56ecee8548b",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T07:50:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T08:00:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/7e4d9f47-8131-4bda-9669-c308afde78e9",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T08:20:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T08:30:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/e84628d3-bf40-4494-da1a-1f604c19edbf",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T08:30:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T08:40:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/0f03aba5-de51-4e37-b34f-29bd5a9f5ba8",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T08:40:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T08:50:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/688cdcb1-07d1-4358-abf8-b65d22243825",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T08:50:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T09:00:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/337a2e51-7126-4b34-d35a-08dd41959bb1",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T09:00:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T09:10:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/1e2d86f5-3102-4958-c2bf-1412efde8734",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T09:10:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T09:20:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/2ab83331-e749-403c-8d8d-a39fd634df61",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T09:40:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T09:50:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/619deedc-4981-4d61-aca3-89b63f8442be",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T09:50:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T10:00:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/5bca39c3-eaba-4bef-f86d-30302e7260c6",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T10:00:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T10:10:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/9038c884-68f3-42a8-f91a-fdce79859ab9",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T10:10:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T10:20:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/87540fc7-f9ac-4101-be3f-aecdb7803a83",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T10:20:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T10:30:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/bb5871e8-9a02-4af7-8a85-456f04c79585",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T10:30:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T10:40:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/073797ab-cfcd-41b3-e942-068d0798a389",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T11:00:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T11:10:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/392b61a0-b604-4323-fb14-f342ba8f5cfa",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T11:10:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T11:20:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/bb8d1028-e938-4109-f931-4066f8b36e02",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T11:20:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T11:30:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/f056db20-4c1c-4079-8fb5-5994911cd335",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T11:30:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T11:40:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/b9364208-9a4f-47a0-a258-dca918682393",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T11:40:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T11:50:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/0e275e5c-e370-4704-b7fa-c834d6d45793",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T11:50:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T12:00:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/016fcb2e-f74e-4dd6-e338-730ed513b190",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T12:20:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T12:30:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/99cfeed0-48e4-473d-de1e-7b9b89192a5a",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T12:30:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T12:40:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/634eeafb-ac5e-4c79-dc43-2900c8a7a647",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T12:40:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T12:50:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/f8d696dd-8b70-4c0c-d011-164c706ffb21",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T12:50:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T13:00:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/e796e8bb-cd2a-4575-bcfd-ac73ab587e45",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T13:00:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T13:10:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/b6c9ba29-1573-4da9-82ab-91e2624ff8ad",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T13:10:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T13:20:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/c83bd6d0-6f3a-45bd-820c-113e41fc40fc",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T13:40:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T13:50:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/b72ec6a8-793e-45b0-f9dc-83a5ae9bbd3d",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T13:50:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T14:00:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/ee8b73f8-1158-450c-ae8e-816fa488bd97",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T14:00:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T14:10:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/78de6803-1198-45f8-bf50-210d96f32cb5",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T14:10:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T14:20:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/ac6d307e-a10c-4972-be70-86513ae722cb",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T14:20:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T14:30:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/73833f74-ad05-430a-b24a-352f48c0c275",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T14:30:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T14:40:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/9ecf9291-7622-4800-c7ed-377c4e5f17ea",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T15:00:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T15:10:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/e922852c-fb3b-4da6-bdf4-447d1884851d",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T15:10:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T15:20:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/1ed4ccc0-de98-4330-edad-91269b207197",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T15:20:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T15:30:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/cbc9d600-cb99-4280-a082-9c717f285b08",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T15:30:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T15:40:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/faa8ab4b-7bdf-410e-9e7c-1e3595ebb393",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T15:40:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T15:50:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/18f5b5b7-4eac-4ce0-c5ec-d4979873fe1b",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T15:50:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T16:00:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/8df94452-bdc0-403d-a017-9e30912e6608",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-10T12:20:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-10T16:00:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/f39f4bcd-4efa-4b83-b231-31e81d360e2e",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T09:40:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T13:20:00Z"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots/42a6bcb5-a5cd-4ac4-b85b-3c8abd58b5f3",
+            "data": [
+                {
+                    "name": "start",
+                    "prompt": "Start",
+                    "value": "2014-09-11T13:40:00Z"
+                },
+                {
+                    "name": "end",
+                    "prompt": "End",
+                    "value": "2014-09-11T16:00:00Z"
+                }
+            ]
+        }
+    ],
+    "template": {
+        "data": [
+            {
+                "name": "start"
+            },
+            {
+                "name": "end"
+            }
+        ]
+    }
+}}

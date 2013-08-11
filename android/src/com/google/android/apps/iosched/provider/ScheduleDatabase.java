@@ -48,13 +48,13 @@ import static com.google.android.apps.iosched.util.LogUtils.makeLogTag;
 public class ScheduleDatabase extends SQLiteOpenHelper {
     private static final String TAG = makeLogTag(ScheduleDatabase.class);
 
-    private static final String DATABASE_NAME = "schedule.db";
+    private static final String DATABASE_NAME = "schedule2014.db";
 
     // NOTE: carefully update onUpgrade() when bumping database versions to make
     // sure user data is saved.
 
-    private static final int VER_LAUNCH = 25;
-    private static final int VER_SESSION_TYPE = 26;
+    private static final int VER_LAUNCH = 30;
+    private static final int VER_SESSION_TYPE = 30;
 
     private static final int DATABASE_VERSION = VER_SESSION_TYPE;
 
@@ -338,10 +338,7 @@ public class ScheduleDatabase extends SQLiteOpenHelper {
 
         switch (version) {
             case VER_LAUNCH:
-                // VER_SESSION_TYPE added column for session feedback URL.
-                db.execSQL("ALTER TABLE " + Tables.SESSIONS + " ADD COLUMN "
-                        + SessionsColumns.SESSION_TYPE + " TEXT");
-                version = VER_SESSION_TYPE;
+
         }
 
         LOGD(TAG, "after upgrade logic, at version " + version);

@@ -16,28 +16,26 @@
 
 package com.google.android.apps.iosched.ui.phone;
 
-import no.java.schedule.R;
+import android.annotation.TargetApi;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
+import android.nfc.NfcAdapter;
+import android.nfc.NfcEvent;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.NavUtils;
+import com.actionbarsherlock.view.MenuItem;
 import com.google.android.apps.iosched.provider.ScheduleContract;
-import com.google.android.apps.iosched.ui.HomeActivity;
 import com.google.android.apps.iosched.ui.SessionDetailFragment;
 import com.google.android.apps.iosched.ui.SimpleSinglePaneActivity;
 import com.google.android.apps.iosched.ui.TrackInfoHelperFragment;
 import com.google.android.apps.iosched.util.BeamUtils;
 import com.google.android.apps.iosched.util.UIUtils;
-
-import com.actionbarsherlock.view.MenuItem;
-
-import android.annotation.TargetApi;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.nfc.NfcAdapter;
-import android.nfc.NfcEvent;
-import android.net.Uri;
-import android.os.Build;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.NavUtils;
+import no.java.schedule.R;
+import no.java.schedule.ui.HomeActivity;
 
 /**
  * A single-pane activity that shows a {@link SessionDetailFragment}.

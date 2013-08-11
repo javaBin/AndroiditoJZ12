@@ -18,8 +18,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="no.java.schedule"
-    android:versionCode="27"
-    android:versionName="2012.7"
+    android:versionCode="40"
+    android:versionName="2014.1"
     android:installLocation="auto">
 
     <uses-sdk
@@ -92,14 +92,14 @@
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                        android:value="no.java.schedule.ui.HomeActivity" />
         </activity>
-
+        <!--
         <activity
             android:name="com.google.android.apps.iosched.ui.SocialStreamActivity"
             android:label="@string/title_tagstream">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.HomeActivity" />
         </activity>
-
+         -->
         <activity
             android:name="com.google.android.apps.iosched.ui.SearchActivity"
             android:label="@string/title_search"
@@ -262,17 +262,7 @@
 
         <!-- GTV Activities -->
 
-        <activity
-            android:name="com.google.android.apps.iosched.ui.gtv.GoogleTVSessionLivestreamActivity"
-            android:theme="@style/Theme.Iosched.GoogleTV"
-            android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <!-- Session alarm/calendar integrating components. -->
+      <!-- Session alarm/calendar integrating components. -->
         <receiver android:name="com.google.android.apps.iosched.calendar.SessionAlarmReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

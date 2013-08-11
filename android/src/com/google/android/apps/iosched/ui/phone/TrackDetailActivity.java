@@ -16,21 +16,6 @@
 
 package com.google.android.apps.iosched.ui.phone;
 
-import com.google.analytics.tracking.android.EasyTracker;
-import no.java.schedule.R;
-import com.google.android.apps.iosched.provider.ScheduleContract;
-import com.google.android.apps.iosched.ui.BaseActivity;
-import com.google.android.apps.iosched.ui.SessionsFragment;
-import com.google.android.apps.iosched.ui.SocialStreamActivity;
-import com.google.android.apps.iosched.ui.SocialStreamFragment;
-import com.google.android.apps.iosched.ui.TrackInfoHelperFragment;
-import com.google.android.apps.iosched.ui.VendorsFragment;
-import com.google.android.apps.iosched.util.UIUtils;
-
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -39,6 +24,16 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+import com.google.analytics.tracking.android.EasyTracker;
+import com.google.android.apps.iosched.provider.ScheduleContract;
+import com.google.android.apps.iosched.ui.BaseActivity;
+import com.google.android.apps.iosched.ui.SessionsFragment;
+import com.google.android.apps.iosched.ui.TrackInfoHelperFragment;
+import com.google.android.apps.iosched.ui.VendorsFragment;
+import no.java.schedule.R;
 
 import static com.google.android.apps.iosched.util.LogUtils.LOGD;
 
@@ -178,9 +173,9 @@ public class TrackDetailActivity extends BaseActivity implements
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_social_stream:
-                Intent intent = new Intent(this, SocialStreamActivity.class);
-                startActivity(intent);
-                break;
+                //Intent intent = new Intent(this, SocialStreamActivity.class);
+                //startActivity(intent);
+                //break;
         }
         return super.onOptionsItemSelected(item);
     }

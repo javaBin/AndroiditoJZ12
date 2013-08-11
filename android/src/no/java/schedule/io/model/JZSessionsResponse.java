@@ -19,5 +19,7 @@ package no.java.schedule.io.model;
 import com.google.android.apps.iosched.io.model.GenericResponse;
 
 public class JZSessionsResponse extends GenericResponse {
-  public JZSessionsResult[] sessions;
+
+  public EMSCollection collection;
+
 }

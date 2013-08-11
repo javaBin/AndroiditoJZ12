@@ -1,0 +1,83 @@
+{"collection": {
+    "version": "1.0",
+    "href": "http://javazone.no/ems/server/events/cee37cc1-5399-47ef-9418-21f9b6444bfa/rooms",
+    "items": [
+        {
+            "href": "http://javazone.no/ems/server/events/cee37cc1-5399-47ef-9418-21f9b6444bfa/rooms/8d5d5c8f-dee2-47df-8e62-83c8931eeee7",
+            "data": [
+                {
+                    "name": "name",
+                    "prompt": "Name",
+                    "value": "Room 1"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/cee37cc1-5399-47ef-9418-21f9b6444bfa/rooms/893b1b52-d158-4125-9725-34039abaf6a4",
+            "data": [
+                {
+                    "name": "name",
+                    "prompt": "Name",
+                    "value": "Room 2"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/cee37cc1-5399-47ef-9418-21f9b6444bfa/rooms/3db8ea9d-3773-49e5-a335-cf391466cfd0",
+            "data": [
+                {
+                    "name": "name",
+                    "prompt": "Name",
+                    "value": "Room 3"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/cee37cc1-5399-47ef-9418-21f9b6444bfa/rooms/9d30af08-20e9-44fb-a3ed-48fcb8a721e6",
+            "data": [
+                {
+                    "name": "name",
+                    "prompt": "Name",
+                    "value": "Room 4"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/cee37cc1-5399-47ef-9418-21f9b6444bfa/rooms/33bfa160-e9d5-49d6-9567-6322fc9f9e9e",
+            "data": [
+                {
+                    "name": "name",
+                    "prompt": "Name",
+                    "value": "Room 5"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/cee37cc1-5399-47ef-9418-21f9b6444bfa/rooms/9465b7fe-6e47-4d28-af6c-92b194b476d5",
+            "data": [
+                {
+                    "name": "name",
+                    "prompt": "Name",
+                    "value": "Room 6"
+                }
+            ]
+        },
+        {
+            "href": "http://javazone.no/ems/server/events/cee37cc1-5399-47ef-9418-21f9b6444bfa/rooms/8c2c488b-c157-48dd-82f2-0734b4927f37",
+            "data": [
+                {
+                    "name": "name",
+                    "prompt": "Name",
+                    "value": "Room 7"
+                }
+            ]
+        }
+    ],
+    "template": {
+        "data": [
+            {
+                "name": "name"
+            }
+        ]
+    }
+}}

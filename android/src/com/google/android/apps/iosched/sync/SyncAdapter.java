@@ -16,14 +16,11 @@
 
 package com.google.android.apps.iosched.sync;
 
+import android.content.*;
+import android.preference.PreferenceManager;
 import no.java.schedule.BuildConfig;
 
 import android.accounts.Account;
-import android.content.AbstractThreadedSyncAdapter;
-import android.content.ContentProviderClient;
-import android.content.ContentResolver;
-import android.content.Context;
-import android.content.SyncResult;
 import android.os.Bundle;
 
 import java.io.IOException;
@@ -92,8 +89,14 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
         }
 
         try {
-            mSyncHelper.performSync(syncResult,
-                    SyncHelper.FLAG_SYNC_LOCAL | SyncHelper.FLAG_SYNC_REMOTE);
+            mSyncHelper.performSync(syncResult);
+
+          final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
+          SharedPreferences.Editor edit = prefs.edit();
+          edit.putBoolean("first_run",false);
+          edit.commit();
+
+
 
         } catch (IOException e) {
             ++syncResult.stats.numIoExceptions;

@@ -21,12 +21,17 @@ public class Config {
     public static final String APP_NAME = "Your-App-Name";
     public static final String API_KEY = "API_KEY"; // from the APIs console
     public static final String CLIENT_ID = "0000000000000.apps.googleusercontent.com"; // from the APIs console
+  public static final String EMS_SLOTS = "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/slots";
+  public static final String EMS_ROOMS = "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f/rooms";
 
-    // Conference API-specific config
+  // Conference API-specific config
     // NOTE: the backend used for the Google I/O 2012 Android app is not currently open source, so
     // you should modify these fields to reflect your own backend.
 
-    private static final String BASE_URL = "http://javazone.no/incogito10/rest/events/JavaZone%202012";
+    private static final String BASE_URL = "http://javazone.no/ems/server/events/9f40063a-5f20-4d7b-b1e8-ed0c6cc18a5f";
+
+  //TODO slots
+    public static final String GET_ALL_BLOCKS =  BASE_URL + "/slots";
     public static final String GET_ALL_SESSIONS_URL      = BASE_URL + "/sessions";
     // TODO public static final String EDIT_MY_SCHEDULE_URL      = BASE_URL + "/editmyschedule/o/";
 
@@ -51,4 +56,5 @@ public class Config {
     // GCM config TODO
     public static final String GCM_SERVER_URL = "https://yourapp-gcm.appspot.com";
     public static final String GCM_SENDER_ID = "244909344957.apps.googleusercontent.com"; // project ID from the APIs console
+
 }

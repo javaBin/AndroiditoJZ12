@@ -16,17 +16,16 @@
 
 package com.google.android.apps.iosched.io;
 
-import com.google.android.apps.iosched.io.model.Day;
-import com.google.android.apps.iosched.io.model.EventSlots;
-import com.google.android.apps.iosched.io.model.TimeSlot;
+import android.content.ContentProviderOperation;
+import android.content.Context;
 import com.google.android.apps.iosched.provider.ScheduleContract;
 import com.google.android.apps.iosched.provider.ScheduleContract.Blocks;
 import com.google.android.apps.iosched.util.Lists;
 import com.google.android.apps.iosched.util.ParserUtils;
 import com.google.gson.Gson;
-
-import android.content.ContentProviderOperation;
-import android.content.Context;
+import no.java.schedule.io.model.EMSCollection;
+import no.java.schedule.io.model.EMSItem;
+import no.java.schedule.io.model.JZSlotsResponse;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,48 +44,48 @@ public class BlocksHandler extends JSONHandler {
     }
 
     public ArrayList<ContentProviderOperation> parse(String json) throws IOException {
-        final ArrayList<ContentProviderOperation> batch = Lists.newArrayList();
-        try {
-            Gson gson = new Gson();
-            EventSlots eventSlots = gson.fromJson(json, EventSlots.class);
-            int numDays = eventSlots.day.length;
-            //2011-05-10T07:00:00.000-07:00
-            for (int i = 0; i < numDays; i++) {
-                Day day = eventSlots.day[i];
-                String date = day.date;
-                TimeSlot[] timeSlots = day.slot;
-                for (TimeSlot timeSlot : timeSlots) {
-                    parseSlot(date, timeSlot, batch);
-                }
-            }
-        } catch (Throwable e) {
-            LOGE(TAG, e.toString());
+      final ArrayList<ContentProviderOperation> batch = Lists.newArrayList();
+      try {
+        Gson gson = new Gson();
+        JZSlotsResponse response = gson.fromJson(json, JZSlotsResponse.class);
+        EMSCollection eventSlots = response.collection;
+
+        for (EMSItem slot : eventSlots.items) {
+          parseSlot(slot, batch);
         }
+      } catch (Throwable e) {
+        LOGE(TAG, e.toString());
+      }
+
         return batch;
     }
 
-    private static void parseSlot(String date, TimeSlot slot,
-            ArrayList<ContentProviderOperation> batch) {
+    private static void parseSlot(EMSItem slot, ArrayList<ContentProviderOperation> batch) {
         ContentProviderOperation.Builder builder = ContentProviderOperation
                 .newInsert(ScheduleContract.addCallerIsSyncAdapterParameter(Blocks.CONTENT_URI));
         //LOGD(TAG, "Inside parseSlot:" + date + ",  " + slot);
-        String start = slot.start;
-        String end = slot.end;
+        String startTime = slot.getValue("start");
+        String endTime = slot.getValue("end");
 
         String type = "N_D";
-        if (slot.type != null) {
-            type = slot.type;
+        if (slot.getValue("type") != null) {
+            type = slot.getValue("type");
         }
         String title = "N_D";
-        if (slot.title != null) {
-            title = slot.title;
+        if (slot.getValue("title") != null) {
+            title = slot.getValue("title");
         }
-        String startTime = date + "T" + start + ":00.000+01:00";
-        String endTime = date + "T" + end + ":00.000+01:00";
+
+        String meta = "N_D";
+        if (slot.getValue("meta") != null) {
+                title = slot.getValue("meta");
+        }
+
         LOGV(TAG, "startTime:" + startTime);
         long startTimeL = ParserUtils.parseTime(startTime);
         long endTimeL = ParserUtils.parseTime(endTime);
-        final String blockId = Blocks.generateBlockId(startTimeL, endTimeL);
+        final String blockId = slot.href.toString();//Blocks.generateBlockId(startTimeL, endTimeL);
+
         LOGV(TAG, "blockId:" + blockId);
         LOGV(TAG, "title:" + title);
         LOGV(TAG, "start:" + startTimeL);
@@ -95,7 +94,7 @@ public class BlocksHandler extends JSONHandler {
         builder.withValue(Blocks.BLOCK_START, startTimeL);
         builder.withValue(Blocks.BLOCK_END, endTimeL);
         builder.withValue(Blocks.BLOCK_TYPE, type);
-        builder.withValue(Blocks.BLOCK_META, slot.meta);
+        builder.withValue(Blocks.BLOCK_META, meta);
         batch.add(builder.build());
     }
 }

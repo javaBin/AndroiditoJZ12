@@ -18,21 +18,11 @@ package com.google.android.apps.iosched.io;
 
 import android.content.ContentProviderOperation;
 import android.content.Context;
-import com.google.android.apps.iosched.provider.ScheduleContract;
-import com.google.android.apps.iosched.provider.ScheduleContract.SyncColumns;
 import com.google.android.apps.iosched.util.Lists;
-import com.google.gson.Gson;
-import no.java.schedule.io.model.JZSessionsResponse;
-import no.java.schedule.io.model.JZSessionsResult;
-import no.java.schedule.io.model.JZSpeaker;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
-import static com.google.android.apps.iosched.provider.ScheduleContract.Speakers;
-import static com.google.android.apps.iosched.util.LogUtils.LOGI;
 import static com.google.android.apps.iosched.util.LogUtils.makeLogTag;
 
 /**
@@ -50,47 +40,12 @@ public class SpeakersHandler extends JSONHandler {
             throws IOException {
         final ArrayList<ContentProviderOperation> batch = Lists.newArrayList();
 
-        JZSessionsResponse response = new Gson().fromJson(json, JZSessionsResponse.class);
-
-        List<JZSpeaker> speakers = new ArrayList<JZSpeaker>();
-        JZSessionsResult[] sessions = response.sessions;
-
-        for (JZSessionsResult session : sessions) {
-          Collections.addAll(speakers, session.speakers);
-        }
-
-        int numEvents = 0;
-        if (speakers != null) {
-            numEvents = speakers.size();
-        }
-
-        if (numEvents > 0) {
-            LOGI(TAG, "Updating speakers data");
-
-            // Clear out existing speakers
-            batch.add(ContentProviderOperation
-                    .newDelete(ScheduleContract.addCallerIsSyncAdapterParameter(
-                            Speakers.CONTENT_URI))
-                    .build());
 
 
-          for (JZSpeaker speaker : speakers) {
-                String speakerId = speaker.name;
 
-                // Insert speaker info
-                batch.add(ContentProviderOperation
-                        .newInsert(ScheduleContract
-                                .addCallerIsSyncAdapterParameter(Speakers.CONTENT_URI))
-                        .withValue(SyncColumns.UPDATED, System.currentTimeMillis())
-                        .withValue(Speakers.SPEAKER_ID, speakerId)
-                        .withValue(Speakers.SPEAKER_NAME, speaker.name)
-                        .withValue(Speakers.SPEAKER_ABSTRACT, speaker.bioHtml)
-                        .withValue(Speakers.SPEAKER_IMAGE_URL, speaker.photoUrl.toString())
-                        .withValue(Speakers.SPEAKER_URL, "")//TODO
-                        .build());
-            }
-        }
 
-        return batch;
+
+
+      return batch;
     }
 }

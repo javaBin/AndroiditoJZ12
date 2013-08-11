@@ -190,10 +190,10 @@ public class SessionLivestreamActivity extends BaseActivity implements
                     TABNUM_SESSION_SUMMARY);
         }
 
-        mTabsAdapter.addTab(getString(R.string.title_stream), new SocialStreamFragment(),
-                TABNUM_SOCIAL_STREAM);
-        mTabsAdapter.addTab(getString(R.string.session_livestream_captions),
-                new SessionLiveCaptionsFragment(), TABNUM_LIVE_CAPTIONS);
+        //mTabsAdapter.addTab(getString(R.string.title_stream), new SocialStreamFragment(),
+        //        TABNUM_SOCIAL_STREAM);
+        //mTabsAdapter.addTab(getString(R.string.session_livestream_captions),
+        //        new SessionLiveCaptionsFragment(), TABNUM_LIVE_CAPTIONS);
 
         if (savedInstanceState != null) {
             mTabHost.setCurrentTabByTag(savedInstanceState.getString(EXTRA_TAB_STATE));
@@ -614,7 +614,7 @@ public class SessionLivestreamActivity extends BaseActivity implements
 
     Runnable mStreamRefreshRunnable = new Runnable() {
         @Override
-        public void run() {
+        public void run() { /**
             if (mTabsAdapter != null && mTabsAdapter.mFragments != null) {
                 final SocialStreamFragment socialStreamFragment =
                         (SocialStreamFragment) mTabsAdapter.mFragments.get(TABNUM_SOCIAL_STREAM);
@@ -623,10 +623,12 @@ public class SessionLivestreamActivity extends BaseActivity implements
                 }
             }
             mHandler.postDelayed(mStreamRefreshRunnable, STREAM_REFRESH_TIME);
+           **/
         }
     };
 
     private void updateTagStreamFragment(String trackHashTag) {
+        /*
         String hashTags = UIUtils.CONFERENCE_HASHTAG;
         if (!TextUtils.isEmpty(trackHashTag)) {
             hashTags += " " + trackHashTag;
@@ -637,6 +639,7 @@ public class SessionLivestreamActivity extends BaseActivity implements
         if (socialStreamFragment != null) {
             //socialStreamFragment.refresh();
         }
+        */
     }
 
     private void updateSessionLiveCaptionsFragment(String trackName) {

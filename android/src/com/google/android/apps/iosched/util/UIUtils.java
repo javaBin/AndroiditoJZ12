@@ -16,6 +16,7 @@
 
 package com.google.android.apps.iosched.util;
 
+import com.google.android.apps.iosched.io.model.Constants;
 import no.java.schedule.BuildConfig;
 import no.java.schedule.R;
 import com.google.android.apps.iosched.provider.ScheduleContract.Blocks;
@@ -70,11 +71,11 @@ public class UIUtils {
     public static final TimeZone CONFERENCE_TIME_ZONE = TimeZone.getTimeZone("Europe/Oslo");
 
     public static final long CONFERENCE_START_MILLIS = ParserUtils.parseTime(
-            "2012-09-12T08:00:00.000+01:00");
+            "2014-09-10T08:00:00.000+01:00");
     public static final long CONFERENCE_END_MILLIS = ParserUtils.parseTime(
-            "2012-09-13T18:00:00.000+01:00");
+            "2014-09-11T18:00:00.000+01:00");
 
-    public static final String CONFERENCE_HASHTAG = "#jz12";
+    public static final String CONFERENCE_HASHTAG = "#jz14";
 
     private static final int SECOND_MILLIS = 1000;
     private static final int MINUTE_MILLIS = 60 * SECOND_MILLIS;
@@ -114,13 +115,18 @@ public class UIUtils {
 
       //TODO JavaZone room name handling
         if (roomName == null) {
-            return context.getString(R.string.session_subtitle,
-                    formatBlockTimeString(blockStart, blockEnd, context), sEmptyRoomText);
+            roomName = "TBD";
+            //return context.getString(R.string.session_subtitle,
+            //        formatBlockTimeString(blockStart, blockEnd, context), sEmptyRoomText,type);
         }
 
 
-        if ("Quickie".equals(type)){
-            type = "(Lightning talk starts "+ formatLightningTalkTimeString(sessionStart, context)+")";
+        if (Constants.LIGHTNINGTALK.equals(type)){
+            if (sessionStart==0) {
+                type = "(Lightning talk starts " + formatLightningTalkTimeString(sessionStart, context) + ")";
+            } else {
+                type = "(Lightning talk)";
+            }
         } else {
             type = "";
         }
@@ -135,6 +141,10 @@ public class UIUtils {
     private static String formatLightningTalkTimeString(long sessionStart, Context context) {
         TimeZone.setDefault(CONFERENCE_TIME_ZONE);
 
+        if (sessionStart==0){
+            return "TBD";
+        }
+
         return DateUtils.formatDateTime(context, sessionStart, LIGHTNING_TALK_TIME_FLAGS);
     }
 
@@ -144,6 +154,10 @@ public class UIUtils {
      */
     public static String formatBlockTimeString(long blockStart, long blockEnd, Context context) {
         TimeZone.setDefault(CONFERENCE_TIME_ZONE);
+
+        if (blockStart==0){
+            return "TBD";
+        }
 
         // NOTE: There is an efficient version of formatDateRange in Eclair and
         // beyond that allows you to recycle a StringBuilder.

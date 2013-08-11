@@ -83,9 +83,9 @@ public class SocialStreamFragment extends SherlockListFragment implements AbsLis
     public void onResume(){
         super.onResume();
         getListView().setOnScrollListener(this);
-        if (isOnline()){
-            new TwitterSearchAsyncTask().execute();
-        }
+        //if (isOnline()){
+        //    new TwitterSearchAsyncTask().execute();
+        //}
     }
 
     @Override
@@ -135,10 +135,10 @@ public class SocialStreamFragment extends SherlockListFragment implements AbsLis
             }
         }
         if (!loading && (totalItemCount - visibleItemCount) <= (firstVisibleItem + visibleThreshold)) {
-            if (isOnline()){
-                new TwitterSearchAsyncTask().execute(nextResult);
-                loading = true;
-            }
+            //if (isOnline()){
+            //    new TwitterSearchAsyncTask().execute(nextResult);
+            //    loading = true;
+            //}
         }
     }
 
@@ -148,10 +148,10 @@ public class SocialStreamFragment extends SherlockListFragment implements AbsLis
             adapter.notifyDataSetInvalidated();
             resetOnScrollListener();
 
-            if (isOnline()){
-                //TODO - use executor, causes deadlocks
-                new TwitterSearchAsyncTask().execute();
-            }
+            //if (isOnline()){
+            //    //TODO - use executor, causes deadlocks
+            //    new TwitterSearchAsyncTask().execute();
+            //}
         }
     }
 
