@@ -18,7 +18,11 @@ package com.google.android.apps.iosched.io.model;
 
 import com.google.gson.JsonElement;
 
+import java.util.List;
+
 public class GenericResponse {
+
+
     public JsonElement error;
 //
 //    public void checkResponseForAuthErrorsAndThrow() throws IOException {

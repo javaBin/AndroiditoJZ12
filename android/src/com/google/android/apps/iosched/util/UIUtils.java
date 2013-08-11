@@ -115,7 +115,7 @@ public class UIUtils {
       //TODO JavaZone room name handling
         if (roomName == null) {
             return context.getString(R.string.session_subtitle,
-                    formatBlockTimeString(blockStart, blockEnd, context), sEmptyRoomText);
+                    formatBlockTimeString(blockStart, blockEnd, context), sEmptyRoomText,type);
         }
 
 

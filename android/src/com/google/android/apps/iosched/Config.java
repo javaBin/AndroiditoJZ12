@@ -26,7 +26,10 @@ public class Config {
     // NOTE: the backend used for the Google I/O 2012 Android app is not currently open source, so
     // you should modify these fields to reflect your own backend.
 
-    private static final String BASE_URL = "http://javazone.no/incogito10/rest/events/JavaZone%202012";
+    //private static final String BASE_URL = "http://javazone.no/incogito10/rest/events/JavaZone%202012";
+    private static final String BASE_URL = "http://javazone.no/ems/server/events/cee37cc1-5399-47ef-9418-21f9b6444bfa";
+
+  //TODO slots
     public static final String GET_ALL_SESSIONS_URL      = BASE_URL + "/sessions";
     // TODO public static final String EDIT_MY_SCHEDULE_URL      = BASE_URL + "/editmyschedule/o/";
 

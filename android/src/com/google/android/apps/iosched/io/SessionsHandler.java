@@ -29,17 +29,14 @@ import com.google.android.apps.iosched.util.Lists;
 import com.google.android.apps.iosched.util.ParserUtils;
 import com.google.gson.Gson;
 import no.java.schedule.R;
+import no.java.schedule.io.model.EMSItems;
 import no.java.schedule.io.model.JZLabel;
 import no.java.schedule.io.model.JZSessionsResponse;
 import no.java.schedule.io.model.JZSessionsResult;
 import no.java.schedule.io.model.JZSpeaker;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Pattern;
 
 import static com.google.android.apps.iosched.provider.ScheduleDatabase.SessionsSpeakers;
@@ -83,7 +80,7 @@ public class SessionsHandler extends JSONHandler {
             throws IOException {
         final ArrayList<ContentProviderOperation> batch = Lists.newArrayList();
 
-        JZSessionsResponse response = new Gson().fromJson(json, JZSessionsResponse.class);
+        JZSessionsResponse collectionResponse = new Gson().fromJson(json, JZSessionsResponse.class);
 
 
             LOGI(TAG, "Updating sessions data");
@@ -91,8 +88,8 @@ public class SessionsHandler extends JSONHandler {
             // by default retain locally starred if local sync
             boolean retainLocallyStarredSessions = true; //mLocal;
 
-            if (response.error != null && response.error.isJsonPrimitive()) {
-                String errorMessageLower = response.error.getAsString().toLowerCase();
+            if (collectionResponse.error != null && collectionResponse.error.isJsonPrimitive()) {
+                String errorMessageLower = collectionResponse.error.getAsString().toLowerCase();
 
                 if (!mLocal && (errorMessageLower.contains("no profile")
                         || errorMessageLower.contains("no auth token"))) {
@@ -113,7 +110,7 @@ public class SessionsHandler extends JSONHandler {
                 // Collect the list of current starred sessions
                 Cursor starredSessionsCursor = mContext.getContentResolver().query(
                         Sessions.CONTENT_STARRED_URI,
-                        new String[]{ScheduleContract.Sessions.SESSION_ID},
+                        new String[]{Sessions.SESSION_ID},
                         null, null, null);
                 while (starredSessionsCursor.moveToNext()) {
                     starredSessionIds.add(starredSessionsCursor.getString(0));
@@ -130,7 +127,9 @@ public class SessionsHandler extends JSONHandler {
             // Maintain a list of created block IDs
             Set<String> blockIds = new HashSet<String>();
 
-            for (JZSessionsResult event : response.sessions) {
+      List<JZSessionsResult> sessions = toJZSessionResultList(collectionResponse.collection.items);
+
+            for (JZSessionsResult event : sessions) {
 
                     int flags = 0;
                     if (retainLocallyStarredSessions) {
@@ -240,7 +239,7 @@ public class SessionsHandler extends JSONHandler {
                             .withValue(Sessions.SESSION_TITLE, sessionTitle)
                             .withValue(Sessions.SESSION_ABSTRACT, event.bodyHtml)
                             .withValue(Sessions.SESSION_TAGS, event.labelstrings())
-                            .withValue(Sessions.SESSION_URL,event.sessionHtmlUrl.toString())
+                            .withValue(Sessions.SESSION_URL,String.valueOf(event.sessionHtmlUrl))
                             .withValue(Sessions.SESSION_LIVESTREAM_URL, "")
                             .withValue(Sessions.SESSION_REQUIREMENTS, prereqs)
                             .withValue(Sessions.SESSION_STARRED, inSchedule)
@@ -324,6 +323,17 @@ public class SessionsHandler extends JSONHandler {
 
         return batch;
     }
+
+  private List<JZSessionsResult> toJZSessionResultList(final EMSItems[] pItems) {
+
+    List<JZSessionsResult> result = new ArrayList<JZSessionsResult>(pItems.length);
+
+    for (EMSItems item : pItems) {
+      result.add(JZSessionsResult.from(item));
+    }
+
+    return result;
+  }
 
   private static long snapStartTime(final long pSessionStartTime) {
 

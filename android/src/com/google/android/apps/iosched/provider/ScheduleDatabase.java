@@ -48,7 +48,7 @@ import static com.google.android.apps.iosched.util.LogUtils.makeLogTag;
 public class ScheduleDatabase extends SQLiteOpenHelper {
     private static final String TAG = makeLogTag(ScheduleDatabase.class);
 
-    private static final String DATABASE_NAME = "schedule.db";
+    private static final String DATABASE_NAME = "schedule2013.db";
 
     // NOTE: carefully update onUpgrade() when bumping database versions to make
     // sure user data is saved.

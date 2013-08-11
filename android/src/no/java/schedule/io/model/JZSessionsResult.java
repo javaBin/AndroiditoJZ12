@@ -43,11 +43,38 @@ public class JZSessionsResult {
   public String labelstrings() {
 
     String result="";
+
+    if (labels==null){
+      return "";
+    }
+
     for (int i = 0; i < labels.length; i++) {
       result+=labels[i].displayName+",";
 
     }
 
     return result;
+  }
+
+  public static JZSessionsResult from(final EMSItems pItem) {
+
+    JZSessionsResult session = new JZSessionsResult();
+
+    session.bodyHtml = pItem.getValue("body");
+    //session.start =
+    //session.end =
+    session.format = pItem.getValue("format");
+    session.id = pItem.href.toString();
+    //session.labels = pItem.getValue("keywords"); // TODO
+    session.level = new JZLevel(pItem.getValue("level"));
+    session.room = pItem.getLinkHref("session room");
+    session.selfUri = pItem.href;
+    //session.sessionHtmlUrl
+    //session.speakers
+    session.title = pItem.getValue("title");
+    //session.attending
+
+    return session;
+
   }
 }

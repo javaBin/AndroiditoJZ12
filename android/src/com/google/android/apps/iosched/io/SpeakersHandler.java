@@ -23,12 +23,10 @@ import com.google.android.apps.iosched.provider.ScheduleContract.SyncColumns;
 import com.google.android.apps.iosched.util.Lists;
 import com.google.gson.Gson;
 import no.java.schedule.io.model.JZSessionsResponse;
-import no.java.schedule.io.model.JZSessionsResult;
 import no.java.schedule.io.model.JZSpeaker;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static com.google.android.apps.iosched.provider.ScheduleContract.Speakers;
@@ -53,11 +51,12 @@ public class SpeakersHandler extends JSONHandler {
         JZSessionsResponse response = new Gson().fromJson(json, JZSessionsResponse.class);
 
         List<JZSpeaker> speakers = new ArrayList<JZSpeaker>();
-        JZSessionsResult[] sessions = response.sessions;
-
-        for (JZSessionsResult session : sessions) {
-          Collections.addAll(speakers, session.speakers);
-        }
+        // TODO
+        // JZSessionsResult[] sessions = response.sessions;
+        //
+        //for (JZSessionsResult session : sessions) {
+        //  Collections.addAll(speakers, session.speakers);
+        //}
 
         int numEvents = 0;
         if (speakers != null) {

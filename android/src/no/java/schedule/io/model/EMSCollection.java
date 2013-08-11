@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Google Inc.
+ * Copyright 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,13 +16,14 @@
 
 package no.java.schedule.io.model;
 
-import com.google.android.apps.iosched.io.model.GenericResponse;
+public class EMSCollection {
 
-public class JZSessionsResponse extends GenericResponse {
+  public EMSQuery[] queries;
+  public EMSItems[] items;
 
-  public EMSCollection collection;
+  public String version;
+  //public EMSTemplate template;
 
-  //@SerializedName("items")
-  //public JZSessionsResult[] sessions;
 
+  public String href;
 }
