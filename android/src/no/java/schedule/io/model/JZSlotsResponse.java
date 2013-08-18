@@ -16,23 +16,9 @@
 
 package no.java.schedule.io.model;
 
-import java.util.Arrays;
+import com.google.android.apps.iosched.io.model.GenericResponse;
 
-public class EMSData {
+public class JZSlotsResponse extends GenericResponse {
 
-
-  public String name;
-  public String prompt;
-  public String value;
-  public String[] array;
-
-  @Override
-  public String toString() {
-    return "EMSData{" +
-        "name='" + name + '\'' +
-        ", prompt='" + prompt + '\'' +
-        ", value='" + value + '\'' +
-        ", array=" + Arrays.toString(array) +
-        '}';
-  }
+  public EMSCollection collection;
 }

@@ -22,28 +22,27 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.text.format.Time;
+import com.google.android.apps.iosched.io.model.Constants;
 import com.google.android.apps.iosched.provider.ScheduleContract;
 import com.google.android.apps.iosched.provider.ScheduleContract.Sessions;
 import com.google.android.apps.iosched.provider.ScheduleContract.SyncColumns;
+import com.google.android.apps.iosched.sync.SyncHelper;
 import com.google.android.apps.iosched.util.Lists;
 import com.google.android.apps.iosched.util.ParserUtils;
 import com.google.gson.Gson;
 import no.java.schedule.R;
-import no.java.schedule.io.model.EMSItems;
-import no.java.schedule.io.model.JZLabel;
-import no.java.schedule.io.model.JZSessionsResponse;
-import no.java.schedule.io.model.JZSessionsResult;
-import no.java.schedule.io.model.JZSpeaker;
+import no.java.schedule.io.model.*;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.*;
 import java.util.regex.Pattern;
 
 import static com.google.android.apps.iosched.provider.ScheduleDatabase.SessionsSpeakers;
 import static com.google.android.apps.iosched.provider.ScheduleDatabase.SessionsTracks;
-import static com.google.android.apps.iosched.util.LogUtils.LOGI;
-import static com.google.android.apps.iosched.util.LogUtils.LOGW;
-import static com.google.android.apps.iosched.util.LogUtils.makeLogTag;
+import static com.google.android.apps.iosched.util.LogUtils.*;
 import static com.google.android.apps.iosched.util.ParserUtils.sanitizeId;
 
 /**
@@ -68,7 +67,7 @@ public class SessionsHandler extends JSONHandler {
 
     private boolean mLocal;
     private boolean mThrowIfNoAuthToken;
-
+  private Map<String,EMSItems> mBlocks;
 
   public SessionsHandler(Context context, boolean local, boolean throwIfNoAuthToken) {
         super(context);
@@ -206,6 +205,8 @@ public class SessionsHandler extends JSONHandler {
                     //    youtubeUrl = event.youtube_url[0];
                     //}
 
+                populateStartEndTime(event);
+
                 long sessionStartTime=0;
                 long sessionEndTime=0;      //TODO handle sessions without timeslot
 
@@ -221,12 +222,16 @@ public class SessionsHandler extends JSONHandler {
                     sessionEndTime = event.end.millis();//event.end_date, event.end_time);
                 }
 
-                if  ("Quickie".equals(event.format)){
-                    sessionStartTime=snapStartTime(sessionStartTime);
-                    sessionEndTime=snapEndTime(sessionEndTime);
+              if  (Constants.LIGHTNINGTALK.equals(event.format)){
+                                  sessionStartTime=snapStartTime(sessionStartTime);
+                                  sessionEndTime=snapEndTime(sessionEndTime);
+
+                                  if ((sessionEndTime-sessionStartTime)>1000*60*61){
+                                    sessionEndTime=sessionStartTime+1000*60*60;
+                                  }
 
 
-                }
+                              }
 
                     // Insert session info
                     final ContentProviderOperation.Builder builder = ContentProviderOperation
@@ -255,9 +260,8 @@ public class SessionsHandler extends JSONHandler {
 
 
 
-                    String blockId = ScheduleContract.Blocks.generateBlockId(
-                            sessionStartTime, sessionEndTime);
-                    if (!blockIds.contains(blockId)) {
+                    String blockId = ScheduleContract.Blocks.generateBlockId(sessionStartTime, sessionEndTime);
+                    if (blockId !=null && !blockIds.contains(blockId) ) { // TODO add support for fetching blocks and inserting
                         String blockType;
                         String blockTitle;
                         if (EVENT_TYPE_KEYNOTE.equals(event.format)) {
@@ -323,6 +327,54 @@ public class SessionsHandler extends JSONHandler {
 
         return batch;
     }
+
+  private void populateStartEndTime(final JZSessionsResult pEvent) {
+
+    if (mBlocks==null){
+      mBlocks = loadBlocks();
+    }
+
+    EMSItems timeslot = mBlocks.get(pEvent.timeslot);
+    if (timeslot!=null){
+      pEvent.start = new JZDate(timeslot.getValue("start"));
+      pEvent.end = new JZDate(timeslot.getValue("end"));
+    } else {
+      LOGE(this.getClass().getName(),"unknown block: "+pEvent.timeslot);
+    }
+
+
+  }
+
+  private Map<String, EMSItems> loadBlocks() {
+
+    String json;
+
+    Map<String, EMSItems> result = new HashMap<String, EMSItems>();
+
+    try {
+      URLConnection con = new URL("http://javazone.no/ems/server/events/cee37cc1-5399-47ef-9418-21f9b6444bfa/slots").openConnection();
+      con.setRequestProperty("User-Agent", "Androidito 2013");
+      con.setRequestProperty("Accept","application/json");
+      con.connect();
+      json = SyncHelper.readInputStream(con.getInputStream());
+      JZSlotsResponse slotResponse = new Gson().fromJson(json, JZSlotsResponse.class);
+
+      for (EMSItems slot : slotResponse.collection.items) {
+        result.put(slot.href.toString(),slot);
+      }
+
+    }
+    catch (MalformedURLException e) {
+      LOGE(this.getClass().getName(),e.getMessage());
+
+    }
+    catch (IOException e) {
+      LOGE(this.getClass().getName(), e.getMessage());
+    }
+
+    return result;
+
+  }
 
   static List<JZSessionsResult> toJZSessionResultList(final EMSItems[] pItems) {
 

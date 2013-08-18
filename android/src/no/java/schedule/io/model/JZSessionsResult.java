@@ -40,6 +40,7 @@ public class JZSessionsResult {
   public String title;
 
   public String attending;
+  public String timeslot;
 
   public String labelstrings() {
 
@@ -62,8 +63,9 @@ public class JZSessionsResult {
     JZSessionsResult session = new JZSessionsResult();
 
     session.bodyHtml = pItem.getValue("body");
-    //session.start =
+    //session.start = pItem.getValue()
     //session.end =
+    session.timeslot = pItem.getLinkHref("slot item");
     session.format = pItem.getValue("format");
     session.id = pItem.href.toString();
     session.labels = toJZLabels(pItem.getArray("keywords")); // TODO

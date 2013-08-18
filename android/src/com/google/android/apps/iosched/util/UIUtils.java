@@ -16,6 +16,7 @@
 
 package com.google.android.apps.iosched.util;
 
+import com.google.android.apps.iosched.io.model.Constants;
 import no.java.schedule.BuildConfig;
 import no.java.schedule.R;
 import com.google.android.apps.iosched.provider.ScheduleContract.Blocks;
@@ -114,12 +115,13 @@ public class UIUtils {
 
       //TODO JavaZone room name handling
         if (roomName == null) {
-            return context.getString(R.string.session_subtitle,
-                    formatBlockTimeString(blockStart, blockEnd, context), sEmptyRoomText,type);
+            roomName = "TBD";
+            //return context.getString(R.string.session_subtitle,
+            //        formatBlockTimeString(blockStart, blockEnd, context), sEmptyRoomText,type);
         }
 
 
-        if ("Quickie".equals(type)){
+        if (Constants.LIGHTNINGTALK.equals(type)){
             type = "(Lightning talk starts "+ formatLightningTalkTimeString(sessionStart, context)+")";
         } else {
             type = "";

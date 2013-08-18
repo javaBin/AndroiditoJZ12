@@ -105,8 +105,8 @@ public class SyncHelper {
                 // Load static local data
                 batch.addAll(new RoomsHandler(mContext).parse(
                         JSONHandler.loadResourceJson(mContext, R.raw.jzsessions)));
-                batch.addAll(new BlocksHandler(mContext).parse(
-                        JSONHandler.loadResourceJson(mContext, R.raw.jzcommon_slots)));
+                //batch.addAll(new BlocksHandler(mContext).parse(
+                //        JSONHandler.loadResourceJson(mContext, R.raw.jzcommon_slots)));
                 batch.addAll(new TracksHandler(mContext).parse(
                         JSONHandler.loadResourceJson(mContext, R.raw.jzsessions)));
                 batch.addAll(new SpeakersHandler(mContext, true).parse(
@@ -144,6 +144,9 @@ public class SyncHelper {
                 //LOGI(TAG, "Remote syncing speakers");
                 //batch.addAll(executeGet(Config.GET_ALL_SPEAKERS_URL,
                 //        new SpeakersHandler(mContext, false), auth));
+              //LOGI(TAG, "Remote syncing blocks");
+              //               batch.addAll(executeGet(Config.GET_ALL_BLOCKS,
+              //                       new BlocksHandler(mContext)));
                 LOGI(TAG, "Remote syncing sessions");
                 batch.addAll(executeGet(Config.GET_ALL_SESSIONS_URL,
                         new SessionsHandler(mContext, false, false)));
@@ -273,7 +276,7 @@ public class SyncHelper {
        **/
     }
 
-    private ArrayList<ContentProviderOperation> executeGet(String urlString, JSONHandler handler) throws IOException {
+    public ArrayList<ContentProviderOperation> executeGet(String urlString, JSONHandler handler) throws IOException {
         LOGD(TAG, "Requesting URL: " + urlString);
         URL url = new URL(urlString);
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
@@ -317,7 +320,7 @@ public class SyncHelper {
         }
     }
 
-    private static String readInputStream(InputStream inputStream)
+    public static String readInputStream(InputStream inputStream)
             throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
         String responseLine;

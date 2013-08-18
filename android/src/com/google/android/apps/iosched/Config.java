@@ -30,6 +30,7 @@ public class Config {
     private static final String BASE_URL = "http://javazone.no/ems/server/events/cee37cc1-5399-47ef-9418-21f9b6444bfa";
 
   //TODO slots
+  public static final String GET_ALL_BLOCKS =  BASE_URL + "/slots";
     public static final String GET_ALL_SESSIONS_URL      = BASE_URL + "/sessions";
     // TODO public static final String EDIT_MY_SCHEDULE_URL      = BASE_URL + "/editmyschedule/o/";
 
@@ -54,4 +55,5 @@ public class Config {
     // GCM config TODO
     public static final String GCM_SERVER_URL = "https://yourapp-gcm.appspot.com";
     public static final String GCM_SENDER_ID = "244909344957.apps.googleusercontent.com"; // project ID from the APIs console
+
 }
