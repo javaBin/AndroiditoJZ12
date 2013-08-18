@@ -67,7 +67,7 @@ public class SessionCalendarService extends IntentService {
 
     // TODO: localize
     private static final String CALENDAR_CLEAR_SEARCH_LIKE_EXPRESSION =
-            "%added by JavaZone 2012%";
+            "%added by JavaZone 2013%";
 
     public SessionCalendarService() {
         super(TAG);
