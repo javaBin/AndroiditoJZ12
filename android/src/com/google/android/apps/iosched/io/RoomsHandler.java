@@ -22,12 +22,10 @@ import com.google.android.apps.iosched.provider.ScheduleContract;
 import com.google.android.apps.iosched.util.Lists;
 import com.google.android.apps.iosched.util.ParserUtils;
 import com.google.gson.Gson;
-import no.java.schedule.io.model.JZSessionsResponse;
+import no.java.schedule.io.model.EMSItems;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 import static com.google.android.apps.iosched.util.LogUtils.makeLogTag;
 
@@ -44,31 +42,24 @@ public class RoomsHandler extends JSONHandler {
 
     public ArrayList<ContentProviderOperation> parse(String json) throws IOException {
 
-      JZSessionsResponse response = new Gson().fromJson(json, JZSessionsResponse.class);
-
-      Set<String> rooms = new HashSet<String>();
-
-      //TODO
-      //for (JZSessionsResult session : response.collection) {
-      //  rooms.add(session.room);
-      //}
+      JZRoomsResponse response = new Gson().fromJson(json, JZRoomsResponse.class);
 
 
       final ArrayList<ContentProviderOperation> batch = Lists.newArrayList();
-      Object[] roomArray = rooms.toArray();
-        int noOfRooms = rooms.size();
-        for (int i = 0; i < noOfRooms; i++) {
-            parseRoom(String.valueOf(roomArray[i]), batch);
-        }
-        return batch;
+
+      for (EMSItems room : response.collection.items) {
+        parseRoom(room, batch);
+      }
+
+      return batch;
     }
 
-    private static void parseRoom(String room, ArrayList<ContentProviderOperation> batch) {
+    private static void parseRoom(EMSItems room, ArrayList<ContentProviderOperation> batch) {
         ContentProviderOperation.Builder builder = ContentProviderOperation
                 .newInsert(ScheduleContract.addCallerIsSyncAdapterParameter(
                         ScheduleContract.Rooms.CONTENT_URI));
-        builder.withValue(ScheduleContract.Rooms.ROOM_ID, ParserUtils.sanitizeId(room));
-        builder.withValue(ScheduleContract.Rooms.ROOM_NAME, room);
+        builder.withValue(ScheduleContract.Rooms.ROOM_ID, ParserUtils.sanitizeId(room.href.toString()));
+        builder.withValue(ScheduleContract.Rooms.ROOM_NAME, room.getValue("name"));
         builder.withValue(ScheduleContract.Rooms.ROOM_FLOOR, "");
         batch.add(builder.build());
     }

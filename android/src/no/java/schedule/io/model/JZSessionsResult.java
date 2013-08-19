@@ -41,6 +41,7 @@ public class JZSessionsResult {
 
   public String attending;
   public String timeslot;
+  private String speakerItems;
 
   public String labelstrings() {
 
@@ -70,10 +71,10 @@ public class JZSessionsResult {
     session.id = pItem.href.toString();
     session.labels = toJZLabels(pItem.getArray("keywords")); // TODO
     session.level = new JZLevel(pItem.getValue("level"));
-    session.room = pItem.getLinkHref("session room");
+    session.room = pItem.getLinkHref("room item");
     session.selfUri = pItem.href;
     //session.sessionHtmlUrl
-    //session.speakers
+    session.speakerItems =  pItem.getLinkHref("speaker item");
     session.title = pItem.getValue("title");
     //session.attending
 

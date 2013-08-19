@@ -68,6 +68,7 @@ public class SessionsHandler extends JSONHandler {
     private boolean mLocal;
     private boolean mThrowIfNoAuthToken;
   private Map<String,EMSItems> mBlocks;
+  private Map<String, EMSItems> mRooms;
 
   public SessionsHandler(Context context, boolean local, boolean throwIfNoAuthToken) {
         super(context);
@@ -206,6 +207,7 @@ public class SessionsHandler extends JSONHandler {
                     //}
 
                 populateStartEndTime(event);
+                //populateRoom(event);
 
                 long sessionStartTime=0;
                 long sessionEndTime=0;      //TODO handle sessions without timeslot
@@ -328,6 +330,18 @@ public class SessionsHandler extends JSONHandler {
         return batch;
     }
 
+  private void populateRoom(final JZSessionsResult pEvent) {
+    if (mRooms==null){
+      mRooms= loadRooms();
+    }
+    
+    EMSItems room = mRooms.get(pEvent.room);
+    if (room!=null){
+      pEvent.room = room.getValue("name");
+    }
+
+  }
+
   private void populateStartEndTime(final JZSessionsResult pEvent) {
 
     if (mBlocks==null){
@@ -345,36 +359,48 @@ public class SessionsHandler extends JSONHandler {
 
   }
 
-  private Map<String, EMSItems> loadBlocks() {
-
-    String json;
-
-    Map<String, EMSItems> result = new HashMap<String, EMSItems>();
-
-    try {
-      URLConnection con = new URL("http://javazone.no/ems/server/events/cee37cc1-5399-47ef-9418-21f9b6444bfa/slots").openConnection();
-      con.setRequestProperty("User-Agent", "Androidito 2013");
-      con.setRequestProperty("Accept","application/json");
-      con.connect();
-      json = SyncHelper.readInputStream(con.getInputStream());
-      JZSlotsResponse slotResponse = new Gson().fromJson(json, JZSlotsResponse.class);
-
-      for (EMSItems slot : slotResponse.collection.items) {
-        result.put(slot.href.toString(),slot);
-      }
-
-    }
-    catch (MalformedURLException e) {
-      LOGE(this.getClass().getName(),e.getMessage());
-
-    }
-    catch (IOException e) {
-      LOGE(this.getClass().getName(), e.getMessage());
-    }
-
-    return result;
-
+  
+  private Map<String, EMSItems> loadRooms() {
+    return load("http://javazone.no/ems/server/events/cee37cc1-5399-47ef-9418-21f9b6444bfa/rooms");
+  
   }
+  private Map<String, EMSItems> loadBlocks() {
+      return load("http://javazone.no/ems/server/events/cee37cc1-5399-47ef-9418-21f9b6444bfa/slots");
+  }
+  
+  private Map<String, EMSItems> load(String url) {
+ 
+     String json;
+ 
+     Map<String, EMSItems> result = new HashMap<String, EMSItems>();
+ 
+     try {
+       URLConnection con = new URL(url).openConnection();
+       con.setRequestProperty("User-Agent", "Androidito 2013");
+       con.setRequestProperty("Accept","application/json");
+       con.connect();
+       json = SyncHelper.readInputStream(con.getInputStream());
+       JZSlotsResponse slotResponse = new Gson().fromJson(json, JZSlotsResponse.class);
+ 
+       for (EMSItems slot : slotResponse.collection.items) {
+         result.put(slot.href.toString(),slot);
+       }
+ 
+     }
+     catch (MalformedURLException e) {
+       LOGE(this.getClass().getName(),e.getMessage());
+ 
+     }
+     catch (IOException e) {
+       LOGE(this.getClass().getName(), e.getMessage());
+     }
+ 
+     return result;
+ 
+   }
+  
+  
+  
 
   static List<JZSessionsResult> toJZSessionResultList(final EMSItems[] pItems) {
 

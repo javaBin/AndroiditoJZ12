@@ -104,7 +104,7 @@ public class SyncHelper {
             if (localParse) {
                 // Load static local data
                 batch.addAll(new RoomsHandler(mContext).parse(
-                        JSONHandler.loadResourceJson(mContext, R.raw.jzsessions)));
+                        JSONHandler.loadResourceJson(mContext, R.raw.jzrooms)));
                 //batch.addAll(new BlocksHandler(mContext).parse(
                 //        JSONHandler.loadResourceJson(mContext, R.raw.jzcommon_slots)));
                 batch.addAll(new TracksHandler(mContext).parse(
