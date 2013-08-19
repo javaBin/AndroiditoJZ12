@@ -18,6 +18,7 @@ package no.java.schedule.io.model;
 
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Set;
 
 public class JZSessionsResult {
 
@@ -35,13 +36,13 @@ public class JZSessionsResult {
   public URI selfUri;
   public URI sessionHtmlUrl;
 
-  public JZSpeaker speakers[];
+  public Set<String> speakers;
 
   public String title;
 
   public String attending;
   public String timeslot;
-  private String speakerItems;
+  public String speakerItems;
 
   public String labelstrings() {
 

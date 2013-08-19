@@ -208,6 +208,7 @@ public class SessionsHandler extends JSONHandler {
 
                 populateStartEndTime(event);
                 //populateRoom(event);
+                parseSpeakers(event,batch);
 
                 long sessionStartTime=0;
                 long sessionEndTime=0;      //TODO handle sessions without timeslot
@@ -299,11 +300,11 @@ public class SessionsHandler extends JSONHandler {
                                     .addCallerIsSyncAdapterParameter(sessionSpeakersUri))
                             .build());
                     if (event.speakers != null) {
-                        for (JZSpeaker speaker : event.speakers) {
+                        for (String speakerId : event.speakers) {
                             //speaker = sRemoveSpeakerIdPrefixPattern.matcher(speaker).replaceAll("");
                             batch.add(ContentProviderOperation.newInsert(sessionSpeakersUri)
                                     .withValue(SessionsSpeakers.SESSION_ID, sessionId)
-                                    .withValue(SessionsSpeakers.SPEAKER_ID, speaker.name).build());//TODO ID for speakers
+                                    .withValue(SessionsSpeakers.SPEAKER_ID, speakerId).build());
                         }
                     }
 
@@ -329,6 +330,30 @@ public class SessionsHandler extends JSONHandler {
 
         return batch;
     }
+
+  private void parseSpeakers(final JZSessionsResult pEvent, final ArrayList<ContentProviderOperation> pBatch) {
+    Map<String, EMSItems> speakers = load(pEvent.speakerItems);
+
+    for (EMSItems speaker : speakers.values()) {
+
+
+    pBatch.add(ContentProviderOperation
+        .newInsert(ScheduleContract
+            .addCallerIsSyncAdapterParameter(ScheduleContract.Speakers.CONTENT_URI))
+        .withValue(SyncColumns.UPDATED, System.currentTimeMillis())
+        .withValue(ScheduleContract.Speakers.SPEAKER_ID, speaker.href.toString())
+        .withValue(ScheduleContract.Speakers.SPEAKER_NAME, speaker.getValue("name"))
+        .withValue(ScheduleContract.Speakers.SPEAKER_ABSTRACT, speaker.getValue("bio"))
+        .withValue(ScheduleContract.Speakers.SPEAKER_IMAGE_URL, "")//TODO
+        .withValue(ScheduleContract.Speakers.SPEAKER_URL, "")//TODO
+        .build());
+
+    }
+
+    pEvent.speakers = speakers.keySet();
+
+
+  }
 
   private void populateRoom(final JZSessionsResult pEvent) {
     if (mRooms==null){
