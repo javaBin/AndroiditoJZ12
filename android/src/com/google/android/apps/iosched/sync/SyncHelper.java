@@ -105,11 +105,7 @@ public class SyncHelper {
                 // Load static local data
                 batch.addAll(new RoomsHandler(mContext).parse(
                         JSONHandler.loadResourceJson(mContext, R.raw.jzrooms)));
-                //batch.addAll(new BlocksHandler(mContext).parse(
-                //        JSONHandler.loadResourceJson(mContext, R.raw.jzcommon_slots)));
                 batch.addAll(new TracksHandler(mContext).parse(
-                        JSONHandler.loadResourceJson(mContext, R.raw.jzsessions)));
-                batch.addAll(new SpeakersHandler(mContext, true).parse(
                         JSONHandler.loadResourceJson(mContext, R.raw.jzsessions)));
                 batch.addAll(new SessionsHandler(mContext, true, false).parse(
                         JSONHandler.loadResourceJson(mContext, R.raw.jzsessions)));
@@ -141,26 +137,16 @@ public class SyncHelper {
         if ((flags & FLAG_SYNC_REMOTE) != 0 && isOnline()) {
             try {
                 final long startRemote = System.currentTimeMillis();
-                //LOGI(TAG, "Remote syncing speakers");
-                //batch.addAll(executeGet(Config.GET_ALL_SPEAKERS_URL,
-                //        new SpeakersHandler(mContext, false), auth));
-              //LOGI(TAG, "Remote syncing blocks");
-              //               batch.addAll(executeGet(Config.GET_ALL_BLOCKS,
-              //                       new BlocksHandler(mContext)));
                 LOGI(TAG, "Remote syncing sessions");
                 batch.addAll(executeGet(Config.GET_ALL_SESSIONS_URL,
                         new SessionsHandler(mContext, false, false)));
                LOGI(TAG, "Remote syncing tracks");
                 batch.addAll(executeGet(Config.GET_ALL_SESSIONS_URL,
                                       new TracksHandler(mContext)));
-                //LOGI(TAG, "Remote syncing sandbox");
-                //batch.addAll(executeGet(Config.GET_SANDBOX_URL,
-                //        new SandboxHandler(mContext, false), auth));
                 //TODO Enable announcements for JavaZone
                 //LOGI(TAG, "Remote syncing announcements");
                 //batch.addAll(executeGet(Config.GET_ALL_ANNOUNCEMENTS_URL,
                 //        new AnnouncementsHandler(mContext, false), auth));
-                // GET_ALL_SESSIONS covers the functionality GET_MY_SCHEDULE provides here.
                 LOGD(TAG, "Remote sync took " + (System.currentTimeMillis() - startRemote) + "ms");
                 if (syncResult != null) {
                     ++syncResult.stats.numUpdates;
@@ -239,6 +225,7 @@ public class SyncHelper {
 
     public void addOrRemoveSessionFromSchedule(Context context, String sessionId,
             boolean inSchedule) throws IOException {
+      //TODO sync at EMS server
       /**
         mAuthToken = AccountUtils.getAuthToken(mContext);
         JsonObject starredSession = new JsonObject();

@@ -52,20 +52,20 @@ public class JZSessionsResult {
       return "";
     }
 
-    for (int i = 0; i < labels.length; i++) {
-      result+=labels[i].displayName+",";
-
+    for (JZLabel label : labels) {
+      result += label.displayName + ",";
     }
 
     return result;
   }
 
-  public static JZSessionsResult from(final EMSItems pItem) {
+  public static JZSessionsResult from(final EMSItem pItem) {
 
     JZSessionsResult session = new JZSessionsResult();
 
     session.bodyHtml = pItem.getValue("body");
-    //session.start = pItem.getValue()
+    // Start / End populated late
+    //session.start =
     //session.end =
     session.timeslot = pItem.getLinkHref("slot item");
     session.format = pItem.getValue("format");
@@ -74,10 +74,9 @@ public class JZSessionsResult {
     session.level = new JZLevel(pItem.getValue("level"));
     session.room = pItem.getLinkHref("room item");
     session.selfUri = pItem.href;
-    //session.sessionHtmlUrl
+    //session.sessionHtmlUrl // TODO
     session.speakerItems =  pItem.getLinkHref("speaker item");
     session.title = pItem.getValue("title");
-    //session.attending
 
     return session;
 

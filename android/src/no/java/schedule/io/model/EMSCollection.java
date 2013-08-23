@@ -19,11 +19,9 @@ package no.java.schedule.io.model;
 public class EMSCollection {
 
   public EMSQuery[] queries;
-  public EMSItems[] items;
+  public EMSItem[] items;
 
   public String version;
-  //public EMSTemplate template;
-
 
   public String href;
 }

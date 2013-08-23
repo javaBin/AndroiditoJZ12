@@ -71,11 +71,11 @@ public class UIUtils {
     public static final TimeZone CONFERENCE_TIME_ZONE = TimeZone.getTimeZone("Europe/Oslo");
 
     public static final long CONFERENCE_START_MILLIS = ParserUtils.parseTime(
-            "2012-09-12T08:00:00.000+01:00");
+            "2013-09-11T08:00:00.000+01:00");
     public static final long CONFERENCE_END_MILLIS = ParserUtils.parseTime(
-            "2012-09-13T18:00:00.000+01:00");
+            "2013-09-12T18:00:00.000+01:00");
 
-    public static final String CONFERENCE_HASHTAG = "#jz12";
+    public static final String CONFERENCE_HASHTAG = "#jz13";
 
     private static final int SECOND_MILLIS = 1000;
     private static final int MINUTE_MILLIS = 60 * SECOND_MILLIS;

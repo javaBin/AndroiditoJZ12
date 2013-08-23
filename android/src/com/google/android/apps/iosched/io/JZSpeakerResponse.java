@@ -22,8 +22,4 @@ import no.java.schedule.io.model.EMSCollection;
 public class JZSpeakerResponse extends GenericResponse {
 
   public EMSCollection collection;
-
-  //@SerializedName("items")
-  //public JZSessionsResult[] sessions;
-
 }

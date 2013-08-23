@@ -18,4 +18,5 @@ package com.google.android.apps.iosched.io.model;
 
 public class Constants {
   public static final String LIGHTNINGTALK = "lightning-talk";
+  public static final String EMS_SLOTS = "http://javazone.no/ems/server/events/cee37cc1-5399-47ef-9418-21f9b6444bfa/slots";
 }

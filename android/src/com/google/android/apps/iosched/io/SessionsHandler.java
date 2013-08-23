@@ -65,10 +65,10 @@ public class SessionsHandler extends JSONHandler {
 
     private static final Pattern sRemoveSpeakerIdPrefixPattern = Pattern.compile(".*//");
 
-    private boolean mLocal;
+  private boolean mLocal;
     private boolean mThrowIfNoAuthToken;
-  private Map<String,EMSItems> mBlocks;
-  private Map<String, EMSItems> mRooms;
+  private Map<String,EMSItem> mBlocks;
+  private Map<String, EMSItem> mRooms;
 
   public SessionsHandler(Context context, boolean local, boolean throwIfNoAuthToken) {
         super(context);
@@ -147,10 +147,6 @@ public class SessionsHandler extends JSONHandler {
 
                     // Session title  - fix special titles
                     String sessionTitle = event.title;
-                    //if (EVENT_TYPE_CODELAB.equals(event.event_type)) {
-                    //    sessionTitle = mContext.getString(
-                    //            R.string.codelab_title_template, sessionTitle);
-                    //}
 
                     // Whether or not it's in the schedule
                     boolean inSchedule = "Y".equals(event.attending);
@@ -159,20 +155,6 @@ public class SessionsHandler extends JSONHandler {
                         inSchedule = (flags & PARSE_FLAG_FORCE_SCHEDULE_ADD) != 0;
                     }
 
-
-                    // Special handing of sessiosn that should always be in schedule
-                    //if (EVENT_TYPE_KEYNOTE.equals(event.event_type)) {
-                    //    // Keynotes are always in your schedule.
-                    //    inSchedule = true;
-                    //}
-
-
-
-                    // Special sorting of sessions based on tracks etc
-                    // Re-order session tracks so that Code Lab is last
-                    //if (event.labels != null) {
-                    //    Arrays.sort(event.track, sTracksComparator);
-                    //}
 
                     // Hashtags
                     String hashtags = "";
@@ -207,7 +189,6 @@ public class SessionsHandler extends JSONHandler {
                     //}
 
                 populateStartEndTime(event);
-                //populateRoom(event);
                 parseSpeakers(event,batch);
 
                 long sessionStartTime=0;
@@ -301,7 +282,6 @@ public class SessionsHandler extends JSONHandler {
                             .build());
                     if (event.speakers != null) {
                         for (String speakerId : event.speakers) {
-                            //speaker = sRemoveSpeakerIdPrefixPattern.matcher(speaker).replaceAll("");
                             batch.add(ContentProviderOperation.newInsert(sessionSpeakersUri)
                                     .withValue(SessionsSpeakers.SESSION_ID, sessionId)
                                     .withValue(SessionsSpeakers.SPEAKER_ID, speakerId).build());
@@ -314,10 +294,6 @@ public class SessionsHandler extends JSONHandler {
                     batch.add(ContentProviderOperation.newDelete(sessionTracksUri).build());
                     if (event.labels != null) {
                         for (JZLabel trackName : event.labels) {
-                            //if (trackName.contains("Code Lab")) {
-                            //    trackName = "Code Labs";
-                            //}
-
                             String trackId = ScheduleContract.Tracks.generateTrackId(trackName.id);
                             batch.add(ContentProviderOperation.newInsert(sessionTracksUri)
                                     .withValue(SessionsTracks.SESSION_ID, sessionId)
@@ -332,9 +308,9 @@ public class SessionsHandler extends JSONHandler {
     }
 
   private void parseSpeakers(final JZSessionsResult pEvent, final ArrayList<ContentProviderOperation> pBatch) {
-    Map<String, EMSItems> speakers = load(pEvent.speakerItems);
+    Map<String, EMSItem> speakers = load(pEvent.speakerItems);
 
-    for (EMSItems speaker : speakers.values()) {
+    for (EMSItem speaker : speakers.values()) {
 
 
     pBatch.add(ContentProviderOperation
@@ -355,25 +331,13 @@ public class SessionsHandler extends JSONHandler {
 
   }
 
-  private void populateRoom(final JZSessionsResult pEvent) {
-    if (mRooms==null){
-      mRooms= loadRooms();
-    }
-    
-    EMSItems room = mRooms.get(pEvent.room);
-    if (room!=null){
-      pEvent.room = room.getValue("name");
-    }
-
-  }
-
   private void populateStartEndTime(final JZSessionsResult pEvent) {
 
     if (mBlocks==null){
       mBlocks = loadBlocks();
     }
 
-    EMSItems timeslot = mBlocks.get(pEvent.timeslot);
+    EMSItem timeslot = mBlocks.get(pEvent.timeslot);
     if (timeslot!=null){
       pEvent.start = new JZDate(timeslot.getValue("start"));
       pEvent.end = new JZDate(timeslot.getValue("end"));
@@ -384,20 +348,15 @@ public class SessionsHandler extends JSONHandler {
 
   }
 
-  
-  private Map<String, EMSItems> loadRooms() {
-    return load("http://javazone.no/ems/server/events/cee37cc1-5399-47ef-9418-21f9b6444bfa/rooms");
-  
-  }
-  private Map<String, EMSItems> loadBlocks() {
-      return load("http://javazone.no/ems/server/events/cee37cc1-5399-47ef-9418-21f9b6444bfa/slots");
+  private Map<String, EMSItem> loadBlocks() {
+      return load(Constants.EMS_SLOTS);
   }
   
-  private Map<String, EMSItems> load(String url) {
+  private Map<String, EMSItem> load(String url) {
  
      String json;
  
-     Map<String, EMSItems> result = new HashMap<String, EMSItems>();
+     Map<String, EMSItem> result = new HashMap<String, EMSItem>();
  
      try {
        URLConnection con = new URL(url).openConnection();
@@ -407,7 +366,7 @@ public class SessionsHandler extends JSONHandler {
        json = SyncHelper.readInputStream(con.getInputStream());
        JZSlotsResponse slotResponse = new Gson().fromJson(json, JZSlotsResponse.class);
  
-       for (EMSItems slot : slotResponse.collection.items) {
+       for (EMSItem slot : slotResponse.collection.items) {
          result.put(slot.href.toString(),slot);
        }
  
@@ -427,11 +386,11 @@ public class SessionsHandler extends JSONHandler {
   
   
 
-  static List<JZSessionsResult> toJZSessionResultList(final EMSItems[] pItems) {
+  static List<JZSessionsResult> toJZSessionResultList(final EMSItem[] pItems) {
 
     List<JZSessionsResult> result = new ArrayList<JZSessionsResult>(pItems.length);
 
-    for (EMSItems item : pItems) {
+    for (EMSItem item : pItems) {
       result.add(JZSessionsResult.from(item));
     }
 
@@ -462,18 +421,8 @@ public class SessionsHandler extends JSONHandler {
 
       }
 
-
-
-  private Comparator<String> sTracksComparator = new Comparator<String>() {
-        @Override
-        public int compare(String s1, String s2) {
-            // TODO: improve performance of this comparator
-            return (s1.contains("Code Lab") ? "z" : s1).compareTo(
-                    (s2.contains("Code Lab") ? "z" : s2));
-        }
-    };
-
-    private String makeSessionUrl(String sessionId) {
+  // TODO
+  private String makeSessionUrl(String sessionId) {
         if (TextUtils.isEmpty(sessionId)) {
             return null;
         }
@@ -481,15 +430,4 @@ public class SessionsHandler extends JSONHandler {
         return BASE_SESSION_URL + sessionId;
     }
 
-    private static long parseTime(String date, String time) {
-        //change to this format : 2011-05-10T07:00:00.000-07:00
-        int index = time.indexOf(":");
-        if (index == 1) {
-            time = "0" + time;
-        }
-        final String composed = String.format("%sT%s:00.000-07:00", date, time);
-        //return sTimeFormat.parse(composed).getTime();
-        sTime.parse3339(composed);
-        return sTime.toMillis(false);
-    }
 }

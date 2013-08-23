@@ -37,7 +37,7 @@ public class JZDate {
   public JZDate(final String dateString)  {
 
     DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-    Date  date = null;
+    Date  date;
     try {
       date = fmt.parse(dateString);
       day = date.getDate();

@@ -20,6 +20,5 @@ public class JZLevel extends JZLabel {
 
   public JZLevel(final String pLevel) {
     super(pLevel);
-
   }
 }

@@ -53,8 +53,8 @@ public class ScheduleDatabase extends SQLiteOpenHelper {
     // NOTE: carefully update onUpgrade() when bumping database versions to make
     // sure user data is saved.
 
-    private static final int VER_LAUNCH = 25;
-    private static final int VER_SESSION_TYPE = 26;
+    private static final int VER_LAUNCH = 26;
+    private static final int VER_SESSION_TYPE = 27;
 
     private static final int DATABASE_VERSION = VER_SESSION_TYPE;
 

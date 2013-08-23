@@ -22,7 +22,7 @@ import com.google.android.apps.iosched.provider.ScheduleContract;
 import com.google.android.apps.iosched.util.Lists;
 import com.google.android.apps.iosched.util.ParserUtils;
 import com.google.gson.Gson;
-import no.java.schedule.io.model.EMSItems;
+import no.java.schedule.io.model.EMSItem;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -47,14 +47,14 @@ public class RoomsHandler extends JSONHandler {
 
       final ArrayList<ContentProviderOperation> batch = Lists.newArrayList();
 
-      for (EMSItems room : response.collection.items) {
+      for (EMSItem room : response.collection.items) {
         parseRoom(room, batch);
       }
 
       return batch;
     }
 
-    private static void parseRoom(EMSItems room, ArrayList<ContentProviderOperation> batch) {
+    private static void parseRoom(EMSItem room, ArrayList<ContentProviderOperation> batch) {
         ContentProviderOperation.Builder builder = ContentProviderOperation
                 .newInsert(ScheduleContract.addCallerIsSyncAdapterParameter(
                         ScheduleContract.Rooms.CONTENT_URI));

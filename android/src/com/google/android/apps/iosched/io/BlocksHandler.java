@@ -24,7 +24,7 @@ import com.google.android.apps.iosched.util.Lists;
 import com.google.android.apps.iosched.util.ParserUtils;
 import com.google.gson.Gson;
 import no.java.schedule.io.model.EMSCollection;
-import no.java.schedule.io.model.EMSItems;
+import no.java.schedule.io.model.EMSItem;
 import no.java.schedule.io.model.JZSlotsResponse;
 
 import java.io.IOException;
@@ -50,7 +50,7 @@ public class BlocksHandler extends JSONHandler {
         JZSlotsResponse response = gson.fromJson(json, JZSlotsResponse.class);
         EMSCollection eventSlots = response.collection;
 
-        for (EMSItems slot : eventSlots.items) {
+        for (EMSItem slot : eventSlots.items) {
           parseSlot(slot, batch);
         }
       } catch (Throwable e) {
@@ -60,7 +60,7 @@ public class BlocksHandler extends JSONHandler {
         return batch;
     }
 
-    private static void parseSlot(EMSItems slot, ArrayList<ContentProviderOperation> batch) {
+    private static void parseSlot(EMSItem slot, ArrayList<ContentProviderOperation> batch) {
         ContentProviderOperation.Builder builder = ContentProviderOperation
                 .newInsert(ScheduleContract.addCallerIsSyncAdapterParameter(Blocks.CONTENT_URI));
         //LOGD(TAG, "Inside parseSlot:" + date + ",  " + slot);

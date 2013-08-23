@@ -18,7 +18,7 @@ package no.java.schedule.io.model;
 
 import java.net.URI;
 
-public class EMSItems {
+public class EMSItem {
 
 
   public String getValue(String key){

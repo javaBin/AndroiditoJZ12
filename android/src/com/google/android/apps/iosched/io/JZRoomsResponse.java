@@ -23,7 +23,4 @@ public class JZRoomsResponse extends GenericResponse {
 
   public EMSCollection collection;
 
-  //@SerializedName("items")
-  //public JZSessionsResult[] sessions;
-
 }

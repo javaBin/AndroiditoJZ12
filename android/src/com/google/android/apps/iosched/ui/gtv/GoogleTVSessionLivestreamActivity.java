@@ -79,7 +79,7 @@ public class GoogleTVSessionLivestreamActivity extends BaseActivity implements
     private static final String TAG_SESSION_SUMMARY = "session_summary";
     private static final int UPCOMING_SESSIONS_QUERY_ID = 3;
 
-    private static final String PROMO_VIDEO_URL = "http://www.youtube.com/watch?v=gTA-5HM8Zhs";
+    private static final String PROMO_VIDEO_URL = "http://www.youtube.com/watch?v=E3418SeWZfQ";
 
     private boolean mIsFullscreen = false;
     private boolean mTrackPlay = true;
