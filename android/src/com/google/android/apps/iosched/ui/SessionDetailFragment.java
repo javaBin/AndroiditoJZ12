@@ -337,7 +337,7 @@ public class SessionDetailFragment extends SherlockFragment implements
         // Render normal links
         for (int i = 0; i < SessionsQuery.LINKS_INDICES.length; i++) {
             final String linkUrl = cursor.getString(SessionsQuery.LINKS_INDICES[i]);
-            if (!TextUtils.isEmpty(linkUrl)) {
+            if (!TextUtils.isEmpty(linkUrl) && !"null".equals(linkUrl)) {
                 hasLinks = true;
 
                 // Create the link item
