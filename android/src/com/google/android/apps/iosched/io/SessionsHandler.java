@@ -320,7 +320,7 @@ public class SessionsHandler extends JSONHandler {
         .withValue(ScheduleContract.Speakers.SPEAKER_ID, speaker.href.toString())
         .withValue(ScheduleContract.Speakers.SPEAKER_NAME, speaker.getValue("name"))
         .withValue(ScheduleContract.Speakers.SPEAKER_ABSTRACT, speaker.getValue("bio"))
-        .withValue(ScheduleContract.Speakers.SPEAKER_IMAGE_URL, "")//TODO
+        .withValue(ScheduleContract.Speakers.SPEAKER_IMAGE_URL, speaker.getLinkHref("photo"))//TODO
         .withValue(ScheduleContract.Speakers.SPEAKER_URL, "")//TODO
         .build());
 
