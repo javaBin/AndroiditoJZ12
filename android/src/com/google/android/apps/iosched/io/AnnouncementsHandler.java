@@ -21,9 +21,6 @@ import static com.google.android.apps.iosched.util.LogUtils.makeLogTag;
 
 import android.content.ContentProviderOperation;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.text.TextUtils;
 
 import com.google.android.apps.iosched.io.model.Announcement;
 import com.google.android.apps.iosched.io.model.AnnouncementsResponse;

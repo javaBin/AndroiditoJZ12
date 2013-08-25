@@ -25,13 +25,15 @@ import android.os.RemoteException;
 import android.preference.PreferenceManager;
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.android.apps.iosched.Config;
-import com.google.android.apps.iosched.io.*;
+import com.google.android.apps.iosched.io.HandlerException;
+import com.google.android.apps.iosched.io.JSONHandler;
+import com.google.android.apps.iosched.io.SessionsHandler;
+import com.google.android.apps.iosched.io.TracksHandler;
 import com.google.android.apps.iosched.io.model.ErrorResponse;
 import com.google.android.apps.iosched.provider.ScheduleContract;
 import com.google.android.apps.iosched.util.UIUtils;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-import no.java.schedule.R;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -40,6 +42,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import static com.google.android.apps.iosched.util.LogUtils.*;
 
@@ -81,10 +84,8 @@ public class SyncHelper {
      * @param syncResult Optional {@link SyncResult} object to populate.
      * @throws IOException
      */
-    public void performSync(SyncResult syncResult, int flags) throws IOException {
+    public void performSync(SyncResult syncResult) throws IOException {
 
-        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
-        final int localVersion = prefs.getInt("local_data_version", 0);
 
         // Bulk of sync work, performed by executing several fetches from
         // local and online sources.
@@ -93,79 +94,38 @@ public class SyncHelper {
 
         LOGI(TAG, "Performing sync");
 
-        if ((flags & FLAG_SYNC_LOCAL) != 0) {
-            final long startLocal = System.currentTimeMillis();
-            final boolean localParse = localVersion < LOCAL_VERSION_CURRENT;
-            LOGD(TAG, "found localVersion=" + localVersion + " and LOCAL_VERSION_CURRENT="
-                    + LOCAL_VERSION_CURRENT);
-            // Only run local sync if there's a newer version of data available
-            // than what was last locally-sync'd.
 
-            if (localParse) {
-                // Load static local data
-                batch.addAll(new RoomsHandler(mContext).parse(
-                        JSONHandler.loadResourceJson(mContext, R.raw.jzrooms)));
-                batch.addAll(new TracksHandler(mContext).parse(
-                        JSONHandler.loadResourceJson(mContext, R.raw.jzsessions)));
-                batch.addAll(new SessionsHandler(mContext, true, false).parse(
-                        JSONHandler.loadResourceJson(mContext, R.raw.jzsessions)));
-                batch.addAll(new SandboxHandler(mContext, true).parse(
-                        JSONHandler.loadResourceJson(mContext, R.raw.sandbox)));
-                batch.addAll(new SearchSuggestHandler(mContext).parse(
-                        JSONHandler.loadResourceJson(mContext, R.raw.search_suggest)));
-                prefs.edit().putInt("local_data_version", LOCAL_VERSION_CURRENT).commit();
-                if (syncResult != null) {
-                    ++syncResult.stats.numUpdates;
-                    ++syncResult.stats.numEntries;
-                }
-            }
+      try {
+        final long startRemote = System.currentTimeMillis();
+        LOGI(TAG, "Remote syncing sessions");
+        batch.addAll(fetchResource( Config.GET_ALL_SESSIONS_URL, new SessionsHandler(mContext, false, false)));
+        LOGI(TAG, "Remote syncing tracks");
+        batch.addAll(fetchResource( Config.GET_ALL_SESSIONS_URL, new TracksHandler(mContext)));
 
-            LOGD(TAG, "Local sync took " + (System.currentTimeMillis() - startLocal) + "ms");
+        //TODO Enable announcements for JavaZone
+        //LOGI(TAG, "Remote syncing announcements");
+        //batch.addAll(executeGet(Config.GET_ALL_ANNOUNCEMENTS_URL,
+        //        new AnnouncementsHandler(mContext, false), auth));
 
-            try {
-                // Apply all queued up batch operations for local data.
-                resolver.applyBatch(ScheduleContract.CONTENT_AUTHORITY, batch);
-            } catch (RemoteException e) {
-                throw new RuntimeException("Problem applying batch operation", e);
-            } catch (OperationApplicationException e) {
-                throw new RuntimeException("Problem applying batch operation", e);
-            }
-
-            batch = new ArrayList<ContentProviderOperation>();
+        LOGD(TAG, "Remote sync took " + (System.currentTimeMillis() - startRemote) + "ms");
+        if (syncResult != null) {
+          ++syncResult.stats.numUpdates;
+          ++syncResult.stats.numEntries;
         }
 
-        if ((flags & FLAG_SYNC_REMOTE) != 0 && isOnline()) {
-            try {
-                final long startRemote = System.currentTimeMillis();
-                LOGI(TAG, "Remote syncing sessions");
-                batch.addAll(executeGet(Config.GET_ALL_SESSIONS_URL,
-                        new SessionsHandler(mContext, false, false)));
-               LOGI(TAG, "Remote syncing tracks");
-                batch.addAll(executeGet(Config.GET_ALL_SESSIONS_URL,
-                                      new TracksHandler(mContext)));
-                //TODO Enable announcements for JavaZone
-                //LOGI(TAG, "Remote syncing announcements");
-                //batch.addAll(executeGet(Config.GET_ALL_ANNOUNCEMENTS_URL,
-                //        new AnnouncementsHandler(mContext, false), auth));
-                LOGD(TAG, "Remote sync took " + (System.currentTimeMillis() - startRemote) + "ms");
-                if (syncResult != null) {
-                    ++syncResult.stats.numUpdates;
-                    ++syncResult.stats.numEntries;
-                }
+        EasyTracker.getTracker().dispatch();
 
-                EasyTracker.getTracker().dispatch();
-
-            } catch (HandlerException.UnauthorizedException e) {
-                LOGI(TAG, "Unauthorized; getting a new auth token.", e);
-                if (syncResult != null) {
-                    ++syncResult.stats.numAuthExceptions;
-                }
-
-            }
-            // all other IOExceptions are thrown
+      } catch (HandlerException.UnauthorizedException e) {
+        LOGI(TAG, "Unauthorized; getting a new auth token.", e);
+        if (syncResult != null) {
+          ++syncResult.stats.numAuthExceptions;
         }
 
-        try {
+      }
+      // all other IOExceptions are thrown
+
+
+      try {
             // Apply all queued up remaining batch operations (only remote content at this point).
             resolver.applyBatch(ScheduleContract.CONTENT_AUTHORITY, batch);
 
@@ -263,24 +223,82 @@ public class SyncHelper {
        **/
     }
 
-    public ArrayList<ContentProviderOperation> executeGet(String urlString, JSONHandler handler) throws IOException {
-        LOGD(TAG, "Requesting URL: " + urlString);
-        URL url = new URL(urlString);
-        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-        urlConnection.setRequestProperty("User-Agent", mUserAgent);
+    public ArrayList<ContentProviderOperation> fetchResource( String urlString, JSONHandler handler) throws IOException {
 
+      String response = null;
 
-        urlConnection.setRequestProperty("Accept","application/json");
+      if (isFirstRun()) {
+         response = getLocalResource(mContext, urlString);
+      } else if (isOnline(mContext)) {
+          response = getHttpResource(urlString);
+      }
 
-        urlConnection.connect();
-        throwErrors(urlConnection);
-
-        String response = readInputStream(urlConnection.getInputStream());
-        LOGV(TAG, "HTTP response: " + response);
+      if (response!=null && !response.trim().equals("")){
         return handler.parse(response);
+      } else {
+        return new ArrayList<ContentProviderOperation>();
+      }
     }
 
-    private void throwErrors(HttpURLConnection urlConnection) throws IOException {
+
+  private boolean isFirstRun(){
+    return isFirstRun(mContext);
+  }
+
+  public static boolean isFirstRun(Context context) {
+    final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+    return prefs.getBoolean("first_run", true);
+  }
+
+  public static String getLocalResource(Context pContext,String pUrlString) {
+
+    pUrlString = pUrlString.replaceFirst("http://", "");
+
+    //fix file/directory clashes....
+    if (pUrlString.endsWith("/sessions")) {
+      pUrlString=pUrlString+".json";
+    }
+
+    LOGD("LocalResourceUrls", pUrlString);
+
+    try {
+      InputStream asset = pContext.getAssets().open(pUrlString);
+
+
+      LOGD("LocalResourceUrls Found",pUrlString);
+      return convertStreamToString(asset);
+
+    }
+    catch (IOException e) {
+      LOGE("LocalResourceUrls NotFound",pUrlString);
+      LOGE(makeLogTag(SyncHelper.class),"Exception reading asset",e);
+      return null;
+    }
+
+  }
+
+  static String convertStreamToString(java.io.InputStream is) {
+      Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
+      return s.hasNext() ? s.next() : "";
+  }
+
+  public static String getHttpResource(final String urlString) throws IOException {
+    LOGD(TAG, "Requesting URL: " + urlString);
+    URL url = new URL(urlString);
+    HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+    urlConnection.setRequestProperty("User-Agent", "Androidito JZ13");
+
+    urlConnection.setRequestProperty("Accept","application/json");
+
+    urlConnection.connect();
+    throwErrors(urlConnection);
+
+    String response = readInputStream(urlConnection.getInputStream());
+    LOGV(TAG, "HTTP response: " + response);
+    return response;
+  }
+
+  private static void throwErrors(HttpURLConnection urlConnection) throws IOException {
         final int status = urlConnection.getResponseCode();
         if (status < 200 || status >= 300) {
             String errorMessage = null;
@@ -318,7 +336,7 @@ public class SyncHelper {
         return responseBuilder.toString();
     }
 
-    private boolean isOnline() {
+    public static boolean isOnline(Context mContext) {
         ConnectivityManager cm = (ConnectivityManager) mContext.getSystemService(
                 Context.CONNECTIVITY_SERVICE);
 

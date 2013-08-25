@@ -40,7 +40,6 @@ import com.google.analytics.tracking.android.EasyTracker;
 import com.google.android.apps.iosched.Config;
 import com.google.android.apps.iosched.gcm.ServerUtilities;
 import com.google.android.apps.iosched.provider.ScheduleContract;
-import com.google.android.apps.iosched.ui.gtv.GoogleTVSessionLivestreamActivity;
 import com.google.android.apps.iosched.util.BeamUtils;
 import com.google.android.apps.iosched.util.HelpUtils;
 import com.google.android.apps.iosched.util.UIUtils;
@@ -85,13 +84,6 @@ public class HomeActivity extends BaseActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // We're on Google TV; immediately short-circuit the normal behavior and show the
-        // Google TV-specific landing page.
-        if (UIUtils.isGoogleTV(this)) {
-            Intent intent = new Intent(HomeActivity.this, GoogleTVSessionLivestreamActivity.class);
-            startActivity(intent);
-            finish();
-        }
 
         if (isFinishing()) {
             return;
@@ -142,7 +134,7 @@ public class HomeActivity extends BaseActivity implements
         // Sync data on load
         if (savedInstanceState == null) {
             triggerRefresh();
-            registerGCMClient();
+            //registerGCMClient();
         }
     }
 
