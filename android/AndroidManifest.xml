@@ -19,7 +19,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="no.java.schedule"
     android:versionCode="27"
-    android:versionName="2012.7"
+    android:versionName="2013.1"
     android:installLocation="auto">
 
     <uses-sdk
@@ -92,14 +92,14 @@
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                        android:value="no.java.schedule.ui.HomeActivity" />
         </activity>
-
+        <!--
         <activity
             android:name="com.google.android.apps.iosched.ui.SocialStreamActivity"
             android:label="@string/title_tagstream">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.HomeActivity" />
         </activity>
-
+         -->
         <activity
             android:name="com.google.android.apps.iosched.ui.SearchActivity"
             android:label="@string/title_search"

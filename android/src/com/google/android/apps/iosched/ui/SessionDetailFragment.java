@@ -306,33 +306,6 @@ public class SessionDetailFragment extends SherlockFragment implements
 
         final Context context = mRootView.getContext();
 
-        // Render I/O live link
-        final boolean hasLivestream = !TextUtils.isEmpty(
-                cursor.getString(SessionsQuery.LIVESTREAM_URL));
-        long currentTimeMillis = UIUtils.getCurrentTime(context);
-        if (UIUtils.hasHoneycomb() // Needs Honeycomb+ for the live stream
-                && hasLivestream
-                && currentTimeMillis > mSessionBlockStart
-                && currentTimeMillis <= mSessionBlockEnd) {
-            hasLinks = true;
-
-            // Create the link item
-            ViewGroup linkContainer = (ViewGroup)
-                    inflater.inflate(R.layout.list_item_session_link, linksContainer, false);
-            ((TextView) linkContainer.findViewById(R.id.link_text)).setText(
-                    R.string.session_link_livestream);
-            linkContainer.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    fireLinkEvent(R.string.session_link_livestream);
-                    Intent livestreamIntent = new Intent(Intent.ACTION_VIEW, mSessionUri);
-                    livestreamIntent.setClass(context, SessionLivestreamActivity.class);
-                    startActivity(livestreamIntent);
-                }
-            });
-
-            linksContainer.addView(linkContainer);
-        }
 
         // Render normal links
         for (int i = 0; i < SessionsQuery.LINKS_INDICES.length; i++) {
@@ -362,7 +335,7 @@ public class SessionDetailFragment extends SherlockFragment implements
 
         // Show past/present/future and livestream status for this block.
         UIUtils.updateTimeAndLivestreamBlockUI(context,
-                mSessionBlockStart, mSessionBlockEnd, hasLivestream,
+                mSessionBlockStart, mSessionBlockEnd, false,
                 null, null, mSubtitle, subtitle);
         mRootView.findViewById(R.id.session_links_block)
                 .setVisibility(hasLinks ? View.VISIBLE : View.GONE);

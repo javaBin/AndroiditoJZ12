@@ -74,7 +74,7 @@ public class HomeActivity extends BaseActivity implements
 
     private MyScheduleFragment mMyScheduleFragment;
     private ExploreFragment mExploreFragment;
-    private SocialStreamFragment mSocialStreamFragment;
+    //private SocialStreamFragment mSocialStreamFragment;
 
     private ViewPager mViewPager;
     private Menu mOptionsMenu;
@@ -112,9 +112,9 @@ public class HomeActivity extends BaseActivity implements
             actionBar.addTab(actionBar.newTab()
                     .setText(R.string.title_explore)
                     .setTabListener(this));
-            actionBar.addTab(actionBar.newTab()
-                    .setText(R.string.title_stream)
-                    .setTabListener(this));
+            //actionBar.addTab(actionBar.newTab()
+            //        .setText(R.string.title_stream)
+            //        .setTabListener(this));
 
             homeScreenLabel = getString(R.string.title_my_schedule);
 
@@ -122,7 +122,7 @@ public class HomeActivity extends BaseActivity implements
             mExploreFragment = (ExploreFragment) fm.findFragmentById(R.id.fragment_tracks);
             mMyScheduleFragment = (MyScheduleFragment) fm.findFragmentById(
                     R.id.fragment_my_schedule);
-            mSocialStreamFragment = (SocialStreamFragment) fm.findFragmentById(R.id.fragment_stream);
+            //mSocialStreamFragment = (SocialStreamFragment) fm.findFragmentById(R.id.fragment_stream);
 
             homeScreenLabel = "Home";
         }
@@ -264,19 +264,19 @@ public class HomeActivity extends BaseActivity implements
         //
         // The outcome of all this is that the "Refresh" menu button refreshes the stream across
         // orientation changes.
-        if (mSocialStreamFragment != null) {
-            getSupportFragmentManager().putFragment(outState, "stream_fragment",
-                    mSocialStreamFragment);
-        }
+        //if (mSocialStreamFragment != null) {
+        //    getSupportFragmentManager().putFragment(outState, "stream_fragment",
+        //            mSocialStreamFragment);
+        //}
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        if (mSocialStreamFragment == null) {
-            mSocialStreamFragment = (SocialStreamFragment) getSupportFragmentManager()
-                    .getFragment(savedInstanceState, "stream_fragment");
-        }
+        //if (mSocialStreamFragment == null) {
+        //    mSocialStreamFragment = (SocialStreamFragment) getSupportFragmentManager()
+        //            .getFragment(savedInstanceState, "stream_fragment");
+        //}
     }
 
     private class HomePagerAdapter extends FragmentPagerAdapter {
@@ -293,15 +293,15 @@ public class HomeActivity extends BaseActivity implements
                 case 1:
                     return (mExploreFragment = new ExploreFragment());
 
-                case 2:
-                    return (mSocialStreamFragment = new SocialStreamFragment());
+                //case 2:
+                //    return (mSocialStreamFragment = new SocialStreamFragment());
             }
             return null;
         }
 
         @Override
         public int getCount() {
-            return 3;
+            return 2;
         }
     }
 
@@ -375,9 +375,9 @@ public class HomeActivity extends BaseActivity implements
                     ScheduleContract.CONTENT_AUTHORITY, extras);
         }
 
-        if (mSocialStreamFragment != null) {
-            mSocialStreamFragment.refresh();
-        }
+        //if (mSocialStreamFragment != null) {
+        //    mSocialStreamFragment.refresh();
+        //}
     }
 
     @Override

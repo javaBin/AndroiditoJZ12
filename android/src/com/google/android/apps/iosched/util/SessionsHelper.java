@@ -30,8 +30,6 @@ import com.google.analytics.tracking.android.EasyTracker;
 import com.google.android.apps.iosched.appwidget.MyScheduleWidgetProvider;
 import com.google.android.apps.iosched.provider.ScheduleContract;
 import com.google.android.apps.iosched.ui.MapFragment;
-import com.google.android.apps.iosched.ui.SocialStreamActivity;
-import com.google.android.apps.iosched.ui.SocialStreamFragment;
 import no.java.schedule.R;
 
 import static com.google.android.apps.iosched.util.LogUtils.LOGD;
@@ -130,7 +128,7 @@ public final class SessionsHelper {
     }
 
     public void startSocialStream(String hashtags) {
-        Intent intent = new Intent(mActivity, SocialStreamActivity.class);
-        mActivity.startActivity(intent);
+        //Intent intent = new Intent(mActivity, SocialStreamActivity.class);
+        //mActivity.startActivity(intent);
     }
 }

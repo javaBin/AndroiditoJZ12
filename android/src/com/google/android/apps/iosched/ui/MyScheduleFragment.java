@@ -428,41 +428,7 @@ public class MyScheduleFragment extends SherlockListFragment implements
                 subtitleView.setTextColor(res.getColorStateList(R.color.body_text_2));
                 primaryTouchTargetView.setEnabled(true);
 
-            } else if (ParserUtils.BLOCK_TYPE_KEYNOTE.equals(type)) {
-                final String starredSessionId = cursor.getString(BlocksQuery.STARRED_SESSION_ID);
-                final String starredSessionTitle =
-                        cursor.getString(BlocksQuery.STARRED_SESSION_TITLE);
-
-                long currentTimeMillis = UIUtils.getCurrentTime(context);
-                boolean past = (currentTimeMillis > blockEnd
-                        && currentTimeMillis < UIUtils.CONFERENCE_END_MILLIS);
-                boolean present = !past && (currentTimeMillis >= blockStart);
-                boolean canViewStream = present && UIUtils.hasHoneycomb();
-
-                isLiveStreamed = true;
-                titleView.setTextColor(canViewStream
-                        ? res.getColorStateList(R.color.body_text_1)
-                        : res.getColorStateList(R.color.body_text_disabled));
-                subtitleView.setTextColor(canViewStream
-                        ? res.getColorStateList(R.color.body_text_2)
-                        : res.getColorStateList(R.color.body_text_disabled));
-                subtitle = getString(R.string.keynote_room);
-
-                titleView.setText(starredSessionTitle);
-                extraButton.setVisibility(View.GONE);
-                primaryTouchTargetView.setEnabled(canViewStream);
-                primaryTouchTargetView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        final Uri sessionUri = ScheduleContract.Sessions.buildSessionUri(
-                                starredSessionId);
-                        Intent livestreamIntent = new Intent(Intent.ACTION_VIEW, sessionUri);
-                        livestreamIntent.setClass(getActivity(), SessionLivestreamActivity.class);
-                        startActivity(livestreamIntent);
-                    }
-                });
-
-            } else {
+            }  else {
                 titleView.setTextColor(res.getColorStateList(R.color.body_text_disabled));
                 subtitleView.setTextColor(res.getColorStateList(R.color.body_text_disabled));
                 subtitle = blockMeta;
