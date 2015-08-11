@@ -1,0 +1,1 @@
+Static copies of the EMS server resources may be placed here so that app loads fast on first run.

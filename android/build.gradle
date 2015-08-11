@@ -15,14 +15,14 @@ buildscript {
 
 android {
     compileSdkVersion 21
-    buildToolsVersion "21.0.0"
+    buildToolsVersion "21.1.2"
 
     defaultConfig {
         applicationId "no.java.schedule"
-        minSdkVersion 9
-        targetSdkVersion 18
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion 7
+        targetSdkVersion 16
+        versionCode 50
+        versionName "2015.1"
     }
     buildTypes {
         release {

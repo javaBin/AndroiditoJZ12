@@ -289,7 +289,7 @@ public class SyncHelper {
     LOGD(TAG, "Requesting URL: " + urlString);
     URL url = new URL(urlString);
     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-    urlConnection.setRequestProperty("User-Agent", "Androidito JZ13");
+    urlConnection.setRequestProperty("User-Agent", "Androidito JZ15");
 
     urlConnection.setRequestProperty("Accept","application/json");
 

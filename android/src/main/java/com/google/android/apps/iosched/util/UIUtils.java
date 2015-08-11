@@ -71,9 +71,9 @@ public class UIUtils {
     public static final TimeZone CONFERENCE_TIME_ZONE = TimeZone.getTimeZone("Europe/Oslo");
 
     public static final long CONFERENCE_START_MILLIS = ParserUtils.parseTime(
-            "2014-09-10T08:00:00.000+01:00");
+            "2015-09-09T08:00:00.000+01:00");
     public static final long CONFERENCE_END_MILLIS = ParserUtils.parseTime(
-            "2014-09-11T18:00:00.000+01:00");
+            "2015-09-10T18:00:00.000+01:00");
 
     public static final String CONFERENCE_HASHTAG = "#jz14";
 

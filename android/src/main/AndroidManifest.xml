@@ -18,13 +18,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="no.java.schedule"
-    android:versionCode="40"
-    android:versionName="2014.1"
     android:installLocation="auto">
-
-    <uses-sdk
-        android:minSdkVersion="7"
-        android:targetSdkVersion="16" />
 
     <permission
         android:name="no.java.schedule.permission.WRITE_SCHEDULE"
