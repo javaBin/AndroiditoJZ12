@@ -1,4 +1,3 @@
-
 # built application files
 *.apk
 *.ap_
@@ -13,7 +12,14 @@
 bin/
 gen/
 out/
+build/
+android/build/
 
+gradle/*
+gradlew
+gradlew.bat
+
+.gradle
 # Local configuration file (sdk path, etc)
 local.properties
 
