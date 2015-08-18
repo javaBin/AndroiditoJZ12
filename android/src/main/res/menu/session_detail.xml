@@ -14,26 +14,36 @@
   limitations under the License.
   -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/menu_map"
+    <item
+        android:id="@+id/menu_map"
         android:icon="@drawable/ic_action_map"
-        android:title="@string/description_map"
         android:orderInCategory="1"
         android:showAsAction="ifRoom"
-        android:visible="false"/>
-    <item android:id="@+id/menu_star"
+        android:title="@string/description_map"
+        android:visible="false" />
+    <item
+        android:id="@+id/menu_star"
         android:icon="@drawable/ic_action_add_schedule"
-        android:title="@string/description_add_schedule"
         android:orderInCategory="1"
-        android:showAsAction="ifRoom" />
-    <item android:id="@+id/menu_share"
+        android:showAsAction="ifRoom"
+        android:title="@string/description_add_schedule" />
+    <item
+        android:id="@+id/menu_session_feedback"
+        android:icon="@drawable/ic_fa_envelope"
+        android:orderInCategory="1"
+        android:showAsAction="ifRoom"
+        android:title="@string/rate_session_feedback" />
+    <item
+        android:id="@+id/menu_share"
         android:icon="@drawable/ic_action_share"
-        android:title="@string/description_share"
         android:orderInCategory="1"
-        android:showAsAction="ifRoom" />
-    <item android:id="@+id/menu_social_stream"
+        android:showAsAction="ifRoom"
+        android:title="@string/description_share" />
+    <item
+        android:id="@+id/menu_social_stream"
         android:icon="@drawable/ic_action_social_stream"
-        android:title="@string/description_social_stream"
         android:orderInCategory="1"
-        android:visible="false"
-        android:showAsAction="ifRoom" />
+        android:showAsAction="ifRoom"
+        android:title="@string/description_social_stream"
+        android:visible="false" />
 </menu>

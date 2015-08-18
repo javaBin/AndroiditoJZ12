@@ -15,6 +15,7 @@
   -->
 <resources>
     <!-- UI elements -->
+    <dimen name="default_margin">16dp</dimen>
     <dimen name="whats_on_height">64dp</dimen>
     <dimen name="whats_on_item_padding">10dp</dimen>
     <dimen name="whats_on_button_right_padding">20dp</dimen>
@@ -49,7 +50,7 @@
     <dimen name="stream_content_text_size">14sp</dimen>
     <dimen name="stream_feedback_text_size">12sp</dimen>
     <dimen name="stream_fav_icon_size">14dip</dimen>
-    
-     <!-- Widget -->
+
+    <!-- Widget -->
     <dimen name="widget_margin">8dp</dimen>
 </resources>

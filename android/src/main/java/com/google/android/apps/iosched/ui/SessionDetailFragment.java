@@ -33,6 +33,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
@@ -40,14 +41,20 @@ import com.actionbarsherlock.view.MenuItem;
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.android.apps.iosched.Config;
 import com.google.android.apps.iosched.calendar.SessionAlarmService;
+import com.google.android.apps.iosched.io.model.Constants;
 import com.google.android.apps.iosched.provider.ScheduleContract;
-import com.google.android.apps.iosched.util.*;
+import com.google.android.apps.iosched.util.FractionalTouchDelegate;
+import com.google.android.apps.iosched.util.HelpUtils;
+import com.google.android.apps.iosched.util.ImageFetcher;
+import com.google.android.apps.iosched.util.SessionsHelper;
+import com.google.android.apps.iosched.util.UIUtils;
 import com.google.api.android.plus.GooglePlus;
 import com.google.api.android.plus.PlusOneButton;
-import no.java.schedule.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import no.java.schedule.R;
 
 import static com.google.android.apps.iosched.util.LogUtils.LOGD;
 import static com.google.android.apps.iosched.util.LogUtils.makeLogTag;
@@ -55,7 +62,7 @@ import static com.google.android.apps.iosched.util.LogUtils.makeLogTag;
 /**
  * A fragment that shows detail information for a session, including session title, abstract,
  * time information, speaker photos and bios, etc.
- *
+ * <p>
  * <p>This fragment is used in a number of activities, including
  * {@link com.google.android.apps.iosched.ui.phone.SessionDetailActivity},
  * {@link com.google.android.apps.iosched.ui.tablet.SessionsVendorsMultiPaneActivity},
@@ -107,8 +114,8 @@ public class SessionDetailFragment extends SherlockFragment implements
 
     private ImageFetcher mImageFetcher;
     private List<Runnable> mDeferredUiOperations = new ArrayList<Runnable>();
-  private static final String S3_CACHE_PREFIX = "http://jz13.s3-website-eu-west-1.amazonaws.com/";
-  private ViewGroup mLabelContainer;
+    private static final String S3_CACHE_PREFIX = "http://jz13.s3-website-eu-west-1.amazonaws.com/";
+    private ViewGroup mLabelContainer;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -141,7 +148,7 @@ public class SessionDetailFragment extends SherlockFragment implements
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
 
         mRootView = (ViewGroup) inflater.inflate(R.layout.fragment_session_detail, null);
 
@@ -181,32 +188,32 @@ public class SessionDetailFragment extends SherlockFragment implements
             // Update Calendar event through the Calendar API on Android 4.0 or new versions.
             /**
 
-            if (UIUtils.hasICS()) {
-                Intent intent;
-                if (mStarred) {
-                    // Set up intent to add session to Calendar, if it doesn't exist already.
-                    intent = new Intent(SessionCalendarService.ACTION_ADD_SESSION_CALENDAR,
-                            mSessionUri);
-                    intent.putExtra(SessionCalendarService.EXTRA_SESSION_BLOCK_START,
-                            mSessionBlockStart);
-                    intent.putExtra(SessionCalendarService.EXTRA_SESSION_BLOCK_END,
-                            mSessionBlockEnd);
-                    intent.putExtra(SessionCalendarService.EXTRA_SESSION_ROOM, mRoomName);
-                    intent.putExtra(SessionCalendarService.EXTRA_SESSION_TITLE, mTitleString);
+             if (UIUtils.hasICS()) {
+             Intent intent;
+             if (mStarred) {
+             // Set up intent to add session to Calendar, if it doesn't exist already.
+             intent = new Intent(SessionCalendarService.ACTION_ADD_SESSION_CALENDAR,
+             mSessionUri);
+             intent.putExtra(SessionCalendarService.EXTRA_SESSION_BLOCK_START,
+             mSessionBlockStart);
+             intent.putExtra(SessionCalendarService.EXTRA_SESSION_BLOCK_END,
+             mSessionBlockEnd);
+             intent.putExtra(SessionCalendarService.EXTRA_SESSION_ROOM, mRoomName);
+             intent.putExtra(SessionCalendarService.EXTRA_SESSION_TITLE, mTitleString);
 
-                } else {
-                    // Set up intent to remove session from Calendar, if exists.
-                    intent = new Intent(SessionCalendarService.ACTION_REMOVE_SESSION_CALENDAR,
-                            mSessionUri);
-                    intent.putExtra(SessionCalendarService.EXTRA_SESSION_BLOCK_START,
-                            mSessionBlockStart);
-                    intent.putExtra(SessionCalendarService.EXTRA_SESSION_BLOCK_END,
-                            mSessionBlockEnd);
-                    intent.putExtra(SessionCalendarService.EXTRA_SESSION_TITLE, mTitleString);
-                }
-                intent.setClass(getActivity(), SessionCalendarService.class);
-                getActivity().startService(intent);
-            } */
+             } else {
+             // Set up intent to remove session from Calendar, if exists.
+             intent = new Intent(SessionCalendarService.ACTION_REMOVE_SESSION_CALENDAR,
+             mSessionUri);
+             intent.putExtra(SessionCalendarService.EXTRA_SESSION_BLOCK_START,
+             mSessionBlockStart);
+             intent.putExtra(SessionCalendarService.EXTRA_SESSION_BLOCK_END,
+             mSessionBlockEnd);
+             intent.putExtra(SessionCalendarService.EXTRA_SESSION_TITLE, mTitleString);
+             }
+             intent.setClass(getActivity(), SessionCalendarService.class);
+             getActivity().startService(intent);
+             } */
 
             if (mStarred && System.currentTimeMillis() < mSessionBlockStart) {
                 setupNotification();
@@ -230,7 +237,7 @@ public class SessionDetailFragment extends SherlockFragment implements
      */
     private void onSessionQueryComplete(Cursor cursor) {
         mSessionCursor = true;
-        if (cursor==null || !cursor.moveToFirst()) {
+        if (cursor == null || !cursor.moveToFirst()) {
             return;
         }
 
@@ -245,7 +252,7 @@ public class SessionDetailFragment extends SherlockFragment implements
         mType = cursor.getString(SessionsQuery.TYPE);
         mLevelString = cursor.getString(SessionsQuery.LEVEL);
         final String subtitle = UIUtils.formatSessionSubtitle(
-                mTitleString, mSessionBlockStart, mSessionBlockEnd,mSessionStart,mSessionEnd, mRoomName, mType, getActivity());
+                mTitleString, mSessionBlockStart, mSessionBlockEnd, mSessionStart, mSessionEnd, mRoomName, mType, getActivity());
 
         mTitle.setText(mTitleString);
         mLevel.setText(mLevelString);
@@ -342,19 +349,18 @@ public class SessionDetailFragment extends SherlockFragment implements
 
 
         // Display labels
-      View labelView = inflater.inflate(R.layout.label_detail, mLabelContainer, false);
-      String labels  = cursor.getString(SessionsQuery.TAGS);
+        View labelView = inflater.inflate(R.layout.label_detail, mLabelContainer, false);
+        String labels = cursor.getString(SessionsQuery.TAGS);
 
-      if (labels.endsWith(",")){
-        labels=labels.substring(0,labels.length()-1);
-      }
-      TextView labelHeader = (TextView) labelView.findViewById(R.id.label_header);
-      labelHeader.setText(labels);
+        if (labels.endsWith(",")) {
+            labels = labels.substring(0, labels.length() - 1);
+        }
+        TextView labelHeader = (TextView) labelView.findViewById(R.id.label_header);
+        labelHeader.setText(labels);
 
-      mLabelContainer.addView(labelView);
+        mLabelContainer.addView(labelView);
 
 
-        
         EasyTracker.getTracker().trackView("Session: " + mTitleString);
         LOGD("Tracker", "Session: " + mTitleString);
     }
@@ -445,8 +451,8 @@ public class SessionDetailFragment extends SherlockFragment implements
                     .findViewById(R.id.speaker_abstract);
 
             if (!TextUtils.isEmpty(speakerImageUrl)) {
-              String s3CacheImageUrl = speakerImageUrl.replaceFirst("http://javazone.no/ems/server/binary/", S3_CACHE_PREFIX) + "-100x100";
-              mImageFetcher.loadThumbnailImage(s3CacheImageUrl, speakerImageView,R.drawable.person_image_empty);
+                String s3CacheImageUrl = speakerImageUrl.replaceFirst("http://javazone.no/ems/server/binary/", S3_CACHE_PREFIX) + "-100x100";
+                mImageFetcher.loadThumbnailImage(s3CacheImageUrl, speakerImageView, R.drawable.person_image_empty);
             }
 
             speakerHeaderView.setText(speakerHeader);
@@ -499,11 +505,11 @@ public class SessionDetailFragment extends SherlockFragment implements
     public boolean onOptionsItemSelected(MenuItem item) {
         SessionsHelper helper = new SessionsHelper(getActivity());
         switch (item.getItemId()) {
-            case R.id.menu_map:                
+            case R.id.menu_map:
                 EasyTracker.getTracker().trackEvent(
                         "Session", "Map", mTitleString, 0L);
                 LOGD("Tracker", "Map: " + mTitleString);
-                
+
                 helper.startMapActivity(mRoomId);
                 return true;
 
@@ -517,11 +523,18 @@ public class SessionDetailFragment extends SherlockFragment implements
                                 ? R.plurals.toast_added_to_schedule
                                 : R.plurals.toast_removed_from_schedule, 1, 1),
                         Toast.LENGTH_SHORT).show();
-                
+
                 EasyTracker.getTracker().trackEvent(
                         "Session", star ? "Starred" : "Unstarred", mTitleString, 0L);
                 LOGD("Tracker", (star ? "Starred: " : "Unstarred: ") + mTitleString);
 
+                return true;
+
+            case R.id.menu_session_feedback:
+                Intent intent = new Intent(getActivity(), SessionFeedbackActivity.class);
+                intent.putExtra(Constants.SESSION_FEEDBACK_TITLE, mTitleString);
+                intent.putExtra(Constants.SESSION_FEEDBACK_SUBTITLE, mSubtitle.getText().toString());
+                startActivity(intent);
                 return true;
 
             case R.id.menu_share:
@@ -555,22 +568,22 @@ public class SessionDetailFragment extends SherlockFragment implements
         LOGD("Tracker", getActivity().getString(actionId) + ": " + mTitleString);
     }
 
-	@Override
-	public Loader<Cursor> onCreateLoader(int id, Bundle data) {
-		CursorLoader loader = null;
-		if (id == SessionsQuery._TOKEN){
-			loader = new CursorLoader(getActivity(), mSessionUri, SessionsQuery.PROJECTION, null, 
-					null, null);
-		} else if (id == SpeakersQuery._TOKEN  && mSessionUri != null){
-			Uri speakersUri = ScheduleContract.Sessions.buildSpeakersDirUri(mSessionId);
-			loader = new CursorLoader(getActivity(), speakersUri, SpeakersQuery.PROJECTION, null, 
-					null, null);
-		}
-		return loader;
-	}
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle data) {
+        CursorLoader loader = null;
+        if (id == SessionsQuery._TOKEN) {
+            loader = new CursorLoader(getActivity(), mSessionUri, SessionsQuery.PROJECTION, null,
+                    null, null);
+        } else if (id == SpeakersQuery._TOKEN && mSessionUri != null) {
+            Uri speakersUri = ScheduleContract.Sessions.buildSpeakersDirUri(mSessionId);
+            loader = new CursorLoader(getActivity(), speakersUri, SpeakersQuery.PROJECTION, null,
+                    null, null);
+        }
+        return loader;
+    }
 
-	@Override
-	public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
         if (getActivity() == null) {
             return;
         }
@@ -582,10 +595,11 @@ public class SessionDetailFragment extends SherlockFragment implements
         } else {
             cursor.close();
         }
-	}
+    }
 
-	@Override
-	public void onLoaderReset(Loader<Cursor> loader) {}
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+    }
 
     /**
      * {@link com.google.android.apps.iosched.provider.ScheduleContract.Sessions} query parameters.

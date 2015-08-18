@@ -18,7 +18,11 @@ package com.google.android.apps.iosched.calendar;
 
 import android.annotation.TargetApi;
 import android.app.IntentService;
-import android.content.*;
+import android.content.ContentProviderOperation;
+import android.content.ContentResolver;
+import android.content.ContentValues;
+import android.content.Intent;
+import android.content.OperationApplicationException;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
@@ -26,13 +30,17 @@ import android.os.Bundle;
 import android.os.RemoteException;
 import android.provider.CalendarContract;
 import android.text.TextUtils;
+
 import com.google.android.apps.iosched.provider.ScheduleContract;
 import com.google.android.apps.iosched.util.UIUtils;
-import no.java.schedule.R;
 
 import java.util.ArrayList;
 
-import static com.google.android.apps.iosched.util.LogUtils.*;
+import no.java.schedule.R;
+
+import static com.google.android.apps.iosched.util.LogUtils.LOGE;
+import static com.google.android.apps.iosched.util.LogUtils.LOGW;
+import static com.google.android.apps.iosched.util.LogUtils.makeLogTag;
 
 /**
  * Background {@link android.app.Service} that adds or removes session Calendar events through
@@ -140,7 +148,7 @@ public class SessionCalendarService extends IntentService {
     private long getCalendarId(Intent intent) {
 
 
-        final String accountName ;
+        final String accountName;
         if (intent != null && intent.hasExtra(EXTRA_ACCOUNT_NAME)) {
             accountName = intent.getStringExtra(EXTRA_ACCOUNT_NAME);
         } else {
@@ -181,7 +189,7 @@ public class SessionCalendarService extends IntentService {
      * in the user's schedule or not.
      */
     private ArrayList<ContentProviderOperation> processAllSessionsCalendar(ContentResolver resolver,
-            final long calendarId) {
+                                                                           final long calendarId) {
 
         ArrayList<ContentProviderOperation> batch = new ArrayList<ContentProviderOperation>();
 
@@ -248,7 +256,7 @@ public class SessionCalendarService extends IntentService {
             // duplicate one.
             cursor = resolver.query(
                     CalendarContract.Events.CONTENT_URI,                       // URI
-                    new String[] {CalendarContract.Events._ID},                // Projection
+                    new String[]{CalendarContract.Events._ID},                // Projection
                     CalendarContract.Events.CALENDAR_ID + "=? and "            // Selection
                             + CalendarContract.Events.TITLE + "=? and "
                             + CalendarContract.Events.DTSTART + ">=? and "
@@ -309,7 +317,7 @@ public class SessionCalendarService extends IntentService {
 
             // Get the event calendar id.
             cursor = resolver.query(sessionUri,
-                    new String[] {ScheduleContract.Sessions.SESSION_CAL_EVENT_ID},
+                    new String[]{ScheduleContract.Sessions.SESSION_CAL_EVENT_ID},
                     null, null, null);
             long calendarEventId = -1;
             if (cursor != null && cursor.moveToFirst()) {
