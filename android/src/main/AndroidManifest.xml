@@ -14,13 +14,12 @@
   limitations under the License.
   -->
 
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="no.java.schedule"
+    android:installLocation="auto"
     android:versionCode="40"
-    android:versionName="2014.1"
-    android:installLocation="auto">
+    android:versionName="2015.1">
 
     <uses-sdk
         android:minSdkVersion="7"
@@ -28,15 +27,14 @@
 
     <permission
         android:name="no.java.schedule.permission.WRITE_SCHEDULE"
-        android:protectionLevel="normal"
-        />
+        android:protectionLevel="normal" />
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
-    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
-    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
@@ -54,24 +52,26 @@
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
     <!-- required for GCM -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission
-            android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
     <permission
-            android:name="no.java.schedule.permission.C2D_MESSAGE"
-            android:protectionLevel="signature" />
-    <uses-permission
-            android:name="no.java.schedule.permission.C2D_MESSAGE" />
-    
+        android:name="no.java.schedule.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="no.java.schedule.permission.C2D_MESSAGE" />
+
     <!-- required for Google TV - to support proper filtering in Google Play -->
-    <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
 
 
     <application
-        android:label="@string/app_name"
+        android:name=".JZScheduleApplication"
+        android:hardwareAccelerated="true"
         android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
         android:logo="@drawable/actionbar_logo"
-        android:theme="@style/Theme.Iosched"
-        android:hardwareAccelerated="true" android:name=".JZScheduleApplication">
+        android:theme="@style/Theme.Iosched">
 
         <!-- Activities for both phones and tablets -->
 
@@ -86,10 +86,11 @@
         </activity>
 
         <activity
-                android:name="no.java.schedule.ui.JZPreferenceActivity"
-                android:label="@string/preferences">
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
-                       android:value="no.java.schedule.ui.HomeActivity" />
+            android:name="no.java.schedule.ui.JZPreferenceActivity"
+            android:label="@string/preferences">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="no.java.schedule.ui.HomeActivity" />
         </activity>
         <!--
         <activity
@@ -108,20 +109,26 @@
                 <action android:name="android.intent.action.SEARCH" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            <meta-data android:name="android.app.searchable" android:resource="@xml/searchable" />
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.HomeActivity" />
         </activity>
 
-        <activity android:name="com.google.android.apps.iosched.ui.SessionLivestreamActivity"
-            android:label="@string/session_livestream_title"
+        <activity
+            android:name="com.google.android.apps.iosched.ui.SessionLivestreamActivity"
             android:configChanges="orientation|screenSize"
+            android:label="@string/session_livestream_title"
             android:theme="@style/Theme.Iosched.Livestream">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.HomeActivity" />
         </activity>
 
@@ -135,7 +142,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="application/vnd.google.iosched.default" />
             </intent-filter>
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.HomeActivity" />
         </activity>
 
@@ -151,8 +159,21 @@
             </intent-filter>
             <!-- HomeActivity is the parent (as opposed to TrackDetailActivity) because
                  SessionsActivity is not used to show sessions for a given track. -->
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.HomeActivity" />
+        </activity>
+
+        <activity
+            android:name="com.google.android.apps.iosched.ui.SessionFeedbackActivity"
+            android:label="@string/title_session_feedback">
+            <intent-filter>
+                <action android:name="android.intent.action.View" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.google.android.apps.iosched.ui.SessionLivestreamActivity" />
         </activity>
 
         <activity
@@ -164,11 +185,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="vnd.android.cursor.item/vnd.androidito-iosched.track" />
             </intent-filter>
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.HomeActivity" />
         </activity>
 
-        <activity android:name="com.google.android.apps.iosched.ui.phone.SessionDetailActivity"
+        <activity
+            android:name="com.google.android.apps.iosched.ui.phone.SessionDetailActivity"
             android:label="@string/title_session_detail"
             android:uiOptions="splitActionBarWhenNarrow">
             <intent-filter>
@@ -183,11 +206,13 @@
                 <data android:mimeType="vnd.android.cursor.item/vnd.androidito-iosched.session" />
             </intent-filter>
             <!-- PARENT_ACTIVITY alone is insufficient for Up navigation for this activity -->
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.phone.SessionsActivity" />
         </activity>
 
-        <activity android:name="com.google.android.apps.iosched.ui.phone.VendorDetailActivity"
+        <activity
+            android:name="com.google.android.apps.iosched.ui.phone.VendorDetailActivity"
             android:label="@string/title_vendor_detail">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -195,15 +220,17 @@
                 <data android:mimeType="vnd.android.cursor.item/vnd.androidito-iosched.vendor" />
             </intent-filter>
             <!-- PARENT_ACTIVITY alone is insufficient for Up navigation for this activity -->
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.phone.TrackDetailActivity" />
         </activity>
 
         <activity
             android:name="com.google.android.apps.iosched.ui.phone.MapActivity"
-            android:label="@string/title_map"
-            android:configChanges="orientation|keyboardHidden">
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/title_map">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.HomeActivity" />
         </activity>
 
@@ -247,22 +274,24 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="vnd.android.cursor.item/vnd.androidito-iosched.session" />
             </intent-filter>
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.HomeActivity" />
         </activity>
 
         <activity
             android:name="com.google.android.apps.iosched.ui.tablet.MapMultiPaneActivity"
-            android:label="@string/title_map"
-            android:configChanges="orientation|keyboardHidden|screenSize">
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_map">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.HomeActivity" />
         </activity>
 
         <!-- GTV Activities -->
 
-      <!-- Session alarm/calendar integrating components. -->
-        <receiver android:name="com.google.android.apps.iosched.calendar.SessionAlarmReceiver" >
+        <!-- Session alarm/calendar integrating components. -->
+        <receiver android:name="com.google.android.apps.iosched.calendar.SessionAlarmReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="com.google.android.apps.iosched.action.UPDATE_CALENDAR_COMPLETED" />
@@ -292,7 +321,8 @@
           The com.google.android.c2dm.permission.SEND permission is necessary
           so only GCM services can send data messages for the app.
         -->
-        <receiver android:name="com.google.android.apps.iosched.gcm.GCMRedirectedBroadcastReceiver"
+        <receiver
+            android:name="com.google.android.apps.iosched.gcm.GCMRedirectedBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <!-- Receives the actual messages. -->
@@ -317,19 +347,21 @@
         <provider
             android:name="no.java.schedule.provider.ScheduleProvider"
             android:authorities="no.java.schedule"
-            android:writePermission="no.java.schedule.permission.WRITE_SCHEDULE"
+            android:label="@string/app_name"
             android:syncable="true"
-            android:label="@string/app_name" />
+            android:writePermission="no.java.schedule.permission.WRITE_SCHEDULE" />
 
         <service android:name="no.java.schedule.sync.ScheduleUpdaterService" />
 
-        <service android:name="no.java.schedule.sync.SyncService"
+        <service
+            android:name="no.java.schedule.sync.SyncService"
             android:exported="true"
             tools:ignore="ExportedService">
             <intent-filter>
                 <action android:name="android.content.SyncAdapter" />
             </intent-filter>
-            <meta-data android:name="android.content.SyncAdapter"
+            <meta-data
+                android:name="android.content.SyncAdapter"
                 android:resource="@xml/syncadapter" />
         </service>
 
@@ -344,28 +376,32 @@
             android:value=".ui.SearchActivity" />
 
         <!-- App widget components -->
-        <receiver android:name="no.java.schedule.appwidget.MyScheduleWidgetProvider"
+        <receiver
+            android:name="no.java.schedule.appwidget.MyScheduleWidgetProvider"
             android:enabled="@bool/has_honeycomb">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
             <!-- This specifies the widget provider info -->
-            <meta-data android:name="android.appwidget.provider"
+            <meta-data
+                android:name="android.appwidget.provider"
                 android:resource="@xml/widgetinfo" />
         </receiver>
         <!-- The service serving the RemoteViews to the collection widget -->
 
-        <service android:name="com.google.android.apps.iosched.appwidget.MyScheduleWidgetService"
-            android:permission="android.permission.BIND_REMOTEVIEWS"
+        <service
+            android:name="com.google.android.apps.iosched.appwidget.MyScheduleWidgetService"
+            android:enabled="@bool/has_honeycomb"
             android:exported="false"
-            android:enabled="@bool/has_honeycomb" />
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
 
-        <service android:name=".service.AccountAuthenticatorService" >
+        <service android:name=".service.AccountAuthenticatorService">
             <intent-filter>
                 <action android:name="android.accounts.AccountAuthenticator" />
             </intent-filter>
-            <meta-data android:name="android.accounts.AccountAuthenticator"
-                       android:resource="@xml/authenticator" />
+            <meta-data
+                android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/authenticator" />
         </service>
 
     </application>

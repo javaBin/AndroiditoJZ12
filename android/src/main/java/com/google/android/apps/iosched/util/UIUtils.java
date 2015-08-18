@@ -16,19 +16,6 @@
 
 package com.google.android.apps.iosched.util;
 
-import com.google.android.apps.iosched.io.model.Constants;
-import no.java.schedule.BuildConfig;
-import no.java.schedule.R;
-import com.google.android.apps.iosched.provider.ScheduleContract.Blocks;
-import com.google.android.apps.iosched.provider.ScheduleContract.Rooms;
-import com.google.android.apps.iosched.ui.phone.MapActivity;
-import com.google.android.apps.iosched.ui.phone.SessionDetailActivity;
-import com.google.android.apps.iosched.ui.phone.SessionsActivity;
-import com.google.android.apps.iosched.ui.phone.TrackDetailActivity;
-import com.google.android.apps.iosched.ui.phone.VendorDetailActivity;
-import com.google.android.apps.iosched.ui.tablet.MapMultiPaneActivity;
-import com.google.android.apps.iosched.ui.tablet.SessionsVendorsMultiPaneActivity;
-
 import android.annotation.TargetApi;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
@@ -55,10 +42,24 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.apps.iosched.io.model.Constants;
+import com.google.android.apps.iosched.provider.ScheduleContract.Blocks;
+import com.google.android.apps.iosched.provider.ScheduleContract.Rooms;
+import com.google.android.apps.iosched.ui.phone.MapActivity;
+import com.google.android.apps.iosched.ui.phone.SessionDetailActivity;
+import com.google.android.apps.iosched.ui.phone.SessionsActivity;
+import com.google.android.apps.iosched.ui.phone.TrackDetailActivity;
+import com.google.android.apps.iosched.ui.phone.VendorDetailActivity;
+import com.google.android.apps.iosched.ui.tablet.MapMultiPaneActivity;
+import com.google.android.apps.iosched.ui.tablet.SessionsVendorsMultiPaneActivity;
+
 import java.util.Calendar;
 import java.util.Formatter;
 import java.util.Locale;
 import java.util.TimeZone;
+
+import no.java.schedule.BuildConfig;
+import no.java.schedule.R;
 
 /**
  * An assortment of UI helpers.
@@ -71,9 +72,9 @@ public class UIUtils {
     public static final TimeZone CONFERENCE_TIME_ZONE = TimeZone.getTimeZone("Europe/Oslo");
 
     public static final long CONFERENCE_START_MILLIS = ParserUtils.parseTime(
-            "2014-09-10T08:00:00.000+01:00");
+            "2015-09-10T08:00:00.000+01:00");
     public static final long CONFERENCE_END_MILLIS = ParserUtils.parseTime(
-            "2014-09-11T18:00:00.000+01:00");
+            "2015-09-11T18:00:00.000+01:00");
 
     public static final String CONFERENCE_HASHTAG = "#jz14";
 
@@ -82,13 +83,19 @@ public class UIUtils {
     private static final int HOUR_MILLIS = 60 * MINUTE_MILLIS;
     private static final int DAY_MILLIS = 24 * HOUR_MILLIS;
 
-    /** Flags used with {@link DateUtils#formatDateRange}. */
+    /**
+     * Flags used with {@link DateUtils#formatDateRange}.
+     */
     private static final int TIME_FLAGS = DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_WEEKDAY | DateUtils.FORMAT_ABBREV_WEEKDAY | DateUtils.FORMAT_24HOUR;
-    private static final int LIGHTNING_TALK_TIME_FLAGS = DateUtils.FORMAT_SHOW_TIME |  DateUtils.FORMAT_24HOUR;
+    private static final int LIGHTNING_TALK_TIME_FLAGS = DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_24HOUR;
 
-    /** {@link StringBuilder} used for formatting time block. */
+    /**
+     * {@link StringBuilder} used for formatting time block.
+     */
     private static StringBuilder sBuilder = new StringBuilder(50);
-    /** {@link Formatter} used for formatting time block. */
+    /**
+     * {@link Formatter} used for formatting time block.
+     */
     private static Formatter sFormatter = new Formatter(sBuilder, Locale.getDefault());
 
     private static StyleSpan sBoldSpan = new StyleSpan(Typeface.BOLD);
@@ -107,13 +114,13 @@ public class UIUtils {
      * {@link #CONFERENCE_TIME_ZONE}.
      */
     public static String formatSessionSubtitle(String sessionTitle,
-            long blockStart, long blockEnd,long sessionStart,long sessionEnd, String roomName, String type,Context context) {
+                                               long blockStart, long blockEnd, long sessionStart, long sessionEnd, String roomName, String type, Context context) {
         if (sEmptyRoomText == null || sCodeLabRoomText == null) {
             sEmptyRoomText = context.getText(R.string.unknown_room);
 
         }
 
-      //TODO JavaZone room name handling
+        //TODO JavaZone room name handling
         if (roomName == null) {
             roomName = "TBD";
             //return context.getString(R.string.session_subtitle,
@@ -121,8 +128,8 @@ public class UIUtils {
         }
 
 
-        if (Constants.LIGHTNINGTALK.equals(type)){
-            if (sessionStart==0) {
+        if (Constants.LIGHTNINGTALK.equals(type)) {
+            if (sessionStart == 0) {
                 type = "(Lightning talk starts " + formatLightningTalkTimeString(sessionStart, context) + ")";
             } else {
                 type = "(Lightning talk)";
@@ -134,14 +141,14 @@ public class UIUtils {
         return context.getString(
                 R.string.session_subtitle,
                 formatBlockTimeString(blockStart, blockEnd, context),
-                roomName,type
-                );
+                roomName, type
+        );
     }
 
     private static String formatLightningTalkTimeString(long sessionStart, Context context) {
         TimeZone.setDefault(CONFERENCE_TIME_ZONE);
 
-        if (sessionStart==0){
+        if (sessionStart == 0) {
             return "TBD";
         }
 
@@ -155,7 +162,7 @@ public class UIUtils {
     public static String formatBlockTimeString(long blockStart, long blockEnd, Context context) {
         TimeZone.setDefault(CONFERENCE_TIME_ZONE);
 
-        if (blockStart==0){
+        if (blockStart == 0) {
             return "TBD";
         }
 
@@ -224,9 +231,9 @@ public class UIUtils {
     }
 
     public static void updateTimeAndLivestreamBlockUI(final Context context,
-            long blockStart, long blockEnd, boolean hasLivestream,
-            View backgroundView, TextView titleView, TextView subtitleView,
-            CharSequence subtitle) {
+                                                      long blockStart, long blockEnd, boolean hasLivestream,
+                                                      View backgroundView, TextView titleView, TextView subtitleView,
+                                                      CharSequence subtitle) {
         long currentTimeMillis = getCurrentTime(context);
 
         boolean past = (currentTimeMillis > blockEnd && currentTimeMillis < CONFERENCE_END_MILLIS);
@@ -349,7 +356,7 @@ public class UIUtils {
      * @see {@literal http://en.wikipedia.org/wiki/HSV_color_space%23Lightness}
      */
     public static boolean isColorDark(int color) {
-        return Color.alpha(color)!=0 && (((30 * Color.red(color) +
+        return Color.alpha(color) != 0 && (((30 * Color.red(color) +
                 59 * Color.green(color) +
                 11 * Color.blue(color)) / 100) <= BRIGHTNESS_THRESHOLD);
     }
@@ -380,7 +387,7 @@ public class UIUtils {
         try {
             context.startActivity(linkIntent);
         } catch (ActivityNotFoundException e) {
-            Toast.makeText(context, "Couldn't open link", Toast.LENGTH_SHORT) .show();
+            Toast.makeText(context, "Couldn't open link", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -438,7 +445,7 @@ public class UIUtils {
     }
 
     public static boolean isGoogleTV(Context context) {
-    	return context.getPackageManager().hasSystemFeature("com.google.android.tv");
+        return context.getPackageManager().hasSystemFeature("com.google.android.tv");
     }
 
     public static boolean hasFroyo() {

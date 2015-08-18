@@ -289,4 +289,56 @@
         <item name="android:textIsSelectable">true</item>
     </style>
 
+    <!-- Session Feedback styles -->
+    <style name="FeedbackRatingBarLabel">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/rating_bar_label</item>
+        <item name="android:textSize">16dp</item>
+        <!--  not SP  -->
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!--  Session feedback  -->
+    <style name="FeedbackQuestion">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:paddingTop">@dimen/element_spacing_normal</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+
+    </style>
+    <style name="FeedbackQuestionGuideText">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">left</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textColor">@color/body_text_1_positive</item>
+    </style>
+    <style name="FeedbackQuestionGuideText.Right">
+        <item name="android:gravity">right</item>
+    </style>
+
+    <style name="FeedbackRatingBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:progressDrawable">@drawable/ratingbar</item>
+        <item name="android:indeterminateDrawable">@drawable/ratingbar</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:maxHeight">48dp</item>
+        <item name="android:numStars">5</item>
+        <item name="android:rating">0</item>
+        <item name="android:stepSize">1</item>
+    </style>
+
+    <style name="FeedbackNumberRatingBar">
+        <item name="android:layout_width">240dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:progressDrawable">@drawable/number_ratingbar</item>
+        <item name="android:indeterminateDrawable">@drawable/number_ratingbar</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:maxHeight">48dp</item>
+        <item name="android:max">5</item>
+    </style>
+
 </resources>

@@ -40,4 +40,8 @@
     <color name="stream_reshare_line_color">#ffcccccc</color>
     <color name="default_stream_image_background">#eee</color>
 
+    <!-- Session feedback rating colors -->
+    <color name="session_feedback_yellow">#fcaf17</color>
+    <color name="session_feedback_thumbs_down_red">#ff4f4c</color>
+    <color name="session_feedback_thumbs_up_green">#149089</color>
 </resources>

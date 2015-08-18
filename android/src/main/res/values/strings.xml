@@ -14,7 +14,7 @@
   limitations under the License.
   -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">JavaZone 2014</string>
+    <string name="app_name">JavaZone 2015</string>
 
     <string name="description_search">Search</string>
     <string name="description_map">Map</string>
@@ -57,8 +57,8 @@
     <string name="all_tracks">All labels</string>
     <string name="all_tracks_sessions">All sessions</string>
     <string name="all_tracks_vendors">All companies</string>
-    <string name="all_tracks_subtitle_sessions">All sessions at JavaZone 2014.</string>
-    <string name="all_tracks_subtitle_vendors">All developer sandbox companies at JavaZone 2014.</string>
+    <string name="all_tracks_subtitle_sessions">All sessions at JavaZone 2015.</string>
+    <string name="all_tracks_subtitle_vendors">All developer sandbox companies at JavaZone 2015.</string>
 
     <string name="empty_sessions">No sessions found.</string>
     <string name="empty_session_detail">No session details found.</string>
@@ -87,6 +87,13 @@
     <string name="session_livestream_info">Info</string>
     <string name="session_livestream_captions">Captions</string>
     <string name="session_livestream_error">Sorry, there was an error loading the live stream, please try again later</string>
+
+    <!-- session feedback -->
+    <string name="session_feedback_number_1">1</string>
+    <string name="session_feedback_number_2">2</string>
+    <string name="session_feedback_number_3">3</string>
+    <string name="session_feedback_number_4">4</string>
+    <string name="session_feedback_number_5">5</string>
 
 
     <string name="vendor_exhibitors_prefix">Exhibitors: </string>
@@ -130,8 +137,8 @@
 
     <!-- EULA, login, and about -->
     <string name="description_choose_account"><![CDATA[
-        Welcome to the JavaZone 2014 app, your official companion to the JavaZone conference
-        taking place in Oslo from September 10th to September 11th, 2014.<br>
+        Welcome to the JavaZone 2015 app, your official companion to the JavaZone conference
+        taking place in Oslo from September 10th to September 11th, 2015.<br>
         <br>
 
     ]]></string>
@@ -139,11 +146,11 @@
     <string name="empty_accounts">No Google accounts are available. Add an account to continue.</string>
     <string name="no_connection_cant_login">Can\'t sign in. Check your network connection.</string>
     <string name="taking_a_while">This is taking a while&#8230;</string>
-    <string name="eula_title">JavaZone 2014 Android App End User License Agreement</string>
+    <string name="eula_title">JavaZone 2015 Android App End User License Agreement</string>
     <string name="about_eula">End User License Agreement</string>
     <string name="about_licenses">Open Source Licenses</string>
     <string name="about_body"><![CDATA[
-        <b>JavaZone 2014</b><br>
+        <b>JavaZone 2015</b><br>
         Version %s<br><br>
 
     ]]></string>
@@ -170,8 +177,8 @@
     </plurals>
     <string name="snooze_x_min">Snooze <xliff:g id="remaining_time">%1$d</xliff:g> min.</string>
 
-    <string name="session_calendar_suffix">- added by JavaZone 2014 Android app</string>
-    <string name="toast_deleting_sessions_from_calendar">Removing your JavaZone 2014 sessions from Google Calendar&#8230;</string>
+    <string name="session_calendar_suffix">- added by JavaZone 2015 Android app</string>
+    <string name="toast_deleting_sessions_from_calendar">Removing your JavaZone 2015 sessions from Google Calendar&#8230;</string>
 
     <!-- Contextual help text -->
     <string name="help_add_to_schedule"><![CDATA[
@@ -191,7 +198,7 @@
     <string name="stream_error">Couldn\'t load the Twitter stream.</string>
     <string name="stream_originally_shared"><xliff:g id="name">%s</xliff:g> originally shared this post</string>
     <string name="empty_widget_text">No more upcoming sessions.\nSee you next year!</string>
-    <string name="empty_widget_text_signed_out">Touch the JavaZone 2014 logo above to sign in and begin using the app.</string>
+    <string name="empty_widget_text_signed_out">Touch the JavaZone 2015 logo above to sign in and begin using the app.</string>
 
     <string name="now_playing_badge"><![CDATA[<font color="#4683ec"><small><b>NOW</b></small></font>]]></string>
     <string name="live_available_badge"><![CDATA[<font color="#999999"><small><b>LIVE</b></small></font>]]></string>
@@ -236,5 +243,23 @@
 
     <string name="pref_notifications_lead_time_title">Lead time</string>
     <string name="pref_notifications_lead_time_dialog">Lead time</string>
+    <string name="session_feedback_rating_text">Session rating:</string>
+    <string name="session_feedback_rating_notsogreat_text">Not so great</string>
+    <string name="session_feedback_rating_great_text">Great</string>
+    <string name="session_feedback_relevant_text_title">How relevant was this session to your projects?</string>
+    <string name="session_feedback_relevant_notatall_text">Not at all</string>
+    <string name="session_feedback_relevant_extremely_text">Extremely</string>
+    <string name="session_feedback_content_text_title">Based on the description/my expectations, the content was:</string>
+    <string name="session_feedback_content_basic_text">basic</string>
+    <string name="session_feedback_content_tooadvanced_text">Too advanced</string>
+    <string name="session_feedback_speakerquality_text_title">Speaker Quality</string>
+    <string name="session_feedback_speakerquality_poor_text">Poor</string>
+    <string name="session_feedback_speakerquality_outstanding_text">Outstanding</string>
+    <string name="session_feedback_submit_feedback_content">Submit Feedback</string>
+    <string name="session_feedback_submit_feedback_text">Submit Feedback</string>
+    <string name="title_session_feedback">Session Feedback</string>
+    <string name="rate_session_feedback">Rate this session</string>
+    <string name="session_feedback_tellus">Tell us!</string>
+    <string name="session_feedback_other">Anything else we should know?\n(Please don\'t add any personal information in your comments.)</string>
 
 </resources>
