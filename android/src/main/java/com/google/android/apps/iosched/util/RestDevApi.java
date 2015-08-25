@@ -18,7 +18,7 @@ public interface RestDevApi {
                              @Path("sessionId") String sessionId,
                              @Header("Voter-ID") String voterId,
                              @Body JZFeedback jzFeedbackBody,
-                             Callback<Response> success);
+                             Callback<JsonElement> success);
 
     @Headers("Content-Type: application/json")
     @POST("/events/58b3bfaa-4981-11e5-a151-feff819cdc9f/sessions/58b3c298-4981-11e5-a151-feff819cdc9f/feedbacks")

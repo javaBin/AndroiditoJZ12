@@ -114,8 +114,8 @@ public class SessionFeedbackFragment extends Fragment {
         JZFeedback jzFeedback = new JZFeedback(overallMandatoryRating, relevantRating,
                 contentRating, qualitySpeakerRating, feedbackComment);
 
-        // mDevNullService.submitFeedbackToDevNull(eventId, sessionId, generateUniqueVoterId(),jzFeedback);
-        mDevNullService.submitFeedbackTestToDevNull(generateUniqueVoterId(), jzFeedback);
+         mDevNullService.submitFeedbackToDevNull(eventId, sessionId, generateUniqueVoterId(),jzFeedback);
+       // mDevNullService.submitFeedbackTestToDevNull(generateUniqueVoterId(), jzFeedback);
     }
 
     public String generateUniqueVoterId() {
