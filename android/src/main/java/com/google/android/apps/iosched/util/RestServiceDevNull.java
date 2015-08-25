@@ -20,7 +20,7 @@ public class RestServiceDevNull {
     private RestDevApi restDevApi = null;
     private Activity activity = null;
 
-    private RestServiceDevNull(String mode, Activity activity) {
+    private RestServiceDevNull(String mode) {
         //TODO
         String endPoint = null;
         if(mode.equals("TEST")) {
@@ -32,13 +32,17 @@ public class RestServiceDevNull {
                 .setLogLevel(RestAdapter.LogLevel.HEADERS_AND_ARGS)
                 .build();
         restDevApi = movieAPIRest.create(RestDevApi.class);
+    }
+
+    public void setActivity(Activity activity) {
         this.activity = activity;
     }
 
     public static RestServiceDevNull getInstance(String mode, Activity activity) {
         if (instance == null) {
-            instance = new RestServiceDevNull(mode, activity);
+            instance = new RestServiceDevNull(mode);
         }
+        instance.setActivity(activity);
         return instance;
     }
 
