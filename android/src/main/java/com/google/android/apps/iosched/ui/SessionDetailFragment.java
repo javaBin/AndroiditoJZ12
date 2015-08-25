@@ -21,7 +21,9 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.RectF;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -53,6 +55,7 @@ import com.google.api.android.plus.PlusOneButton;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import no.java.schedule.R;
 
@@ -77,6 +80,7 @@ public class SessionDetailFragment extends SherlockFragment implements
             "com.google.android.iosched.extra.VARIABLE_HEIGHT_HEADER";
 
     private String mSessionId;
+    private int mEventId;
     private Uri mSessionUri;
 
     private long mSessionBlockStart;
@@ -97,12 +101,14 @@ public class SessionDetailFragment extends SherlockFragment implements
     private MenuItem mShareMenuItem;
     private MenuItem mStarMenuItem;
     private MenuItem mSocialStreamMenuItem;
+    private MenuItem mSessionFeedbackMenuItem;
 
     private ViewGroup mRootView;
     private TextView mTitle;
     private TextView mSubtitle;
     private TextView mLevel;
     private PlusOneButton mPlusOneButton;
+    private Handler mHandler;
 
     private TextView mAbstract;
     private TextView mRequirements;
@@ -111,6 +117,8 @@ public class SessionDetailFragment extends SherlockFragment implements
     private boolean mSpeakersCursor = false;
     private boolean mHasSummaryContent = false;
     private boolean mVariableHeightHeader = false;
+    private boolean mOpenFeedback = false;
+    private static final long INTERVAL_TO_REDRAW_UI = 1000L;
 
     private ImageFetcher mImageFetcher;
     private List<Runnable> mDeferredUiOperations = new ArrayList<Runnable>();
@@ -146,11 +154,14 @@ public class SessionDetailFragment extends SherlockFragment implements
         HelpUtils.maybeShowAddToScheduleTutorial(getActivity());
     }
 
+    long nowTest;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         mRootView = (ViewGroup) inflater.inflate(R.layout.fragment_session_detail, null);
+        nowTest = UIUtils.getCurrentTime(mRootView.getContext());
 
         mTitle = (TextView) mRootView.findViewById(R.id.session_title);
         mSubtitle = (TextView) mRootView.findViewById(R.id.session_subtitle);
@@ -173,6 +184,7 @@ public class SessionDetailFragment extends SherlockFragment implements
         }
 
         mLabelContainer = (ViewGroup) mRootView.findViewById(R.id.session_labels_block);
+        mHandler = new Handler();
         return mRootView;
     }
 
@@ -347,7 +359,6 @@ public class SessionDetailFragment extends SherlockFragment implements
         mRootView.findViewById(R.id.session_links_block)
                 .setVisibility(hasLinks ? View.VISIBLE : View.GONE);
 
-
         // Display labels
         View labelView = inflater.inflate(R.layout.label_detail, mLabelContainer, false);
         String labels = cursor.getString(SessionsQuery.TAGS);
@@ -363,6 +374,48 @@ public class SessionDetailFragment extends SherlockFragment implements
 
         EasyTracker.getTracker().trackView("Session: " + mTitleString);
         LOGD("Tracker", "Session: " + mTitleString);
+        new UpdateUITime(mHandler).scheduleNextInterval();
+    }
+
+    private final class UpdateUITime implements Runnable {
+        final Handler handler;
+
+        public UpdateUITime(Handler handler) {
+            this.handler = handler;
+        }
+
+        public void scheduleNextInterval() {
+            handler.postDelayed(this, INTERVAL_TO_REDRAW_UI);
+        }
+
+        @Override
+        public void run() {
+            if (getActivity() == null) {
+                return;
+            }
+            try {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
+                    long fiveMinuteInterval = TimeUnit.MILLISECONDS.convert(5, TimeUnit.MINUTES);
+                    long oneMinuteInterval = TimeUnit.MILLISECONDS.convert(1, TimeUnit.MINUTES);
+                    long now = UIUtils.getCurrentTime(mRootView.getContext());
+                    /* if ((mSessionEnd - fiveMinuteInterval) <= now && !mOpenFeedback) {
+                        mOpenFeedback = true;
+                        mSessionFeedbackMenuItem.setVisible(mOpenFeedback);
+                    } */
+                    if((nowTest + oneMinuteInterval) <= now && !mOpenFeedback) {
+                        mOpenFeedback = true;
+                        mSessionFeedbackMenuItem.setVisible(mOpenFeedback);
+                    }
+                }else {
+                    mSessionFeedbackMenuItem.setVisible(true);
+                }
+            } finally {
+                if (mOpenFeedback) {
+                    return;
+                }
+                scheduleNextInterval();
+            }
+        }
     }
 
     private void enableSocialStreamMenuItemDeferred() {
@@ -496,6 +549,8 @@ public class SessionDetailFragment extends SherlockFragment implements
         inflater.inflate(R.menu.session_detail, menu);
         mStarMenuItem = menu.findItem(R.id.menu_star);
         mSocialStreamMenuItem = menu.findItem(R.id.menu_social_stream);
+        mSessionFeedbackMenuItem = menu.findItem(R.id.menu_session_feedback);
+        mSessionFeedbackMenuItem.setVisible(false);
         mShareMenuItem = menu.findItem(R.id.menu_share);
         tryExecuteDeferredUiOperations();
         super.onCreateOptionsMenu(menu, inflater);
@@ -532,6 +587,7 @@ public class SessionDetailFragment extends SherlockFragment implements
 
             case R.id.menu_session_feedback:
                 Intent intent = new Intent(getActivity(), SessionFeedbackActivity.class);
+                intent.putExtra(Constants.SESSION_ID, mSessionId);
                 intent.putExtra(Constants.SESSION_FEEDBACK_TITLE, mTitleString);
                 intent.putExtra(Constants.SESSION_FEEDBACK_SUBTITLE, mSubtitle.getText().toString());
                 startActivity(intent);
