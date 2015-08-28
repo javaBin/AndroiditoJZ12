@@ -1,6 +1,7 @@
 package com.google.android.apps.iosched.ui;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +18,7 @@ import android.widget.Toast;
 import com.google.android.apps.iosched.io.model.Constants;
 import com.google.android.apps.iosched.ui.widget.NumberRatingBar;
 import com.google.android.apps.iosched.util.RestServiceDevNull;
+import com.google.android.apps.iosched.util.UIUtils;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -28,7 +32,6 @@ public class SessionFeedbackFragment extends Fragment {
     private static final String TAG = "SessionFeedbackFragment";
     private TextView mTitleText;
     private TextView mSubTitleText;
-    private TextView mFeedbackCommentText;
     private FrameLayout mSubmitFeedback;
 
     // set ratings, and content ratings
@@ -37,6 +40,10 @@ public class SessionFeedbackFragment extends Fragment {
     private NumberRatingBar mContentRatingBar;
     private NumberRatingBar mSpeakerRatingBar;
     private static final long INTERVAL_TO_REDRAW_UI = 1000L;
+
+    // this has to be done if the phone is not in 5.0+
+    private ImageView mThumbsDownImages[];
+    private ImageView mThumbsUpImages[];
 
     private String mSessionId;
     private RestServiceDevNull mDevNullService;
@@ -54,7 +61,6 @@ public class SessionFeedbackFragment extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_session_feedback, container, false);
         mTitleText = (TextView) rootView.findViewById(R.id.session_feedback_title);
         mSubTitleText = (TextView) rootView.findViewById(R.id.session_feedback_subtitle);
-        mFeedbackCommentText = (TextView) rootView.findViewById(R.id.session_feedback_comments);
         Intent intent = BaseActivity.fragmentArgumentsToIntent(getArguments());
 
         mSessionId = intent.getStringExtra(Constants.SESSION_ID);
@@ -71,6 +77,27 @@ public class SessionFeedbackFragment extends Fragment {
         }
 
         mDevNullService = RestServiceDevNull.getInstance(mode, getActivity());
+
+        if(!UIUtils.hasLollipop()) {
+            mThumbsDownImages = new ImageView[] {
+                    (ImageView) rootView.findViewById(R.id.thumbs_down_overall),
+                    (ImageView) rootView.findViewById(R.id.thumbs_down_relevant),
+                    (ImageView) rootView.findViewById(R.id.thumbs_down_feedback),
+                    (ImageView) rootView.findViewById(R.id.thumbs_down_speaker)
+            };
+
+            mThumbsUpImages = new ImageView[] {
+                    (ImageView) rootView.findViewById(R.id.thumbs_up_overall),
+                    (ImageView) rootView.findViewById(R.id.thumbs_up_relevant),
+                    (ImageView) rootView.findViewById(R.id.thumbs_up_feedback),
+                    (ImageView) rootView.findViewById(R.id.thumbs_up_speaker)
+            };
+
+            UIUtils.colorImageViewArray(mThumbsDownImages, getResources().getColor(R.color.session_feedback_thumbs_down_red));
+            UIUtils.colorImageViewArray(mThumbsUpImages, getResources().getColor(R.color.session_feedback_thumbs_up_green));
+        }
+
+
         return rootView;
     }
 
@@ -116,9 +143,8 @@ public class SessionFeedbackFragment extends Fragment {
             eventId = matcher.group(2);
         }
 
-        String feedbackComment = mFeedbackCommentText.getText().toString();
         JZFeedback jzFeedback = new JZFeedback(overallMandatoryRating, relevantRating,
-                contentRating, qualitySpeakerRating, feedbackComment);
+                contentRating, qualitySpeakerRating);
 
          mDevNullService.submitFeedbackToDevNull(eventId, sessionId, generateUniqueVoterId(),jzFeedback);
     }

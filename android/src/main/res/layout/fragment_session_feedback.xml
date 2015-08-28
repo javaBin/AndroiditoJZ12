@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -31,15 +31,15 @@
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/scroll_view"
+        android:layout_below="@id/header_session"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:fillViewport="true"
-        android:orientation="vertical">
+       android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -67,6 +67,7 @@
                         android:layout_marginTop="@dimen/default_margin" />
 
                     <ImageView
+                        android:id="@+id/thumbs_down_overall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignLeft="@id/rating_bar_0"
@@ -75,6 +76,7 @@
                         android:tint="@color/session_feedback_thumbs_down_red" />
 
                     <ImageView
+                        android:id="@+id/thumbs_up_overall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignRight="@id/rating_bar_0"
@@ -102,6 +104,7 @@
                         android:layout_marginTop="@dimen/default_margin" />
 
                     <ImageView
+                        android:id="@+id/thumbs_down_relevant"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignLeft="@id/rating_bar_1"
@@ -110,6 +113,7 @@
                         android:tint="@color/session_feedback_thumbs_down_red" />
 
                     <ImageView
+                        android:id="@+id/thumbs_up_relevant"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignRight="@id/rating_bar_1"
@@ -136,6 +140,7 @@
                         android:layout_marginTop="@dimen/default_margin" />
 
                     <ImageView
+                        android:id="@+id/thumbs_down_feedback"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignLeft="@id/rating_bar_2"
@@ -144,6 +149,7 @@
                         android:tint="@color/session_feedback_thumbs_down_red" />
 
                     <ImageView
+                        android:id="@+id/thumbs_up_feedback"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignRight="@id/rating_bar_2"
@@ -171,6 +177,7 @@
 
 
                     <ImageView
+                        android:id="@+id/thumbs_down_speaker"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignLeft="@id/rating_bar_3"
@@ -179,6 +186,7 @@
                         android:tint="@color/session_feedback_thumbs_down_red" />
 
                     <ImageView
+                        android:id="@+id/thumbs_up_speaker"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignRight="@id/rating_bar_3"
@@ -186,46 +194,30 @@
                         android:src="@drawable/ic_fa_thumbs_o_up"
                         android:tint="@color/session_feedback_thumbs_up_green" />
                 </RelativeLayout>
-
-                <TextView
-                    style="@style/FeedbackQuestion"
-                    android:text="@string/session_feedback_other" />
-
-                <EditText
-                    android:id="@+id/session_feedback_comments"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="-4dp"
-                    android:layout_marginRight="-4dp"
-                    android:layout_marginTop="8dp"
-                    android:hint="@string/session_feedback_tellus"
-                    android:inputType="textCapSentences"
-                    android:minLines="1"
-                    android:scrollbars="vertical" />
             </LinearLayout>
-
-            <FrameLayout
-                android:id="@+id/submit_feedback_button"
-                android:layout_width="match_parent"
-                android:layout_height="64dp"
-                android:background="@drawable/actionbar_background"
-                android:clickable="true"
-                android:contentDescription="@string/session_feedback_submit_feedback_content"
-                android:focusable="true">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:drawableLeft="@drawable/ic_submit_feedback"
-                    android:drawablePadding="8dp"
-                    android:gravity="center_vertical"
-                    android:paddingRight="20dp"
-                    android:text="@string/session_feedback_submit_feedback_text"
-                    android:textAllCaps="true"
-                    android:textColor="#fff"
-                    android:textSize="@dimen/text_size_small" />
-            </FrameLayout>
-        </LinearLayout>
+        </RelativeLayout>
     </ScrollView>
-</LinearLayout>
+    <FrameLayout
+        android:id="@+id/submit_feedback_button"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@drawable/actionbar_background"
+        android:clickable="true"
+        android:layout_alignParentBottom="true"
+        android:contentDescription="@string/session_feedback_submit_feedback_content"
+        android:focusable="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawableLeft="@drawable/ic_submit_feedback"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            android:paddingRight="20dp"
+            android:text="@string/session_feedback_submit_feedback_text"
+            android:textAllCaps="true"
+            android:textColor="#fff"
+            android:textSize="@dimen/text_size_small" />
+    </FrameLayout>
+</RelativeLayout>

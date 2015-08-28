@@ -2,19 +2,17 @@ package no.java.schedule.io.model;
 
 import java.io.Serializable;
 
-public class JZFeedback implements Serializable{
+public class JZFeedback implements Serializable {
     private int overall;
     private int relevance;
     private int content;
     private int quality;
-    private String feedback;
 
-    public JZFeedback(int overall, int relevance, int content, int quality, String feedback) {
+    public JZFeedback(int overall, int relevance, int content, int quality) {
         this.overall = overall;
         this.relevance = relevance;
         this.content = content;
         this.quality = quality;
-        this.feedback = feedback;
     }
 
     public int getOverall() {
@@ -47,13 +45,5 @@ public class JZFeedback implements Serializable{
 
     public void setQuality(int quality) {
         this.quality = quality;
-    }
-
-    public String getFeedback() {
-        return feedback;
-    }
-
-    public void setFeedback(String feedback) {
-        this.feedback = feedback;
     }
 }

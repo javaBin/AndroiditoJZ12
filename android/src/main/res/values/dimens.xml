@@ -31,6 +31,8 @@
     <dimen name="schedule_block_time_width">72dp</dimen>
     <dimen name="map_multipane_right_padding">48dp</dimen>
     <dimen name="announcements_margin_width">8dp</dimen>
+    <dimen name="rating_dimen">48dp</dimen>
+    <dimen name="rating_width">240dp</dimen>
 
     <!-- body content -->
     <dimen name="element_spacing_normal">8dp</dimen>

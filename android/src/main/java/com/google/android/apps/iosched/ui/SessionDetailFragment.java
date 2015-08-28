@@ -395,7 +395,7 @@ public class SessionDetailFragment extends SherlockFragment implements
                 return;
             }
             try {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
+                if (UIUtils.hasGingerbread()) {
                     long fiveMinuteInterval = TimeUnit.MILLISECONDS.convert(5, TimeUnit.MINUTES);
                     long oneMinuteInterval = TimeUnit.MILLISECONDS.convert(1, TimeUnit.MINUTES);
                     long now = UIUtils.getCurrentTime(mRootView.getContext());

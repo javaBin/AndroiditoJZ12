@@ -16,4 +16,9 @@
 <resources>
     <dimen name="multipane_half_padding">16dp</dimen>
     <dimen name="multipane_padding">32dp</dimen>
+    <dimen name="rating_dimen">96dp</dimen>
+    <dimen name="text_size_medium">28sp</dimen>
+    <dimen name="rating_width">360dp</dimen>
+
+
 </resources>

@@ -29,7 +29,7 @@
         android:title="@string/description_add_schedule" />
     <item
         android:id="@+id/menu_session_feedback"
-        android:icon="@drawable/ic_fa_envelope"
+        android:icon="@drawable/ic_fa_comment"
         android:orderInCategory="1"
         android:showAsAction="ifRoom"
         android:title="@string/rate_session_feedback" />

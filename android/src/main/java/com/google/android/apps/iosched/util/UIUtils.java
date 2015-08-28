@@ -27,6 +27,7 @@ import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.preference.PreferenceManager;
@@ -39,6 +40,7 @@ import android.text.format.DateUtils;
 import android.text.method.LinkMovementMethod;
 import android.text.style.StyleSpan;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -474,6 +476,10 @@ public class UIUtils {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN;
     }
 
+    public static boolean hasLollipop() {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
+    }
+
     public static boolean isTablet(Context context) {
         return (context.getResources().getConfiguration().screenLayout
                 & Configuration.SCREENLAYOUT_SIZE_MASK)
@@ -482,5 +488,11 @@ public class UIUtils {
 
     public static boolean isHoneycombTablet(Context context) {
         return hasHoneycomb() && isTablet(context);
+    }
+
+    public static void colorImageViewArray(ImageView[] imageViews, int colorId) {
+        for(ImageView imageView : imageViews) {
+            imageView.setColorFilter(colorId, PorterDuff.Mode.SRC_IN);
+        }
     }
 }

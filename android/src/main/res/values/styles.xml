@@ -324,20 +324,20 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:progressDrawable">@drawable/ratingbar</item>
         <item name="android:indeterminateDrawable">@drawable/ratingbar</item>
-        <item name="android:minHeight">48dp</item>
-        <item name="android:maxHeight">48dp</item>
+        <item name="android:minHeight">@dimen/rating_dimen</item>
+        <item name="android:maxHeight">@dimen/rating_dimen</item>
         <item name="android:numStars">5</item>
         <item name="android:rating">0</item>
         <item name="android:stepSize">1</item>
     </style>
 
     <style name="FeedbackNumberRatingBar">
-        <item name="android:layout_width">240dp</item>
+        <item name="android:layout_width">@dimen/rating_width</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:progressDrawable">@drawable/number_ratingbar</item>
         <item name="android:indeterminateDrawable">@drawable/number_ratingbar</item>
-        <item name="android:minHeight">48dp</item>
-        <item name="android:maxHeight">48dp</item>
+        <item name="android:minHeight">@dimen/rating_dimen</item>
+        <item name="android:maxHeight">@dimen/rating_dimen</item>
         <item name="android:max">5</item>
     </style>
 
