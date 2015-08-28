@@ -31,10 +31,10 @@
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/scroll_view"
+        android:layout_above="@+id/submit_feedback_button"
         android:layout_below="@id/header_session"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fillViewport="true"
        android:orientation="vertical">
 
         <RelativeLayout
@@ -44,7 +44,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:clipToPadding="false"
+                android:clipToPadding="true"
                 android:orientation="vertical"
                 android:padding="@dimen/default_margin">
 
@@ -203,9 +203,11 @@
         android:layout_height="64dp"
         android:background="@drawable/actionbar_background"
         android:clickable="true"
-        android:layout_alignParentBottom="true"
         android:contentDescription="@string/session_feedback_submit_feedback_content"
-        android:focusable="true">
+        android:focusable="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <TextView
             android:layout_width="wrap_content"
