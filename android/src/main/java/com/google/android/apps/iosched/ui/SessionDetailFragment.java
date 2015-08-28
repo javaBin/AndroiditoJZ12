@@ -57,6 +57,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import no.java.schedule.BuildConfig;
 import no.java.schedule.R;
 
 import static com.google.android.apps.iosched.util.LogUtils.LOGD;
@@ -398,11 +399,14 @@ public class SessionDetailFragment extends SherlockFragment implements
                     long fiveMinuteInterval = TimeUnit.MILLISECONDS.convert(5, TimeUnit.MINUTES);
                     long oneMinuteInterval = TimeUnit.MILLISECONDS.convert(1, TimeUnit.MINUTES);
                     long now = UIUtils.getCurrentTime(mRootView.getContext());
-                    /* if ((mSessionEnd - fiveMinuteInterval) <= now && !mOpenFeedback) {
-                        mOpenFeedback = true;
-                        mSessionFeedbackMenuItem.setVisible(mOpenFeedback);
-                    } */
-                    if((nowTest + oneMinuteInterval) <= now && !mOpenFeedback) {
+                    boolean sessionInterval = (mSessionEnd - fiveMinuteInterval)
+                            <= now && !mOpenFeedback;
+
+                    if(BuildConfig.DEBUG) {
+                        sessionInterval = (nowTest + oneMinuteInterval) <= now && !mOpenFeedback;
+                    }
+
+                    if(sessionInterval) {
                         mOpenFeedback = true;
                         mSessionFeedbackMenuItem.setVisible(mOpenFeedback);
                     }

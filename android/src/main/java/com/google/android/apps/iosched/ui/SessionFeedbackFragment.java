@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import no.java.schedule.BuildConfig;
 import no.java.schedule.R;
 import no.java.schedule.io.model.JZFeedback;
 
@@ -64,7 +65,12 @@ public class SessionFeedbackFragment extends Fragment {
         initRatings(rootView);
         initSubmitFeedbackListener();
         //TODO for now it is testmode
-        mDevNullService = RestServiceDevNull.getInstance("TEST", getActivity());
+        String mode = "RELEASE";
+        if(BuildConfig.DEBUG) {
+            mode = "TEST";
+        }
+
+        mDevNullService = RestServiceDevNull.getInstance(mode, getActivity());
         return rootView;
     }
 
@@ -115,7 +121,6 @@ public class SessionFeedbackFragment extends Fragment {
                 contentRating, qualitySpeakerRating, feedbackComment);
 
          mDevNullService.submitFeedbackToDevNull(eventId, sessionId, generateUniqueVoterId(),jzFeedback);
-       // mDevNullService.submitFeedbackTestToDevNull(generateUniqueVoterId(), jzFeedback);
     }
 
     public String generateUniqueVoterId() {

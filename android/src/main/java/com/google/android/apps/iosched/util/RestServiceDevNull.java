@@ -22,7 +22,7 @@ public class RestServiceDevNull {
 
     private RestServiceDevNull(String mode) {
         //TODO
-        String endPoint = null;
+        String endPoint = Constants.SESSION_FEEDBACK_WEB_URI;
         if(mode.equals("TEST")) {
          endPoint = Constants.SESSION_FEEDBACK_WEB_URI_TEST;
         }
@@ -48,10 +48,6 @@ public class RestServiceDevNull {
 
     public void submitFeedbackToDevNull(String eventId, String sessionId, String voterId, JZFeedback feedbackBody) {
         restDevApi.postSessionFeedback(eventId, sessionId, voterId, feedbackBody, retrofitCallBack);
-    }
-
-    public void submitFeedbackTestToDevNull(String voterId, JZFeedback feedbackBody) {
-        restDevApi.postSessionFeedbackTest(voterId, feedbackBody, retrofitCallBack);
     }
 
     public Callback retrofitCallBack = new Callback() {
