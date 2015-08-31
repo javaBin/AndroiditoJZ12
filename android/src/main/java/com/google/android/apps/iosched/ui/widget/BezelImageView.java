@@ -109,7 +109,7 @@ public class BezelImageView extends ImageView {
         // which invalidates itself. to prevent stack overflow errors, we must guard the
         // invalidation (see specialized behavior when guarded in invalidate() below).
         mGuardInvalidate = true;
-        super.onDraw(canvas);
+        super.draw(canvas);
         mGuardInvalidate = false;
         canvas.restoreToCount(sc);
         mBorderDrawable.draw(canvas);

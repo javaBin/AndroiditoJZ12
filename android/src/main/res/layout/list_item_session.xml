@@ -29,14 +29,14 @@
         android:minHeight="?android:listPreferredItemHeight"
         style="@style/ComplexListItemContent">
         <TextView android:id="@+id/session_title"
-            android:layout_toLeftOf="@id/indicator_in_schedule"
+
             android:layout_alignParentLeft="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/ListItemTitle" />
         <TextView android:id="@+id/session_subtitle"
             android:layout_below="@id/session_title"
-            android:layout_toLeftOf="@id/indicator_in_schedule"
+
             android:layout_alignParentLeft="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
