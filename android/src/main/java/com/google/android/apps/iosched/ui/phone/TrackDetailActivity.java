@@ -63,12 +63,15 @@ public class TrackDetailActivity extends BaseActivity implements
         mTrackId = ScheduleContract.Tracks.getTrackId(mTrackUri);
 
         mViewPager = (ViewPager) findViewById(R.id.pager);
-        mViewPager.setAdapter(new TrackDetailPagerAdapter(getSupportFragmentManager()));
-        mViewPager.setOnPageChangeListener(this);
+        TrackDetailPagerAdapter trackDetailPagerAdapter = new TrackDetailPagerAdapter(getSupportFragmentManager());
+        mViewPager.addOnPageChangeListener(this);
         mViewPager.setPageMarginDrawable(R.drawable.grey_border_inset_lr);
         mViewPager.setPageMargin(getResources().getDimensionPixelSize(R.dimen.page_margin_width));
 
         mShowVendors = false;//!ScheduleContract.Tracks.CODELABS_TRACK_ID.equals(mTrackId) && !ScheduleContract.Tracks.TECH_TALK_TRACK_ID.equals(mTrackId);
+        trackDetailPagerAdapter.notifyDataSetChanged();
+        mViewPager.setAdapter(trackDetailPagerAdapter);
+
 
         if (mShowVendors) {
             final ActionBar actionBar = getSupportActionBar();
