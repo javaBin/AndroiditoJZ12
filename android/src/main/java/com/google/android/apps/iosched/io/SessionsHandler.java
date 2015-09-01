@@ -51,9 +51,6 @@ public class SessionsHandler extends JSONHandler {
 
   private static final String TAG = makeLogTag(SessionsHandler.class);
 
-  private static final String BASE_SESSION_URL
-      = "https://developers.google.com/events/io/sessions/";
-
   private static final String EVENT_TYPE_KEYNOTE = "keynote";
   private static final String EVENT_TYPE_CODELAB = "codelab";
 
@@ -318,6 +315,9 @@ public class SessionsHandler extends JSONHandler {
     for (EMSItem speaker : speakers.values()) {
 
 
+        // TODO parse speakers
+
+
       pBatch.add(ContentProviderOperation
           .newInsert(ScheduleContract
               .addCallerIsSyncAdapterParameter(ScheduleContract.Speakers.CONTENT_URI))
@@ -432,15 +432,6 @@ public class SessionsHandler extends JSONHandler {
     return date.getTime();
 
 
-  }
-
-  // TODO
-  private String makeSessionUrl(String sessionId) {
-    if (TextUtils.isEmpty(sessionId)) {
-      return null;
-    }
-
-    return BASE_SESSION_URL + sessionId;
   }
 
 }
