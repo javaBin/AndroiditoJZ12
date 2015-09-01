@@ -17,10 +17,10 @@ android {
 
     defaultConfig {
         applicationId "no.java.schedule"
-        minSdkVersion 9
-        targetSdkVersion 22
-        versionCode 50
-        versionName "2015.1"
+        minSdkVersion 7
+        targetSdkVersion 16
+        versionCode 53
+        versionName "2015.3"
     }
     buildTypes {
         release {
