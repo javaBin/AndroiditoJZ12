@@ -66,7 +66,10 @@ public class TracksHandler extends JSONHandler {
       }
 
       for (JZLabel label : labels) {
-        parseTrack(label, batch);
+          // Hack due to labels now not only containing topics/tracks but also freeform tags
+          if (label.displayName!=null && label.displayName.startsWith("topic:")) {
+              parseTrack(label, batch);
+          }
       }
 
         return batch;
@@ -78,9 +81,25 @@ public class TracksHandler extends JSONHandler {
                         ScheduleContract.Tracks.CONTENT_URI));
         builder.withValue(ScheduleContract.Tracks.TRACK_ID,
                 ScheduleContract.Tracks.generateTrackId(track.id));
-        builder.withValue(ScheduleContract.Tracks.TRACK_NAME, track.displayName);
+        builder.withValue(ScheduleContract.Tracks.TRACK_NAME, santizeTrackName(track));
         builder.withValue(ScheduleContract.Tracks.TRACK_COLOR, Color.TRANSPARENT);//TODO - fetch icon and derive color...?
         builder.withValue(ScheduleContract.Tracks.TRACK_ABSTRACT, "");//TODO
         batch.add(builder.build());
+    }
+
+    // :-| Ugh..
+    private static String santizeTrackName(JZLabel track) {
+        String result = track.displayName;
+
+        if (result.startsWith("topic:")){
+            result = result.replace("topic:","");
+        }
+
+        if (result.startsWith("type:")){
+            result = result.replace("type:","");
+        }
+
+        return result;
+
     }
 }
