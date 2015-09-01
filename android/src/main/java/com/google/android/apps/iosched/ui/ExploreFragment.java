@@ -114,11 +114,6 @@ public class ExploreFragment extends SherlockListFragment implements
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         if (mAdapter.isMapItem(position)) {
-            // Launch map of conference venue
-            EasyTracker.getTracker().trackEvent(
-                    "Home Screen Dashboard", "Click", "Map", 0L);
-            startActivity(new Intent(getActivity(),
-                    UIUtils.getMapActivityClass(getActivity())));
             return;
         }
 
@@ -160,7 +155,7 @@ public class ExploreFragment extends SherlockListFragment implements
             return;
         }
 
-        mAdapter.setHasMapItem(true);
+        //mAdapter.setHasMapItem(true);
         mAdapter.setHasAllItem(true);
         mAdapter.changeCursor(cursor);
     }
