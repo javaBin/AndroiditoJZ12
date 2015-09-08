@@ -64,7 +64,7 @@ public class JZSessionsResult {
 
     JZSessionsResult session = new JZSessionsResult();
 
-    session.bodyHtml = pItem.getValue("body");
+    session.bodyHtml = "<b>"+pItem.getValue("summary")+"</b><p/>" +pItem.getValue("body");
     // Start / End populated late
     //session.start =
     //session.end =
