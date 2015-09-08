@@ -19,8 +19,8 @@ android {
         applicationId "no.java.schedule"
         minSdkVersion 7
         targetSdkVersion 16
-        versionCode 56
-        versionName "2015.6"
+        versionCode 57
+        versionName "2015.7"
     }
     buildTypes {
         release {
