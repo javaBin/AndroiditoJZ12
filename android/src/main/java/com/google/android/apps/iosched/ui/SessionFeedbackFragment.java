@@ -139,8 +139,8 @@ public class SessionFeedbackFragment extends Fragment {
         Matcher matcher = pattern.matcher(mSessionId);
 
         if (matcher.matches()) {
-            sessionId = matcher.group(1);
-            eventId = matcher.group(2);
+            eventId = matcher.group(1);
+            sessionId = matcher.group(2);
         }
 
         JZFeedback jzFeedback = new JZFeedback(overallMandatoryRating, relevantRating,
