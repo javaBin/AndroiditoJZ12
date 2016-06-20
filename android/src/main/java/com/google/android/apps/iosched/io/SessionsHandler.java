@@ -379,8 +379,10 @@ public class SessionsHandler extends JSONHandler {
 
       JZSlotsResponse slotResponse = new Gson().fromJson(json, JZSlotsResponse.class);
 
-      for (EMSItem slot : slotResponse.collection.items) {
-        result.put(slot.href.toString(),slot);
+      if (slotResponse.collection.items!=null) {
+        for (EMSItem slot : slotResponse.collection.items) {
+          result.put(slot.href.toString(), slot);
+        }
       }
 
     }

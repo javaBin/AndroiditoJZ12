@@ -21,14 +21,14 @@ public class Config {
     public static final String APP_NAME = "Your-App-Name";
     public static final String API_KEY = "API_KEY"; // from the APIs console
     public static final String CLIENT_ID = "0000000000000.apps.googleusercontent.com"; // from the APIs console
-  public static final String EMS_SLOTS = "http://javazone.no/ems/server/events/0e6d98e9-5b06-42e7-b275-6abadb498c81/slots";
-  public static final String EMS_ROOMS = "http://javazone.no/ems/server/events/0e6d98e9-5b06-42e7-b275-6abadb498c81/rooms";
+  public static final String EMS_SLOTS = "http://javazone.no/ems/server/events/3baa25d3-9cca-459a-90d7-9fc349209289/slots";
+  public static final String EMS_ROOMS = "http://javazone.no/ems/server/events/3baa25d3-9cca-459a-90d7-9fc349209289/rooms";
 
   // Conference API-specific config
     // NOTE: the backend used for the Google I/O 2012 Android app is not currently open source, so
     // you should modify these fields to reflect your own backend.
 
-    private static final String BASE_URL = "http://javazone.no/ems/server/events/0e6d98e9-5b06-42e7-b275-6abadb498c81";
+    private static final String BASE_URL = "http://javazone.no/ems/server/events/3baa25d3-9cca-459a-90d7-9fc349209289";
 
   //TODO slots
     public static final String GET_ALL_BLOCKS =  BASE_URL + "/slots";

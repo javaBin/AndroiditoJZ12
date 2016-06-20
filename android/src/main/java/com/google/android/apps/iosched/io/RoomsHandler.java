@@ -47,9 +47,11 @@ public class RoomsHandler extends JSONHandler {
 
       final ArrayList<ContentProviderOperation> batch = Lists.newArrayList();
 
-      for (EMSItem room : response.collection.items) {
-        parseRoom(room, batch);
-      }
+        if (response.collection.items!=null) {
+            for (EMSItem room : response.collection.items) {
+                parseRoom(room, batch);
+            }
+        }
 
       return batch;
     }
