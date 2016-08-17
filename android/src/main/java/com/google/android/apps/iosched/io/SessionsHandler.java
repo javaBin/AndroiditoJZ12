@@ -244,7 +244,10 @@ public class SessionsHandler extends JSONHandler {
 
 
 
-      String blockId = ScheduleContract.Blocks.generateBlockId(sessionStartTime, sessionEndTime);
+      long blockStart = snapStartTime(sessionStartTime);
+      long blockEnd = snapEndTime(sessionEndTime);
+
+      String blockId = ScheduleContract.Blocks.generateBlockId(blockStart, blockEnd);
       if (blockId !=null && !blockIds.contains(blockId) ) { // TODO add support for fetching blocks and inserting
         String blockType;
         String blockTitle;
@@ -265,8 +268,8 @@ public class SessionsHandler extends JSONHandler {
             .withValue(ScheduleContract.Blocks.BLOCK_ID, blockId)
             .withValue(ScheduleContract.Blocks.BLOCK_TYPE, blockType)
             .withValue(ScheduleContract.Blocks.BLOCK_TITLE, blockTitle)
-            .withValue(ScheduleContract.Blocks.BLOCK_START, sessionStartTime)
-            .withValue(ScheduleContract.Blocks.BLOCK_END, sessionEndTime)
+            .withValue(ScheduleContract.Blocks.BLOCK_START, blockStart)
+            .withValue(ScheduleContract.Blocks.BLOCK_END, blockEnd)
             .build());
         blockIds.add(blockId);
       }

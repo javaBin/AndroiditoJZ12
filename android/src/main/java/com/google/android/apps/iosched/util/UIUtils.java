@@ -131,7 +131,7 @@ public class UIUtils {
 
 
         if (Constants.LIGHTNINGTALK.equals(type)) {
-            if (sessionStart == 0) {
+            if (sessionStart != 0) {
                 type = "(Lightning talk starts " + formatLightningTalkTimeString(sessionStart, context) + ")";
             } else {
                 type = "(Lightning talk)";
@@ -142,7 +142,7 @@ public class UIUtils {
 
         return context.getString(
                 R.string.session_subtitle,
-                formatBlockTimeString(blockStart, blockEnd, context),
+                formatBlockTimeString(sessionStart, sessionEnd, context),
                 roomName, type
         );
     }
