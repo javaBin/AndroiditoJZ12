@@ -18,8 +18,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="no.java.schedule"
     android:installLocation="auto">
-    android:versionCode="40"
-    android:versionName="2015.1">
+    android:versionCode="41"
+    android:versionName="2016.1">
 
     <permission
         android:name="no.java.schedule.permission.WRITE_SCHEDULE"

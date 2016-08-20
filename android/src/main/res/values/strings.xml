@@ -14,7 +14,7 @@
   limitations under the License.
   -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">JavaZone 2015</string>
+    <string name="app_name">JavaZone 2016</string>
 
     <string name="description_search">Search</string>
     <string name="description_map">Map</string>
@@ -57,8 +57,8 @@
     <string name="all_tracks">All labels</string>
     <string name="all_tracks_sessions">All sessions</string>
     <string name="all_tracks_vendors">All companies</string>
-    <string name="all_tracks_subtitle_sessions">All sessions at JavaZone 2015.</string>
-    <string name="all_tracks_subtitle_vendors">All developer sandbox companies at JavaZone 2015.</string>
+    <string name="all_tracks_subtitle_sessions">All sessions at JavaZone 2016.</string>
+    <string name="all_tracks_subtitle_vendors">All developer sandbox companies at JavaZone 2016.</string>
 
     <string name="empty_sessions">No sessions found.</string>
     <string name="empty_session_detail">No session details found.</string>
@@ -137,8 +137,8 @@
 
     <!-- EULA, login, and about -->
     <string name="description_choose_account"><![CDATA[
-        Welcome to the JavaZone 2015 app, your official companion to the JavaZone conference
-        taking place in Oslo from September 9th to September 10th, 2015.<br>
+        Welcome to the JavaZone 2016 app, your official companion to the JavaZone conference
+        taking place in Oslo from September 7th to September 8th, 2016.<br>
         <br>
 
     ]]></string>
@@ -146,11 +146,11 @@
     <string name="empty_accounts">No Google accounts are available. Add an account to continue.</string>
     <string name="no_connection_cant_login">Can\'t sign in. Check your network connection.</string>
     <string name="taking_a_while">This is taking a while&#8230;</string>
-    <string name="eula_title">JavaZone 2015 Android App End User License Agreement</string>
+    <string name="eula_title">JavaZone 2016 Android App End User License Agreement</string>
     <string name="about_eula">End User License Agreement</string>
     <string name="about_licenses">Open Source Licenses</string>
     <string name="about_body"><![CDATA[
-        <b>JavaZone 2015</b><br>
+        <b>JavaZone 2016</b><br>
         Version %s<br><br>
 
     ]]></string>
@@ -177,8 +177,8 @@
     </plurals>
     <string name="snooze_x_min">Snooze <xliff:g id="remaining_time">%1$d</xliff:g> min.</string>
 
-    <string name="session_calendar_suffix">- added by JavaZone 2015 Android app</string>
-    <string name="toast_deleting_sessions_from_calendar">Removing your JavaZone 2015 sessions from Google Calendar&#8230;</string>
+    <string name="session_calendar_suffix">- added by JavaZone 2016 Android app</string>
+    <string name="toast_deleting_sessions_from_calendar">Removing your JavaZone 2016 sessions from Google Calendar&#8230;</string>
 
     <!-- Contextual help text -->
     <string name="help_add_to_schedule"><![CDATA[
@@ -198,7 +198,7 @@
     <string name="stream_error">Couldn\'t load the Twitter stream.</string>
     <string name="stream_originally_shared"><xliff:g id="name">%s</xliff:g> originally shared this post</string>
     <string name="empty_widget_text">No more upcoming sessions.\nSee you next year!</string>
-    <string name="empty_widget_text_signed_out">Touch the JavaZone 2015 logo above to sign in and begin using the app.</string>
+    <string name="empty_widget_text_signed_out">Touch the JavaZone 2016 logo above to sign in and begin using the app.</string>
 
     <string name="now_playing_badge"><![CDATA[<font color="#4683ec"><small><b>NOW</b></small></font>]]></string>
     <string name="live_available_badge"><![CDATA[<font color="#999999"><small><b>LIVE</b></small></font>]]></string>

@@ -131,11 +131,11 @@ public class UIUtils {
 
 
         if (Constants.LIGHTNINGTALK.equals(type)) {
-            if (sessionStart != 0) {
-                type = "(Lightning talk starts " + formatLightningTalkTimeString(sessionStart, context) + ")";
-            } else {
+            //if (sessionStart != 0) {
+            //    type = "(Lightning talk starts " + formatLightningTalkTimeString(sessionStart, context) + ")";
+            //} else {
                 type = "(Lightning talk)";
-            }
+            //}
         } else {
             type = "";
         }
