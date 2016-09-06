@@ -261,5 +261,6 @@
     <string name="rate_session_feedback">Rate this session</string>
     <string name="session_feedback_tellus">Tell us!</string>
     <string name="session_feedback_other">Anything else we should know?\n(Please don\'t add any personal information in your comments.)</string>
+    <string name="whats_on_app_redirect_title">We have a new app!\nFind it in Play store under the Javazone account! (Click here!)</string>
 
 </resources>

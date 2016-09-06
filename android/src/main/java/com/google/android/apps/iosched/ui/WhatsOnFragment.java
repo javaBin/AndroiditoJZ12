@@ -40,6 +40,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * A fragment used in {@link HomeActivity} that shows either a countdown,
@@ -82,16 +83,36 @@ public class WhatsOnFragment extends Fragment implements
         mHandler.removeCallbacks(mCountdownRunnable);
         mRootView.removeAllViews();
 
-        final long currentTimeMillis = UIUtils.getCurrentTime(getActivity());
+        //final long currentTimeMillis = UIUtils.getCurrentTime(getActivity());
 
         // Show Loading... and load the view corresponding to the current state
-        if (currentTimeMillis < UIUtils.CONFERENCE_START_MILLIS) {
-            setupBefore();
-        } else if (currentTimeMillis > UIUtils.CONFERENCE_END_MILLIS) {
-            setupAfter();
-        } else {
-            setupDuring();
-        }
+        //if (currentTimeMillis < UIUtils.CONFERENCE_START_MILLIS) {
+        //    setupBefore();
+        //} else if (currentTimeMillis > UIUtils.CONFERENCE_END_MILLIS) {
+        //    setupAfter();
+        //} else {
+        //    setupDuring();
+        //}
+
+        setupRedirectNewApp();
+    }
+
+    private void setupRedirectNewApp() {
+        // After conference, show canned text.
+        View x = mInflater.inflate(R.layout.whats_on_app_redirect, mRootView, true);
+        x.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent viewIntent =
+                            new Intent("android.intent.action.VIEW",
+                                    Uri.parse("https://play.google.com/store/apps/details?id=no.java.schedule.v2"));
+                    startActivity(viewIntent);
+                }catch(Exception e) {
+                    // Ignore
+                }
+            }
+        });
     }
 
     private void setupBefore() {
@@ -104,8 +125,7 @@ public class WhatsOnFragment extends Fragment implements
 
     private void setupAfter() {
         // After conference, show canned text.
-        mInflater.inflate(R.layout.whats_on_thank_you,
-                mRootView, true);
+        mInflater.inflate(R.layout.whats_on_thank_you, mRootView, true);
     }
 
     private void setupDuring() {

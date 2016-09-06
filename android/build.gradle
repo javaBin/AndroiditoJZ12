@@ -4,7 +4,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.2'
+        classpath 'com.android.tools.build:gradle:2.1.3'
     }
 
     apply plugin: 'android'
@@ -19,8 +19,8 @@ android {
         applicationId "no.java.schedule"
         minSdkVersion 7
         targetSdkVersion 16
-        versionCode 60
-        versionName "2016.1"
+        versionCode 61
+        versionName "2016.2"
     }
     buildTypes {
         release {
